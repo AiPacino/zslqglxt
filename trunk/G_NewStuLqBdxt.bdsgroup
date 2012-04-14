@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{7817B26E-7A25-4FC0-AF56-635C65C10B28}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
+      <Projects Name="NewStuLqBdSrv.dll">Srv\NewStuLqBdSrv.bdsproj</Projects>
+      <Projects Name="NewStuLqBdWadSrv.exe">Srv\NewStuLqBdWadSrv.bdsproj</Projects>
+      <Projects Name="NewStuLqBdSetTools.exe">Srv\NewStuLqBdSetTools.bdsproj</Projects>
+      <Projects Name="NewStuBd.exe">NewStuBd\NewStuBd.bdsproj</Projects>
+      <Projects Name="Xkglxt.exe">Xkglxt\Xkglxt.bdsproj</Projects>
+      <Projects Name="Targets">NewStuLqBdSrv.dll NewStuLqBdWadSrv.exe NewStuLqBdSetTools.exe NewStuBd.exe Xkglxt.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>
