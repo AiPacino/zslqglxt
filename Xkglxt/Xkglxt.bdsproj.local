@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012/03/28 21:30:37.928.pas,E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.pas=E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.pas</Transaction>
+    <Transaction>2012/03/28 21:30:37.928.dfm,E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.dfm=E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.dfm</Transaction>
+    <Transaction>2012/03/28 21:30:37.943.pas,E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.pas=E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.pas</Transaction>
+    <Transaction>2012/03/28 21:30:37.943.dfm,E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.dfm=E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.dfm</Transaction>
+    <Transaction>2012/03/28 21:31:18.929.pas,E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.pas=E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.pas</Transaction>
+    <Transaction>2012/03/28 21:31:18.929.dfm,E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.dfm=E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.dfm</Transaction>
+    <Transaction>2012/03/28 21:31:18.942.pas,E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.pas=E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.pas</Transaction>
+    <Transaction>2012/03/28 21:31:18.942.dfm,E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.dfm=E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.dfm</Transaction>
+    <Transaction>2012/03/28 21:32:44.320.pas,E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.pas=E:\xxx\招生系统\Xkglxt\uXkKm.pas</Transaction>
+    <Transaction>2012/03/28 21:32:44.320.dfm,E:\xxx\招生系统\Xkglxt\uXkZyCjInput2.dfm=E:\xxx\招生系统\Xkglxt\uXkKm.dfm</Transaction>
+    <Transaction>2012/03/28 21:33:46.623.pas,E:\xxx\招生系统\Xkglxt\uXkKm.pas=E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.pas</Transaction>
+    <Transaction>2012/03/28 21:33:46.623.dfm,E:\xxx\招生系统\Xkglxt\uXkKm.dfm=E:\xxx\招生系统\Xkglxt\uXkKmCjEdit.dfm</Transaction>
+    <Transaction>2012/03/28 21:54:21.444.pas,E:\xxx\招生系统\Xkglxt\uXkKmCjCheck.pas=</Transaction>
+    <Transaction>2012/03/28 21:54:21.444.dfm,E:\xxx\招生系统\Xkglxt\uXkKmCjCheck.dfm=</Transaction>
+    <Transaction>2012/03/28 21:55:00.806.pas,E:\xxx\招生系统\Xkglxt\uXkKmCjConfirm.pas=E:\xxx\招生系统\Xkglxt\uXkKmCjCheck.pas</Transaction>
+    <Transaction>2012/03/28 21:55:00.806.dfm,E:\xxx\招生系统\Xkglxt\uXkKmCjConfirm.dfm=E:\xxx\招生系统\Xkglxt\uXkKmCjCheck.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
