@@ -214,7 +214,7 @@ var
   function  GetSfDmBySfMc(const sfDm:string):String;
 
 implementation
-uses PwdFunUnit, uZySelect,Net,ActiveX,shellapi,shlObj;
+uses PwdFunUnit, uZySelect, Net,ActiveX,shellapi,shlObj;
 {$R *.dfm}
 { TDM }
 

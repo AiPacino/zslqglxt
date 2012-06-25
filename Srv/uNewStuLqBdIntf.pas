@@ -60,6 +60,11 @@ type
     function KsIsExcept(const ksh:string;var Msg:string):Boolean; stdcall;           //考生是否异常
     function KsIsExists(const ksh:string;var Msg:string):Boolean; stdcall;           //考生是否存在
 
+    function GetUserInfo:string;stdcall;//获取机主用户名称
+    function GetMACInfo:string;stdcall;//获取机主MAC信息
+    function GetUserCode:string;stdcall;//获取机主用户注册码
+    function RegUserInfo(const UserName,UserCode:string):Boolean;stdcall;
+    function RegIsOK:Boolean;stdcall;//系统是否注册
     function SrvIsOK:Boolean;stdcall;
     function SrvIsOpen:Boolean;stdcall; //系统服务是否开放
     function IsValidIp:Boolean;stdcall; //是否合法IP

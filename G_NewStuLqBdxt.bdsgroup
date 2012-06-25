@@ -14,7 +14,9 @@
       <Projects Name="NewStuLqBdSetTools.exe">Srv\NewStuLqBdSetTools.bdsproj</Projects>
       <Projects Name="NewStuBd.exe">NewStuBd\NewStuBd.bdsproj</Projects>
       <Projects Name="Xkglxt.exe">Xkglxt\Xkglxt.bdsproj</Projects>
-      <Projects Name="Targets">NewStuLqBdSrv.dll NewStuLqBdWadSrv.exe NewStuLqBdSetTools.exe NewStuBd.exe Xkglxt.exe</Projects>
+      <Projects Name="SysReg.exe">About\SysReg.bdsproj</Projects>
+      <Projects Name="About.exe">About\About.bdsproj</Projects>
+      <Projects Name="Targets">NewStuLqBdSrv.dll NewStuLqBdWadSrv.exe NewStuLqBdSetTools.exe NewStuBd.exe Xkglxt.exe SysReg.exe About.exe</Projects>
     </Projects>
     <Dependencies/>
   </Default.Personality>

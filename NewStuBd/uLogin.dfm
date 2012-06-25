@@ -30,14 +30,14 @@ object Login: TLogin
   object AALabel2: TCnAALabel
     Left = 111
     Top = 178
-    Width = 56
-    Height = 21
+    Width = 60
+    Height = 18
     ParentEffect.ParentFont = False
     Caption = #23494' '#30721#65306
     Font.Charset = GB2312_CHARSET
     Font.Color = clBlue
     Font.Height = -16
-    Font.Name = #26041#27491#23002#20307#31616#20307
+    Font.Name = #26999#20307'_GB2312'
     Font.Style = [fsBold]
     Effect.Transparent = True
     Effect.FontEffect.Shadow.Enabled = True
@@ -46,13 +46,13 @@ object Login: TLogin
     Left = 31
     Top = 72
     Width = 84
-    Height = 21
+    Height = 18
     ParentEffect.ParentFont = False
     Caption = #30331#24405#20449#24687#65306
     Font.Charset = GB2312_CHARSET
     Font.Color = clBlue
     Font.Height = -16
-    Font.Name = #26041#27491#23002#20307#31616#20307
+    Font.Name = #26999#20307'_GB2312'
     Font.Style = [fsBold]
     Effect.FontEffect.Shadow.Enabled = True
   end
@@ -103,14 +103,14 @@ object Login: TLogin
   object albl1: TCnAALabel
     Left = 111
     Top = 122
-    Width = 56
-    Height = 21
+    Width = 60
+    Height = 18
     ParentEffect.ParentFont = False
     Caption = #29992' '#25143#65306
     Font.Charset = GB2312_CHARSET
     Font.Color = clBlue
     Font.Height = -16
-    Font.Name = #26041#27491#23002#20307#31616#20307
+    Font.Name = #26999#20307'_GB2312'
     Font.Style = [fsBold]
     Effect.Transparent = True
     Effect.FontEffect.Shadow.Enabled = True
@@ -1156,7 +1156,7 @@ object Login: TLogin
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-03-28 00:00:00'
+    VersionDate = '2012-06-25 00:00:00'
     VersionDateAutoSet = True
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
     Left = 224

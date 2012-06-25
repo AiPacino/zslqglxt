@@ -12,7 +12,8 @@ uses
   uNewStuLqBdSoapDM in 'uNewStuLqBdSoapDM.pas' {NewStuLqBdSoapDM: TSoapDataModule},
   uDbConnect in 'uDbConnect.pas',
   Net in '..\public\Net.pas',
-  EncdDecdEx in '..\public\EncdDecdEx.pas';
+  EncdDecdEx in '..\public\EncdDecdEx.pas',
+  PwdFunUnit in '..\public\PwdFunUnit.pas';
 
 {$R *.res}
 

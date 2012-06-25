@@ -3,12 +3,12 @@ unit uABOUT;
 interface
 
 uses Windows, SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
-  Buttons, ExtCtrls, CnAAFont, CnAACtrls,ShellAPI, dxGDIPlusClasses, pngimage;
+  Buttons, ExtCtrls, CnAAFont, CnAACtrls,ShellAPI, dxGDIPlusClasses, pngimage,
+  frxpngimage;
 
 type
   TAboutBox = class(TForm)
     Panel1: TPanel;
-    ProgramIcon: TImage;
     Version: TLabel;
     Copyright: TLabel;
     Comments: TLabel;
@@ -19,6 +19,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     SrvCode: TLabel;
+    ProgramIcon: TImage;
     procedure OKButtonClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -36,7 +37,7 @@ var
   AboutBox: TAboutBox;
 
 implementation
-uses Net;
+uses uDM,Net;
 {$R *.dfm}
 
 procedure TAboutBox.btn_RegClick(Sender: TObject);
@@ -64,9 +65,12 @@ begin
   if ParamCount>0 then
     Version.Caption := 'Ver '+ParamStr(1)
   else
+  begin
     Version.Caption := 'Ver '+Get_Version;
-  albl_Title.Caption := Application.Title;
-{
+    if Application.Title<>'About' then
+      albl_Title.Caption := Application.Title;
+  end;
+    
   Screen.Cursor := crHourGlass;
   try
     Comments.Caption := vobj.GetUserInfo;
@@ -79,7 +83,6 @@ begin
     //vobj := nil;
     Screen.Cursor := crDefault;
   end;
-}
 end;
 
 procedure TAboutBox.Label2Click(Sender: TObject);
