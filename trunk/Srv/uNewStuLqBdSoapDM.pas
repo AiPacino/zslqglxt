@@ -89,10 +89,16 @@ type
     function GetAdjustJHNo:string;
     function GetLqtzsNo(const ksh:string):string;
     function UpdateLqInfo(const sXlCc:string):Boolean;
+
+    function RegIsOK:Boolean;
+    function GetUserInfo:string;//获得用户名称
+    function GetMACInfo:string;//获得用户机器码
+    function GetUserCode:string;//获得用户注册码
+    function RegUserInfo(const UserName,UserCode:string):Boolean;//注册用户
   end;
 
 implementation
-uses uDbConnect,uNewStuLqBdIntf;
+uses uDbConnect,uNewStuLqBdIntf,Net,PwdFunUnit;
 {$R *.DFM}
 
 procedure TNewStuLqBdDMCreateInstance(out obj: TObject);
@@ -159,6 +165,57 @@ begin
   Result := sp_GetLqztsNo.Parameters.ParamByName('@res_No').Value;
 end;
 
+function TNewStuLqBdSoapDM.GetMACInfo: string;
+begin
+  try
+    try
+      DataSet_Temp.Active := False;
+      DataSet_Temp.CommandText := 'select MAC from 机主信息表';
+      DataSet_Temp.Active := True;
+      Result := DataSet_Temp.Fields[0].AsString;
+    except
+      Result := '';
+    end;
+  finally
+    DataSet_Temp.Active := False;
+  end;
+end;
+
+function TNewStuLqBdSoapDM.GetUserCode: string;
+begin
+  try
+    try
+      DataSet_Temp.Active := False;
+      DataSet_Temp.CommandText := 'select 注册码 from 机主信息表';
+      DataSet_Temp.Active := True;
+      Result := DataSet_Temp.Fields[0].AsString;
+    except
+      Result := '';
+    end;
+  finally
+    DataSet_Temp.Active := False;
+  end;
+end;
+
+function TNewStuLqBdSoapDM.GetUserInfo: string;
+var
+  UserName:string;
+begin
+  try
+    try
+      DataSet_Temp.Active := False;
+      DataSet_Temp.CommandText := 'select 用户名称 from 机主信息表';
+      DataSet_Temp.Active := True;
+      UserName := DataSet_Temp.Fields[0].AsString;
+      Result := UserName;
+    except
+      Result := '';
+    end;
+  finally
+    DataSet_Temp.Active := False;
+  end;
+end;
+
 function TNewStuLqBdSoapDM.Query_Data(const SqlText: string;
   var sData: string): Integer;
 var
@@ -208,6 +265,64 @@ begin
   finally
     DataSet_Temp.Close;
     DataSet_Temp.Free;
+  end;
+end;
+
+function TNewStuLqBdSoapDM.RegIsOK: Boolean;
+var
+  UserName,RegCode,sMac:string;
+  sqlText:String;
+begin
+  try
+    try
+      DataSet_Temp.Active := False;
+      DataSet_Temp.CommandText := 'select 用户名称,MAC,注册码 from 机主信息表';
+      DataSet_Temp.Active := True;
+      UserName := DataSet_Temp.Fields[0].AsString;
+      sMac := DataSet_Temp.Fields[1].AsString;
+      RegCode := DataSet_Temp.Fields[2].AsString;
+      if sMac<>GetMACAddress then
+      begin
+        sMac := GetMACAddress;
+        sqlText := 'update 机主信息表 set MAC='+quotedstr(sMac);
+        con_Access.Execute(SqlText);
+      end;
+      if RegCode<>'' then
+        RegCode := DeCrypt(RegCode); //对注册码进行解码以还原用户名称
+      //RegCode := EnCrypt(UserName);
+      //Result := (RegCode = DataSet_Temp.Fields[1].AsString) and (DataSet_Temp.Fields[1].AsString<>'');
+      Result := (RegCode = UserName) and (RegCode<>'');
+    except
+      Result := False;
+    end;
+  finally
+    DataSet_Temp.Active := False;
+  end;
+end;
+
+function TNewStuLqBdSoapDM.RegUserInfo(const UserName,
+  UserCode: string): Boolean;
+var
+  sqlstr:string;
+begin
+  with qry_Temp do
+  begin
+    Active := False;
+    sql.Text := 'select 用户名称,注册码 from 机主信息表';
+    Active := True;
+    if RecordCount=0 then
+      sqlstr := 'Insert into 机主信息表 (用户名称,注册码) values('+quotedstr(UserName)+','+quotedstr(UserCode)
+    else
+      sqlstr := 'update 机主信息表 set 用户名称='+quotedstr(UserName)+',注册码='+quotedstr(UserCode);
+
+    try
+      close;
+      sql.Text := sqlstr;
+      ExecSql;
+      Result := True;//RegIsOK;
+    except
+      Result := False;
+    end;
   end;
 end;
 

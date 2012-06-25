@@ -85,7 +85,7 @@ uses
 
 begin
   Application.Initialize;
-  Application.Title := '高招录取辅助系统';
+  Application.Title := '高招录取管理系统';
   dm := TDM.Create(Application);
   gb_System_Mode := '录取';
   gbIsOK := False;

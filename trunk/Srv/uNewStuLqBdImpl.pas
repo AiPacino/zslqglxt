@@ -57,6 +57,11 @@ type
     function KsIsExcept(const ksh:string;var Msg:string):Boolean; stdcall;                            //考生是否异常
     function KsIsExists(const ksh:string;var Msg:string):Boolean; stdcall;           //考生是否存在
 
+    function GetUserInfo:string;stdcall;//获取机主用户名称
+    function GetMACInfo:string;stdcall;//获取机主MAC信息
+    function GetUserCode:string;stdcall;//获取机主用户注册码
+    function RegUserInfo(const UserName,UserCode:string):Boolean;stdcall;
+    function RegIsOK:Boolean;stdcall;//系统是否注册
     function SrvIsOK:Boolean;stdcall;
     function SrvIsOpen:Boolean;stdcall; //系统服务是否开放
     function IsValidIp:Boolean;stdcall; //是否合法IP
@@ -555,6 +560,20 @@ begin
   end;
 end;
 
+function TNewStuLqBd.GetMACInfo: string;
+var
+  dm:TNewStuLqBdSoapDM;
+begin
+  dm := TNewStuLqBdSoapDM.Create(nil);
+  try
+    Result := dm.GetMACInfo;
+    if Result='' then
+      Result := '';
+  finally
+    dm.Free;
+  end;
+end;
+
 function TNewStuLqBd.GetPhotoSavePath: string;
 var
   sqlstr:string;
@@ -791,6 +810,34 @@ begin
   end;
 end;
 
+function TNewStuLqBd.GetUserCode: string;
+var
+  dm:TNewStuLqBdSoapDM;
+begin
+  dm := TNewStuLqBdSoapDM.Create(nil);
+  try
+    Result := dm.GetUserCode;
+    if Result='' then
+      Result := '';
+  finally
+    dm.Free;
+  end;
+end;
+
+function TNewStuLqBd.GetUserInfo: string;
+var
+  dm:TNewStuLqBdSoapDM;
+begin
+  dm := TNewStuLqBdSoapDM.Create(nil);
+  try
+    Result := dm.GetUserInfo;
+    if Result='' then
+      Result := '未输入系统用户信息';
+  finally
+    dm.Free;
+  end;
+end;
+
 function TNewStuLqBd.InitCjInputData(const Yx, Sf, Km: string;const DelData:Boolean;
   var sError: string): Boolean;
 var
@@ -968,6 +1015,31 @@ begin
     Result := dm.DataSet_Temp.Fields[0].AsInteger>0;
   finally
     DM.DataSet_Temp.Active := False;
+    dm.Free;
+  end;
+end;
+
+function TNewStuLqBd.RegIsOK: Boolean;
+var
+  dm:TNewStuLqBdSoapDM;
+begin
+  dm := TNewStuLqBdSoapDM.Create(nil);
+  try
+    Result := dm.RegIsOK;
+  finally
+    dm.Free;
+  end;
+end;
+
+function TNewStuLqBd.RegUserInfo(const UserName, UserCode: string): Boolean;
+var
+  dm:TNewStuLqBdSoapDM;
+begin
+  dm := TNewStuLqBdSoapDM.Create(nil);
+  try
+    Result := dm.RegUserInfo(UserName,UserCode);
+  finally
+    dm.DataSet_Temp.Active := False;
     dm.Free;
   end;
 end;
