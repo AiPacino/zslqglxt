@@ -131,12 +131,12 @@ begin
   zy := lbledt_Zy.Text;
 
   sWhere := ' where 学历层次='+quotedstr(xlcc)+' and 录取专业='+quotedstr(zy)
-            +' and 录取专业规范名=录取专业 and 专业类别='+quotedstr(kl);
+            +' and 录取专业规范名=录取专业 and 类别='+quotedstr(kl);
   sqlstr := 'update '+aTableName+' set 录取专业规范名='+quotedstr(cbb_NewZy.Text)+sWhere;
   dm.ExecSql(sqlstr);
 
   sWhere := ' where 学历层次='+quotedstr(xlcc)+' and 录取专业='+quotedstr(zy)
-            +' and 录取专业规范名='+quotedstr(cbb_NewZy.Text)+' and 专业类别='+quotedstr(kl);
+            +' and 录取专业规范名='+quotedstr(cbb_NewZy.Text)+' and 类别='+quotedstr(kl);
   sqlstr := 'select count(*) from '+aTableName+' '+sWhere;
   iResult := vobj.GetRecordCountBySql(sqlstr);
 

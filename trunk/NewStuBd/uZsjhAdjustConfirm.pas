@@ -100,9 +100,9 @@ begin
     sNo := cds_Yx.FieldByName('Id').AsString;
     if vobj.ConfirmJH(sNo,gb_Czy_ID,sError) then
     begin
-      DBGridEh1.SaveBookmark;
+      //DBGridEh1.SaveBookmark;
       Open_YxTable;
-      DBGridEh1.RestoreBookmark;
+      //DBGridEh1.RestoreBookmark;
     end else
       MessageBox(Handle, pchar('计划调整单审核处理失败！原因为：'+sError　),
         '系统提示', MB_OK + MB_ICONSTOP);
@@ -119,9 +119,9 @@ begin
     Id := cds_Yx.FieldByName('Id').AsString;
     if vobj.CancelJH(Id,'拒绝本次计划调整',gb_Czy_ID,sError) then
     begin
-      DBGridEh1.SaveBookmark;
+      //DBGridEh1.SaveBookmark;
       Open_YxTable;
-      DBGridEh1.RestoreBookmark;
+      //DBGridEh1.RestoreBookmark;
     end else
       MessageBox(Handle, pchar('取消审核处理失败！原因为：'+sError　), 
         '系统提示', MB_OK + MB_ICONSTOP);
@@ -214,7 +214,20 @@ begin
 end;
 
 procedure TZsjhAdjustConfirm.FormCreate(Sender: TObject);
+var
+  i:integer;
 begin
+  DBGridEh2.FieldColumns['增减数'].KeyList.Clear;
+  DBGridEh2.FieldColumns['增减数'].PickList.Clear;
+  for i := -20 to 20 do
+  begin
+    DBGridEh2.FieldColumns['增减数'].KeyList.Add(IntToStr(i));
+    if i>0 then
+      DBGridEh2.FieldColumns['增减数'].PickList.Add('+'+IntToStr(i))
+    else
+      DBGridEh2.FieldColumns['增减数'].PickList.Add(IntToStr(i));
+  end;
+
   dm.SetXlCcComboBox(cbb_Xlcc);
   Open_YxTable;
 end;

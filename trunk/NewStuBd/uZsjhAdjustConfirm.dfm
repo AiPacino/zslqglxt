@@ -306,8 +306,6 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
             Caption = #35745#21010#35843#25972#26126#32454#65306
             GroupStyle = gsStandard
             TabOrder = 0
-            ExplicitTop = 137
-            ExplicitHeight = 330
             object chklst1: TCheckListBox
               Left = 2
               Top = 16
@@ -317,7 +315,6 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
               Columns = 3
               ItemHeight = 14
               TabOrder = 1
-              ExplicitHeight = 312
             end
             object DBGridEh2: TDBGridEh
               Left = 2
@@ -397,14 +394,14 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
                   FieldName = #19987#19994
                   Footers = <>
                   Title.TitleButton = True
-                  Width = 183
+                  Width = 182
                 end
                 item
                   EditButtons = <>
                   FieldName = #31185#31867
                   Footers = <>
                   Title.TitleButton = True
-                  Width = 48
+                  Width = 69
                 end
                 item
                   Alignment = taCenter
@@ -412,7 +409,7 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
                   FieldName = #22686#20943#25968
                   Footers = <>
                   Title.TitleButton = True
-                  Width = 49
+                  Width = 43
                 end>
               object RowDetailData: TRowDetailPanelControlEh
               end
@@ -426,7 +423,6 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
             Align = alTop
             Caption = #30003#35831#21333#32534#36753#65306
             TabOrder = 1
-            ExplicitWidth = 550
             object lbl1: TLabel
               Left = 24
               Top = 27
