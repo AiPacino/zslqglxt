@@ -835,6 +835,7 @@ object KsInfoBrowse: TKsInfoBrowse
         FieldName = #36890#30693#20070#32534#21495
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 75
       end
       item
@@ -854,25 +855,17 @@ object KsInfoBrowse: TKsInfoBrowse
       end
       item
         EditButtons = <>
-        FieldName = #32771#29983#31867#21035
+        FieldName = #31867#21035
         Footers = <>
         Title.TitleButton = True
-        Visible = False
-        Width = 58
-      end
-      item
-        EditButtons = <>
-        FieldName = #19987#19994#31867#21035
-        Footers = <>
-        Title.TitleButton = True
-        Width = 70
+        Width = 55
       end
       item
         EditButtons = <>
         FieldName = #31185#31867
         Footers = <>
         Title.TitleButton = True
-        Width = 38
+        Width = 57
       end
       item
         EditButtons = <>
@@ -926,13 +919,6 @@ object KsInfoBrowse: TKsInfoBrowse
       item
         EditButtons = <>
         FieldName = #23398#21046#24180#38480
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #19987#19994#31185#31867
         Footers = <>
         Title.TitleButton = True
         Visible = False
@@ -1198,7 +1184,7 @@ object KsInfoBrowse: TKsInfoBrowse
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700440010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484

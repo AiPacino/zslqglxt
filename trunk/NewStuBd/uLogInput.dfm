@@ -1,10 +1,10 @@
-object NewStuList: TNewStuList
+object LogInput: TLogInput
   Left = 0
   Top = 0
-  ActiveControl = edt_Value
-  Caption = #26032#29983#25253#21040#22788#29702
-  ClientHeight = 640
-  ClientWidth = 998
+  BorderIcons = [biSystemMenu]
+  Caption = #24405#26816#21592#24037#20316#26085#24535#24405#20837
+  ClientHeight = 354
+  ClientWidth = 466
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,21 +16,20 @@ object NewStuList: TNewStuList
   Position = poMainFormCenter
   Visible = True
   OnClose = FormClose
-  OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 14
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 998
+    Width = 466
     Height = 50
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitWidth = 968
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -532,7 +531,7 @@ object NewStuList: TNewStuList
       Top = 13
       Width = 120
       Height = 23
-      Caption = #26032#29983#25253#21040#22788#29702
+      Caption = #24037#20316#26085#24535#24405#20837
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -19
@@ -541,669 +540,146 @@ object NewStuList: TNewStuList
       ParentFont = False
       Transparent = True
     end
-    object rg_BdState: TRadioGroup
-      Left = 818
-      Top = 0
-      Width = 180
-      Height = 50
-      Align = alRight
-      Caption = #25253#21040#29366#24577#65306
-      Columns = 3
-      ItemIndex = 0
-      Items.Strings = (
-        #19981#38480
-        #24050#25253#21040
-        #26410#25253#21040)
-      TabOrder = 0
-      OnClick = rg_BdStateClick
-    end
-    object grp_Yx: TGroupBox
-      Left = 641
-      Top = 0
-      Width = 177
-      Height = 50
-      Align = alRight
-      Caption = #38498#31995#36873#25321#65306
-      TabOrder = 1
-      object cbb_Yx: TDBComboBoxEh
-        Left = 8
-        Top = 20
-        Width = 163
-        Height = 22
-        EditButtons = <>
-        TabOrder = 0
-        Text = #19981#38480#38498#31995
-        Visible = True
-        OnChange = cbb_YxChange
-      end
-    end
-    object GroupBox1: TGroupBox
-      Left = 528
-      Top = 0
-      Width = 113
-      Height = 50
-      Align = alRight
-      Caption = #23618#27425#65306
-      TabOrder = 2
-      object cbb_XlCc: TDBComboBoxEh
-        Left = 9
-        Top = 19
-        Width = 98
-        Height = 22
-        EditButtons = <>
-        TabOrder = 0
-        Text = #26412#31185
-        Visible = True
-        OnChange = cbb_YxChange
-      end
-    end
-  end
-  object Panel1: TPanel
-    Left = 0
-    Top = 599
-    Width = 998
-    Height = 41
-    Align = alBottom
-    BevelOuter = bvNone
-    TabOrder = 0
-    DesignSize = (
-      998
-      41)
-    object edt_Value: TEdit
-      Left = 113
-      Top = 10
-      Width = 174
-      Height = 22
-      TabOrder = 7
-      OnKeyPress = edt_ValueKeyPress
-    end
-    object btn_Search: TBitBtn
-      Left = 293
-      Top = 8
-      Width = 75
-      Height = 25
-      Caption = #26597#35810'[&S]'
-      TabOrder = 0
-      OnClick = btn_SearchClick
-    end
-    object btn_BaoDao: TBitBtn
-      Left = 381
-      Top = 8
-      Width = 90
-      Height = 25
-      Caption = #35774#32622#20026#24050#25253#21040
-      Enabled = False
-      TabOrder = 1
-      OnClick = btn_BaoDaoClick
-    end
-    object btn_NoBaoDao: TBitBtn
-      Left = 477
-      Top = 8
-      Width = 90
-      Height = 25
-      Caption = #35774#32622#20026#26410#25253#21040
-      Enabled = False
-      TabOrder = 2
-      OnClick = btn_NoBaoDaoClick
-    end
-    object btn_Exit: TBitBtn
-      Left = 918
-      Top = 8
-      Width = 75
-      Height = 25
-      Anchors = [akTop, akRight]
-      Caption = #20851#38381'[&C]'
-      TabOrder = 6
-      OnClick = btn_ExitClick
-    end
-    object btn_Excel: TBitBtn
-      Left = 679
-      Top = 8
-      Width = 90
-      Height = 25
-      Anchors = [akTop, akRight]
-      Caption = #25968#25454#23548#20986
-      TabOrder = 4
-      OnClick = btn_ExcelClick
-    end
-    object btn_PrintNoBD: TBitBtn
-      Left = 775
-      Top = 8
-      Width = 123
-      Height = 25
-      Caption = #25171#21360#36864#26723#32771#29983#21517#21333
-      TabOrder = 5
-      OnClick = btn_PrintNoBDClick
-    end
-    object btn_Refresh: TBitBtn
-      Left = 574
-      Top = 8
-      Width = 99
-      Height = 25
-      Caption = #21047#26032#25968#25454'[&R]'
-      TabOrder = 3
-      OnClick = mi_RefreshClick
-    end
-    object cbb_Field: TDBComboBoxEh
-      Left = 5
-      Top = 10
-      Width = 99
-      Height = 22
-      Alignment = taCenter
-      EditButtons = <>
-      Items.Strings = (
-        #27969#27700#21495
-        #36890#30693#20070#32534#21495
-        #32771#29983#21495
-        #32771#29983#22995#21517
-        #30465#20221
-        #24405#21462#19987#19994
-        #31185#31867
-        #38498#31995
-        #25253#21040#29366#24577
-        #26410#25253#21040#21407#22240)
-      KeyItems.Strings = (
-        #27969#27700#21495
-        #36890#30693#20070#32534#21495
-        #32771#29983#21495
-        #32771#29983#22995#21517
-        #30465#20221
-        #24405#21462#19987#19994#35268#33539#21517
-        #31185#31867
-        #38498#31995
-        #25253#21040#29366#24577
-        #26410#25253#21040#21407#22240)
-      TabOrder = 8
-      Text = #36890#30693#20070#32534#21495
-      Visible = True
-    end
   end
   object pnl1: TPanel
     Left = 0
-    Top = 566
-    Width = 998
-    Height = 33
+    Top = 310
+    Width = 466
+    Height = 44
     Align = alBottom
-    BevelKind = bkSoft
-    BevelOuter = bvLowered
-    TabOrder = 2
+    BevelOuter = bvNone
+    TabOrder = 1
+    ExplicitTop = 550
+    ExplicitWidth = 968
     DesignSize = (
-      994
-      29)
-    object lbl1: TLabel
-      Left = 14
-      Top = 6
-      Width = 52
-      Height = 14
-      Caption = #24635#20154#25968#65306
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lbl_Total: TLabel
-      Left = 69
-      Top = 6
-      Width = 21
-      Height = 14
-      Caption = '0'#20154
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlue
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lbl2: TLabel
-      Left = 176
-      Top = 6
+      466
+      44)
+    object btn_Save: TBitBtn
+      Left = 377
+      Top = 8
       Width = 78
-      Height = 14
-      Caption = #24050#25253#21040#20154#25968#65306
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lbl_BaoDao: TLabel
-      Left = 256
-      Top = 6
-      Width = 21
-      Height = 14
-      Caption = '0'#20154
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clGreen
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lbl3: TLabel
-      Left = 364
-      Top = 6
-      Width = 78
-      Height = 14
-      Caption = #26410#25253#21040#20154#25968#65306
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lbl_NoBaoDao: TLabel
-      Left = 444
-      Top = 6
-      Width = 21
-      Height = 14
-      Caption = '0'#20154
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clRed
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lbl5: TLabel
-      Left = 548
-      Top = 6
-      Width = 78
-      Height = 14
-      Caption = #24403#21069#25253#21040#29575#65306
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object lbl_BaoDaoLi: TLabel
-      Left = 628
-      Top = 6
-      Width = 21
-      Height = 14
-      Caption = '0'#20154
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlue
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object chk1: TCheckBox
-      Left = 880
-      Top = 2
-      Width = 91
-      Height = 17
-      Hint = #27599#38548'10'#31186#20809#26631#33258#21160#23450#20301#33267#26597#35810#26694
+      Height = 25
       Anchors = [akRight, akBottom]
-      Caption = #33258#21160#23450#20301#20809#26631
-      Checked = True
-      ParentShowHint = False
-      ShowHint = True
-      State = cbChecked
+      Caption = #20445#23384
       TabOrder = 0
-      OnClick = chk1Click
+      OnClick = btn_SaveClick
+      Glyph.Data = {
+        36060000424D3606000000000000360400002800000020000000100000000100
+        08000000000000020000750E0000750E00000001000000000000000000003300
+        00006600000099000000CC000000FF0000000033000033330000663300009933
+        0000CC330000FF33000000660000336600006666000099660000CC660000FF66
+        000000990000339900006699000099990000CC990000FF99000000CC000033CC
+        000066CC000099CC0000CCCC0000FFCC000000FF000033FF000066FF000099FF
+        0000CCFF0000FFFF000000003300330033006600330099003300CC003300FF00
+        330000333300333333006633330099333300CC333300FF333300006633003366
+        33006666330099663300CC663300FF6633000099330033993300669933009999
+        3300CC993300FF99330000CC330033CC330066CC330099CC3300CCCC3300FFCC
+        330000FF330033FF330066FF330099FF3300CCFF3300FFFF3300000066003300
+        66006600660099006600CC006600FF0066000033660033336600663366009933
+        6600CC336600FF33660000666600336666006666660099666600CC666600FF66
+        660000996600339966006699660099996600CC996600FF99660000CC660033CC
+        660066CC660099CC6600CCCC6600FFCC660000FF660033FF660066FF660099FF
+        6600CCFF6600FFFF660000009900330099006600990099009900CC009900FF00
+        990000339900333399006633990099339900CC339900FF339900006699003366
+        99006666990099669900CC669900FF6699000099990033999900669999009999
+        9900CC999900FF99990000CC990033CC990066CC990099CC9900CCCC9900FFCC
+        990000FF990033FF990066FF990099FF9900CCFF9900FFFF99000000CC003300
+        CC006600CC009900CC00CC00CC00FF00CC000033CC003333CC006633CC009933
+        CC00CC33CC00FF33CC000066CC003366CC006666CC009966CC00CC66CC00FF66
+        CC000099CC003399CC006699CC009999CC00CC99CC00FF99CC0000CCCC0033CC
+        CC0066CCCC0099CCCC00CCCCCC00FFCCCC0000FFCC0033FFCC0066FFCC0099FF
+        CC00CCFFCC00FFFFCC000000FF003300FF006600FF009900FF00CC00FF00FF00
+        FF000033FF003333FF006633FF009933FF00CC33FF00FF33FF000066FF003366
+        FF006666FF009966FF00CC66FF00FF66FF000099FF003399FF006699FF009999
+        FF00CC99FF00FF99FF0000CCFF0033CCFF0066CCFF0099CCFF00CCCCFF00FFCC
+        FF0000FFFF0033FFFF0066FFFF0099FFFF00CCFFFF00FFFFFF00000080000080
+        000000808000800000008000800080800000C0C0C00080808000191919004C4C
+        4C00B2B2B200E5E5E5005A1E1E00783C3C0096646400C8969600FFC8C800465F
+        82005591B9006EB9D7008CD2E600B4E6F000D8E9EC0099A8AC00646F7100E2EF
+        F100C56A31000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000EEEEEEEEEEEE
+        EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE09090909
+        090909090909090909EEEEEE81818181818181818181818181EEEE09101009E3
+        1009E3E3E309101009EEEE81ACAC81E3AC81E3E3E381ACAC81EEEE09101009E3
+        1009E3E3E309101009EEEE81ACAC81E3AC81E3E3E381ACAC81EEEE09101009E3
+        1009E3E3E309101009EEEE81ACAC81E3AC81E3E3E381ACAC81EEEE09101009E3
+        E3E3E3E3E309101009EEEE81ACAC81E3E3E3E3E3E381ACAC81EEEE0910101009
+        090909090910101009EEEE81ACACAC818181818181ACACAC81EEEE0910101010
+        101010101010101009EEEE81ACACACACACACACACACACACAC81EEEE0910100909
+        090909090909101009EEEE81ACAC8181818181818181ACAC81EEEE091009D7D7
+        D7D7D7D7D7D7091009EEEE81AC81D7D7D7D7D7D7D7D781AC81EEEE091009D709
+        0909090909D7091009EEEE81AC81D7818181818181D781AC81EEEE091009D7D7
+        D7D7D7D7D7D7091009EEEE81AC81D7D7D7D7D7D7D7D781AC81EEEE09E309D709
+        0909090909D7090909EEEE81E381D7818181818181D7818181EEEE091009D7D7
+        D7D7D7D7D7D7091009EEEE81AC81D7D7D7D7D7D7D7D781AC81EEEE0909090909
+        090909090909090909EEEE8181818181818181818181818181EEEEEEEEEEEEEE
+        EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
+      NumGlyphs = 2
+      ExplicitLeft = 557
+    end
+    object DBEditEh1: TDBEditEh
+      Left = 170
+      Top = 8
+      Width = 121
+      Height = 22
+      DataField = #25805#20316#21592
+      DataSource = DataSource1
+      EditButtons = <>
+      TabOrder = 1
+      Visible = True
+    end
+    object DBDateTimeEditEh1: TDBDateTimeEditEh
+      Left = 10
+      Top = 8
+      Width = 119
+      Height = 22
+      DataField = #21019#24314#26102#38388
+      DataSource = DataSource1
+      EditButtons = <>
+      TabOrder = 2
+      Visible = True
+      EditFormat = 'YYYY-MM-DD'
     end
   end
-  object dxgrd_1: TDBGridEh
+  object pnl2: TPanel
     Left = 0
     Top = 50
-    Width = 998
-    Height = 516
+    Width = 466
+    Height = 260
     Align = alClient
-    DataGrouping.GroupLevels = <>
-    DataSource = DataSource1
-    EditActions = [geaCutEh, geaCopyEh, geaPasteEh]
-    Flat = False
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Verdana'
-    Font.Style = []
-    FooterColor = clWindow
-    FooterFont.Charset = ANSI_CHARSET
-    FooterFont.Color = clWindowText
-    FooterFont.Height = -12
-    FooterFont.Name = 'Verdana'
-    FooterFont.Style = []
-    IndicatorTitle.ShowDropDownSign = True
-    IndicatorTitle.TitleButton = True
-    OddRowColor = 13823456
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
-    ParentFont = False
-    PopupMenu = pm1
-    ReadOnly = True
-    RowDetailPanel.Color = clBtnFace
-    SortLocal = True
-    TabOrder = 3
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -12
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDblClick = dxgrd_1DblClick
-    OnDrawColumnCell = dxgrd_1DrawColumnCell
-    Columns = <
-      item
-        EditButtons = <>
-        FieldName = #27969#27700#21495
-        Footers = <>
-        Title.TitleButton = True
-        Width = 76
-      end
-      item
-        EditButtons = <>
-        FieldName = #23398#21382#23618#27425
-        Footers = <>
-        Title.TitleButton = True
-        Width = 54
-      end
-      item
-        EditButtons = <>
-        FieldName = #30465#20221
-        Footers = <>
-        Title.TitleButton = True
-        Width = 50
-      end
-      item
-        EditButtons = <>
-        FieldName = #32771#29983#21495
-        Footers = <>
-        Title.TitleButton = True
-        Width = 125
-      end
-      item
-        EditButtons = <>
-        FieldName = #32771#29983#22995#21517
-        Footers = <>
-        Title.TitleButton = True
-        Width = 56
-      end
-      item
-        Alignment = taCenter
-        EditButtons = <>
-        FieldName = #24615#21035
-        Footers = <>
-        Title.TitleButton = True
-        Width = 32
-      end
-      item
-        EditButtons = <>
-        FieldName = #36523#20221#35777#21495
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 154
-      end
-      item
-        EditButtons = <>
-        FieldName = #20934#32771#35777#21495
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 81
-      end
-      item
-        EditButtons = <>
-        FieldName = #27665#26063
-        Footers = <>
-        Title.TitleButton = True
-        Width = 34
-      end
-      item
-        EditButtons = <>
-        FieldName = #38498#31995
-        Footers = <>
-        Title.TitleButton = True
-        Width = 113
-      end
-      item
-        EditButtons = <>
-        FieldName = #24405#21462#19987#19994#35268#33539#21517
-        Footers = <>
-        Title.Caption = #24405#21462#19987#19994
-        Title.TitleButton = True
-        Width = 116
-      end
-      item
-        EditButtons = <>
-        FieldName = #23398#21046#24180#38480
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 36
-      end
-      item
-        EditButtons = <>
-        FieldName = #31185#31867
-        Footers = <>
-        Title.TitleButton = True
-        Width = 48
-      end
-      item
-        EditButtons = <>
-        FieldName = #23478#24237#22320#22336
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 204
-      end
-      item
-        EditButtons = <>
-        FieldName = #37038#25919#32534#30721
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 60
-      end
-      item
-        EditButtons = <>
-        FieldName = #25910#20214#20154
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 58
-      end
-      item
-        EditButtons = <>
-        FieldName = #27605#19994#20013#23398
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 99
-      end
-      item
-        EditButtons = <>
-        FieldName = #20837#23398#26657#21306
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 200
-      end
-      item
-        EditButtons = <>
-        FieldName = #25253#21040#29366#24577
-        Footers = <>
-        Title.TitleButton = True
-        Width = 61
-      end
-      item
-        EditButtons = <>
-        FieldName = #26410#25253#21040#21407#22240
-        Footers = <>
-        Title.TitleButton = True
-        Width = 99
-      end
-      item
-        EditButtons = <>
-        FieldName = #33719#22870#20869#23481
-        Footers = <>
-        Visible = False
-        Width = 135
-      end
-      item
-        EditButtons = <>
-        FieldName = #25253#21040#26085#26399
-        Footers = <>
-        Title.TitleButton = True
-        Width = 106
-      end
-      item
-        EditButtons = <>
-        FieldName = #25805#20316#21592
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 52
-      end
-      item
-        EditButtons = <>
-        FieldName = #32852#31995#30005#35805
-        Footers = <>
-        Title.TitleButton = True
-        Width = 110
-      end
-      item
-        EditButtons = <>
-        FieldName = #23398#21495
-        Footers = <>
-        Title.TitleButton = True
-        Width = 75
-      end
-      item
-        EditButtons = <>
-        FieldName = #29677#32423
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 132
-      end>
-    object RowDetailData: TRowDetailPanelControlEh
-    end
-  end
-  object DataSource1: TDataSource
-    DataSet = ClientDataSet1
-    OnDataChange = DataSource1DataChange
-    Left = 480
-    Top = 264
-  end
-  object pm1: TPopupMenu
-    OnPopup = pm1Popup
-    Left = 336
-    Top = 232
-    object mi_DisplayNewStuInfo: TMenuItem
-      Caption = #26597#30475#32771#29983#26723#26696
-      ShortCut = 121
-      OnClick = mi_DisplayNewStuInfoClick
-    end
-    object mi_Refresh: TMenuItem
-      Caption = #21047#26032
-      ShortCut = 116
-      OnClick = mi_RefreshClick
-    end
-    object N5: TMenuItem
-      Caption = '-'
-    end
-    object mi_BaoDao: TMenuItem
-      Caption = #35774#32622#24403#21069#26032#29983#20026#24050#25253#21040
-      OnClick = btn_BaoDaoClick
-    end
-    object mi_NoBaoDao: TMenuItem
-      Caption = #35774#32622#24403#21069#26032#29983#20026#26410#25253#21040
-      OnClick = btn_NoBaoDaoClick
-    end
-    object mi_InitState: TMenuItem
-      Caption = #24674#22797#24403#21069#35760#24405#20026#21021#22987#29366#24577
-      OnClick = mi_InitStateClick
-    end
-    object pmi_break: TMenuItem
-      Caption = '-'
-      Visible = False
-    end
-    object pmi_jlxmSet: TMenuItem
-      Caption = #30003#35831#8220#32508#21512#32032#36136#31867#8221#22870#39033
-      Visible = False
-      OnClick = pmi_jlxmSetClick
-    end
-    object pmi_jlxmCancel: TMenuItem
-      Caption = #21462#28040#8220#32508#21512#32032#36136#31867#8221#22870#39033#30003#35831
-      Visible = False
-      OnClick = pmi_jlxmCancelClick
-    end
-    object N2: TMenuItem
-      Caption = '-'
-    end
-    object mi_UpdateZyHistory: TMenuItem
-      Action = Main.act_Rep_UpdateZyHistory
-    end
-    object N3: TMenuItem
-      Caption = '-'
-    end
-    object E1: TMenuItem
-      Action = DM.act_DataExport
+    BevelOuter = bvNone
+    TabOrder = 2
+    ExplicitLeft = 161
+    ExplicitWidth = 807
+    ExplicitHeight = 500
+    object DBMemo1: TDBMemo
+      Left = 0
+      Top = 0
+      Width = 466
+      Height = 260
+      Align = alClient
+      DataField = #20869#23481
+      DataSource = DataSource1
+      TabOrder = 0
+      ExplicitLeft = 6
+      ExplicitTop = 56
+      ExplicitWidth = 515
+      ExplicitHeight = 279
     end
   end
   object ClientDataSet1: TClientDataSet
     Aggregates = <>
-    CommandText = 'select top 5 * from '#24405#21462#20449#24687#34920
+    CommandText = 'select * from '#24405#26816#21592#24037#20316#26085#24535#34920
     Params = <>
-    ProviderName = 'DSP_Query'
+    ProviderName = 'DSP_Temp'
     RemoteServer = DM.SoapConnection1
-    AfterOpen = ClientDataSet1AfterOpen
-    OnFilterRecord = ClientDataSet1FilterRecord
-    Left = 512
-    Top = 264
+    OnNewRecord = ClientDataSet1NewRecord
+    Left = 272
+    Top = 168
   end
-  object frxReport1: TfrxReport
-    Version = '4.7.91'
-    DataSet = fds_Master
-    DataSetName = 'fds_Master'
-    DotMatrixReport = False
-    IniFile = '\Software\Fast Reports'
-    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
-    PreviewOptions.Zoom = 1.000000000000000000
-    PrintOptions.Printer = '??'
-    PrintOptions.PrintOnSheet = 0
-    PrintOptions.ShowDialog = False
-    ReportOptions.CreateDate = 40159.547233425930000000
-    ReportOptions.LastChange = 40413.695286377310000000
-    ScriptLanguage = 'PascalScript'
-    ScriptText.Strings = (
-      'begin'
-      ''
-      'end.')
-    StoreInDFM = False
-    OnGetValue = frxReport1GetValue
-    Left = 624
-    Top = 176
-  end
-  object fds_Master: TfrxDBDataset
-    RangeBegin = rbCurrent
-    UserName = 'fds_Master'
-    CloseDataSource = False
-    DataSet = cds_Master
-    BCDToCurrency = False
-    Left = 624
-    Top = 205
-  end
-  object cds_Master: TClientDataSet
-    Aggregates = <>
-    CommandText = 'select * from view_'#26356#25442#19987#19994#35760#24405#34920
-    Params = <>
-    ProviderName = 'DSP_Query'
-    ReadOnly = True
-    Left = 656
-    Top = 205
-  end
-  object Timer1: TTimer
-    Interval = 10000
-    OnTimer = Timer1Timer
-    Left = 760
-    Top = 208
+  object DataSource1: TDataSource
+    DataSet = ClientDataSet1
+    Left = 240
+    Top = 168
   end
 end

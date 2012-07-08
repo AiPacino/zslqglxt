@@ -783,7 +783,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       end
       item
         EditButtons = <>
-        FieldName = #36890#30693#20070#32534#21495
+        FieldName = #27969#27700#21495
         Footers = <>
         Title.TitleButton = True
         Width = 67
@@ -805,7 +805,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       end
       item
         EditButtons = <>
-        FieldName = #19987#19994#31867#21035
+        FieldName = #31867#21035
         Footers = <>
         Title.TitleButton = True
         Width = 70
@@ -868,13 +868,6 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       item
         EditButtons = <>
         FieldName = #23398#21046#24180#38480
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #19987#19994#31185#31867
         Footers = <>
         Title.TitleButton = True
         Visible = False
@@ -1560,7 +1553,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484

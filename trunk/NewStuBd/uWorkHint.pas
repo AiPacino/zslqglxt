@@ -28,6 +28,7 @@ type
     procedure ApplicationEvents1Message(var Msg: tagMSG; var Handled: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure pm1Popup(Sender: TObject);
+    procedure lbl_TodayClick(Sender: TObject);
   private
     { Private declarations }
     curDate:TDateTime;
@@ -106,7 +107,8 @@ var
   sf,sqlstr,dtstr,msg:string;
 begin
   sqlstr := 'select * from 工作安排表 where 开始日期='+quotedstr(FormatDateTime('yyyy-mm-dd',dt))+
-            ' and 学历层次 is not null order by 省份,类别,科类 desc';
+//            ' and 结束日期<='+quotedstr(FormatDateTime('yyyy-mm-dd',dt))+
+            ' and 层次 is not null order by 省份,批次,科类 desc';
   cds_Work.XMLData := dm.OpenData(sqlstr);
   if IsToday(curDate) then
      dtstr := '【今天】'
@@ -121,7 +123,7 @@ begin
 
   lbl_Today.Caption := FormatDateTime('今天是yyyy年mm月dd日',now);
   sHtml := '';
-  //sHtml := '<div style="font-size:12px;color:#F00"><b>'+FormatDateTime('yyyy年mm月dd日',dt)+'工作安排：</b></div>'+#13;
+  sHtml := '<div style="font-size:12px;color:#F00"><b>各省招办录取时间安排：</b></div><p>'+#13;
   sHtml := sHtml+'<div style="font-size:12px">';
   while not cds_Work.Eof do
   begin
@@ -130,23 +132,43 @@ begin
       sf := cds_Work.FieldByName('省份').AsString;
       sHtml := sHtml+'<div style="color:#F00"><b>【'+sf+'】</b></div>';
     end;
-    sHtml := sHtml+'　　【'+cds_Work.FieldByName('学历层次').AsString+'】&nbsp;<br>';
+    sHtml := sHtml+'　　【'+cds_Work.FieldByName('层次').AsString+'】&nbsp;';
 
-    sHtml := sHtml+'　　　'+cds_Work.FieldByName('类别').AsString+'(文史) 文化：<strong>'+cds_Work.FieldByName('文化文史线').AsString+'</strong>';
-    sHtml := sHtml+'　专业：<strong>'+cds_Work.FieldByName('专业文史线').AsString+'</strong><br>';
+    sHtml := sHtml+cds_Work.FieldByName('开始日期').AsString+'~'+cds_Work.FieldByName('结束日期').AsString+'&nbsp;';
+    sHtml := sHtml+cds_Work.FieldByName('批次').AsString;//+'&nbsp;|&nbsp;';
 
-    sHtml := sHtml+'　　　'+cds_Work.FieldByName('类别').AsString+'(理工) 文化：<strong>'+cds_Work.FieldByName('文化理工线').AsString+'</strong>';
-    sHtml := sHtml+'　专业：<strong>'+cds_Work.FieldByName('专业理工线').AsString+'</strong><br>';
-
+    //sHtml := sHtml+cds_Work.FieldByName('科类').AsString+'<br>';
+{
     if cds_Work.FieldByName('联系方式').AsString<>'' then
       sHtml := sHtml+'&nbsp;&nbsp;&nbsp;&nbsp;'+'联系方式：'+cds_Work.FieldByName('联系方式').AsString+'<br>'+#13;
     if cds_Work.FieldByName('备注').AsString<>'' then
       sHtml := sHtml+'&nbsp;&nbsp;&nbsp;&nbsp;'+'备注：'+cds_Work.FieldByName('备注').AsString+'<br>'+#13;
+}
     if sf<>cds_Work.FieldByName('省份').AsString then
       sHtml := sHtml+'<p>';
     cds_Work.Next;
   end;
   sHtml := sHtml+'</div>';
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+  sqlstr := 'select * from 录检员工作日志表 where 创建时间='+quotedstr(FormatDateTime('yyyy-mm-dd',dt))+
+            ' order by 操作员';
+  cds_Work.XMLData := dm.OpenData(sqlstr);
+  sHtml := sHtml+'<p><div style="font-size:12px;color:#F00"><b>录检员工作日志：</b></div>'+#13;
+  sHtml := sHtml+'<div style="font-size:12px">';
+  while not cds_Work.Eof do
+  begin
+    if sf<>cds_Work.FieldByName('操作员').AsString then
+    begin
+      sf := cds_Work.FieldByName('操作员').AsString;
+      sHtml := sHtml+'<div style="color:#F00"><b>【'+sf+'】</b></div>';
+    end;
+    sHtml := sHtml+'　　'+cds_Work.FieldByName('内容').AsString;
+    if sf<>cds_Work.FieldByName('操作员').AsString then
+      sHtml := sHtml+'<p>';
+    cds_Work.Next;
+  end;
+  sHtml := sHtml+'</div>';
+
   WBLoadHTML(wb1,sHtml);
 end;
 
@@ -161,6 +183,12 @@ begin
   FillData(curDate);
   Self.Left := TForm(Self.Owner).ClientWidth-Self.Width-6;
   Self.Top := TForm(Self.Owner).ClientHeight-Self.Height-55;
+end;
+
+procedure TWorkHint.lbl_TodayClick(Sender: TObject);
+begin
+  curDate := now;
+  FillData(curDate);
 end;
 
 procedure TWorkHint.N1Click(Sender: TObject);

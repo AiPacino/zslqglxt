@@ -288,7 +288,7 @@ uses uDM, Net,DBGridEhImpExp,uNewStuList,uChgZyHistory,uChangeZy,uCzyEdit,uABOUT
      uBaoDaoTimeSet,uJlxmSet,uNewStuBdHistory,uYxSet,uYxZyList,uYxZySet,uMareData_BDE,
      uKsList,uKsInfoBrowse,uPhotoExport, uDataInit,uZsjhSet, uCountXkInfo,uWorkSet,
      uWorkBrowse,uZsjhBrowse,uSqlCmdSet,uZsjhAdjustEdit,uZsjhAdjustConfirm,
-     uZsjhAdjustBrowse,uReportDesign,uFormatZySqlSet,uLqqkCount,uLqqkBrowse,
+     uZsjhAdjustBrowse,uReportDesign,uFormatZySqlSet,uLqqkCount,uLqqkBrowse,uLogInput,
      uKsInfoBrowse_All,uMareData_BDE_Photo,uExportToAccess,uTdKsInfoBrowse,
      uEMSNumberImport,uDbTools,uFileEdit,uFileBrowse,uCzySfSet,uJwInfoImport;
 
@@ -601,12 +601,13 @@ end;
 
 procedure TMain.act_Jh_WorkBrowseExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TWorkBrowse);
+  //ShowMdiChildForm(TWorkBrowse);
 end;
 
 procedure TMain.act_Jh_WorkSetExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TWorkSet);
+  ShowMdiChildForm(TLogInput);
+  //ShowMdiChildForm(TWorkSet);
 end;
 
 procedure TMain.act_Lq_AllKsInfoBrowseExecute(Sender: TObject);
@@ -920,7 +921,7 @@ begin
     Status_SrvInfo.Caption := dm.GetConnInfo;
     InitMenuItem;
 
-    //act_Win_WorkHintExecute(Self);
+    act_Win_WorkHintExecute(Self);
 
     act_Bd_Process.Execute;
   finally

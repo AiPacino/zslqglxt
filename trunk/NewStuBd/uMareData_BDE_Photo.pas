@@ -283,8 +283,10 @@ begin
       if cds_Temp.RecordCount>0 then
       begin
         if not SavePhoto then
-          Memo1.Lines.Add(sSfstr+'照片上传失败！')
-        else
+        begin
+          Memo1.Lines.Add(sSfstr+'照片上传失败！原因为：');
+          Memo1.Lines.Add(sError);
+        end else
         begin
           //Update_Count := Update_Count+cds_Temp.RecordCount;
           Memo1.Lines.Add('    '+IntToStr(Update_Count)+' 张照片上传成功！');
