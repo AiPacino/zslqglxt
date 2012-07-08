@@ -1,7 +1,7 @@
 object WorkHint: TWorkHint
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu]
+  BorderIcons = []
   BorderStyle = bsToolWindow
   Caption = #20170#26085#24037#20316#23433#25490
   ClientHeight = 276
@@ -162,6 +162,7 @@ object WorkHint: TWorkHint
       Top = 8
       Width = 52
       Height = 14
+      Hint = #21452#20987#21487#36820#22238#20170#22825
       Caption = 'lbl_Today'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMaroon
@@ -169,6 +170,9 @@ object WorkHint: TWorkHint
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = lbl_TodayClick
     end
     object chk_OnlyOne: TCheckBox
       Left = 293

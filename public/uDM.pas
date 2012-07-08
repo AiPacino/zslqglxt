@@ -538,6 +538,10 @@ begin
 
       if fn='' then
         fn := cds_Temp.FieldByName('FileName').AsString;
+
+      if not DirectoryExists(ExtractFileDir(fn)) then
+        CreateDir(ExtractFileDir(fn));
+        
       if not cds_Temp.FieldByName('FileData').IsNull then
         TBlobField(cds_Temp.FieldByName('FileData')).SaveToFile(fn);
 
@@ -1650,7 +1654,8 @@ begin
       begin
         //Base64Decode(sData,sTempData);
         sTempData := DecodeString(sData);
-        sData := VCLUnZip1.ZLibDecompressString(sTempData);
+        if sTempData<>'' then
+          sData := VCLUnZip1.ZLibDecompressString(sTempData);
       end;
       Result := sData;
     except
@@ -2474,11 +2479,12 @@ function GetKsDataPath:string;
 var
   sPath: string;
 begin
-  sPath := GetSpecialFolderDir(CSIDL_PERSONAL);//我的文档目录
-  if SysUtils.Win32MajorVersion>=6 then //Windows 2003 以后的版本
-    sPath := sPath+'\.NacuesCStorage\'
-  else
-    sPath := 'C:\Program Files\NacuesC\';
+  //if SysUtils.Win32MajorVersion>=4 then //Windows 2003 以后的版本
+    sPath := GetSpecialFolderDir(CSIDL_PERSONAL);//我的文档目录
+  //else
+  //  sPath := GetSpecialFolderDir(CSIDL_MYDOCUMENTS);
+
+  sPath := sPath+'\.NacuesCStorage2012\';
   Result := sPath;
 end;
 

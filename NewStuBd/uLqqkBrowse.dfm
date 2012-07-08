@@ -4,8 +4,8 @@ object LqqkBrowse: TLqqkBrowse
   ActiveControl = DBGridEH1
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = #25307#29983#35745#21010#23436#25104#24773#20917
-  ClientHeight = 671
-  ClientWidth = 1028
+  ClientHeight = 587
+  ClientWidth = 846
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,19 +22,19 @@ object LqqkBrowse: TLqqkBrowse
   TextHeight = 14
   object Panel2: TPanel
     Left = 0
-    Top = 630
-    Width = 1028
+    Top = 546
+    Width = 846
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitTop = 623
-    ExplicitWidth = 984
+    ExplicitTop = 630
+    ExplicitWidth = 1028
     DesignSize = (
-      1028
+      846
       41)
     object btn_Exit: TBitBtn
-      Left = 938
+      Left = 756
       Top = 9
       Width = 75
       Height = 25
@@ -42,10 +42,10 @@ object LqqkBrowse: TLqqkBrowse
       Caption = #20851#38381'[&C]'
       TabOrder = 4
       OnClick = btn_ExitClick
-      ExplicitLeft = 894
+      ExplicitLeft = 938
     end
     object btn_Excel: TBitBtn
-      Left = 715
+      Left = 533
       Top = 9
       Width = 80
       Height = 25
@@ -53,7 +53,7 @@ object LqqkBrowse: TLqqkBrowse
       Caption = #23548#20986'Excel'
       TabOrder = 2
       OnClick = btn_ExcelClick
-      ExplicitLeft = 671
+      ExplicitLeft = 715
     end
     object btn_RefreshBdl: TBitBtn
       Left = 10
@@ -65,7 +65,7 @@ object LqqkBrowse: TLqqkBrowse
       OnClick = btn_RefreshBdlClick
     end
     object btn_Print: TBitBtn
-      Left = 813
+      Left = 631
       Top = 9
       Width = 80
       Height = 25
@@ -73,7 +73,7 @@ object LqqkBrowse: TLqqkBrowse
       Caption = #25171#21360'[&P]'
       TabOrder = 3
       OnClick = btn_PrintClick
-      ExplicitLeft = 769
+      ExplicitLeft = 813
     end
     object btn_More: TBitBtn
       Left = 96
@@ -85,7 +85,7 @@ object LqqkBrowse: TLqqkBrowse
       OnClick = btn_MoreClick
     end
     object chk_HideNull: TCheckBox
-      Left = 566
+      Left = 384
       Top = 11
       Width = 113
       Height = 17
@@ -93,24 +93,24 @@ object LqqkBrowse: TLqqkBrowse
       Caption = #38544#34255#26410#24320#22987#30340#19987#19994
       TabOrder = 5
       OnClick = cbb_XlCcChange
-      ExplicitLeft = 522
+      ExplicitLeft = 566
     end
   end
   object GroupBox1: TGroupBox
     Left = 0
     Top = 50
-    Width = 1028
-    Height = 580
+    Width = 846
+    Height = 496
     Align = alClient
     Caption = #26597#35810#32467#26524#65306
     TabOrder = 1
-    ExplicitWidth = 984
-    ExplicitHeight = 573
+    ExplicitWidth = 1028
+    ExplicitHeight = 580
     object DBGridEH1: TDBGridEh
       Left = 2
       Top = 16
-      Width = 1024
-      Height = 562
+      Width = 842
+      Height = 478
       Align = alClient
       DataGrouping.GroupLevels = <>
       DataSource = DataSource1
@@ -295,26 +295,6 @@ object LqqkBrowse: TLqqkBrowse
         end
         item
           Alignment = taCenter
-          EditButtons = <>
-          FieldName = #19968#19987#19994#24405#21462#20154#25968
-          Footer.DisplayFormat = ',0'#20154
-          Footer.ValueType = fvtSum
-          Footers = <>
-          Title.TitleButton = True
-        end
-        item
-          Alignment = taCenter
-          DisplayFormat = '0%'
-          EditButtons = <>
-          FieldName = #19968#19987#19994#28385#36275#29575
-          Footer.DisplayFormat = '0.00%'
-          Footer.ValueType = fvtAvg
-          Footers = <>
-          Title.TitleButton = True
-          Width = 77
-        end
-        item
-          Alignment = taCenter
           DisplayFormat = '0.0'
           EditButtons = <>
           FieldName = #26368#39640#20998
@@ -338,14 +318,14 @@ object LqqkBrowse: TLqqkBrowse
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 1028
+    Width = 846
     Height = 50
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 984
+    ExplicitWidth = 1028
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -877,14 +857,14 @@ object LqqkBrowse: TLqqkBrowse
         E447617FF35FEA7FEB00FE1745AC01A79C1C45060000000049454E44AE426082}
     end
     object grp_Yx: TGroupBox
-      Left = 900
+      Left = 718
       Top = 0
       Width = 128
       Height = 50
       Align = alRight
       Caption = #23618#27425#65306
       TabOrder = 0
-      ExplicitLeft = 856
+      ExplicitLeft = 900
       object cbb_XlCc: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -898,14 +878,14 @@ object LqqkBrowse: TLqqkBrowse
       end
     end
     object GroupBox2: TGroupBox
-      Left = 772
+      Left = 590
       Top = 0
       Width = 128
       Height = 50
       Align = alRight
       Caption = #31867#21035#65306
       TabOrder = 1
-      ExplicitLeft = 728
+      ExplicitLeft = 772
       object cbb_Lb: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -919,14 +899,14 @@ object LqqkBrowse: TLqqkBrowse
       end
     end
     object grp_Sf: TGroupBox
-      Left = 644
+      Left = 462
       Top = 0
       Width = 128
       Height = 50
       Align = alRight
       Caption = #30465#20221#65306
       TabOrder = 2
-      ExplicitLeft = 600
+      ExplicitLeft = 644
       object cbb_Sf: TDBComboBoxEh
         Left = 9
         Top = 19

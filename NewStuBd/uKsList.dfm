@@ -881,6 +881,7 @@ object KsList: TKsList
         FieldName = #36890#30693#20070#32534#21495
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 75
       end
       item
@@ -892,12 +893,19 @@ object KsList: TKsList
       end
       item
         EditButtons = <>
-        FieldName = #32771#29983#31867#21035
+        FieldName = #31867#21035
         Footers = <>
         ReadOnly = False
         Title.TitleButton = True
-        Visible = False
-        Width = 58
+        Width = 49
+      end
+      item
+        EditButtons = <>
+        FieldName = #31185#31867
+        Footers = <>
+        ReadOnly = False
+        Title.TitleButton = True
+        Width = 61
       end
       item
         EditButtons = <>
@@ -906,22 +914,6 @@ object KsList: TKsList
         Title.TitleButton = True
         Visible = False
         Width = 89
-      end
-      item
-        EditButtons = <>
-        FieldName = #19987#19994#31867#21035
-        Footers = <>
-        ReadOnly = False
-        Title.TitleButton = True
-        Width = 70
-      end
-      item
-        EditButtons = <>
-        FieldName = #31185#31867
-        Footers = <>
-        ReadOnly = False
-        Title.TitleButton = True
-        Width = 38
       end
       item
         EditButtons = <>
@@ -1299,7 +1291,7 @@ object KsList: TKsList
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700700010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700740010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484

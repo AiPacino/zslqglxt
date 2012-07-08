@@ -76,7 +76,8 @@ uses
   uFileEdit in 'uFileEdit.pas' {FileEdit},
   uFileBrowse in 'uFileBrowse.pas' {FileBrowse},
   uCzySfSet in 'uCzySfSet.pas' {CzySfSet},
-  uJwInfoImport in 'uJwInfoImport.pas' {JwInfoImport};
+  uJwInfoImport in 'uJwInfoImport.pas' {JwInfoImport},
+  uLogInput in 'uLogInput.pas' {LogInput};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

@@ -835,7 +835,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ParentFont = False
     end
     object lbl_RefreshHint: TLabel
-      Left = 768
+      Left = 764
       Top = 8
       Width = 16
       Height = 14
@@ -851,7 +851,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ExplicitLeft = 812
     end
     object lbl_RefreshHint2: TLabel
-      Left = 789
+      Left = 785
       Top = 8
       Width = 120
       Height = 14
@@ -861,7 +861,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ExplicitLeft = 833
     end
     object chk_AutoRefresh: TCheckBox
-      Left = 913
+      Left = 909
       Top = 7
       Width = 15
       Height = 17
@@ -914,7 +914,7 @@ object NewStuBdHistory: TNewStuBdHistory
     Columns = <
       item
         EditButtons = <>
-        FieldName = #36890#30693#20070#32534#21495
+        FieldName = #27969#27700#21495
         Footers = <>
         Title.TitleButton = True
         Width = 66

@@ -778,7 +778,7 @@ object StuInfo: TStuInfo
     Top = 127
     Width = 74
     Height = 22
-    DataField = #32771#29983#31867#21035
+    DataField = #31867#21035
     DataSource = DataSource1
     Transparent = True
   end

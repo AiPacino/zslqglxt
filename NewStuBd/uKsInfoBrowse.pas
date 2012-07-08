@@ -653,7 +653,7 @@ begin
   sWhereList.Clear;
   sWhereList.Add('where 学历层次='+quotedstr(cbb_XlCc.Text));
   if cbb_Lb.Text<>'全部' then
-    sWhereList.Add(' and 专业类别='+quotedstr(cbb_Lb.Text));
+    sWhereList.Add(' and 类别='+quotedstr(cbb_Lb.Text));
   if cbb_KL.Text<>'全部' then
     sWhereList.Add(' and 科类='+quotedstr(cbb_KL.Text));
 

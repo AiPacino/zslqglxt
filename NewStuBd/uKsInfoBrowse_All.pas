@@ -56,67 +56,6 @@ type
     lbl_Len: TLabel;
     pm_FormatZy: TMenuItem;
     cbb_Compare: TDBComboBoxEh;
-    ClientDataSet1StringField: TStringField;
-    ClientDataSet1StringField2: TStringField;
-    ClientDataSet1StringField3: TStringField;
-    ClientDataSet1StringField4: TStringField;
-    ClientDataSet1StringField5: TStringField;
-    ClientDataSet1StringField6: TStringField;
-    ClientDataSet1StringField7: TStringField;
-    ClientDataSet1StringField8: TStringField;
-    ClientDataSet1StringField9: TStringField;
-    ClientDataSet1StringField10: TStringField;
-    ClientDataSet1StringField11: TStringField;
-    ClientDataSet1StringField12: TStringField;
-    ClientDataSet1StringField13: TStringField;
-    ClientDataSet1StringField14: TStringField;
-    ClientDataSet1StringField15: TStringField;
-    ClientDataSet1StringField16: TStringField;
-    ClientDataSet1StringField17: TStringField;
-    ClientDataSet1StringField18: TStringField;
-    ClientDataSet1IntegerField: TIntegerField;
-    ClientDataSet1StringField19: TStringField;
-    ClientDataSet1StringField20: TStringField;
-    ClientDataSet1StringField21: TStringField;
-    ClientDataSet1StringField22: TStringField;
-    ClientDataSet1StringField23: TStringField;
-    ClientDataSet1StringField24: TStringField;
-    ClientDataSet1StringField25: TStringField;
-    ClientDataSet1StringField1: TStringField;
-    ClientDataSet1StringField26: TStringField;
-    ClientDataSet1StringField32: TStringField;
-    ClientDataSet1StringField42: TStringField;
-    ClientDataSet1StringField52: TStringField;
-    ClientDataSet1StringField62: TStringField;
-    ClientDataSet1StringField110: TStringField;
-    ClientDataSet1StringField27: TStringField;
-    ClientDataSet1StringField33: TStringField;
-    ClientDataSet1StringField43: TStringField;
-    ClientDataSet1StringField53: TStringField;
-    ClientDataSet1StringField63: TStringField;
-    ClientDataSet1StringField28: TStringField;
-    ClientDataSet1StringField29: TStringField;
-    ClientDataSet1StringField30: TStringField;
-    ClientDataSet1BooleanField: TBooleanField;
-    ClientDataSet1FloatField: TFloatField;
-    ClientDataSet1FloatField2: TFloatField;
-    ClientDataSet1StringField31: TStringField;
-    ClientDataSet1StringField34: TStringField;
-    ClientDataSet1StringField35: TStringField;
-    ClientDataSet1StringField36: TStringField;
-    ClientDataSet1StringField37: TStringField;
-    ClientDataSet1StringField38: TStringField;
-    ClientDataSet1IntegerField2: TIntegerField;
-    ClientDataSet1StringField39: TStringField;
-    ClientDataSet1StringField40: TStringField;
-    ClientDataSet1IntegerField3: TIntegerField;
-    ClientDataSet1StringField41: TStringField;
-    ClientDataSet1Action_Time: TStringField;
-    ClientDataSet1StringField44: TStringField;
-    ClientDataSet1StringField45: TStringField;
-    ClientDataSet1IP: TStringField;
-    ClientDataSet1StringField46: TStringField;
-    ClientDataSet1_: TStringField;
     chk_Filter: TCheckBox;
     chk_ZyNoSame: TCheckBox;
     pmi_SetTd: TMenuItem;
@@ -642,7 +581,7 @@ begin
   begin
     if UpperCase(InputBox('操作确认','请输入【OK】字符以便确认！',''))<>'OK' then Exit;
     sqlstr := 'update lqmd set 考生状态='+quotedstr('3')+',录取代码=NULL,录取专业=NULL,录取专业规范名=NULL,'+
-              '院系=NULL,报到校区=NULL,专业类别=NULL,考生类别=NULL,科类=NULL '+
+              '院系=NULL,报到校区=NULL,类别=NULL,科类=NULL '+
               'where 考生号='+quotedstr(ClientDataSet1.FieldByName('考生号').AsString);
     if dm.ExecSql(sqlstr) then
       MessageBox(Handle, '操作完成！已为当前考生作了退档处理！　', '系统提示',
@@ -787,7 +726,7 @@ begin
   sWhereList.Clear;
   sWhereList.Add(' where 学历层次='+quotedstr(cbb_XlCc.Text));
   if cbb_Lb.Text<>'全部' then
-    sWhereList.Add(' and 专业类别='+quotedstr(cbb_Lb.Text));
+    sWhereList.Add(' and 类别='+quotedstr(cbb_Lb.Text));
   if cbb_KL.Text<>'全部' then
     sWhereList.Add(' and 科类='+quotedstr(cbb_KL.Text));
 
