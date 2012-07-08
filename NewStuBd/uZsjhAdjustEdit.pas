@@ -366,7 +366,19 @@ end;
 procedure TZsjhAdjustEdit.FormCreate(Sender: TObject);
 var
   sList:TStrings;
+  i:integer;
 begin
+  DBGridEh2.FieldColumns['增减数'].KeyList.Clear;
+  DBGridEh2.FieldColumns['增减数'].PickList.Clear;
+  for i := -20 to 20 do
+  begin
+    DBGridEh2.FieldColumns['增减数'].KeyList.Add(IntToStr(i));
+    if i>0 then
+      DBGridEh2.FieldColumns['增减数'].PickList.Add('+'+IntToStr(i))
+    else
+      DBGridEh2.FieldColumns['增减数'].PickList.Add(IntToStr(i));
+  end;
+
   aForm := TAdjustJhInput.Create(Self);
   dm.SetXlCcComboBox(cbb_Xlcc);
   sList := TStringList.Create;

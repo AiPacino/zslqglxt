@@ -336,7 +336,7 @@ procedure TCzySfSet.Open_CzyTable;
 begin
   cds_Czy.DisableControls;
   try
-    cds_Czy.XMLData := DM.OpenData('select 操作员编号,操作员姓名,操作员等级 from 操作员表 where 操作员等级 between 0 and 2  order by 操作员编号');
+    cds_Czy.XMLData := DM.OpenData('select 操作员编号,操作员姓名,操作员等级 from 操作员表 where 操作员等级 between 0 and 9  order by 操作员编号');
   finally
     cds_Czy.EnableControls;
   end;

@@ -210,7 +210,20 @@ begin
 end;
 
 procedure TZsjhAdjustBrowse.FormCreate(Sender: TObject);
+var
+  i:integer;
 begin
+  DBGridEh2.FieldColumns['增减数'].KeyList.Clear;
+  DBGridEh2.FieldColumns['增减数'].PickList.Clear;
+  for i := -20 to 20 do
+  begin
+    DBGridEh2.FieldColumns['增减数'].KeyList.Add(IntToStr(i));
+    if i>0 then
+      DBGridEh2.FieldColumns['增减数'].PickList.Add('+'+IntToStr(i))
+    else
+      DBGridEh2.FieldColumns['增减数'].PickList.Add(IntToStr(i));
+  end;
+
   dm.SetXlCcComboBox(cbb_Xlcc);
   Open_YxTable;
 end;

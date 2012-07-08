@@ -278,7 +278,7 @@ begin
   xlcc := ClientDataSet1.FieldByName('学历层次').Asstring;
   sf := ClientDataSet1.FieldByName('省份').Asstring;
   pc := ClientDataSet1.FieldByName('批次名称').Asstring;
-  kl := ClientDataSet1.FieldByName('专业类别').Asstring;//ClientDataSet1.FieldByName('科类名称').Asstring;
+  kl := ClientDataSet1.FieldByName('类别').Asstring;//ClientDataSet1.FieldByName('科类名称').Asstring;
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
 
   with TFormatZy.Create(Application) do
@@ -610,7 +610,7 @@ begin
   begin
     if UpperCase(InputBox('操作确认','请输入【OK】字符以便确认！',''))<>'OK' then Exit;
     sqlstr := 'update lqmd set 考生状态='+quotedstr('3')+',录取代码=NULL,录取专业=NULL,录取专业规范名=NULL,'+
-              '院系=NULL,报到校区=NULL,专业类别=NULL,考生类别=NULL,科类=NULL '+
+              '院系=NULL,报到校区=NULL,类别=NULL,考生类别=NULL,科类=NULL '+
               'where 考生号='+quotedstr(ClientDataSet1.FieldByName('考生号').AsString);
     if dm.ExecSql(sqlstr) then
       MessageBox(Handle, '操作完成！已为当前考生作了退档处理！　', '系统提示',
@@ -768,7 +768,7 @@ begin
   sWhereList.Clear;
   sWhereList.Add('where 学历层次='+quotedstr(cbb_XlCc.Text));
   if cbb_Lb.Text<>'全部' then
-    sWhereList.Add(' and 专业类别='+quotedstr(cbb_Lb.Text));
+    sWhereList.Add(' and 类别='+quotedstr(cbb_Lb.Text));
   if cbb_KL.Text<>'全部' then
     sWhereList.Add(' and 科类='+quotedstr(cbb_KL.Text));
 
@@ -838,7 +838,7 @@ begin
     2:
     begin
       sTitle := '教务';
-      sFldList := '流水号,通知书编号,学历层次,省份,考生类别,专业类别,科类,考生号,身份证号,考生姓名,性别,学历层次,录取专业规范名 as 专业,院系,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
+      sFldList := '流水号,通知书编号,学历层次,省份,考生类别,类别,科类,考生号,身份证号,考生姓名,性别,学历层次,录取专业规范名 as 专业,院系,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
     end;
     3:
     begin
@@ -930,7 +930,7 @@ var
   cds_Temp:TClientDataSet;
 begin
   sqlstr := 'select max(通知书编号) from 录取信息表 where 省份='+quotedstr(Sf)+
-            ' and 专业类别='+quotedstr(Lb);
+            ' and 类别='+quotedstr(Lb);
   DBGridEH1.SaveBookmark;
   Screen.Cursor := crHourGlass;
   try

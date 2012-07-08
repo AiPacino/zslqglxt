@@ -791,8 +791,6 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
         Caption = #35745#21010#35843#25972#26126#32454#65306
         GroupStyle = gsStandard
         TabOrder = 0
-        ExplicitTop = 137
-        ExplicitHeight = 328
         object chklst1: TCheckListBox
           Left = 2
           Top = 16
@@ -802,7 +800,6 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
           Columns = 3
           ItemHeight = 14
           TabOrder = 1
-          ExplicitHeight = 310
         end
         object DBGridEh2: TDBGridEh
           Left = 2
@@ -886,7 +883,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
               EditButtons = <>
               FieldName = #31185#31867
               Footers = <>
-              Width = 44
+              Width = 61
             end
             item
               Alignment = taCenter
@@ -914,7 +911,6 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
         Align = alTop
         Caption = #30003#35831#21333#32534#36753#65306
         TabOrder = 1
-        ExplicitWidth = 550
         object lbl1: TLabel
           Left = 24
           Top = 27
