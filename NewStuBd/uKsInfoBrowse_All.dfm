@@ -2,7 +2,7 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
   Left = 82
   Top = 46
   ActiveControl = cbb_Value
-  Caption = #22312#38405#32771#29983#20449#24687
+  Caption = #25237#26723#32771#29983#20449#24687#27983#35272
   ClientHeight = 687
   ClientWidth = 1035
   Color = clBtnFace
@@ -495,9 +495,9 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
     object lbl_Title: TLabel
       Left = 80
       Top = 13
-      Width = 120
+      Width = 160
       Height = 23
-      Caption = #22312#38405#32771#29983#20449#24687
+      Caption = #25237#26723#32771#29983#20449#24687#27983#35272
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -19
@@ -775,6 +775,7 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
     ParentFont = False
     PopupMenu = pm1
+    ReadOnly = True
     RowDetailPanel.Color = clBtnFace
     SortLocal = True
     STFilter.InstantApply = True
@@ -955,14 +956,14 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
         FieldName = #24405#21462#19987#19994
         Footers = <>
         Title.TitleButton = True
-        Visible = False
-        Width = 120
+        Width = 121
       end
       item
         EditButtons = <>
         FieldName = '_'#24405#21462#19987#19994
         Footers = <>
         Title.Caption = #25311#24405#19987#19994
+        Visible = False
         Width = 109
       end
       item
@@ -970,6 +971,7 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
         FieldName = #24405#21462#19987#19994#35268#33539#21517
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 96
       end
       item
@@ -977,6 +979,7 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
         FieldName = #38498#31995
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 108
       end
       item
@@ -985,6 +988,7 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
         FieldName = #25104#32489
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 51
       end
       item
@@ -993,6 +997,7 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
         FieldName = #25237#26723#25104#32489
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 53
       end
       item
@@ -1010,10 +1015,24 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
         Visible = False
       end
       item
+        Alignment = taCenter
         EditButtons = <>
         FieldName = #32771#29983#29366#24577
         Footers = <>
+        KeyList.Strings = (
+          '0'
+          '1'
+          '2'
+          '3'
+          '5')
+        PickList.Strings = (
+          #38405#26723#20013
+          #38405#26723#20013
+          #38405#26723#20013
+          #24050#36864#26723
+          #24050#24405#21462)
         Title.TitleButton = True
+        Width = 62
       end
       item
         EditButtons = <>
@@ -1059,6 +1078,7 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
         FieldName = #37319#38598#21592
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 73
       end
       item
@@ -1074,6 +1094,7 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
         FieldName = 'Action_Time'
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 140
       end>
     object RowDetailData: TRowDetailPanelControlEh
@@ -1498,7 +1519,7 @@ object KsInfoBrowse_All: TKsInfoBrowse_All
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700540010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484

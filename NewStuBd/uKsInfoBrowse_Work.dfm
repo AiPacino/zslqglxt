@@ -1,8 +1,8 @@
-object TdKsInfoBrowse: TTdKsInfoBrowse
+object KsInfoBrowse_Work: TKsInfoBrowse_Work
   Left = 82
   Top = 46
   ActiveControl = cbb_Value
-  Caption = #36864#26723#32771#29983#20449#24687#27983#35272
+  Caption = #22312#38405#32771#29983#20449#24687
   ClientHeight = 687
   ClientWidth = 1035
   Color = clBtnFace
@@ -12,14 +12,12 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
   Font.Name = #23435#20307
   Font.Style = []
   FormStyle = fsMDIChild
-  KeyPreview = True
   OldCreateOrder = False
   Position = poDesigned
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 12
   object pnl_Title: TPanel
@@ -31,7 +29,10 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 0
+    TabOrder = 1
+    DesignSize = (
+      1035
+      50)
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -494,9 +495,9 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     object lbl_Title: TLabel
       Left = 80
       Top = 13
-      Width = 160
+      Width = 120
       Height = 23
-      Caption = #36864#26723#32771#29983#20449#24687#27983#35272
+      Caption = #22312#38405#32771#29983#20449#24687
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -19
@@ -506,13 +507,13 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       Transparent = True
     end
     object grp_Yx: TGroupBox
-      Left = 696
+      Left = 915
       Top = 0
-      Width = 113
+      Width = 120
       Height = 50
       Align = alRight
       Caption = #23618#27425#65306
-      TabOrder = 1
+      TabOrder = 0
       object cbb_XlCc: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -526,13 +527,13 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       end
     end
     object GroupBox1: TGroupBox
-      Left = 922
+      Left = 795
       Top = 0
-      Width = 113
+      Width = 120
       Height = 50
       Align = alRight
       Caption = #31185#31867#65306
-      TabOrder = 3
+      TabOrder = 1
       object cbb_KL: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -546,13 +547,13 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       end
     end
     object grp_Sf: TGroupBox
-      Left = 583
+      Left = 555
       Top = 0
-      Width = 113
+      Width = 120
       Height = 50
       Align = alRight
       Caption = #30465#20221#65306
-      TabOrder = 0
+      TabOrder = 2
       object cbb_Sf: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -570,13 +571,13 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       end
     end
     object grp_Lb: TGroupBox
-      Left = 809
+      Left = 675
       Top = 0
-      Width = 113
+      Width = 120
       Height = 50
       Align = alRight
       Caption = #31867#21035#65306
-      TabOrder = 2
+      TabOrder = 3
       object cbb_Lb: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -589,6 +590,29 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         OnChange = cbb_XlCcChange
       end
     end
+    object chk_Filter: TCheckBox
+      Left = 369
+      Top = 19
+      Width = 80
+      Height = 16
+      Anchors = [akTop, akRight]
+      Caption = #25171#24320#36807#28388#22120
+      TabOrder = 4
+      OnClick = chk_FilterClick
+    end
+    object chk_ZyNoSame: TCheckBox
+      Left = 455
+      Top = 20
+      Width = 92
+      Height = 16
+      Hint = #26174#31034#19987#19994#21517#31216#19981#19968#33268#30340#35760#24405
+      Anchors = [akTop, akRight]
+      Caption = #26174#31034#30097#38382#19987#19994
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+      OnClick = chk_ZyNoSameClick
+    end
   end
   object pnl2: TPanel
     Left = 0
@@ -597,18 +621,16 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 2
+    TabOrder = 0
     DesignSize = (
       1035
       41)
     object lbl1: TLabel
-      Left = 910
+      Left = 941
       Top = 15
-      Width = 119
+      Width = 57
       Height = 14
-      Alignment = taRightJustify
       Anchors = [akTop, akRight]
-      AutoSize = False
       Caption = #35760#24405#65306'0/0'
       Font.Charset = ANSI_CHARSET
       Font.Color = clRed
@@ -617,28 +639,39 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       Font.Style = []
       ParentFont = False
     end
-    object chk_Filter: TCheckBox
-      Left = 148
-      Top = 12
-      Width = 71
-      Height = 17
-      Caption = #25968#25454#36807#28388
-      Checked = True
-      State = cbChecked
-      TabOrder = 7
-      OnClick = chk_FilterClick
+    object lbl_Len: TLabel
+      Left = 474
+      Top = 16
+      Width = 18
+      Height = 12
+      Anchors = [akTop, akRight]
+      Caption = '(*)'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object chk1: TLabel
+      Left = 11
+      Top = 15
+      Width = 60
+      Height = 12
+      Caption = #25968#25454#36807#28388#65306
     end
     object cbb_Value: TEdit
-      Left = 423
+      Left = 288
       Top = 11
-      Width = 197
+      Width = 180
       Height = 20
       Anchors = [akLeft, akTop, akRight]
-      TabOrder = 6
+      TabOrder = 0
+      OnChange = cbb_ValueChange
       OnKeyPress = cbb_ValueKeyPress
     end
     object btn_OK: TBitBtn
-      Left = 628
+      Left = 505
       Top = 9
       Width = 75
       Height = 25
@@ -657,39 +690,31 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       Caption = #39640#32423'[&A]'
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 0
+      TabOrder = 2
+      OnClick = btn_AdvClick
     end
     object cbb_Field: TDBFieldComboBox
-      Left = 220
+      Left = 80
       Top = 11
       Width = 106
       Height = 20
       ItemHeight = 12
-      TabOrder = 4
+      TabOrder = 3
       Text = #32771#29983#21495
       DataSource = ds_Access
     end
-    object btn_Refresh: TBitBtn
-      Left = 11
-      Top = 10
-      Width = 75
-      Height = 25
-      Caption = #21047#26032'[&R]'
-      TabOrder = 3
-      OnClick = btn_RefreshClick
-    end
-    object btn_SqlWhere: TBitBtn
-      Left = 723
-      Top = 9
-      Width = 75
-      Height = 25
+    object chk2: TCheckBox
+      Left = 589
+      Top = 15
+      Width = 118
+      Height = 16
       Anchors = [akTop, akRight]
-      Caption = #39640#32423#26597#35810
-      TabOrder = 2
-      OnClick = btn_SqlWhereClick
+      Caption = #26174#31034#22791#27880#20449#24687
+      Enabled = False
+      TabOrder = 5
     end
     object cbb_Compare: TDBComboBoxEh
-      Left = 329
+      Left = 192
       Top = 11
       Width = 88
       Height = 20
@@ -715,7 +740,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         '<'
         'Is Null'
         'Is not Null')
-      TabOrder = 5
+      TabOrder = 4
       Text = #21253#21547
       Visible = True
       OnChange = cbb_CompareChange
@@ -727,9 +752,9 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     Width = 1035
     Height = 596
     Align = alClient
-    AllowedOperations = [alopUpdateEh]
     DataGrouping.GroupLevels = <>
     DataSource = ds_Access
+    DrawMemoText = True
     EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
     Flat = False
     Font.Charset = ANSI_CHARSET
@@ -750,10 +775,11 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
     ParentFont = False
     PopupMenu = pm1
-    ReadOnly = True
     RowDetailPanel.Color = clBtnFace
     SortLocal = True
-    TabOrder = 1
+    STFilter.InstantApply = True
+    STFilter.Local = True
+    TabOrder = 2
     TitleFont.Charset = ANSI_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -12
@@ -762,31 +788,13 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     OnDblClick = DBGridEH1DblClick
     OnDrawColumnCell = DBGridEH1DrawColumnCell
     OnMouseUp = DBGridEH1MouseUp
-    OnTitleClick = DBGridEH1TitleClick
     Columns = <
-      item
-        AutoFitColWidth = False
-        Checkboxes = True
-        EditButtons = <>
-        FieldName = #36873#25321#21542
-        Footers = <>
-        Title.Caption = #36873#25321
-        Visible = False
-        Width = 34
-      end
       item
         EditButtons = <>
         FieldName = #24180#20221
         Footers = <>
         Title.TitleButton = True
         Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #27969#27700#21495
-        Footers = <>
-        Title.TitleButton = True
-        Width = 67
       end
       item
         EditButtons = <>
@@ -797,31 +805,17 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       end
       item
         EditButtons = <>
-        FieldName = #25209#27425
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 89
-      end
-      item
-        EditButtons = <>
         FieldName = #31867#21035
         Footers = <>
         Title.TitleButton = True
-        Width = 70
-      end
-      item
-        EditButtons = <>
-        FieldName = #31185#31867
-        Footers = <>
-        Title.TitleButton = True
-        Width = 38
+        Width = 60
       end
       item
         EditButtons = <>
         FieldName = #32771#29983#21495
         Footers = <>
         Title.TitleButton = True
+        Width = 132
       end
       item
         EditButtons = <>
@@ -842,7 +836,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         FieldName = #32771#29983#22995#21517
         Footers = <>
         Title.TitleButton = True
-        Width = 66
+        Width = 60
       end
       item
         EditButtons = <>
@@ -874,30 +868,45 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       end
       item
         EditButtons = <>
-        FieldName = #19987#19994'1'
+        FieldName = #25237#26723#24535#24895
         Footers = <>
         Title.TitleButton = True
-        Visible = False
+        Width = 33
+      end
+      item
+        EditButtons = <>
+        FieldName = #25209#27425
+        Footers = <>
+        Title.TitleButton = True
+        Width = 70
+      end
+      item
+        EditButtons = <>
+        FieldName = #31185#31867#21517#31216
+        Footers = <>
+        Title.TitleButton = True
+        Width = 58
       end
       item
         EditButtons = <>
         FieldName = #19987#19994'1'#21517#31216
         Footers = <>
-        Width = 103
+        Title.TitleButton = True
+        Width = 80
       end
       item
         EditButtons = <>
         FieldName = #19987#19994'2'#21517#31216
         Footers = <>
         Title.TitleButton = True
-        Width = 103
+        Width = 80
       end
       item
         EditButtons = <>
         FieldName = #19987#19994'3'#21517#31216
         Footers = <>
         Title.TitleButton = True
-        Width = 103
+        Width = 80
       end
       item
         EditButtons = <>
@@ -905,7 +914,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         Footers = <>
         Title.TitleButton = True
         Visible = False
-        Width = 103
+        Width = 80
       end
       item
         EditButtons = <>
@@ -913,23 +922,15 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         Footers = <>
         Title.TitleButton = True
         Visible = False
-        Width = 103
+        Width = 80
       end
       item
         EditButtons = <>
-        FieldName = #24405#21462#19987#19994
+        FieldName = #19987#19994'6'#21517#31216
         Footers = <>
         Title.TitleButton = True
         Visible = False
-        Width = 134
-      end
-      item
-        EditButtons = <>
-        FieldName = #24405#21462#19987#19994#35268#33539#21517
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 95
+        Width = 80
       end
       item
         Alignment = taCenter
@@ -938,7 +939,45 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         Footers = <>
         Title.Caption = #19987#19994#24535#24895
         Title.TitleButton = True
-        Width = 40
+        Width = 55
+      end
+      item
+        EditButtons = <>
+        FieldName = #24405#21462#20195#30721
+        Footers = <>
+        Title.Caption = #25311#24405#20195#30721
+        Title.TitleButton = True
+        Visible = False
+        Width = 44
+      end
+      item
+        EditButtons = <>
+        FieldName = #24405#21462#19987#19994
+        Footers = <>
+        Title.TitleButton = True
+        Visible = False
+        Width = 120
+      end
+      item
+        EditButtons = <>
+        FieldName = '_'#24405#21462#19987#19994
+        Footers = <>
+        Title.Caption = #25311#24405#19987#19994
+        Width = 109
+      end
+      item
+        EditButtons = <>
+        FieldName = #24405#21462#19987#19994#35268#33539#21517
+        Footers = <>
+        Title.TitleButton = True
+        Width = 96
+      end
+      item
+        EditButtons = <>
+        FieldName = #38498#31995
+        Footers = <>
+        Title.TitleButton = True
+        Width = 108
       end
       item
         DisplayFormat = '0.0'
@@ -958,87 +997,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
       end
       item
         EditButtons = <>
-        FieldName = #38498#31995
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 96
-      end
-      item
-        EditButtons = <>
-        FieldName = #25253#21040#26657#21306
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #25253#21040#22320#22336
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 77
-      end
-      item
-        EditButtons = <>
-        FieldName = #29031#29255#25991#20214
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 78
-      end
-      item
-        EditButtons = <>
-        FieldName = #29031#29255#35282#24230
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 60
-      end
-      item
-        EditButtons = <>
-        FieldName = #25209#27425#20195#30721
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #25209#27425#21517#31216
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
         FieldName = #31185#31867#20195#30721
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #31185#31867#21517#31216
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #25237#26723#24535#24895
-        Footers = <>
-        Title.TitleButton = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #19987#19994'6'
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #24405#21462#20195#30721
         Footers = <>
         Title.TitleButton = True
         Visible = False
@@ -1055,26 +1014,28 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         FieldName = #32771#29983#29366#24577
         Footers = <>
         Title.TitleButton = True
-        Visible = False
       end
       item
         EditButtons = <>
         FieldName = #23478#24237#22320#22336
         Footers = <>
         Title.TitleButton = True
-        Width = 114
+        Visible = False
+        Width = 147
       end
       item
         EditButtons = <>
         FieldName = #37038#25919#32534#30721
         Footers = <>
         Title.TitleButton = True
+        Visible = False
       end
       item
         EditButtons = <>
         FieldName = #25910#20214#20154
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 51
       end
       item
@@ -1082,6 +1043,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         FieldName = #32852#31995#30005#35805
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 106
       end
       item
@@ -1089,14 +1051,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         FieldName = #27605#19994#20013#23398
         Footers = <>
         Title.TitleButton = True
-        Width = 144
-      end
-      item
-        EditButtons = <>
-        FieldName = #22791#27880
-        Footers = <>
-        Title.TitleButton = True
         Visible = False
+        Width = 144
       end
       item
         EditButtons = <>
@@ -1110,14 +1066,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         FieldName = #37319#38598'IP'
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 102
-      end
-      item
-        EditButtons = <>
-        FieldName = #25171#21360#29366#24577
-        Footers = <>
-        Title.TitleButton = True
-        Width = 55
       end
       item
         EditButtons = <>
@@ -1125,12 +1075,6 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         Footers = <>
         Title.TitleButton = True
         Width = 140
-      end
-      item
-        EditButtons = <>
-        FieldName = #24405#21462#32467#26463#26085#26399
-        Footers = <>
-        Title.TitleButton = True
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -1157,12 +1101,10 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     Left = 168
     Top = 88
   end
-  object fds_Master: TfrxDBDataset
-    RangeBegin = rbCurrent
-    RangeEnd = reCurrent
-    UserName = 'fds_Master'
+  object frxDBDataset1: TfrxDBDataset
+    UserName = 'lqtzs_db'
     CloseDataSource = False
-    DataSet = ClientDataSet1
+    DataSource = ds_Access
     BCDToCurrency = False
     Left = 120
     Top = 88
@@ -1199,8 +1141,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     Top = 88
     Datasets = <
       item
-        DataSet = fds_Master
-        DataSetName = 'fds_Master'
+        DataSet = frxDBDataset1
+        DataSetName = 'lqtzs_db'
       end>
     Variables = <
       item
@@ -1224,8 +1166,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
         Height = 1043.150280000000000000
         Top = 18.897650000000000000
         Width = 676.535870000000000000
-        DataSet = fds_Master
-        DataSetName = 'fds_Master'
+        DataSet = frxDBDataset1
+        DataSetName = 'lqtzs_db'
         RowCount = 0
         object Memo6: TfrxMemoView
           Left = 374.173470000000000000
@@ -1253,8 +1195,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Height = 22.677180000000000000
           ShowHint = False
           DataField = #32771#29983#22995#21517
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -1271,8 +1213,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Height = 22.677180000000000000
           ShowHint = False
           DataField = #24615#21035
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -1289,8 +1231,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Height = 22.677180000000000000
           ShowHint = False
           DataField = #32771#29983#21495
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -1307,8 +1249,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Height = 22.677180000000000000
           ShowHint = False
           AutoWidth = True
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -1324,8 +1266,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Width = 154.960730000000000000
           Height = 18.897650000000000000
           ShowHint = False
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -1341,8 +1283,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Width = 30.236240000000000000
           Height = 249.448980000000000000
           ShowHint = False
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -24
@@ -1359,8 +1301,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Width = 34.015770000000000000
           Height = 434.645950000000000000
           ShowHint = False
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -24
@@ -1377,8 +1319,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Width = 49.133890000000000000
           Height = 317.480520000000000000
           ShowHint = False
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -19
@@ -1397,8 +1339,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Width = 56.692950000000000000
           Height = 555.590910000000000000
           ShowHint = False
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -21
@@ -1415,8 +1357,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Width = 49.133890000000000000
           Height = 294.803340000000000000
           ShowHint = False
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -19
@@ -1436,8 +1378,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Height = 18.897650000000000000
           ShowHint = False
           AutoWidth = True
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -1454,8 +1396,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Height = 18.897650000000000000
           OnAfterPrint = 'MemoXHOnAfterPrint'
           ShowHint = False
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -1507,8 +1449,8 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
           Height = 22.677180000000000000
           ShowHint = False
           AutoWidth = True
-          DataSet = fds_Master
-          DataSetName = 'fds_Master'
+          DataSet = frxDBDataset1
+          DataSetName = 'lqtzs_db'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -1556,7 +1498,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     Left = 16
     Top = 91
     Bitmap = {
-      494C0101050007002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700540010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -1829,6 +1771,7 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
   end
   object pm1: TPopupMenu
     Images = il1
+    OnPopup = pm1Popup
     Left = 440
     Top = 408
     object pmi_Refresh: TMenuItem
@@ -1856,36 +1799,18 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
     end
     object N4: TMenuItem
       Caption = '-'
-      Visible = False
     end
-    object mmi_AllowEdit: TMenuItem
-      AutoCheck = True
-      Caption = #21551#29992#25163#24037#32534#36753#21151#33021
-      Visible = False
-      OnClick = mmi_AllowEditClick
+    object pmi_SetEnd: TMenuItem
+      Caption = #35774#32622#24403#21069#32771#29983#24405#21462#32467#26463
+      OnClick = pmi_SetEndClick
     end
-    object pmi_BH: TMenuItem
-      Caption = #32534#21046#24405#21462#36890#30693#20070#32534#21495
-      ImageIndex = 2
-      Visible = False
-      OnClick = mmi_BHClick
+    object pmi_SetTd: TMenuItem
+      Caption = #35774#32622#24403#21069#32771#29983#36864#26723#29366#24577
+      OnClick = pmi_SetTdClick
     end
-    object pmi_CancelTd: TMenuItem
-      Caption = #21462#28040#24403#21069#32771#29983#36864#26723#29366#24577
-      OnClick = pmi_CancelTdClick
-    end
-    object mmi_FormatZymc: TMenuItem
+    object pm_FormatZy: TMenuItem
       Caption = #26684#24335#21270#19987#19994#35268#33539#21517
-      Visible = False
-      OnClick = mmi_FormatZymcClick
-    end
-    object MenuItem1: TMenuItem
-      Caption = '-'
-    end
-    object pmi_PrnLqmd: TMenuItem
-      Caption = #25171#21360#36864#26723#32771#29983#21517#20876
-      ImageIndex = 1
-      OnClick = mmi_PrnLQKSMDClick
+      OnClick = pm_FormatZyClick
     end
     object pmi_Excel: TMenuItem
       Caption = #23548#20986#33267'Excel'#25991#20214
@@ -1934,10 +1859,9 @@ object TdKsInfoBrowse: TTdKsInfoBrowse
   end
   object ClientDataSet1: TClientDataSet
     Aggregates = <>
-    CommandText = 'select * from '#24405#21462#20449#24687#34920
+    CommandText = 'select * from '#22312#38405#32771#29983#20449#24687#34920
     Params = <>
-    ReadOnly = True
-    AfterOpen = ClientDataSet1AfterOpen
+    OnCalcFields = ClientDataSet1CalcFields
     OnFilterRecord = ClientDataSet1FilterRecord
     Left = 440
     Top = 368

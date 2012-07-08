@@ -77,7 +77,8 @@ uses
   uFileBrowse in 'uFileBrowse.pas' {FileBrowse},
   uCzySfSet in 'uCzySfSet.pas' {CzySfSet},
   uJwInfoImport in 'uJwInfoImport.pas' {JwInfoImport},
-  uLogInput in 'uLogInput.pas' {LogInput};
+  uLogInput in 'uLogInput.pas' {LogInput},
+  uKsInfoBrowse_Work in 'uKsInfoBrowse_Work.pas' {KsInfoBrowse_Work};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

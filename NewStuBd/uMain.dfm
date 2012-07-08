@@ -9214,7 +9214,7 @@ object Main: TMain
     Left = 520
     Top = 39
     Bitmap = {
-      494C010105000700480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101050007004C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -9503,7 +9503,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-07-07 00:00:00'
+    VersionDate = '2012-07-08 00:00:00'
     VersionDateAutoSet = True
     Left = 680
     Top = 40
@@ -9760,9 +9760,15 @@ object Main: TMain
     end
     object act_Lq_AllKsInfoBrowse: TAction
       Category = '11.'#26597#35810#32479#35745
-      Caption = #22312#38405#32771#29983#20449#24687#27983#35272
+      Caption = #25237#26723#32771#29983#20449#24687#27983#35272
       ImageIndex = 31
       OnExecute = act_Lq_AllKsInfoBrowseExecute
+    end
+    object act_Lq_WorkKsInfoBrowse: TAction
+      Category = '11.'#26597#35810#32479#35745
+      Caption = #22312#38405#32771#29983#20449#24687#27983#35272
+      ImageIndex = 5
+      OnExecute = act_Lq_WorkKsInfoBrowseExecute
     end
     object act_Lq_OpenData: TAction
       Category = '11.'#26597#35810#32479#35745
@@ -10343,6 +10349,10 @@ object Main: TMain
         end
         item
           Visible = True
+          ItemName = 'dxBarButton65'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton56'
         end
         item
@@ -10663,8 +10673,12 @@ object Main: TMain
       Action = act_Lq_FormatZySqlSet
       Category = 5
     end
-    object dxBarButton56: TdxBarButton
+    object dxBarButton65: TdxBarButton
       Action = act_Lq_AllKsInfoBrowse
+      Category = 5
+    end
+    object dxBarButton56: TdxBarButton
+      Action = act_Lq_WorkKsInfoBrowse
       Category = 5
     end
     object dxBarButton58: TdxBarButton
@@ -10823,7 +10837,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C010124002600500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600540010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

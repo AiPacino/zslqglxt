@@ -1,4 +1,4 @@
-unit uKsInfoBrowse_All;
+unit uKsInfoBrowse_Work;
 
 interface
 
@@ -11,7 +11,7 @@ uses
   Mask, DBCtrlsEh;
 
 type
-  TKsInfoBrowse_All = class(TForm)
+  TKsInfoBrowse_Work = class(TForm)
     pnl2: TPanel;
     chk1: TLabel;
     cbb_Value: TEdit;
@@ -132,7 +132,7 @@ type
   end;
 
 var
-  KsInfoBrowse_All: TKsInfoBrowse_All;
+  KsInfoBrowse_Work: TKsInfoBrowse_Work;
 
 implementation
 
@@ -141,7 +141,7 @@ uses uDM, uMareData_BDE, uMain;//, uFormatZymc,
 
 {$R *.dfm}
 
-procedure TKsInfoBrowse_All.RzGroup2Items0Click(Sender: TObject);
+procedure TKsInfoBrowse_Work.RzGroup2Items0Click(Sender: TObject);
 var
   path,fn :string;
 begin
@@ -163,27 +163,27 @@ begin
 }
 end;
 
-procedure TKsInfoBrowse_All.RzGroup4Items1Click(Sender: TObject);
+procedure TKsInfoBrowse_Work.RzGroup4Items1Click(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TKsInfoBrowse_All.RzGroup3Items0Click(Sender: TObject);
+procedure TKsInfoBrowse_Work.RzGroup3Items0Click(Sender: TObject);
 begin
   //frm_PrintLqtzs.ShowModal;
 end;
 
-procedure TKsInfoBrowse_All.mmi_ExitClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_ExitClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TKsInfoBrowse_All.mmi_PrnLQTZSClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_PrnLQTZSClick(Sender: TObject);
 begin
   Print_LQTZS();
 end;
 
-procedure TKsInfoBrowse_All.mmi_PrnLQKSMDClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_PrnLQKSMDClick(Sender: TObject);
 begin
 {
   dxgrd_1.Columns[1].Title.SortIndex := 1;  //省份
@@ -207,7 +207,7 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.mmi_ExcelClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_ExcelClick(Sender: TObject);
 var
   fn,Ext,mfn:string;
 begin
@@ -235,7 +235,7 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.mmi_FormatZymcClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_FormatZymcClick(Sender: TObject);
 var
   xlcc,sf,pc,kl,zy:string;
 //  bm:TBookmark;
@@ -261,12 +261,12 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.mmi_ExecSQLClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_ExecSQLClick(Sender: TObject);
 begin
   //Tfrm_SqlExecute.Create(Application).Show;
 end;
 
-procedure TKsInfoBrowse_All.cbb_XlCcChange(Sender: TObject);
+procedure TKsInfoBrowse_Work.cbb_XlCcChange(Sender: TObject);
 begin
   if Self.Showing then
     Open_Access_Table;
@@ -274,7 +274,7 @@ begin
     DBGridEH1.SetFocus;
 end;
 
-procedure TKsInfoBrowse_All.btn_AdvClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.btn_AdvClick(Sender: TObject);
 begin
 {
   if GetSqlWhere(sWhereList) then
@@ -284,14 +284,14 @@ begin
 }
 end;
 
-procedure TKsInfoBrowse_All.btn_OKClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.btn_OKClick(Sender: TObject);
 begin
   Open_Access_Table;
   if cbb_Value.CanFocus then
     cbb_Value.SetFocus;
 end;
 
-procedure TKsInfoBrowse_All.FormCreate(Sender: TObject);
+procedure TKsInfoBrowse_Work.FormCreate(Sender: TObject);
 var
   path,fn :string;
   ii:Integer;
@@ -321,13 +321,13 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.FormDestroy(Sender: TObject);
+procedure TKsInfoBrowse_Work.FormDestroy(Sender: TObject);
 begin
   FreeAndNil(StuInfo);
   FreeAndNil(sWhereList);
 end;
 
-procedure TKsInfoBrowse_All.Open_Access_Table(const sWhere:string='');
+procedure TKsInfoBrowse_Work.Open_Access_Table(const sWhere:string='');
 var
   vxzstr,vfilterstr,vordstr:string;
   sqlStr:string;
@@ -339,7 +339,7 @@ begin
   Screen.Cursor := crHourGlass;
   ClientDataSet1.DisableControls;
   try
-    sqlStr := 'select * from lqmd '+sWhereList.Text+sWhere+' order by 学历层次,省份,考生号';
+    sqlStr := 'select * from 在阅考生信息表 '+sWhereList.Text+sWhere+' order by 学历层次,省份,考生号';
     ClientDataSet1.XMLData := dm.OpenData(sqlStr);
   finally
     ClientDataSet1.EnableControls;
@@ -347,37 +347,37 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.ds_AccessDataChange(Sender: TObject; Field: TField);
+procedure TKsInfoBrowse_Work.ds_AccessDataChange(Sender: TObject; Field: TField);
 begin
   lbl1.Caption := '记录：'+IntToStr(ClientDataSet1.RecNo)+'/'+IntToStr(ClientDataSet1.RecordCount);
 end;
 
-procedure TKsInfoBrowse_All.chk_FilterClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.chk_FilterClick(Sender: TObject);
 begin
   DBGridEH1.STFilter.Visible := chk_Filter.Checked;
 end;
 
-procedure TKsInfoBrowse_All.chk_NotJxClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.chk_NotJxClick(Sender: TObject);
 begin
   btn_OK.Click;
 end;
 
-procedure TKsInfoBrowse_All.chk_ZyNoSameClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.chk_ZyNoSameClick(Sender: TObject);
 begin
   ClientDataSet1.Filtered := chk_ZyNoSame.Checked;
 end;
 
-procedure TKsInfoBrowse_All.chk_ZyNotSameClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.chk_ZyNotSameClick(Sender: TObject);
 begin
   //ClientDataSet1.Filtered := chk_ZyNotSame.Checked;
 end;
 
-procedure TKsInfoBrowse_All.ClientDataSet1AfterOpen(DataSet: TDataSet);
+procedure TKsInfoBrowse_Work.ClientDataSet1AfterOpen(DataSet: TDataSet);
 begin
   RealseSortedIcon(DBGridEH1);
 end;
 
-procedure TKsInfoBrowse_All.ClientDataSet1CalcFields(DataSet: TDataSet);
+procedure TKsInfoBrowse_Work.ClientDataSet1CalcFields(DataSet: TDataSet);
 begin
   DataSet.FieldByName('_录取专业').AsString := DataSet.FieldByName('录取专业').AsString;
   Case DataSet.FieldByName('考生状态').AsInteger of
@@ -404,7 +404,7 @@ begin
   End;
 end;
 
-procedure TKsInfoBrowse_All.ClientDataSet1FilterRecord(DataSet: TDataSet;
+procedure TKsInfoBrowse_Work.ClientDataSet1FilterRecord(DataSet: TDataSet;
   var Accept: Boolean);
 begin
   if not DataSet.Active then Exit;
@@ -417,17 +417,17 @@ begin
     Accept := True;
 end;
 
-procedure TKsInfoBrowse_All.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TKsInfoBrowse_Work.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
 end;
 
-procedure TKsInfoBrowse_All.mmi_PrnEMSClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_PrnEMSClick(Sender: TObject);
 begin
   Print_EMS();
 end;
 
-procedure TKsInfoBrowse_All.rg1Click(Sender: TObject);
+procedure TKsInfoBrowse_Work.rg1Click(Sender: TObject);
 begin
 {
   if rg1.ItemIndex=0 then
@@ -451,17 +451,17 @@ begin
 }
 end;
 
-procedure TKsInfoBrowse_All.UpDownNumEdit1Change(Sender: TObject);
+procedure TKsInfoBrowse_Work.UpDownNumEdit1Change(Sender: TObject);
 begin
   //frxDBDataset1.RangeEndCount := UpDownNumEdit1.Value;
 end;
 
-procedure TKsInfoBrowse_All.rg2Click(Sender: TObject);
+procedure TKsInfoBrowse_Work.rg2Click(Sender: TObject);
 begin
   Open_Access_Table;
 end;
 
-procedure TKsInfoBrowse_All.Print_EMS(const designed: Boolean);
+procedure TKsInfoBrowse_Work.Print_EMS(const designed: Boolean);
 var
   fn:string;
 begin
@@ -479,7 +479,7 @@ begin
     frxReport1.ShowReport;
 end;
 
-procedure TKsInfoBrowse_All.Print_LQKSMD(const designed: Boolean);
+procedure TKsInfoBrowse_Work.Print_LQKSMD(const designed: Boolean);
 var
   repfn:String;
 begin
@@ -492,7 +492,7 @@ begin
     frxReport1.ShowReport;
 end;
 
-procedure TKsInfoBrowse_All.Print_LQTZS(const designed: Boolean);
+procedure TKsInfoBrowse_Work.Print_LQTZS(const designed: Boolean);
 begin
   if not FileExists(repfn) then
   begin
@@ -507,22 +507,22 @@ begin
     frxReport1.ShowReport;
 end;
 
-procedure TKsInfoBrowse_All.mmi_DesEMSClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_DesEMSClick(Sender: TObject);
 begin
   Print_EMS(True);
 end;
 
-procedure TKsInfoBrowse_All.mmi_DesLQTZSClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_DesLQTZSClick(Sender: TObject);
 begin
   Print_LQTZS(True);
 end;
 
-procedure TKsInfoBrowse_All.mmi_DesLQKSMDClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_DesLQKSMDClick(Sender: TObject);
 begin
   Print_LQKSMD(True);
 end;
 
-procedure TKsInfoBrowse_All.mi_FormatKLClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mi_FormatKLClick(Sender: TObject);
 var
   sf,pc,kl,sqlstr:string;
 begin
@@ -541,7 +541,7 @@ begin
 }
 end;
 
-procedure TKsInfoBrowse_All.pm1Popup(Sender: TObject);
+procedure TKsInfoBrowse_Work.pm1Popup(Sender: TObject);
 var
   zy:string;
 begin
@@ -551,12 +551,12 @@ begin
   pmi_SetEnd.Visible := gb_Czy_Level='-1';
 end;
 
-procedure TKsInfoBrowse_All.pmi_RefreshClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.pmi_RefreshClick(Sender: TObject);
 begin
   Open_Access_Table;
 end;
 
-procedure TKsInfoBrowse_All.pmi_SetEndClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.pmi_SetEndClick(Sender: TObject);
 var
   sqlstr:string;
 begin
@@ -572,7 +572,7 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.pmi_SetTdClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.pmi_SetTdClick(Sender: TObject);
 var
   sqlstr:string;
 begin
@@ -589,7 +589,7 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.mmi_BHClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_BHClick(Sender: TObject);
 begin
 {
   with Tfrm_bh.Create(Application) do
@@ -607,7 +607,7 @@ begin
 }
 end;
 
-procedure TKsInfoBrowse_All.dxDBMemo1DblClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.dxDBMemo1DblClick(Sender: TObject);
 begin
 {
   if (ClientDataSet1.FieldByName('录取专业').AsString<>ClientDataSet1.FieldByName('录取专业规范名').AsString)
@@ -621,7 +621,7 @@ begin
 }
 end;
 
-procedure TKsInfoBrowse_All.DBGridEH1DblClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.DBGridEH1DblClick(Sender: TObject);
 begin
   if not ClientDataSet1.FieldByName('考生号').IsNull then
   begin
@@ -630,7 +630,7 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.DBGridEH1DrawColumnCell(Sender: TObject; const Rect: TRect;
+procedure TKsInfoBrowse_Work.DBGridEH1DrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
 var
   zy1,zy2:string;
@@ -644,15 +644,11 @@ begin
       TDBGridEh(Sender).Canvas.Brush.Color := clRed;
     end;
   end;
-  if (Column.FieldName='考生状态') then
+  if (Column.FieldName='_录取专业') then
   begin
     if not ClientDataSet1.FieldByName('考生状态').IsNull then
-    begin
-      if ClientDataSet1.FieldByName('考生状态').AsString<>'' then
-        iKszt := ClientDataSet1.FieldByName('考生状态').AsInteger
-      else
-        iKszt := 0;
-    end else
+      iKszt := ClientDataSet1.FieldByName('考生状态').AsInteger
+    else
       iKszt := 0;
     Case iKszt of
       0: //专业未定
@@ -662,13 +658,11 @@ begin
       end;
       1: //已拟录专业
       begin
-        TDBGridEh(Sender).Canvas.Brush.Color := $008DB48D;
         //
       end;
       2: //预退考生
       begin
-        //TDBGridEh(Sender).Canvas.Brush.Color := $00FF80FF;
-        TDBGridEh(Sender).Canvas.Brush.Color := $008DB48D;
+        TDBGridEh(Sender).Canvas.Brush.Color := clRed;
       end;
       3: //已退档考生
       begin
@@ -676,7 +670,7 @@ begin
       end;
       5: //录取专业已确定且已结束的考生
       begin
-        TDBGridEh(Sender).Canvas.Brush.Color := clOlive;
+        //TDBGridEh(Sender).Canvas.Brush.Color := clBlue;
       end;
     End;
   end;
@@ -721,11 +715,11 @@ begin
 
 end;
 
-function TKsInfoBrowse_All.GetOrderString: string;
+function TKsInfoBrowse_Work.GetOrderString: string;
 begin
 end;
 
-procedure TKsInfoBrowse_All.GetWhereList;
+procedure TKsInfoBrowse_Work.GetWhereList;
 var
   sTemp :string;
 begin
@@ -746,7 +740,7 @@ begin
     sWhereList.Add(sTemp);
 end;
 
-procedure TKsInfoBrowse_All.DBGridEH1MouseUp(Sender: TObject; Button: TMouseButton;
+procedure TKsInfoBrowse_Work.DBGridEH1MouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   if vsorted then
@@ -754,12 +748,12 @@ begin
   vsorted := False;
 end;
 
-procedure TKsInfoBrowse_All.cbb_CompareChange(Sender: TObject);
+procedure TKsInfoBrowse_Work.cbb_CompareChange(Sender: TObject);
 begin
   cbb_Value.Enabled := (cbb_Compare.ItemIndex<>7) and (cbb_Compare.ItemIndex<>8);
 end;
 
-procedure TKsInfoBrowse_All.cbb_ValueChange(Sender: TObject);
+procedure TKsInfoBrowse_Work.cbb_ValueChange(Sender: TObject);
 begin
   lbl_Len.Caption := '('+IntToStr(Length(cbb_Value.Text))+')';
   if (LeftStr(cbb_Value.Text,1)='B') or (LeftStr(cbb_Value.Text,1)='Z') then
@@ -778,13 +772,13 @@ begin
     cbb_Field.Text := '考生号';
 end;
 
-procedure TKsInfoBrowse_All.cbb_ValueKeyPress(Sender: TObject; var Key: Char);
+procedure TKsInfoBrowse_Work.cbb_ValueKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key=#13 then
     btn_OK.Click;
 end;
 
-function TKsInfoBrowse_All.GetFilterString: String;
+function TKsInfoBrowse_Work.GetFilterString: String;
 var
   sWhere,sValue:string;
 begin
@@ -805,11 +799,11 @@ begin
   Result := sWhere;
 end;
 
-function TKsInfoBrowse_All.GetXznxString: String;
+function TKsInfoBrowse_Work.GetXznxString: String;
 begin
 end;
 
-procedure TKsInfoBrowse_All.mmi_ProcessSJRClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mmi_ProcessSJRClick(Sender: TObject);
 var
   sqlstr:string;
   updateCount:Integer;
@@ -825,7 +819,7 @@ begin
   Application.MessageBox(PChar('操作完成！　'), '系统提示', MB_OK + MB_ICONINFORMATION + MB_DEFBUTTON2);
 end;
 
-procedure TKsInfoBrowse_All.mni_FormatKLClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mni_FormatKLClick(Sender: TObject);
 var
   sf,pc,kl:string;
 //  bm:TBookmark;
@@ -848,7 +842,7 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.mni_SfClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.mni_SfClick(Sender: TObject);
 begin
   if mni_Sf.Checked then
     cbb_sf.Text := ClientDataSet1.FieldByName('省份').AsString
@@ -856,7 +850,7 @@ begin
     cbb_Sf.Text := '全部';
 end;
 
-procedure TKsInfoBrowse_All.pm_FormatZyClick(Sender: TObject);
+procedure TKsInfoBrowse_Work.pm_FormatZyClick(Sender: TObject);
 var
   xlcc,sf,pc,kl,zy:string;
 //  bm:TBookmark;
@@ -881,7 +875,7 @@ begin
   end;
 end;
 
-procedure TKsInfoBrowse_All.N9Click(Sender: TObject);
+procedure TKsInfoBrowse_Work.N9Click(Sender: TObject);
 var
   sqlstr:string;
   updateCount:Integer;
