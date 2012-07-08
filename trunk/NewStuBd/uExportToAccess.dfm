@@ -132,9 +132,6 @@ object ExportToAccess: TExportToAccess
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 4
-    ExplicitLeft = 32
-    ExplicitTop = 264
-    ExplicitWidth = 185
     object btn_Start: TBitBtn
       Left = 244
       Top = 4
