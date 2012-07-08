@@ -119,9 +119,12 @@ begin
         try
           qry_Access.Post;
         except
-          MessageBox(Handle, PChar('数据导出失败，请检查后重试！　'), '系统提示',
-            MB_OK + MB_ICONSTOP);
-          Exit;
+          on e:Exception do
+          begin
+            MessageBox(Handle, PChar('数据导出失败，请检查后重试！　'+#13+'考生号'+cds_lqmd.FieldByName('考生号').AsString+'，失败原因:'+#13+e.Message), '系统提示',
+              MB_OK + MB_ICONSTOP);
+            Exit;
+          end;
         end;
         inc(iCount);
       end; //else
