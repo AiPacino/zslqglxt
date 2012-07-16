@@ -506,7 +506,6 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
               EditButtons = <>
               FieldName = #31867#21035
               Footers = <>
-              Title.Caption = #19987#19994#31867#21035
               Width = 79
             end
             item
@@ -525,7 +524,6 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
               EditButtons = <>
               FieldName = #31185#31867
               Footers = <>
-              Title.Caption = #19987#19994#31185#31867
             end
             item
               EditButtons = <>

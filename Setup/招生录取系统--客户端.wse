@@ -1,7 +1,7 @@
 Document Type: WSE
 item: Global
   Version=9.02
-  Title=招生录取辅助系统--客户端 安装
+  Title=高招录取管理系统--客户端 安装
   Title French= Installation
   Flags=00000100
   Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -100,7 +100,7 @@ item: Remark
 end
 item: Set Variable
   Variable=APPTITLE
-  Value=招生录取辅助系统--客户端
+  Value=高招录取管理系统--客户端
   Flags=10000000
 end
 item: Remark
@@ -110,7 +110,7 @@ item: Remark
 end
 item: Set Variable
   Variable=GROUP
-  Value=招生录取辅助系统
+  Value=高招录取管理系统
   Flags=10000000
 end
 item: Remark
@@ -770,27 +770,27 @@ item: Create Directory
   Pathname=%MAINDIR%\Kszp
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\template.dll
+  Source=..\Exe\template.dll
   Destination=%MAINDIR%\template.dll
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\BkxxTemplate.dll
+  Source=..\Exe\BkxxTemplate.dll
   Destination=%MAINDIR%\BkxxTemplate.dll
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\VFPODBC.msi
+  Source=..\Exe\VFPODBC.msi
   Destination=%MAINDIR%\VFPODBC.msi
   Flags=0000000010001010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\ConnNewStuLqBdSrvSet.ini
+  Source=..\Exe\ConnNewStuLqBdSrvSet.ini
   Destination=%MAINDIR%\ConnNewStuLqBdSrvSet.ini
   Flags=0000000010001010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\NewStuBd.exe
+  Source=..\Exe\NewStuBd.exe
   Destination=%MAINDIR%\NewStuBd.exe
   Flags=0000000010000011
 end
@@ -942,14 +942,14 @@ item: Set Variable
 end
 item: Create Shortcut
   Source=%MAINDIR%\NewStuBd.exe
-  Destination=%CGROUPDIR%\%CGROUP_SAVE%\招生录取辅助系统.lnk
+  Destination=%CGROUPDIR%\%CGROUP_SAVE%\高招录取管理系统.lnk
   Working Directory=%MAINDIR%
   Icon Number=0
   Flags=01000000
 end
 item: Create Shortcut
   Source=%MAINDIR%\NewStuBd.exe
-  Destination=%CDESKTOPDIR%\招生录取辅助系统.lnk
+  Destination=%CDESKTOPDIR%\高招录取管理系统.lnk
   Working Directory=%MAINDIR%
   Icon Number=0
   Flags=01000000
@@ -958,13 +958,13 @@ item: Else Statement
 end
 item: Add ProgMan Icon
   Group=%GROUP%
-  Icon Name=招生录取辅助系统
+  Icon Name=高招录取管理系统
   Command Line=%MAINDIR%\NewStuBd.exe
   Default Directory=%MAINDIR%
 end
 item: Add ProgMan Icon
   Group=%GROUP%
-  Icon Name=招生录取辅助系统
+  Icon Name=高招录取管理系统
   Command Line=%MAINDIR%\NewStuBd.exe
   Default Directory=%MAINDIR%
 end

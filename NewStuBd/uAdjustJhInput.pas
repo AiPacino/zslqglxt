@@ -212,15 +212,17 @@ begin
   aDataSet.FieldByName('增减数').AsString := edt_Count.Text;
   aDataSet.Post;
 //}
+{
   if aCzLx<>'省内调整' then
   begin
     aDataSet.Append;
     aDataSet.FieldByName('pId').AsString := aNo;
-    aDataSet.FieldByName('专业Id').AsString := '85';
-    aDataSet.FieldByName('科类').AsString := '文理综合';
+    aDataSet.FieldByName('专业Id').AsString := aZyId;//:=85
+    aDataSet.FieldByName('科类').AsString := cbb_Kl.Text;//:='文理综合';
     aDataSet.FieldByName('增减数').AsInteger := - StrToIntDef(edt_Count.Text,0);
     aDataSet.Post;
   end;
+}
 end;
 
 end.
