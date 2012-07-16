@@ -193,7 +193,7 @@ begin
   end;
   print_sqlstr := ' select * from 录取信息表 '+GetWhere+
                   ' and 报到状态='+quotedstr('未报到')+' and 未报到原因 like '+quotedstr('%放弃入学资格%')+
-                  ' order by 院系,通知书编号';
+                  ' order by 院系,流水号';
 
   cds_Master.XMLData := dm.OpenData(print_sqlstr);//ClientDataSet1.XMLData;
   frxReport1.LoadFromFile(fn);
@@ -220,7 +220,7 @@ begin
   finally
     StuInfo.Close;
     Self.SetFocus;
-    if sField='通知书编号' then
+    if sField='流水号' then
       edt_Value.Text := '';
     edt_Value.SetFocus;
   end;
@@ -535,7 +535,7 @@ begin
   ClientDataSet1.DisableControls;
   try
     sWhere := GetWhere;
-    sqlstr := 'select * from 录取信息表 '+sWhere+' order by 院系,通知书编号';
+    sqlstr := 'select * from 录取信息表 '+sWhere+' order by 院系,流水号';
     ClientDataSet1.XMLData := dm.OpenData(sqlstr);
   finally
     ClientDataSet1.EnableControls;

@@ -197,6 +197,10 @@ object ChangeZy: TChangeZy
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = #26087#19987#19994#20449#24687
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label1: TLabel
         Left = 20
         Top = 6
@@ -328,6 +332,10 @@ object ChangeZy: TChangeZy
     TabOrder = 3
     object ts1: TTabSheet
       Caption = #26032#19987#19994#20449#24687
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object lbl5: TLabel
         Left = 20
         Top = 7

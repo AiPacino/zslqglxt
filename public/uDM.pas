@@ -2455,7 +2455,7 @@ end;
 
 function  ZyIsEqual(const zy1,zy2:string):Boolean;
 var
-  sTemp:string;
+  sTemp,_Zy2:string;
   iLen:Integer;
 begin
   if (Pos('预科',zy1)>0) and (Pos('预科',zy2)>0) then
@@ -2464,14 +2464,17 @@ begin
     Exit;
   end;
   
-  sTemp := Zy1;
+  sTemp := Trim(Zy1);
+  sTemp := ReplaceStr(sTemp,'美术校|','');
   sTemp := ReplaceStr(sTemp,'(','（');
   sTemp := ReplaceStr(sTemp,')','）');
   iLen := Length(sTemp);
-  if Length(Zy2)<iLen then
-    iLen := Length(Zy2);
+  
+  _Zy2 := Trim(zy2);
+  if Length(_Zy2)<iLen then
+    iLen := Length(_Zy2);
   if iLen>6 then iLen := 6;
-  Result := (Copy(sTemp,1,iLen)=Copy(Zy2,1,iLen));
+  Result := (Copy(sTemp,1,iLen)=Copy(_Zy2,1,iLen));
   
 end;
 

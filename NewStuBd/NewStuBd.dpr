@@ -78,7 +78,8 @@ uses
   uCzySfSet in 'uCzySfSet.pas' {CzySfSet},
   uJwInfoImport in 'uJwInfoImport.pas' {JwInfoImport},
   uLogInput in 'uLogInput.pas' {LogInput},
-  uKsInfoBrowse_Work in 'uKsInfoBrowse_Work.pas' {KsInfoBrowse_Work};
+  uKsInfoBrowse_Work in 'uKsInfoBrowse_Work.pas' {KsInfoBrowse_Work},
+  uSysRegister in '..\public\uSysRegister.pas' {SysRegister};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

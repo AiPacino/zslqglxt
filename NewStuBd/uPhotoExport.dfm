@@ -603,19 +603,18 @@ object PhotoExport: TPhotoExport
       Alignment = taCenter
       EditButtons = <>
       Items.Strings = (
-        #36890#30693#20070#32534#21495
+        #27969#27700#21495
         #32771#29983#21495
         #32771#29983#22995#21517
         #30465#20221
-        #32771#29983#31867#21035
-        #19987#19994#31867#21035
+        #31867#21035
         #31185#31867
         #38498#31995
         #24405#21462#19987#19994#35268#33539#21517
         #25253#21040#29366#24577
         #26410#25253#21040#21407#22240)
       TabOrder = 2
-      Text = #36890#30693#20070#32534#21495
+      Text = #27969#27700#21495
       Visible = True
     end
     object edt_Value: TEdit
@@ -715,7 +714,7 @@ object PhotoExport: TPhotoExport
     Columns = <
       item
         EditButtons = <>
-        FieldName = #36890#30693#20070#32534#21495
+        FieldName = #27969#27700#21495
         Footers = <>
         Title.TitleButton = True
         Width = 68
@@ -739,7 +738,7 @@ object PhotoExport: TPhotoExport
       end
       item
         EditButtons = <>
-        FieldName = #32771#29983#31867#21035
+        FieldName = #31867#21035
         Footers = <>
         Title.TitleButton = True
         Width = 55

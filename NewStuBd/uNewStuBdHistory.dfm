@@ -638,7 +638,6 @@ object NewStuBdHistory: TNewStuBdHistory
       EditButtons = <>
       Items.Strings = (
         #27969#27700#21495
-        #36890#30693#20070#32534#21495
         #32771#29983#21495
         #32771#29983#22995#21517
         #30465#20221
@@ -659,7 +658,7 @@ object NewStuBdHistory: TNewStuBdHistory
         #25253#21040#29366#24577
         #26410#25253#21040#21407#22240)
       TabOrder = 5
-      Text = #36890#30693#20070#32534#21495
+      Text = #27969#27700#21495
       Visible = True
     end
     object edt_Value: TEdit
@@ -835,7 +834,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ParentFont = False
     end
     object lbl_RefreshHint: TLabel
-      Left = 764
+      Left = 760
       Top = 8
       Width = 16
       Height = 14
@@ -851,7 +850,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ExplicitLeft = 812
     end
     object lbl_RefreshHint2: TLabel
-      Left = 785
+      Left = 781
       Top = 8
       Width = 120
       Height = 14
@@ -861,7 +860,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ExplicitLeft = 833
     end
     object chk_AutoRefresh: TCheckBox
-      Left = 909
+      Left = 905
       Top = 7
       Width = 15
       Height = 17
