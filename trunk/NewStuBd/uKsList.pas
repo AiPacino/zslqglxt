@@ -257,7 +257,7 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 学历层次,省份,考生类别,科类,录取专业规范名');
+    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 学历层次,省份,类别,科类,录取专业规范名');
     //Print_LQKSMD();
     dm.PrintReport('专业分类录取名单.fr3',cds_Temp.XMLData,1);
   finally
@@ -828,17 +828,17 @@ begin
     0:
     begin
       sTitle := '制卡';
-      sFldList := '流水号,通知书编号,省份,考生类别,考生号,身份证号,考生姓名,性别,报到校区,left(家庭地址,6) as 籍贯' ;
+      sFldList := '流水号,省份,考生类别,考生号,身份证号,考生姓名,性别,报到校区,left(家庭地址,6) as 籍贯' ;
     end;
     1:
     begin
       sTitle := 'EMS';
-      sFldList := '流水号,通知书编号,省份,考生类别,考生号,身份证号,考生姓名,性别,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
+      sFldList := '流水号,省份,考生类别,考生号,身份证号,考生姓名,性别,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
     end;
     2:
     begin
       sTitle := '教务';
-      sFldList := '流水号,通知书编号,学历层次,省份,考生类别,类别,科类,考生号,身份证号,考生姓名,性别,学历层次,录取专业规范名 as 专业,院系,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
+      sFldList := '流水号,学历层次,省份,考生类别,类别,科类,考生号,身份证号,考生姓名,性别,学历层次,录取专业规范名 as 专业,院系,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
     end;
     3:
     begin
@@ -849,7 +849,7 @@ begin
   sqlstr := 'select '+sFldList+' from 录取信息表 '+sWhereList.Text+' order by 流水号';
 
   cds_Export.XMLData := dm.OpenData(sqlstr);
-  fn := FormatDateTime('yyyy',Now)+'江西科技师范学院'+cbb_Xlcc.Text+'录取考生数据('+IntToStr(cds_Export.RecordCount)+'人)'+sTitle+'.xls';
+  fn := FormatDateTime('yyyy',Now)+'江西科技师范大学'+cbb_Xlcc.Text+'录取考生数据('+IntToStr(cds_Export.RecordCount)+'人)'+sTitle+'.xls';
   dlgSave_1.FileName := fn;
   if dlgSave_1.Execute then
   begin
@@ -886,7 +886,7 @@ begin
     if Copy(cbb_Value.Text,2,1)='0' then
     begin
       cbb_Field.Text := '流水号';
-      //if Length(cbb_Value.Text)=5 then btn_OK.Click;
+      if Length(cbb_Value.Text)=5 then btn_OK.Click;
     end else
     begin
       cbb_Field.Text := '通知书编号';

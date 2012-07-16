@@ -955,7 +955,6 @@ object KsInfoBrowse_Work: TKsInfoBrowse_Work
         FieldName = #24405#21462#19987#19994
         Footers = <>
         Title.TitleButton = True
-        Visible = False
         Width = 120
       end
       item
@@ -963,6 +962,7 @@ object KsInfoBrowse_Work: TKsInfoBrowse_Work
         FieldName = '_'#24405#21462#19987#19994
         Footers = <>
         Title.Caption = #25311#24405#19987#19994
+        Visible = False
         Width = 109
       end
       item
@@ -970,6 +970,7 @@ object KsInfoBrowse_Work: TKsInfoBrowse_Work
         FieldName = #24405#21462#19987#19994#35268#33539#21517
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 96
       end
       item
@@ -977,6 +978,7 @@ object KsInfoBrowse_Work: TKsInfoBrowse_Work
         FieldName = #38498#31995
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 108
       end
       item
@@ -985,6 +987,7 @@ object KsInfoBrowse_Work: TKsInfoBrowse_Work
         FieldName = #25104#32489
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 51
       end
       item
@@ -1013,7 +1016,20 @@ object KsInfoBrowse_Work: TKsInfoBrowse_Work
         EditButtons = <>
         FieldName = #32771#29983#29366#24577
         Footers = <>
+        KeyList.Strings = (
+          '0'
+          '1'
+          '2'
+          '3'
+          '5')
+        PickList.Strings = (
+          #38405#26723#20013
+          #38405#26723#20013
+          #25311#36864#26723
+          #24050#36864#26723
+          #24050#24405#21462)
         Title.TitleButton = True
+        Width = 57
       end
       item
         EditButtons = <>
@@ -1059,6 +1075,7 @@ object KsInfoBrowse_Work: TKsInfoBrowse_Work
         FieldName = #37319#38598#21592
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 73
       end
       item
@@ -1074,6 +1091,7 @@ object KsInfoBrowse_Work: TKsInfoBrowse_Work
         FieldName = 'Action_Time'
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 140
       end>
     object RowDetailData: TRowDetailPanelControlEh
@@ -1498,7 +1516,7 @@ object KsInfoBrowse_Work: TKsInfoBrowse_Work
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700540010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101050007005C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484

@@ -223,7 +223,7 @@ begin
   ClientDataSet1.DisableControls;
   try
     sWhere := GetWhere;
-    sqlstr := 'select * from 录取信息表 '+sWhere+' order by 通知书编号';
+    sqlstr := 'select * from 录取信息表 '+sWhere+' order by 流水号';
     ClientDataSet1.XMLData := dm.OpenData(sqlstr);
   finally
     ClientDataSet1.EnableControls;

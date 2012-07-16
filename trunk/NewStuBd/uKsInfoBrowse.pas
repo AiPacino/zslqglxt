@@ -185,7 +185,7 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 通知书编号');
+    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 流水号');
     //Print_LQTZS(True);
     dm.PrintReport('本科录取通知书.fr3',cds_Temp.XMLData,1);
   finally
@@ -199,7 +199,7 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 学历层次,省份,考生类别,科类,录取专业规范名');
+    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 学历层次,省份,类别,科类,录取专业规范名');
     //Print_LQKSMD();
     dm.PrintReport('专业分类录取名单.fr3',cds_Temp.XMLData,1);
   finally
@@ -243,7 +243,7 @@ begin
   xlcc := ClientDataSet1.FieldByName('学历层次').Asstring;
   sf := ClientDataSet1.FieldByName('省份').Asstring;
   pc := ClientDataSet1.FieldByName('批次名称').Asstring;
-  kl := ClientDataSet1.FieldByName('专业类别').Asstring;//ClientDataSet1.FieldByName('科类名称').Asstring;
+  kl := ClientDataSet1.FieldByName('类别').Asstring;//ClientDataSet1.FieldByName('科类名称').Asstring;
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
 
   with TFormatZy.Create(Application) do
@@ -420,7 +420,7 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 通知书编号');
+    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 流水号');
     //Print_LQTZS(True);
     dm.PrintReport('EMS.fr3',cds_Temp.XMLData,1);
   finally
@@ -717,7 +717,7 @@ begin
     if Copy(cbb_Value.Text,2,1)='0' then
     begin
       cbb_Field.Text := '流水号';
-      //if Length(cbb_Value.Text)=5 then btn_OK.Click;
+      if Length(cbb_Value.Text)=5 then btn_OK.Click;
     end else
     begin
       cbb_Field.Text := '通知书编号';
@@ -761,7 +761,7 @@ var
   cds_Temp:TClientDataSet;
 begin
   sqlstr := 'select max(通知书编号) from 录取信息表 where 省份='+quotedstr(Sf)+
-            ' and 专业类别='+quotedstr(Lb);
+            ' and 类别='+quotedstr(Lb);
   DBGridEH1.SaveBookmark;
   Screen.Cursor := crHourGlass;
   try

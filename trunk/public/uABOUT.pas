@@ -72,7 +72,7 @@ begin
   end;
     
   Screen.Cursor := crHourGlass;
-  try
+  try                       
     Comments.Caption := vobj.GetUserInfo;
     SrvCode.Caption := vobj.GetMacInfo;
     if vobj.RegIsOK then

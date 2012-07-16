@@ -665,10 +665,9 @@ begin
         TDBGridEh(Sender).Canvas.Brush.Color := $008DB48D;
         //
       end;
-      2: //预退考生
+      2: //拟退档考生
       begin
-        //TDBGridEh(Sender).Canvas.Brush.Color := $00FF80FF;
-        TDBGridEh(Sender).Canvas.Brush.Color := $008DB48D;
+        TDBGridEh(Sender).Canvas.Brush.Color := $00FF80FF;
       end;
       3: //已退档考生
       begin
@@ -767,7 +766,7 @@ begin
     if Copy(cbb_Value.Text,2,1)='0' then
     begin
       cbb_Field.Text := '流水号';
-      //if Length(cbb_Value.Text)=5 then btn_OK.Click;
+      if Length(cbb_Value.Text)=5 then btn_OK.Click;
     end else
     begin
       cbb_Field.Text := '通知书编号';
@@ -864,7 +863,7 @@ begin
   xlcc := ClientDataSet1.FieldByName('学历层次').Asstring;
   sf := ClientDataSet1.FieldByName('省份').Asstring;
   pc := ClientDataSet1.FieldByName('批次名称').Asstring;
-  kl := ClientDataSet1.FieldByName('专业类别').Asstring;//ClientDataSet1.FieldByName('科类名称').Asstring;
+  kl := ClientDataSet1.FieldByName('类别').Asstring;//ClientDataSet1.FieldByName('科类名称').Asstring;
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
   with TFormatZy.Create(Application) do
   begin

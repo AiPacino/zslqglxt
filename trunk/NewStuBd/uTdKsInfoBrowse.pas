@@ -186,7 +186,7 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 退档考生信息表 '+sWhereList.Text+' order by 通知书编号');
+    cds_Temp.XMLData := dm.OpenData('select * from 退档考生信息表 '+sWhereList.Text+' order by 流水号');
     //Print_LQTZS(True);
     dm.PrintReport('本科录取通知书.fr3',cds_Temp.XMLData,1);
   finally
@@ -432,7 +432,7 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 退档信息表 '+sWhereList.Text+' order by 通知书编号');
+    cds_Temp.XMLData := dm.OpenData('select * from 退档信息表 '+sWhereList.Text+' order by 流水号');
     //Print_LQTZS(True);
     dm.PrintReport('EMS.fr3',cds_Temp.XMLData,1);
   finally
@@ -709,7 +709,7 @@ begin
   sWhereList.Clear;
   sWhereList.Add('where 学历层次='+quotedstr(cbb_XlCc.Text));
   if cbb_Lb.Text<>'全部' then
-    sWhereList.Add(' and 专业类别='+quotedstr(cbb_Lb.Text));
+    sWhereList.Add(' and 类别='+quotedstr(cbb_Lb.Text));
   if cbb_KL.Text<>'全部' then
     sWhereList.Add(' and 科类='+quotedstr(cbb_KL.Text));
 
@@ -796,7 +796,7 @@ var
   cds_Temp:TClientDataSet;
 begin
   sqlstr := 'select max(通知书编号) from 录取信息表 where 省份='+quotedstr(Sf)+
-            ' and 专业类别='+quotedstr(Lb);
+            ' and 类别='+quotedstr(Lb);
   DBGridEH1.SaveBookmark;
   Screen.Cursor := crHourGlass;
   try

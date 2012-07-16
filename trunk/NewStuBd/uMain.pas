@@ -262,6 +262,7 @@ type
     procedure act_sys_CzySfSetExecute(Sender: TObject);
     procedure act_Lq_JwInfoImportExecute(Sender: TObject);
     procedure act_Lq_WorkKsInfoBrowseExecute(Sender: TObject);
+    procedure act_hlp_RegExecute(Sender: TObject);
   private
     { Private declarations }
     WorkHint: TWorkHint;
@@ -294,7 +295,7 @@ uses uDM, Net,DBGridEhImpExp,uNewStuList,uChgZyHistory,uChangeZy,uCzyEdit,uABOUT
      uZsjhAdjustBrowse,uReportDesign,uFormatZySqlSet,uLqqkCount,uLqqkBrowse,uLogInput,
      uKsInfoBrowse_All,uMareData_BDE_Photo,uExportToAccess,uTdKsInfoBrowse,
      uEMSNumberImport,uDbTools,uFileEdit,uFileBrowse,uCzySfSet,uJwInfoImport,
-     uKsInfoBrowse_Work;
+     uKsInfoBrowse_Work,uSysRegister;
 
 {$R *.dfm}
 
@@ -554,6 +555,11 @@ end;
 procedure TMain.act_hlp_aboutExecute(Sender: TObject);
 begin
   TAboutBox.Create(nil).showModal;
+end;
+
+procedure TMain.act_hlp_RegExecute(Sender: TObject);
+begin
+  TSysRegister.Create(nil).showModal;
 end;
 
 procedure TMain.act_hlp_UpdateExecute(Sender: TObject);
