@@ -99,6 +99,9 @@ type
     function DownLoadPhoto(const sKsh:string;out sXmlData,sError:string):Boolean;stdcall;
 
     function UpdateLqtzsNo(const ksh:string;out sMsg:string):Boolean;stdcall; //更新录取通知书编号
+
+    function GetExportFieldList(const sType:string):string;stdcall;//得到导出信息字段列表
+    function SetExportFieldList(const sType,sFieldList:string):Boolean;stdcall;//得到导出信息字段列表
   end;
 
 implementation
@@ -558,6 +561,52 @@ begin
     dm.DataSet_Temp.Close;
     dm.Free;
   end;
+end;
+
+function TNewStuLqBd.GetExportFieldList(const sType: string): string;
+var
+  sqlstr:string;
+  dm:TNewStuLqBdSoapDM;
+begin
+  dm := TNewStuLqBdSoapDM.Create(nil);
+  try
+    sqlstr := 'select 内容 from 导出信息配置表 where 类型='+quotedstr(sType);
+    dm.DataSet_Temp.Close;
+    dm.DataSet_Temp.CommandText := sqlstr;
+    try
+      dm.DataSet_Temp.Active := True;
+      Result := dm.DataSet_Temp.Fields[0].AsString;
+    except
+      Result := '*';
+    end;
+  finally
+    dm.DataSet_Temp.Close;
+    dm.Free;
+  end;
+{
+  case iType of
+    0:
+    begin
+      //sTitle := '制卡';
+      Result := '流水号,省份,类别,考生号,身份证号,考生姓名,性别,报到校区,left(家庭地址,6) as 籍贯' ;
+    end;
+    1:
+    begin
+      //sTitle := 'EMS';
+      Result := '流水号,省份,类别,考生号,考生姓名,收件人,邮政编码,家庭地址,联系电话' ;
+    end;
+    2:
+    begin
+      //sTitle := '教务';
+      Result := '流水号,学历层次,省份,类别,科类,考生号,身份证号,考生姓名,性别,学历层次,录取专业规范名 as 专业,院系,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
+    end;
+    3:
+    begin
+      //sTitle := '';
+      Result := '*' ;
+    end;
+  end;
+}  
 end;
 
 function TNewStuLqBd.GetMACInfo: string;
@@ -1117,6 +1166,50 @@ begin
     Result := ExecSql(sqlstr,sError);
   end;
 }
+end;
+
+function TNewStuLqBd.SetExportFieldList(const sType: string;
+  const sFieldList: string): Boolean;
+var
+  sqlstr:string;
+  dm:TNewStuLqBdSoapDM;
+begin
+  dm := TNewStuLqBdSoapDM.Create(nil);
+  try
+    sqlstr := 'select count(*) from 导出信息配置表 where 类型='+quotedstr(sType);
+    if dm.RecordIsExists(sqlstr) then
+      sqlstr := 'update 导出信息配置表 set 内容='+quotedstr(sFieldList)+' where 类型='+quotedstr(sType)
+    else
+      sqlstr := 'Insert into 导出信息配置表 (类型,内容) values('+quotedstr(sType)+','+quotedstr(sFieldList)+')';
+
+    Result := dm.ExecSqlCmd(sqlstr);
+  finally
+    dm.Free;
+  end;
+{
+  case iType of
+    0:
+    begin
+      //sTitle := '制卡';
+      Result := '流水号,省份,类别,考生号,身份证号,考生姓名,性别,报到校区,left(家庭地址,6) as 籍贯' ;
+    end;
+    1:
+    begin
+      //sTitle := 'EMS';
+      Result := '流水号,省份,类别,考生号,考生姓名,收件人,邮政编码,家庭地址,联系电话' ;
+    end;
+    2:
+    begin
+      //sTitle := '教务';
+      Result := '流水号,学历层次,省份,类别,科类,考生号,身份证号,考生姓名,性别,学历层次,录取专业规范名 as 专业,院系,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
+    end;
+    3:
+    begin
+      //sTitle := '';
+      Result := '*' ;
+    end;
+  end;
+}  
 end;
 
 function TNewStuLqBd.SetStuBdState(const sKsh, sState, czy,

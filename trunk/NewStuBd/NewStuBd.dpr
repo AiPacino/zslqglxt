@@ -79,7 +79,8 @@ uses
   uJwInfoImport in 'uJwInfoImport.pas' {JwInfoImport},
   uLogInput in 'uLogInput.pas' {LogInput},
   uKsInfoBrowse_Work in 'uKsInfoBrowse_Work.pas' {KsInfoBrowse_Work},
-  uSysRegister in '..\public\uSysRegister.pas' {SysRegister};
+  uSysRegister in '..\public\uSysRegister.pas' {SysRegister},
+  uExportFieldListSet in 'uExportFieldListSet.pas' {ExportFieldListSet};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

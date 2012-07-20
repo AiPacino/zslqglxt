@@ -828,24 +828,26 @@ begin
     0:
     begin
       sTitle := '制卡';
-      sFldList := '流水号,省份,类别,考生号,身份证号,考生姓名,性别,报到校区,left(家庭地址,6) as 籍贯' ;
+      //sFldList := '流水号,省份,类别,考生号,身份证号,考生姓名,性别,报到校区,left(家庭地址,6) as 籍贯' ;
     end;
     1:
     begin
       sTitle := 'EMS';
-      sFldList := '流水号,省份,类别,考生号,身份证号,考生姓名,性别,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
+      //sFldList := '流水号,省份,类别,考生号,考生姓名,收件人,邮政编码,家庭地址,联系电话' ;
     end;
     2:
     begin
       sTitle := '教务';
-      sFldList := '流水号,学历层次,省份,类别,科类,考生号,身份证号,考生姓名,性别,学历层次,录取专业规范名 as 专业,院系,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
+      //sFldList := '流水号,学历层次,省份,类别,科类,考生号,身份证号,考生姓名,性别,学历层次,录取专业规范名 as 专业,院系,报到校区,收件人,邮政编码,家庭地址,联系电话' ;
     end;
     3:
     begin
       sTitle := '';
-      sFldList := '*' ;
+      //sFldList := '*' ;
     end;
   end;
+  sFldList := vobj.GetExportFieldList(sTitle);
+
   sqlstr := 'select '+sFldList+' from 录取信息表 '+sWhereList.Text+' order by 流水号';
 
   cds_Export.XMLData := dm.OpenData(sqlstr);

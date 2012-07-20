@@ -102,6 +102,9 @@ type
     function DownLoadPhoto(const sKsh:string;out sXmlData,sError:string):Boolean;stdcall;
 
     function UpdateLqtzsNo(const ksh:string;out sMsg:string):Boolean;stdcall; //更新录取通知书编号
+
+    function GetExportFieldList(const sType:string):string;stdcall;//得到导出信息字段列表
+    function SetExportFieldList(const sType,sFieldList:string):Boolean;stdcall;//得到导出信息字段列表
   end;
 
 function GetINewStuLqBd(UseWSDL: Boolean=System.False; Addr: string=''; HTTPRIO: THTTPRIO = nil): INewStuLqBd;
