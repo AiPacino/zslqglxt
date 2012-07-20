@@ -30,9 +30,9 @@ object EMSNumberImport: TEMSNumberImport
   object lbl2: TLabel
     Left = 29
     Top = 140
-    Width = 128
+    Width = 132
     Height = 14
-    Caption = #12304#32771' '#29983' '#21495#12305#23545#24212#23383#27573#65306
+    Caption = #12304#27969'  '#27700' '#21495#12305#23545#24212#23383#27573#65306
   end
   object lbl3: TLabel
     Left = 29

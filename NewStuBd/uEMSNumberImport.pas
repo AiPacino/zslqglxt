@@ -63,7 +63,7 @@ begin
   end;
 
   Screen.Cursor := crHourGlass;
-  cds_lqmd.XMLData := dm.openData('select 考生号,EMS单号 from 录取信息表');
+  cds_lqmd.XMLData := dm.openData('select 流水号,EMS单号 from 录取信息表');
   btn_Start.Enabled := False;
   try
     qry_Excel.First;
@@ -75,7 +75,7 @@ begin
       Application.ProcessMessages;
       ksh := qry_Excel.FieldByName(cbb_Ksh.Text).AsString;
       dh := qry_Excel.FieldByName(cbb_EMSDH.Text).AsString;
-      if cds_lqmd.Locate('考生号',ksh,[]) then
+      if cds_lqmd.Locate('流水号',ksh,[]) then
       begin
         if (cds_lqmd.FieldByName('EMS单号').AsString='') or
            (cds_lqmd.FieldByName('EMS单号').AsString<>'') and (chk_OverWrite.Checked) then
@@ -91,7 +91,7 @@ begin
     Application.ProcessMessages;
     bl := True;
     if cds_lqmd.ChangeCount>0 then
-      bl := dm.UpdateData('考生号','select 考生号,EMS单号 from 录取信息表',cds_lqmd.Delta);
+      bl := dm.UpdateData('流水号','select 流水号,EMS单号 from 录取信息表',cds_lqmd.Delta);
 
     if bl then
       MessageBox(Handle, '操作完成！EMS邮寄单号导入成功！　', '系统提示',
@@ -151,7 +151,7 @@ begin
   cbb_Ksh.Enabled := True;
   cbb_EMSDH.Enabled := True;
   qry_Excel.GetFieldNames(cbb_Ksh.Items);
-  cbb_Ksh.ItemIndex := cbb_Ksh.Items.IndexOf('考生号');
+  cbb_Ksh.ItemIndex := cbb_Ksh.Items.IndexOf('流水号');
   cbb_EMSDH.Items.Assign(cbb_Ksh.Items);
   cbb_EMSDH.ItemIndex := cbb_EMSDH.Items.IndexOf('EMS单号');
 end;

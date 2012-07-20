@@ -9214,7 +9214,7 @@ object Main: TMain
     Left = 520
     Top = 39
     Bitmap = {
-      494C010105000700540010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -9503,7 +9503,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-07-16 00:00:00'
+    VersionDate = '2012-07-20 00:00:00'
     VersionDateAutoSet = True
     Left = 680
     Top = 40
@@ -9839,16 +9839,22 @@ object Main: TMain
       OnExecute = act_File_FileBrowseExecute
     end
     object act_Lq_SqlSet: TAction
-      Category = '09.'#24405#21462#22788#29702
+      Category = '02.'#22522#30784#25968#25454
       Caption = #37319#38598#21629#20196#37197#32622'(&S)'
       ImageIndex = 12
       OnExecute = act_Lq_SqlSetExecute
     end
     object act_Lq_FormatZySqlSet: TAction
-      Category = '09.'#24405#21462#22788#29702
+      Category = '02.'#22522#30784#25968#25454
       Caption = #19987#19994#26684#24335#21270#21629#20196#37197#32622
       ImageIndex = 11
       OnExecute = act_Lq_FormatZySqlSetExecute
+    end
+    object act_Data_ExportFieldSet: TAction
+      Category = '02.'#22522#30784#25968#25454
+      Caption = #23548#20986#20449#24687#23383#27573#37197#32622
+      ImageIndex = 10
+      OnExecute = act_Data_ExportFieldSetExecute
     end
     object act_Lq_DataImport: TAction
       Category = '09.'#24405#21462#22788#29702
@@ -9915,19 +9921,19 @@ object Main: TMain
     end
     object act_Data_YxSet: TAction
       Category = '02.'#22522#30784#25968#25454
-      Caption = #38498#31995#20449#24687#35774#32622'(&Y)'
+      Caption = #38498#31995#20449#24687#35774#32622
       ImageIndex = 1
       OnExecute = act_Data_YxSetExecute
     end
     object act_Data_ZySet: TAction
       Category = '02.'#22522#30784#25968#25454
-      Caption = #19987#19994#20449#24687#35774#32622'(&Z)'
+      Caption = #19987#19994#20449#24687#35774#32622
       ImageIndex = 28
       OnExecute = act_Data_ZySetExecute
     end
     object act_Data_YxZySet: TAction
       Category = '02.'#22522#30784#25968#25454
-      Caption = #38498#31995#19987#19994#35774#32622'(&M)'
+      Caption = #38498#31995#19987#19994#35774#32622
       ImageIndex = 14
       OnExecute = act_Data_YxZySetExecute
     end
@@ -10201,6 +10207,10 @@ object Main: TMain
         item
           Visible = True
           ItemName = 'dxBarButton53'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton66'
         end
         item
           Visible = True
@@ -10600,6 +10610,18 @@ object Main: TMain
       Action = act_sys_Exit
       Category = 2
     end
+    object dxBarButton38: TdxBarButton
+      Action = act_Lq_SqlSet
+      Category = 3
+    end
+    object dxBarButton53: TdxBarButton
+      Action = act_Lq_FormatZySqlSet
+      Category = 3
+    end
+    object dxBarButton66: TdxBarButton
+      Action = act_Data_ExportFieldSet
+      Category = 3
+    end
     object dxBarButton8: TdxBarButton
       Action = act_Data_YxSet
       Category = 3
@@ -10664,14 +10686,6 @@ object Main: TMain
     end
     object dxBarButton62: TdxBarButton
       Action = act_File_FileBrowse
-      Category = 5
-    end
-    object dxBarButton38: TdxBarButton
-      Action = act_Lq_SqlSet
-      Category = 5
-    end
-    object dxBarButton53: TdxBarButton
-      Action = act_Lq_FormatZySqlSet
       Category = 5
     end
     object dxBarButton65: TdxBarButton
@@ -10838,7 +10852,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C0101240026005C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

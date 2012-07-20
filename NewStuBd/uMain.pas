@@ -174,6 +174,8 @@ type
     dxBarButton64: TdxBarButton;
     act_Lq_WorkKsInfoBrowse: TAction;
     dxBarButton65: TdxBarButton;
+    act_Data_ExportFieldSet: TAction;
+    dxBarButton66: TdxBarButton;
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
     procedure mmi_PrnLQTZSClick(Sender: TObject);
@@ -263,6 +265,7 @@ type
     procedure act_Lq_JwInfoImportExecute(Sender: TObject);
     procedure act_Lq_WorkKsInfoBrowseExecute(Sender: TObject);
     procedure act_hlp_RegExecute(Sender: TObject);
+    procedure act_Data_ExportFieldSetExecute(Sender: TObject);
   private
     { Private declarations }
     WorkHint: TWorkHint;
@@ -295,7 +298,7 @@ uses uDM, Net,DBGridEhImpExp,uNewStuList,uChgZyHistory,uChangeZy,uCzyEdit,uABOUT
      uZsjhAdjustBrowse,uReportDesign,uFormatZySqlSet,uLqqkCount,uLqqkBrowse,uLogInput,
      uKsInfoBrowse_All,uMareData_BDE_Photo,uExportToAccess,uTdKsInfoBrowse,
      uEMSNumberImport,uDbTools,uFileEdit,uFileBrowse,uCzySfSet,uJwInfoImport,
-     uKsInfoBrowse_Work,uSysRegister;
+     uKsInfoBrowse_Work,uSysRegister,uExportFieldListSet;
 
 {$R *.dfm}
 
@@ -510,6 +513,11 @@ end;
 procedure TMain.act_Data_BdTimeSetExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TBaoDaoTimeSet);
+end;
+
+procedure TMain.act_Data_ExportFieldSetExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TExportFieldListSet);
 end;
 
 procedure TMain.act_Data_JlxmSetExecute(Sender: TObject);
