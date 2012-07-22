@@ -1344,10 +1344,10 @@ begin
       end;
     end;
 
-    sqlstr := 'select 考生号 from 录取信息表 where (通知书编号 is null) or 通知书编号='+quotedstr('');
+    sqlstr := 'select 考生号 from 录取信息表 where (流水号 is not null) and ((通知书编号 is null) or 通知书编号='+quotedstr('')+')';
     if ksh<>'' then
       sqlstr := sqlstr+' and 考生号='+quotedstr(ksh);
-    sqlstr := sqlstr+' order by 省份,left(考生号,4),科类,录取专业规范名,Action_Time';
+    sqlstr := sqlstr+' order by 省份,流水号';
     if dm.Query_Data(sqlstr,sData)<>S_OK then Exit;
     if gb_Use_Zip then
     begin
