@@ -80,7 +80,8 @@ uses
   uLogInput in 'uLogInput.pas' {LogInput},
   uKsInfoBrowse_Work in 'uKsInfoBrowse_Work.pas' {KsInfoBrowse_Work},
   uSysRegister in '..\public\uSysRegister.pas' {SysRegister},
-  uExportFieldListSet in 'uExportFieldListSet.pas' {ExportFieldListSet};
+  uExportFieldListSet in 'uExportFieldListSet.pas' {ExportFieldListSet},
+  uKsLqtzsPrint in 'uKsLqtzsPrint.pas' {KsLqtzsPrint};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

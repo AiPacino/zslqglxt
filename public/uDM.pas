@@ -208,6 +208,7 @@ var
   procedure RealseSortedIcon(const aDBGrid:TDBGridEh);
   procedure SetDBGridEHColumnWidth(const aDBGrid:TDBGridEh);
   function  ZyIsEqual(const zy1,zy2:string):Boolean; //专业是否相同
+  function  PhotoIsExists(const photofilename:string):Boolean; //考生照片是否存在
   function  GetKsDataPath:string;
 
   function  GetSfMcBySfDm(const sfDm:string):String;
@@ -2450,6 +2451,19 @@ begin
       aDBGrid.Columns[i].Footer.ValueType := fvtAvg;
       aDBGrid.Columns[i].Footer.FieldName := aDBGrid.Columns[i].FieldName;
     end;
+  end;
+end;
+
+function  PhotoIsExists(const photofilename:string):Boolean; //考生照片是否存在
+var
+  sPath:string;
+begin
+  if photofilename='' then
+    Result := False
+  else
+  begin
+    sPath := ExtractFilePath(ParamStr(0))+'Kszp\';
+    Result := FileExists(sPath+photofilename);
   end;
 end;
 
