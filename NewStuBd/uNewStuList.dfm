@@ -693,6 +693,7 @@ object NewStuList: TNewStuList
       EditButtons = <>
       Items.Strings = (
         #27969#27700#21495
+        #36890#30693#20070#32534#21495
         #32771#29983#21495
         #32771#29983#22995#21517
         #30465#20221
@@ -713,7 +714,7 @@ object NewStuList: TNewStuList
         #25253#21040#29366#24577
         #26410#25253#21040#21407#22240)
       TabOrder = 8
-      Text = #27969#27700#21495
+      Text = #36890#30693#20070#32534#21495
       Visible = True
     end
   end
@@ -834,8 +835,8 @@ object NewStuList: TNewStuList
       ParentFont = False
     end
     object chk1: TCheckBox
-      Left = 876
-      Top = -2
+      Left = 872
+      Top = -6
       Width = 91
       Height = 17
       Hint = #27599#38548'10'#31186#20809#26631#33258#21160#23450#20301#33267#26597#35810#26694
@@ -890,7 +891,7 @@ object NewStuList: TNewStuList
     Columns = <
       item
         EditButtons = <>
-        FieldName = #27969#27700#21495
+        FieldName = #36890#30693#20070#32534#21495
         Footers = <>
         Title.TitleButton = True
         Width = 76

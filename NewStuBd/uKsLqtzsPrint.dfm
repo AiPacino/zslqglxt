@@ -31,7 +31,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1035
     DesignSize = (
       1113
       50)
@@ -408,7 +407,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Align = alRight
       Caption = #23618#27425#65306
       TabOrder = 3
-      ExplicitLeft = 922
       object cbb_XlCc: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -429,7 +427,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Align = alRight
       Caption = #31185#31867#65306
       TabOrder = 2
-      ExplicitLeft = 809
       object cbb_KL: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -450,7 +447,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Align = alRight
       Caption = #30465#20221#65306
       TabOrder = 0
-      ExplicitLeft = 583
       object cbb_Sf: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -475,7 +471,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Align = alRight
       Caption = #31867#21035#65306
       TabOrder = 1
-      ExplicitLeft = 696
       object cbb_Lb: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -497,7 +492,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Caption = #25171#24320#36807#28388#22120
       TabOrder = 4
       OnClick = chk_FilterClick
-      ExplicitLeft = 373
     end
     object chk_ZyNoSame: TCheckBox
       Left = 537
@@ -511,7 +505,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       ShowHint = True
       TabOrder = 5
       OnClick = chk_ZyNoSameClick
-      ExplicitLeft = 459
     end
   end
   object pnl2: TPanel
@@ -522,7 +515,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitWidth = 1035
     DesignSize = (
       1113
       41)
@@ -567,7 +559,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       TabOrder = 6
       OnChange = cbb_ValueChange
       OnKeyPress = cbb_ValueKeyPress
-      ExplicitWidth = 197
     end
     object btn_OK: TBitBtn
       Left = 519
@@ -578,7 +569,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Caption = #30830#23450'[&O]'
       TabOrder = 1
       OnClick = btn_OKClick
-      ExplicitLeft = 441
     end
     object btn_Adv: TBitBtn
       Left = 588
@@ -591,7 +581,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
-      ExplicitLeft = 510
     end
     object cbb_Field: TDBFieldComboBox
       Left = 7
@@ -612,7 +601,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Caption = #39640#32423#26597#35810
       TabOrder = 2
       OnClick = btn_SqlWhereClick
-      ExplicitLeft = 536
     end
     object cbb_Compare: TDBComboBoxEh
       Left = 116
@@ -656,7 +644,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
       TabOrder = 3
       Visible = False
       OnClick = btn_SaveClick
-      ExplicitLeft = 617
     end
   end
   object DBGridEH1: TDBGridEh
@@ -735,7 +722,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
         FieldName = #36890#30693#20070#32534#21495
         Footers = <>
         Title.TitleButton = True
-        Visible = False
         Width = 75
       end
       item
@@ -1151,7 +1137,7 @@ object KsLqtzsPrint: TKsLqtzsPrint
     Left = 16
     Top = 91
     Bitmap = {
-      494C0101050007008C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700900010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
