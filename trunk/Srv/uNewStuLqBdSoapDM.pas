@@ -303,17 +303,18 @@ end;
 function TNewStuLqBdSoapDM.RegUserInfo(const UserName,
   UserCode: string): Boolean;
 var
-  sqlstr:string;
+  sMac,sqlstr:string;
 begin
+  sMac := GetMacAddress;
   with qry_Temp do
   begin
     Active := False;
-    sql.Text := 'select 用户名称,注册码 from 机主信息表';
+    sql.Text := 'select 用户名称,MAC,注册码 from 机主信息表';
     Active := True;
     if RecordCount=0 then
-      sqlstr := 'Insert into 机主信息表 (用户名称,注册码) values('+quotedstr(UserName)+','+quotedstr(UserCode)
+      sqlstr := 'Insert into 机主信息表 (用户名称,注册码,MAC) values('+quotedstr(UserName)+','+quotedstr(UserCode)+','+quotedstr(sMac)
     else
-      sqlstr := 'update 机主信息表 set 用户名称='+quotedstr(UserName)+',注册码='+quotedstr(UserCode);
+      sqlstr := 'update 机主信息表 set 用户名称='+quotedstr(UserName)+',注册码='+quotedstr(UserCode)+',MAC='+quotedstr(sMac);
 
     try
       close;

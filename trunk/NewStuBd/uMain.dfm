@@ -9214,7 +9214,7 @@ object Main: TMain
     Left = 520
     Top = 39
     Bitmap = {
-      494C0101050007005C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -9503,7 +9503,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-07-22 00:00:00'
+    VersionDate = '2012-08-01 00:00:00'
     VersionDateAutoSet = True
     Left = 680
     Top = 40
@@ -9859,8 +9859,16 @@ object Main: TMain
     object act_Lq_DataImport: TAction
       Category = '09.'#24405#21462#22788#29702
       Caption = #32771#29983#20449#24687#37319#38598'(&D)'
+      Hint = '2012'#24180#20043#21518#30340#26032#29256#26412#32771#29983#25968#25454#37319#38598#65288'Access'#26684#24335#65289
       ImageIndex = 35
       OnExecute = act_Lq_DataImportExecute
+    end
+    object act_Lq_DataImport_BDE: TAction
+      Category = '09.'#24405#21462#22788#29702
+      Caption = #26087#29256#26412#32771#29983#20449#24687#37319#38598
+      Hint = '2012'#24180#20043#21069#30340#26087#29256#26412#32771#29983#25968#25454#37319#38598#65288'BDE'#26684#24335#65289
+      ImageIndex = 33
+      OnExecute = act_Lq_DataImport_BDEExecute
     end
     object act_Lq_PhotoImport: TAction
       Category = '09.'#24405#21462#22788#29702
@@ -10390,6 +10398,10 @@ object Main: TMain
         end
         item
           Visible = True
+          ItemName = 'dxBarButton68'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton11'
         end
         item
@@ -10718,6 +10730,10 @@ object Main: TMain
       Action = act_Lq_DataImport
       Category = 5
     end
+    object dxBarButton68: TdxBarButton
+      Action = act_Lq_DataImport_BDE
+      Category = 5
+    end
     object dxBarButton11: TdxBarButton
       Action = act_Lq_PhotoImport
       Category = 5
@@ -10866,7 +10882,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C010124002600640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600680010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

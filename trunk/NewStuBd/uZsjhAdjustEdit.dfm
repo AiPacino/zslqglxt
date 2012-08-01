@@ -18,6 +18,7 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
   Position = poMainFormCenter
   Visible = True
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   PixelsPerInch = 96
@@ -504,6 +505,12 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
             end
             item
               EditButtons = <>
+              FieldName = #30465#20221
+              Footers = <>
+              Width = 84
+            end
+            item
+              EditButtons = <>
               FieldName = #31867#21035
               Footers = <>
               Width = 79
@@ -512,24 +519,25 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
               EditButtons = <>
               FieldName = #19987#19994'Id'
               Footers = <>
-              Visible = False
+              Width = 39
             end
             item
               EditButtons = <>
               FieldName = #19987#19994
               Footers = <>
-              Width = 198
+              Width = 187
             end
             item
               EditButtons = <>
               FieldName = #31185#31867
               Footers = <>
+              Width = 62
             end
             item
               EditButtons = <>
               FieldName = #22686#20943#25968
               Footers = <>
-              Width = 54
+              Width = 41
             end>
           object RowDetailData: TRowDetailPanelControlEh
           end
@@ -1474,6 +1482,10 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
     end
     object cds_DeltapId: TStringField
       FieldName = 'pId'
+      Size = 15
+    end
+    object cds_DeltaField4: TStringField
+      FieldName = #30465#20221
       Size = 15
     end
     object cds_DeltaField: TStringField

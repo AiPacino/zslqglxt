@@ -1,4 +1,4 @@
-unit uMareData_BDE_Photo;
+unit uMareData_Photo;
 
 interface
 
@@ -9,7 +9,7 @@ uses
   DBClient, Menus, DBTables, Grids, DBGrids, CnButtonEdit;
 
 type
-  TMareData_BDE_Photo = class(TForm)
+  TMareData_Photo = class(TForm)
     GroupBox1: TGroupBox;
     chklst_Sf: TRzCheckList;
     pnl_Bottom: TPanel;
@@ -52,7 +52,7 @@ type
   end;
 
 var
-  MareData_BDE_Photo: TMareData_BDE_Photo;
+  MareData_Photo: TMareData_Photo;
 
 implementation
 
@@ -115,7 +115,7 @@ begin
   end;
 end;
 
-procedure TMareData_BDE_Photo.SelectSf(const iType: Integer);
+procedure TMareData_Photo.SelectSf(const iType: Integer);
 var
   i:Integer;
 begin
@@ -132,7 +132,7 @@ begin
   end;
 end;
 
-procedure TMareData_BDE_Photo.SetState;
+procedure TMareData_Photo.SetState;
 var
   i: Integer;
 begin
@@ -144,7 +144,7 @@ begin
   btn_OK.Enabled := i<=chklst_Sf.Items.Count-1;
 end;
 
-procedure TMareData_BDE_Photo.btnedt_PathButtonClick(Sender: TObject);
+procedure TMareData_Photo.btnedt_PathButtonClick(Sender: TObject);
 var
   Dir: string;
 begin
@@ -155,12 +155,12 @@ begin
   end;
 end;
 
-procedure TMareData_BDE_Photo.btn_ExitClick(Sender: TObject);
+procedure TMareData_Photo.btn_ExitClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TMareData_BDE_Photo.InitSfCheckList;
+procedure TMareData_Photo.InitSfCheckList;
 var
   sqlstr:string;
 begin
@@ -175,7 +175,7 @@ begin
   cds_lqmd.Close;
 end;
 
-procedure TMareData_BDE_Photo.btn_OKClick(Sender: TObject);
+procedure TMareData_Photo.btn_OKClick(Sender: TObject);
 var
   Update_Count,Insert_Count :Integer;
   sqlstr,sPath,sKsh,sfn,sError,sSfstr :string;
@@ -318,7 +318,7 @@ begin
   end;
 end;
 
-procedure TMareData_BDE_Photo.FormCreate(Sender: TObject);
+procedure TMareData_Photo.FormCreate(Sender: TObject);
 var
   sList:TStrings;
 begin
@@ -336,34 +336,34 @@ begin
   end;
 end;
 
-procedure TMareData_BDE_Photo.LabeledEdit1Change(Sender: TObject);
+procedure TMareData_Photo.LabeledEdit1Change(Sender: TObject);
 begin
   //btn_OK.Enabled := LabeledEdit1.Text<>'';
 end;
 
-procedure TMareData_BDE_Photo.mni_Select2Click(Sender: TObject);
+procedure TMareData_Photo.mni_Select2Click(Sender: TObject);
 begin
   SelectSf(TMenuItem(Sender).Tag);
   SetState;
 end;
 
-procedure TMareData_BDE_Photo.rg_XlCcClick(Sender: TObject);
+procedure TMareData_Photo.rg_XlCcClick(Sender: TObject);
 begin
   InitSfCheckList;
 end;
 
-procedure TMareData_BDE_Photo.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TMareData_Photo.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   myIniFile.Free;
   Action := caFree;
 end;
 
-procedure TMareData_BDE_Photo.chk1Click(Sender: TObject);
+procedure TMareData_Photo.chk1Click(Sender: TObject);
 begin
   btnedt_Path.Enabled := chk1.Checked;
 end;
 
-procedure TMareData_BDE_Photo.chklst_SfChange(Sender: TObject; Index: Integer;
+procedure TMareData_Photo.chklst_SfChange(Sender: TObject; Index: Integer;
   NewState: TCheckBoxState);
 begin
   SetState;

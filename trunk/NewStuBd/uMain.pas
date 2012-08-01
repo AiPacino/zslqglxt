@@ -178,6 +178,8 @@ type
     dxBarButton66: TdxBarButton;
     act_Lq_LqtzsPrint: TAction;
     dxBarButton67: TdxBarButton;
+    act_Lq_DataImport_BDE: TAction;
+    dxBarButton68: TdxBarButton;
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
     procedure mmi_PrnLQTZSClick(Sender: TObject);
@@ -269,6 +271,7 @@ type
     procedure act_hlp_RegExecute(Sender: TObject);
     procedure act_Data_ExportFieldSetExecute(Sender: TObject);
     procedure act_Lq_LqtzsPrintExecute(Sender: TObject);
+    procedure act_Lq_DataImport_BDEExecute(Sender: TObject);
   private
     { Private declarations }
     WorkHint: TWorkHint;
@@ -294,12 +297,12 @@ var
 implementation
 uses uDM, Net,DBGridEhImpExp,uNewStuList,uChgZyHistory,uChangeZy,uCzyEdit,uABOUT,
      uChangeCzyPwd,uCountXkCjInfo,uCountBdl,uZySet,uCountSqlSet,uUserLoginLog,
-     uSysLog,uCzyRightSet,uIpSet,uLockScreen,uOnlineUpdateSet,uSrvStateSet,
+     uSysLog,uCzyRightSet,uIpSet,uLockScreen,uOnlineUpdateSet,uSrvStateSet,uMareData,
      uBaoDaoTimeSet,uJlxmSet,uNewStuBdHistory,uYxSet,uYxZyList,uYxZySet,uMareData_BDE,
      uKsList,uKsInfoBrowse,uPhotoExport, uDataInit,uZsjhSet, uCountXkInfo,uWorkSet,
-     uWorkBrowse,uZsjhBrowse,uSqlCmdSet,uZsjhAdjustEdit,uZsjhAdjustConfirm,
+     uWorkBrowse,uZsjhBrowse,uSqlCmdSet,uZsjhAdjustEdit,uZsjhAdjustConfirm,uMareData_Photo,
      uZsjhAdjustBrowse,uReportDesign,uFormatZySqlSet,uLqqkCount,uLqqkBrowse,uLogInput,
-     uKsInfoBrowse_All,uMareData_BDE_Photo,uExportToAccess,uTdKsInfoBrowse,
+     uKsInfoBrowse_All,uExportToAccess,uTdKsInfoBrowse,
      uEMSNumberImport,uDbTools,uFileEdit,uFileBrowse,uCzySfSet,uJwInfoImport,
      uKsInfoBrowse_Work,uSysRegister,uExportFieldListSet,uKsLqtzsPrint;
 
@@ -638,6 +641,11 @@ end;
 
 procedure TMain.act_Lq_DataImportExecute(Sender: TObject);
 begin
+  ShowMdiChildForm(TMareData);
+end;
+
+procedure TMain.act_Lq_DataImport_BDEExecute(Sender: TObject);
+begin
   ShowMdiChildForm(TMareData_BDE);
 end;
 
@@ -680,7 +688,7 @@ procedure TMain.act_Lq_PhotoImportExecute(Sender: TObject);
 begin
   //Application.MessageBox('等一下哟，正在做，到时自动升级一下！^_^　',
   //  '系统提示', MB_OK + MB_ICONINFORMATION);
-  ShowMdiChildForm(TMareData_BDE_Photo);
+  ShowMdiChildForm(TMareData_Photo);
 end;
 
 procedure TMain.act_Lq_ProcessExecute(Sender: TObject);

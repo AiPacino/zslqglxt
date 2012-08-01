@@ -139,6 +139,8 @@ end;
 procedure TAdjustJhInput.FillData(const iType:Integer;const sNo,sXlcc,sSf,sCzLx: string;
   const aCDS: TClientDataSet);
 begin
+  cbb_sf.Items.Clear;
+  cbb_Sf.Items.Add(sSf);
   aType := iType;
   aNo := sNo;
   aXlCc := sXlcc;
@@ -147,6 +149,9 @@ begin
   aDataSet := aCDS;
   cbb_Sf.Text := aSf;
   cbb_Sf.OnChange(Self);
+  cbb_Sf.Enabled := aCzLx<>'省内调整';
+  if cbb_Sf.Enabled then
+    cbb_Sf.Items.Add('预留计划');
 end;
 
 procedure TAdjustJhInput.FillZyLb;
@@ -177,7 +182,7 @@ end;
 
 procedure TAdjustJhInput.FormCreate(Sender: TObject);
 begin
-  dm.SetSfComboBox(cbb_Sf);
+  //dm.SetSfComboBox(cbb_Sf);
 end;
 
 procedure TAdjustJhInput.FormShow(Sender: TObject);
@@ -204,8 +209,8 @@ begin
     aDataSet.Edit;
   aDataSet.FieldByName('pId').AsString := aNo;
   //aDataSet.FieldByName('学历层次').AsString := aXlCc;
-  //aDataSet.FieldByName('省份').AsString := cbb_Sf.Text;
   //aDataSet.FieldByName('类别').AsString := cbb_ZyLb.Text;
+  aDataSet.FieldByName('省份').AsString := cbb_Sf.Text;
   aDataSet.FieldByName('专业Id').AsString := aZyId;
   //aDataSet.FieldByName('专业').AsString := cbb_Zy.Text;
   aDataSet.FieldByName('科类').AsString := cbb_Kl.Text;

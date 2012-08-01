@@ -20,6 +20,8 @@ type
     Label3: TLabel;
     SrvCode: TLabel;
     ProgramIcon: TImage;
+    lbl1: TLabel;
+    lbl2: TLabel;
     procedure OKButtonClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
