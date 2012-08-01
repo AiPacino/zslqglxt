@@ -44,7 +44,7 @@ object AboutBox: TAboutBox
     end
     object Copyright: TLabel
       Left = 95
-      Top = 93
+      Top = 88
       Width = 70
       Height = 17
       Caption = #26426#20027#20449#24687#65306
@@ -58,7 +58,7 @@ object AboutBox: TAboutBox
     end
     object Comments: TLabel
       Left = 171
-      Top = 93
+      Top = 88
       Width = 158
       Height = 17
       Caption = #27743#35199#31185#25216#24072#33539#23398#38498' '#25307#23601#22788
@@ -86,7 +86,7 @@ object AboutBox: TAboutBox
     end
     object Label1: TLabel
       Left = 95
-      Top = 158
+      Top = 153
       Width = 70
       Height = 17
       Caption = #25216#26415#25903#25345#65306
@@ -100,11 +100,11 @@ object AboutBox: TAboutBox
     end
     object Label2: TLabel
       Left = 171
-      Top = 159
-      Width = 186
+      Top = 154
+      Width = 177
       Height = 17
       Cursor = crHandPoint
-      Caption = 'http://xieyunc.delphibbs.com/'
+      Caption = 'http://blog.csdn.net/xieyunc'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -14
@@ -118,7 +118,7 @@ object AboutBox: TAboutBox
     end
     object Label3: TLabel
       Left = 94
-      Top = 127
+      Top = 122
       Width = 71
       Height = 17
       Hint = #26381#21153#22120#30340#26426#22120#30721
@@ -135,7 +135,7 @@ object AboutBox: TAboutBox
     end
     object SrvCode: TLabel
       Left = 171
-      Top = 127
+      Top = 122
       Width = 114
       Height = 17
       Caption = #23567#23431#39134#20992'(xieyunc)'
@@ -456,6 +456,37 @@ object AboutBox: TAboutBox
         01FF0000FFC0000003FF0000FFF000000FFF0000FFF800001FFF0000FFFE0000
         7FFF0000FFFFC003FFFF0000FFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFFFFFF
         FFFF0000}
+      IsControl = True
+    end
+    object lbl1: TLabel
+      Left = 94
+      Top = 186
+      Width = 70
+      Height = 17
+      Hint = #26381#21153#22120#30340#26426#22120#30721
+      Caption = #36719#20214#24320#21457#65306
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -14
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      IsControl = True
+    end
+    object lbl2: TLabel
+      Left = 171
+      Top = 186
+      Width = 108
+      Height = 17
+      Caption = #35874#31077#36873'('#23567#23431#39134#20992')'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -14
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       IsControl = True
     end
   end

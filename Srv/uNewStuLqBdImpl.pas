@@ -59,6 +59,7 @@ type
 
     function GetUserInfo:string;stdcall;//获取机主用户名称
     function GetMACInfo:string;stdcall;//获取机主MAC信息
+    function GetSrvMACAddress:string;stdcall;//获取服务器网卡MAC地址
     function GetUserCode:string;stdcall;//获取机主用户注册码
     function RegUserInfo(const UserName,UserCode:string):Boolean;stdcall;
     function RegIsOK:Boolean;stdcall;//系统是否注册
@@ -809,6 +810,15 @@ begin
   finally
     DM.DataSet_Temp.Active := False;
     dm.Free;
+  end;
+end;
+
+function TNewStuLqBd.GetSrvMACAddress: string;
+begin
+  try
+    Result := GetMacAddress;
+  except
+    Result := '';
   end;
 end;
 

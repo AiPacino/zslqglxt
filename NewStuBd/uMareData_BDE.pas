@@ -27,12 +27,12 @@ type
     mni_UnSelectAll: TMenuItem;
     mni_N1: TMenuItem;
     mni_Select2: TMenuItem;
+    Con_BDE: TDatabase;
+    qry_BDE: TQuery;
+    qry_Temp: TQuery;
     btn_Start: TBitBtn;
     cds_Temp: TClientDataSet;
-    qry_BDE: TADOQuery;
-    qry_Temp: TADOQuery;
-    qry_BDE_TDKS: TADOQuery;
-    Con_BDE: TADOConnection;
+    qry_BDE_TDKS: TQuery;
     procedure SpeedButton1Click(Sender: TObject);
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_OKClick(Sender: TObject);
@@ -118,7 +118,6 @@ begin
   else
     sPath := Path;
   fpath := sPath+'*.*';
-  //fpath := sPath+'NacuesCUniv.mdb';
 
   if findfirst(fpath,faAnyFile,fs)=0 then
   begin
@@ -152,7 +151,7 @@ begin
   i := sList.Count - 1;
   while i>=0 do
   begin
-    fn := sList[i]+'\NacuesCUniv.mdb'; //'\t_tdd.db';
+    fn := sList[i]+'\t_tdd.db';
     if not FileExists(fn) then
       sList.Delete(i);
     Dec(i);
@@ -213,9 +212,11 @@ function TMareData_BDE.Init_Con_BDE(const sDir: string):Boolean;
 begin
   Close_Con_BDE;
   Con_BDE.LoginPrompt := False;
-  Con_BDE.ConnectionString := 'Provider=Microsoft.Jet.OLEDB.4.0;'+
-                              'Data Source='+sDir+'\NacuesCUniv.mdb;Persist Security Info=False';
-  con_BDE.Connected := True;
+  Con_BDE.DatabaseName := 'MyBDE';
+  Con_BDE.DriverName := 'STANDARD';
+  Con_BDE.Params.Values['DEFAULT DRIVER'] := 'PARADOX';
+  Con_BDE.Params.Values['PATH'] := sDir;
+  con_BDE.Open;
   Result := Con_BDE.Connected;
 end;
 
@@ -224,8 +225,12 @@ var
   sPath: string;
   i: Integer;
 begin
-  sPath := GetKsDataPath;
-  Caption := '录取考生数据采集【'+sPath+'】';
+  sPath := GetSpecialFolderDir(CSIDL_PERSONAL);//我的文档目录
+  if SysUtils.Win32MajorVersion>=6 then //Windows 2003 以后的版本
+    sPath := sPath+'\.NacuesCStorage\'
+  else
+    sPath := 'C:\Program Files\NacuesC\';
+  Caption := 'BDE格式的录取考生数据采集【'+sPath+'】';
 
   gb_SfDirList.Clear;
   DM.GetSfDirList(gb_SfDirList);
@@ -555,13 +560,12 @@ var
 
 
     ksh := qry_BDE.FieldByName('考生号').AsString;
-    zydm := qry_BDE.FieldByName('录取代码').Value;
-    zydm := Trim(zydm);
+    zydm := qry_BDE.FieldByName('录取代码').AsString;
     //zymc := qry_BDE.FieldByName('录取专业').AsString; //如果采集了所有考生信息的话，使用这个是非常、极端错误的
     zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,zydm,xznx,sfsf);
-    kszt := Trim(qry_BDE.FieldByName('考生状态').AsString);
+    kszt := qry_BDE.FieldByName('考生状态').AsString;
     cj := qry_BDE.FieldByName('成绩').AsString;
-    tel := Trim(qry_BDE.FieldByName('联系电话').AsString);
+    tel := qry_BDE.FieldByName('联系电话').AsString;
 
     if (oldkszt='5') and (oldtel<>tel) and (not IsTelephone(oldtel)) then
     begin
@@ -653,30 +657,30 @@ var
     end;
 
     //=====================填充考生报考专业名称===============================
-    pcdm := cds_lqmd.FieldByName('批次代码').Value;
-    kldm := cds_lqmd.FieldByName('科类代码').Value;
-    jhxz := cds_lqmd.FieldByName('计划性质代码').Value;
-    tddw := cds_lqmd.FieldByName('投档单位代码').Value;
+    pcdm := cds_lqmd.FieldByName('批次代码').AsString;
+    kldm := cds_lqmd.FieldByName('科类代码').AsString;
+    jhxz := cds_lqmd.FieldByName('计划性质代码').AsString;
+    tddw := cds_lqmd.FieldByName('投档单位代码').AsString;
 
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业1').Value,xznx,sfsf);
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业1').AsString,xznx,sfsf);
     cds_lqmd.FieldByName('专业1名称').AsString := zymc;
     cds_lqmd.FieldByName('学制年限').AsString := xznx;
     //cds_lqmd.FieldByName('是否师范').AsString := sfsf;
 
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业2').Value,xznx,sfsf);
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业2').AsString,xznx,sfsf);
     cds_lqmd.FieldByName('专业2名称').AsString := zymc;
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业3').Value,xznx,sfsf);
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业3').AsString,xznx,sfsf);
     cds_lqmd.FieldByName('专业3名称').AsString := zymc;
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业4').Value,xznx,sfsf);
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业4').AsString,xznx,sfsf);
     cds_lqmd.FieldByName('专业4名称').AsString := zymc;
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业5').Value,xznx,sfsf);
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业5').AsString,xznx,sfsf);
     cds_lqmd.FieldByName('专业5名称').AsString := zymc;
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业6').Value,xznx,sfsf);
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业6').AsString,xznx,sfsf);
     cds_lqmd.FieldByName('专业6名称').AsString := zymc;
 
     if not cds_lqmd.FieldByName('录取代码').IsNull then
     begin
-      zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('录取代码').Value,xznx,sfsf);
+      zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('录取代码').AsString,xznx,sfsf);
       cds_lqmd.FieldByName('录取专业').Value := zymc;
       if zymc<>'' then
       begin
@@ -806,7 +810,7 @@ var
       begin
         UpdateProgressTitle('正在采集【'+vSf+'】数据...');
         tdd_dir := dirList.Strings[i];
-        fn := tdd_dir+'\NacuesCUniv.mdb'; //'\t_tdd.db';
+        fn := tdd_dir+'\t_tdd.db';
         if not FileExists(fn) then Continue;
         if not Init_Con_BDE(tdd_dir) then
         begin
@@ -828,7 +832,7 @@ var
           qry_BDE.Open;
 
           qry_BDE_TDKS.Close;
-          if FileExists(tdd_dir+'\NacuesCUniv.mdb') then
+          if FileExists(tdd_dir+'\t_tdks.db') then
           begin
             sqlstr := vobj.GetTdksSql(vSf,vXlcc);
             sqlstr := ReplaceStr(sqlstr,'『sf』',vSf);//替换SQL中的省份变量
@@ -1043,6 +1047,7 @@ end;
 
 procedure TMareData_BDE.Close_Con_BDE;
 begin
+  Con_BDE.CloseDataSets;
   Con_BDE.Close;
   Con_BDE.Connected := False;
 end;
@@ -1215,11 +1220,11 @@ begin
   try
     Result := '';
     sqlstr := 'select zymc,xznx,sfsf from t_jhk'+
-              ' where trim(pcdm)='+quotedstr(pcdm)+
-              ' and trim(kldm)='+quotedstr(kldm)+
-              ' and trim(jhxz)='+quotedstr(jhxz)+
-              ' and trim(tddw)='+quotedstr(tddw)+
-              ' and trim(zydh)='+quotedstr(zydm);
+              ' where pcdm='+quotedstr(pcdm)+
+              ' and kldm='+quotedstr(kldm)+
+              ' and jhxz='+quotedstr(jhxz)+
+              ' and tddw='+quotedstr(tddw)+
+              ' and zydh='+quotedstr(zydm);
     qry_Temp.Close;
     qry_Temp.SQL.Text := sqlstr;
     qry_Temp.Open;

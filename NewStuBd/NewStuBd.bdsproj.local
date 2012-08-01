@@ -1,2 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject/>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2012-08-01 09:20:10.846.pas,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE.pas=E:\xxx\zslqglxt\NewStuBd\uMareData.pas</Transaction>
+    <Transaction>2012-08-01 09:20:10.846.dfm,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE.dfm=E:\xxx\zslqglxt\NewStuBd\uMareData.dfm</Transaction>
+    <Transaction>2012-08-01 09:20:10.868.pas,E:\xxx\zslqglxt\NewStuBd\uMareData.pas=E:\xxx\zslqglxt\NewStuBd\uMareData_BDE.pas</Transaction>
+    <Transaction>2012-08-01 09:20:10.868.dfm,E:\xxx\zslqglxt\NewStuBd\uMareData.dfm=E:\xxx\zslqglxt\NewStuBd\uMareData_BDE.dfm</Transaction>
+    <Transaction>2012-08-01 09:20:37.904.pas,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE.pas=E:\xxx\zslqglxt\NewStuBd\uMareData.pas</Transaction>
+    <Transaction>2012-08-01 09:20:37.904.dfm,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE.dfm=E:\xxx\zslqglxt\NewStuBd\uMareData.dfm</Transaction>
+    <Transaction>2012-08-01 09:21:20.360.pas,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE_Photo.pas=E:\xxx\zslqglxt\NewStuBd\uMareData_Photo.pas</Transaction>
+    <Transaction>2012-08-01 09:21:20.361.dfm,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE_Photo.dfm=E:\xxx\zslqglxt\NewStuBd\uMareData_Photo.dfm</Transaction>
+    <Transaction>2012-08-01 09:36:41.022.pas,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE_Photo.pas=</Transaction>
+    <Transaction>2012-08-01 09:36:41.022.dfm,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE_Photo.dfm=</Transaction>
+  </Transactions>
+</BorlandProject>

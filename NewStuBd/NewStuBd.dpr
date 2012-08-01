@@ -64,8 +64,8 @@ uses
   uLqqkCount in 'uLqqkCount.pas' {LqqkCount},
   uLqqkBrowse in 'uLqqkBrowse.pas' {LqqkBrowse},
   uKsInfoBrowse_All in 'uKsInfoBrowse_All.pas' {KsInfoBrowse_All},
-  uMareData_BDE in 'uMareData_BDE.pas' {MareData_BDE},
-  uMareData_BDE_Photo in 'uMareData_BDE_Photo.pas' {MareData_BDE_Photo},
+  uMareData in 'uMareData.pas' {MareData},
+  uMareData_Photo in 'uMareData_Photo.pas' {MareData_Photo},
   uSQLWhere in 'uSQLWhere.pas' {SQLWhere},
   uExportToAccess in 'uExportToAccess.pas' {ExportToAccess},
   uTdKsInfoBrowse in 'uTdKsInfoBrowse.pas' {TdKsInfoBrowse},
@@ -81,7 +81,8 @@ uses
   uKsInfoBrowse_Work in 'uKsInfoBrowse_Work.pas' {KsInfoBrowse_Work},
   uSysRegister in '..\public\uSysRegister.pas' {SysRegister},
   uExportFieldListSet in 'uExportFieldListSet.pas' {ExportFieldListSet},
-  uKsLqtzsPrint in 'uKsLqtzsPrint.pas' {KsLqtzsPrint};
+  uKsLqtzsPrint in 'uKsLqtzsPrint.pas' {KsLqtzsPrint},
+  uMareData_BDE in 'uMareData_BDE.pas' {MareData_BDE};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

@@ -71,9 +71,9 @@ type
     lbl7: TLabel;
     edt_Sf: TDBComboBoxEh;
     edt_Lx: TDBComboBoxEh;
+    cds_DeltaField4: TStringField;
     procedure btn_ExitClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure btn_SaveItemClick(Sender: TObject);
     procedure btn_RightGroupClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -94,6 +94,7 @@ type
     procedure cds_DeltaBeforeClose(DataSet: TDataSet);
     procedure btn_RefreshClick(Sender: TObject);
     procedure ds_MasterDataChange(Sender: TObject; Field: TField);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     { Private declarations }
     aForm:TAdjustJhInput;
@@ -273,36 +274,6 @@ begin
 }
 end;
 
-procedure TZsjhAdjustEdit.btn_SaveItemClick(Sender: TObject);
-var
-  sPwd:string;
-begin
-  if MessageBox(Handle, '重置操作将会重建所有菜单项目并清除全部用户权限！　　' 
-    + #13#10 + '还要继续执行这一操作吗？', '系统提示', MB_YESNO +
-    MB_ICONWARNING + MB_DEFBUTTON2 + MB_TOPMOST) = IDNO then
-  begin
-    Exit;
-  end;
-
-  if InputQuery('密码验证','请输入认证密码:',sPwd) then
-  begin
-    if sPwd<>'xlinuxx' then
-    begin
-      Application.MessageBox('密码错误，请检查后重新输入！　　', '系统提示',
-        MB_OK + MB_ICONSTOP);
-      Exit;
-    end;
-  end else
-    Exit;
-  if InitMenuTable then
-  begin
-    Application.MessageBox('操作完成！系统菜单重置成功！　　', '系统提示',MB_OK + MB_ICONINFORMATION);
-    Self.OnCreate(Self);
-  end else
-    Application.MessageBox('系统菜单重置失败！请重新执行重置操作！　　', '系统提示',MB_OK + MB_ICONSTOP);
-
-end;
-
 procedure TZsjhAdjustEdit.cbb_XlccChange(Sender: TObject);
 begin
   Open_MasterTable;
@@ -361,6 +332,20 @@ end;
 procedure TZsjhAdjustEdit.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
+end;
+
+procedure TZsjhAdjustEdit.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  if DataSetNoSave(cds_Delta) then
+    if Application.MessageBox('数据已修改但尚未保存！要保存吗？', '系统提示',
+      MB_YESNO + MB_ICONWARNING) = IDNO then
+    begin
+      CanClose := True
+    end else
+    begin
+      CanClose := False;
+    end;
 end;
 
 procedure TZsjhAdjustEdit.FormCreate(Sender: TObject);
