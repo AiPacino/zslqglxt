@@ -2479,12 +2479,21 @@ begin
   end;
   
   sTemp := Trim(Zy1);
+  if Pos('(',sTemp)=1 then
+  begin
+    iLen := Pos(')',sTemp);
+    sTemp := Copy(sTemp,iLen+1,Length(sTemp))+Copy(sTemp,1,iLen-1)
+  end;
   sTemp := ReplaceStr(sTemp,'√¿ ı–£|','');
+  sTemp := ReplaceStr(sTemp,'°','');
+  sTemp := ReplaceStr(sTemp,'°Ò','');
+  sTemp := ReplaceStr(sTemp,'°Ú','');
   sTemp := ReplaceStr(sTemp,'(','£®');
   sTemp := ReplaceStr(sTemp,')','£©');
   iLen := Length(sTemp);
-  
+
   _Zy2 := Trim(zy2);
+
   if Length(_Zy2)<iLen then
     iLen := Length(_Zy2);
   if iLen>6 then iLen := 6;
