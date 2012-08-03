@@ -843,11 +843,12 @@ begin
     3:
     begin
       sTitle := '';
-      //sFldList := '*' ;
+      sFldList := '*' ;
     end;
   end;
   sFldList := vobj.GetExportFieldList(sTitle);
-
+  if sFldList='' then sFldList := '*';
+  
   sqlstr := 'select '+sFldList+' from 录取信息表 '+sWhereList.Text+' order by 流水号';
 
   cds_Export.XMLData := dm.OpenData(sqlstr);

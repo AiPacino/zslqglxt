@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
+	<Transactions>
     <Transaction>2012-08-01 09:20:10.846.pas,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE.pas=E:\xxx\zslqglxt\NewStuBd\uMareData.pas</Transaction>
     <Transaction>2012-08-01 09:20:10.846.dfm,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE.dfm=E:\xxx\zslqglxt\NewStuBd\uMareData.dfm</Transaction>
     <Transaction>2012-08-01 09:20:10.868.pas,E:\xxx\zslqglxt\NewStuBd\uMareData.pas=E:\xxx\zslqglxt\NewStuBd\uMareData_BDE.pas</Transaction>

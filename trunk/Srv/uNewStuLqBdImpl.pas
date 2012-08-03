@@ -577,6 +577,7 @@ begin
     try
       dm.DataSet_Temp.Active := True;
       Result := dm.DataSet_Temp.Fields[0].AsString;
+      if Result = '' then Result := '*';
     except
       Result := '*';
     end;
