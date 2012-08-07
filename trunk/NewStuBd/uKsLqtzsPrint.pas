@@ -227,7 +227,11 @@ begin
   Screen.Cursor := crHourGlass;
   DBGridEH1.SaveBookmark;
 
-  cds_Temp.XMLData := ClientDataSet1.XMLData;
+  //cds_Temp.XMLData := ClientDataSet1.XMLData;
+  if pim_AllowPrintNotEndKs.Checked then
+    cds_Temp.XMLData := dm.OpenData('select * from 已安排专业录取信息表 '+sWhereList.Text+' order by 流水号')
+  else
+    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 流水号');
   GetRepName;
   dm.PrintReport(fn,cds_Temp.XMLData,1,True);
 
@@ -237,7 +241,7 @@ begin
     while not ClientDataSet1.Eof do
     begin
       ksh := ClientDataSet1.FieldByName('考生号').AsString;
-      cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 where 考生号='+quotedstr(ksh));
+      cds_Temp.XMLData := dm.OpenData('select * from lqmd where 考生号='+quotedstr(ksh));
       GetRepName;
       dm.PrintReport(fn,cds_Temp.XMLData,1,False);
       ClientDataSet1.Next;
@@ -257,7 +261,10 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 学历层次,省份,类别,科类,录取专业规范名');
+    if pim_AllowPrintNotEndKs.Checked then
+      cds_Temp.XMLData := dm.OpenData('select * from 已安排专业录取信息表 '+sWhereList.Text+' order by 学历层次,省份,类别,科类,录取专业规范名')
+    else
+      cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 学历层次,省份,类别,科类,录取专业规范名');
     //Print_LQKSMD();
     dm.PrintReport('专业分类录取名单.fr3',cds_Temp.XMLData,1);
   finally
@@ -283,7 +290,11 @@ begin
 
   with TFormatZy.Create(Application) do
   begin
-    FillData(xlcc,sf,pc,kl,zy,ClientDataSet1,'录取信息表');
+    if pim_AllowPrintNotEndKs.Checked then
+      FillData(xlcc,sf,pc,kl,zy,ClientDataSet1,'已安排专业录取信息表')
+    else
+      FillData(xlcc,sf,pc,kl,zy,ClientDataSet1,'录取信息表');
+
     if ShowModal=mrOk then
     try
       DBGridEH1.SaveBookmark;
@@ -403,7 +414,7 @@ begin
   ClientDataSet1.DisableControls;
   try
     if pim_AllowPrintNotEndKs.Checked then
-      sqlStr := 'select * from lqmd '+sWhereList.Text+' and 考生状态<>'+quotedstr('3')+' order by 流水号'
+      sqlStr := 'select * from 已安排专业录取信息表 '+sWhereList.Text+' order by 流水号'
     else
       sqlStr := 'select * from 录取信息表 '+sWhereList.Text+' order by 流水号';
     ClientDataSet1.XMLData := dm.OpenData(sqlStr);
@@ -468,7 +479,10 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 流水号');
+    if pim_AllowPrintNotEndKs.Checked then
+      cds_Temp.XMLData := dm.OpenData('select * from 已安排专业录取信息表 '+sWhereList.Text+' order by 流水号')
+    else
+      cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 流水号');
     //Print_LQTZS(True);
     dm.PrintReport('EMS.fr3',cds_Temp.XMLData,1);
   finally
