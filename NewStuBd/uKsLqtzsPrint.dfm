@@ -1149,7 +1149,7 @@ object KsLqtzsPrint: TKsLqtzsPrint
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700980010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -1455,18 +1455,15 @@ object KsLqtzsPrint: TKsLqtzsPrint
     object mmi_AllowEdit: TMenuItem
       AutoCheck = True
       Caption = #21551#29992#25163#24037#32534#36753#21151#33021
-      Visible = False
       OnClick = mmi_AllowEditClick
     end
     object pm_Number: TMenuItem
       Caption = #32534#21046#25968#25454#35760#24405#27969#27700#21495
-      Visible = False
       OnClick = pm_NumberClick
     end
     object mmi_BH: TMenuItem
       Caption = #32534#21046#24405#21462#36890#30693#20070#21495
       ImageIndex = 2
-      Visible = False
       OnClick = mmi_BHClick
     end
     object mmi_FormatZymc: TMenuItem

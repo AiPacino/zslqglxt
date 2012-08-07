@@ -227,7 +227,8 @@ begin
   Screen.Cursor := crHourGlass;
   DBGridEH1.SaveBookmark;
 
-  cds_Temp.XMLData := ClientDataSet1.XMLData;
+  //cds_Temp.XMLData := ClientDataSet1.XMLData;
+  cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 流水号');
   GetRepName;
   dm.PrintReport(fn,cds_Temp.XMLData,1,True);
 
