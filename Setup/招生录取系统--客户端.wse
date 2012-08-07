@@ -766,6 +766,20 @@ end
 item: Include Script
   Pathname=%_WISE_%\INCLUDE\uninstal.wse
 end
+item: Install File
+  Source=c:\Windows\Fonts\Ώ¬Με_GB2312.ttf
+  Destination=%FONTS%\Ώ¬Με_GB2312.ttf
+  Flags=0000000010001010
+end
+item: Register Font
+  Filename=Ώ¬Με_GB2312.ttf
+  Font name=KaiTi_GB2312 (TrueType)
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\lqmd.mdb
+  Destination=%MAINDIR%\lqmd.mdb
+  Flags=0000000010000010
+end
 item: Create Directory
   Pathname=%MAINDIR%\Kszp
 end
@@ -777,7 +791,7 @@ end
 item: Install File
   Source=..\Exe\BkxxTemplate.dll
   Destination=%MAINDIR%\BkxxTemplate.dll
-  Flags=0000000010000010
+  Flags=0000000010001010
 end
 item: Install File
   Source=..\Exe\VFPODBC.msi

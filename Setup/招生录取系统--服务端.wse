@@ -1,7 +1,7 @@
 Document Type: WSE
 item: Global
   Version=9.02
-  Title=招生录取系统--服务端 安装
+  Title=高招录取管理系统--服务端 安装
   Title French= Installation
   Flags=00000100
   Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -89,7 +89,7 @@ item: Remark
 end
 item: Set Variable
   Variable=APPTITLE
-  Value=招生录取系统--服务端
+  Value=高招录取管理系统--服务端
   Flags=10000000
 end
 item: Remark
@@ -99,7 +99,7 @@ item: Remark
 end
 item: Set Variable
   Variable=GROUP
-  Value=招生录取系统
+  Value=高招录取管理系统
   Flags=10000000
 end
 item: Remark
@@ -1151,7 +1151,7 @@ item: Set Variable
 end
 item: Create Shortcut
   Source=%MAINDIR%\NewStuLqBdSetTools.exe
-  Destination=%CGROUPDIR%\%CGROUP_SAVE%\招生录取系统服务配置.lnk
+  Destination=%CGROUPDIR%\%CGROUP_SAVE%\高招录取管理系统服务配置.lnk
   Working Directory=%MAINDIR%
   Icon Number=0
   Flags=01000000
@@ -1160,7 +1160,7 @@ item: Else Statement
 end
 item: Add ProgMan Icon
   Group=%GROUP%
-  Icon Name=招生录取系统服务配置
+  Icon Name=高招录取管理系统服务配置
   Command Line=%MAINDIR%\NewStuLqBdSetTools.exe
   Default Directory=%MAINDIR%
 end
