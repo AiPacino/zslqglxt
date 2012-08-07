@@ -68,6 +68,7 @@ type
     pmi_CancelEnd: TMenuItem;
     pmi_Jwxt: TMenuItem;
     N2: TMenuItem;
+    pim_AllowPrintNotEndKs: TMenuItem;
     procedure RzGroup2Items0Click(Sender: TObject);
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
@@ -127,6 +128,7 @@ type
     procedure pm1Popup(Sender: TObject);
     procedure pmi_CancelEndClick(Sender: TObject);
     procedure pmi_JwxtClick(Sender: TObject);
+    procedure pim_AllowPrintNotEndKsClick(Sender: TObject);
   private
     { Private declarations }
     //FormatKL:TFormatKL;
@@ -400,7 +402,10 @@ begin
   Screen.Cursor := crHourGlass;
   ClientDataSet1.DisableControls;
   try
-    sqlStr := 'select * from 录取信息表 '+sWhereList.Text+' order by 流水号';
+    if pim_AllowPrintNotEndKs.Checked then
+      sqlStr := 'select * from lqmd '+sWhereList.Text+' and 考生状态<>'+quotedstr('3')+' order by 流水号'
+    else
+      sqlStr := 'select * from 录取信息表 '+sWhereList.Text+' order by 流水号';
     ClientDataSet1.XMLData := dm.OpenData(sqlStr);
   finally
     ClientDataSet1.EnableControls;
@@ -557,6 +562,14 @@ begin
   btn_Save.Visible := mmi_AllowEdit.Checked;
 end;
 
+procedure TKsLqtzsPrint.pim_AllowPrintNotEndKsClick(Sender: TObject);
+begin
+  if Self.Showing then
+    Open_Access_Table;
+  if Self.Showing then
+    DBGridEH1.SetFocus;
+end;
+
 procedure TKsLqtzsPrint.pm1Popup(Sender: TObject);
 begin
   //pmi_SetTd.Visible := gb_Czy_Level='-1';
@@ -704,7 +717,7 @@ procedure TKsLqtzsPrint.DBGridEH1DrawColumnCell(Sender: TObject; const Rect: TRe
   DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
 var
   zy1,zy2:string;
-  iLen:Integer;
+  iLen,iKszt:Integer;
 begin
   if (Column.FieldName='备注') then
   begin
@@ -713,6 +726,42 @@ begin
       Column.Font.Color := clWhite;
       TDBGridEh(Sender).Canvas.Brush.Color := clRed;
     end;
+  end;
+
+  if (Column.FieldName='考生状态') then
+  begin
+    if not ClientDataSet1.FieldByName('考生状态').IsNull then
+    begin
+      if ClientDataSet1.FieldByName('考生状态').AsString<>'' then
+        iKszt := ClientDataSet1.FieldByName('考生状态').AsInteger
+      else
+        iKszt := 0;
+    end else
+      iKszt := 0;
+    Case iKszt of
+      0: //专业未定
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := $008DB48D;
+        //Column.Field.Text := '专业未定';
+      end;
+      1: //已拟录专业
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := $008DB48D;
+        //
+      end;
+      2: //拟退档考生
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := $00FF80FF;
+      end;
+      3: //已退档考生
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := clRed;
+      end;
+      5: //录取专业已确定且已结束的考生
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := clOlive;
+      end;
+    End;
   end;
 
   if (Column.FieldName='录取专业规范名') then

@@ -944,6 +944,25 @@ object KsLqtzsPrint: TKsLqtzsPrint
       end
       item
         EditButtons = <>
+        FieldName = #32771#29983#29366#24577
+        Footers = <>
+        KeyList.Strings = (
+          '0'
+          '1'
+          '2'
+          '3'
+          '5')
+        PickList.Strings = (
+          #38405#26723#20013
+          #38405#26723#20013
+          #25311#36864#26723
+          #24050#36864#26723
+          #24050#24405#21462)
+        Title.TitleButton = True
+        Width = 54
+      end
+      item
+        EditButtons = <>
         FieldName = #25910#20214#20154
         Footers = <>
         ReadOnly = False
@@ -965,13 +984,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
         ReadOnly = False
         Title.TitleButton = True
         Width = 147
-      end
-      item
-        EditButtons = <>
-        FieldName = #32771#29983#29366#24577
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
       end
       item
         EditButtons = <>
@@ -1137,7 +1149,7 @@ object KsLqtzsPrint: TKsLqtzsPrint
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700900010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -1459,7 +1471,6 @@ object KsLqtzsPrint: TKsLqtzsPrint
     end
     object mmi_FormatZymc: TMenuItem
       Caption = #26684#24335#21270#19987#19994#35268#33539#21517
-      Visible = False
       OnClick = mmi_FormatZymcClick
     end
     object pmi_CancelEnd: TMenuItem
@@ -1471,6 +1482,12 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Caption = #20026#24403#21069#32771#29983#20316#36864#26723#22788#29702
       Visible = False
       OnClick = pmi_SetTdClick
+    end
+    object pim_AllowPrintNotEndKs: TMenuItem
+      AutoCheck = True
+      Caption = #20801#35768#25171#21360#38405#26723#32771#29983
+      Hint = #35774#32622#26159#21542#20801#35768#25171#21360#24405#21462#29366#24577#20026#8220#38405#26723#20013#8221#30340#32771#29983
+      OnClick = pim_AllowPrintNotEndKsClick
     end
     object MenuItem1: TMenuItem
       Caption = '-'

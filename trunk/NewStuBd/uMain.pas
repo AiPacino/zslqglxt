@@ -911,8 +911,8 @@ procedure TMain.FormCreate(Sender: TObject);
 begin
   Self.Top := 0;
   Self.Left := 0;
-  //Self.Width := Screen.Width;
-  //Self.Height := Screen.Height;
+  Self.Width := Screen.Width;
+  Self.Height := Screen.Height;
 end;
 
 procedure TMain.FormDestroy(Sender: TObject);
@@ -936,7 +936,7 @@ begin
   end;
   if WorkHint<>nil then
   begin
-    WorkHint.Left := Self.ClientWidth-WorkHint.Width-6;
+    WorkHint.Left := Self.ClientWidth-WorkHint.Width-10;
     WorkHint.Top := Self.ClientHeight-WorkHint.Height-55
   end;
   img_Show.Left := Trunc((Self.Width-img_Show.Width)/2);
