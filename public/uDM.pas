@@ -925,10 +925,11 @@ var
   sPath,photo_fn:String;
   sKsh,sUrl,sqlstr:string;
 begin
-  if VarName='photo_fn' then
+  //if VarName='photo_fn' then
+  if VarName='Picture1' then
   begin
     sPath := ExtractFilePath(ParamStr(0))+'kszp\';
-    Value := sPath;
+    //Value := sPath;
 
     Photo_fn := '';
     if (cds_Master.FieldList.IndexOf('ÕÕÆ¬ÎÄ¼þ')<>-1) then
