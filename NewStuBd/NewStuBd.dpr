@@ -82,7 +82,8 @@ uses
   uSysRegister in '..\public\uSysRegister.pas' {SysRegister},
   uExportFieldListSet in 'uExportFieldListSet.pas' {ExportFieldListSet},
   uKsLqtzsPrint in 'uKsLqtzsPrint.pas' {KsLqtzsPrint},
-  uMareData_BDE in 'uMareData_BDE.pas' {MareData_BDE};
+  uMareData_BDE in 'uMareData_BDE.pas' {MareData_BDE},
+  uStuInfo_Baodao in 'uStuInfo_Baodao.pas' {StuInfo_Baodao};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

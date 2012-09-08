@@ -835,8 +835,8 @@ object NewStuList: TNewStuList
       ParentFont = False
     end
     object chk1: TCheckBox
-      Left = 872
-      Top = -6
+      Left = 868
+      Top = -10
       Width = 91
       Height = 17
       Hint = #27599#38548'10'#31186#20809#26631#33258#21160#23450#20301#33267#26597#35810#26694
@@ -1101,12 +1101,27 @@ object NewStuList: TNewStuList
       ShortCut = 121
       OnClick = mi_DisplayNewStuInfoClick
     end
+    object L1: TMenuItem
+      Action = DM.act_Locate
+    end
     object mi_Refresh: TMenuItem
       Caption = #21047#26032
       ShortCut = 116
       OnClick = mi_RefreshClick
     end
     object N5: TMenuItem
+      Caption = '-'
+    end
+    object C1: TMenuItem
+      Action = DM.EditCopy1
+    end
+    object T1: TMenuItem
+      Action = DM.EditCut1
+    end
+    object P1: TMenuItem
+      Action = DM.EditPaste1
+    end
+    object N1: TMenuItem
       Caption = '-'
     end
     object mi_BaoDao: TMenuItem

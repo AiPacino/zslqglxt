@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, GridsEh, DBGridEh, ExtCtrls,
+  Dialogs, StdCtrls, GridsEh, DBGridEh, ExtCtrls, uStuInfo_Baodao, 
   Mask, DBCtrlsEh, Buttons, DB, ADODB, Menus,DBGridEhImpExp, DBClient, pngimage,
   frxClass, frxDBSet,uStuInfo, frxpngimage, DBGridEhGrouping;
 
@@ -60,6 +60,11 @@ type
     cbb_XlCc: TDBComboBoxEh;
     Timer1: TTimer;
     chk1: TCheckBox;
+    N1: TMenuItem;
+    C1: TMenuItem;
+    T1: TMenuItem;
+    P1: TMenuItem;
+    L1: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure dxgrd_1DrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -100,7 +105,7 @@ type
     procedure GetYxList;
     function GetWhere:string;
     procedure Open_Table;
-    procedure SetBDState(const sState:string);
+    procedure SetBDState(const sState:string;const bShowConfirmBox:Boolean=True);
     procedure SetCountState;
 
   public
@@ -155,7 +160,7 @@ end;
 
 procedure TNewStuList.btn_BaoDaoClick(Sender: TObject);
 begin
-  SetBDState('已报到');
+  SetBDState('已报到',False);
 end;
 
 procedure TNewStuList.btn_ExcelClick(Sender: TObject);
@@ -203,7 +208,10 @@ end;
 procedure TNewStuList.btn_SearchClick(Sender: TObject);
 var
   sField:string;
+  //aForm:TStuInfo_Baodao;
 begin
+  //aForm := TStuInfo_Baodao.Create(nil);
+  //aForm.DataSource1.DataSet := ClientDataSet1;
   try
     sField := cbb_Field.KeyItems[cbb_Field.ItemIndex];
     if not ClientDataSet1.Locate(sField,edt_Value.Text,[]) then
@@ -214,10 +222,13 @@ begin
     end
     else
     begin
-      StuInfo.Show;
-      if btn_BaoDao.CanFocus then  btn_BaoDao.Click;
+      //StuInfo.Show;
+      //if aForm.ShowModal=mrYes then
+        if btn_BaoDao.CanFocus then
+          btn_BaoDao.Click;
     end;
   finally
+    //aForm.Free;
     StuInfo.Close;
     Self.SetFocus;
     if sField='通知书编号' then
@@ -562,10 +573,11 @@ begin
     Open_Table;
 end;
 
-procedure TNewStuList.SetBDState(const sState: string);
+procedure TNewStuList.SetBDState(const sState: string;const bShowConfirmBox:Boolean=True);
 var
   ksh,xm,bz,xh,bj:string;
   sMsg:string;
+  aForm:TStuInfo_Baodao;
 begin
   try
     gb_CanBd_BK := vobj.CanBaoDao('本科',sMsg);
@@ -586,10 +598,28 @@ begin
     xh := ClientDataSet1.FieldByName('学号').AsString;
     bj := ClientDataSet1.FieldByName('班级').AsString;
 
-    if MessageBox(Handle, PChar('真的要把：'+xm+'（'+ksh+'）设置为【'+sState+'】吗？　'), '系统提示', MB_YESNO +
-      MB_ICONQUESTION + MB_TOPMOST) = IDNO then
+    if bShowConfirmBox then
     begin
-      Exit;
+      if MessageBox(Handle, PChar('真的要把：'+xm+'（'+ksh+'）设置为【'+sState+'】吗？　'), '系统提示', MB_YESNO +
+        MB_ICONQUESTION + MB_TOPMOST) = IDNO then
+      begin
+        Exit;
+      end;
+    end;
+    if sState='已报到' then
+    begin
+      aForm := TStuInfo_Baodao.Create(nil);
+      aForm.DataSource1.DataSet := ClientDataSet1;
+      try
+        if aForm.ShowModal<>mrYes then
+        begin
+          MessageBox(Handle, '操作取消！该生本次未进行报到处理！　', '系统提示', 
+            MB_OK + MB_ICONSTOP + MB_TOPMOST);
+          Exit;
+        end;
+      finally
+        aForm.Free;
+      end;
     end;
 
     bz := '';
@@ -614,8 +644,7 @@ begin
         sMsg := sMsg+'学号：'+xh+#13;
       if bj<>'' then
         sMsg := sMsg+'班级：'+bj+#13;
-      MessageBox(Handle, PChar(sMsg), '系统提示', MB_OK +
-        MB_ICONINFORMATION + MB_TOPMOST);
+      MessageBox(Handle, PChar(sMsg), '系统提示', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
     end;
   finally
     edt_Value.SetFocus;
