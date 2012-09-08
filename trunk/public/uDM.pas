@@ -2435,10 +2435,11 @@ begin
     begin
       aDBGrid.Columns[i].Width := 100;
       aDBGrid.Columns[i].DisplayFormat := ',0.00%';
-      //aDBGrid.Columns[i].Footer.ValueType := fvtStaticText;// fvtAvg;
+{
       aDBGrid.Columns[i].Footer.FieldName := aDBGrid.Columns[i].FieldName;
       aDBGrid.Columns[i].Footer.ValueType := fvtAvg;
       aDBGrid.Columns[i].Footer.DisplayFormat := 'Æ½¾ù£º,0.00%';
+}
     end else if Pos('Êý',aDBGrid.Columns[i].FieldName)>0 then
     begin
       aDBGrid.Columns[i].Width := 70;

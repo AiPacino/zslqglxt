@@ -26,7 +26,7 @@ implementation
 
 procedure TNoBaoDaoBz.Memo1Change(Sender: TObject);
 begin
-  btn_OK.Enabled := Trim(Memo1.Text)<>'';
+  btn_OK.Enabled := (Trim(Memo1.Text)<>'') and (Trim(Memo1.Text)<>'请输入未报到原因！');
 end;
 
 procedure TNoBaoDaoBz.RadioGroup1Click(Sender: TObject);
@@ -36,6 +36,7 @@ begin
   ii := RadioGroup1.ItemIndex;
   btn_OK.Enabled := ii<>-1;
   Memo1.Enabled := ii = 3;
+  if ii=-1 then Exit;
   if ii<>3 then
     Memo1.Text := RadioGroup1.Items[ii]
   else

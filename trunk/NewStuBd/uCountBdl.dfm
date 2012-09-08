@@ -2,8 +2,8 @@ object CountBdl: TCountBdl
   Left = 0
   Top = 0
   Caption = #26032#29983#25253#21040#29575#32479#35745
-  ClientHeight = 512
-  ClientWidth = 764
+  ClientHeight = 557
+  ClientWidth = 889
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,17 +22,19 @@ object CountBdl: TCountBdl
   TextHeight = 14
   object Panel2: TPanel
     Left = 0
-    Top = 471
-    Width = 764
+    Top = 516
+    Width = 889
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitTop = 471
+    ExplicitWidth = 764
     DesignSize = (
-      764
+      889
       41)
     object btn_Exit: TBitBtn
-      Left = 674
+      Left = 799
       Top = 9
       Width = 75
       Height = 25
@@ -40,9 +42,10 @@ object CountBdl: TCountBdl
       Caption = #20851#38381'[&C]'
       TabOrder = 4
       OnClick = btn_ExitClick
+      ExplicitLeft = 674
     end
     object btn_Excel: TBitBtn
-      Left = 540
+      Left = 665
       Top = 9
       Width = 80
       Height = 25
@@ -50,6 +53,7 @@ object CountBdl: TCountBdl
       Caption = #23548#20986'Excel'
       TabOrder = 3
       OnClick = btn_ExcelClick
+      ExplicitLeft = 540
     end
     object btn_Refresh: TBitBtn
       Left = 10
@@ -83,7 +87,7 @@ object CountBdl: TCountBdl
     Left = 0
     Top = 0
     Width = 227
-    Height = 471
+    Height = 516
     Align = alLeft
     Caption = #32479#35745#39033#30446#65306
     GroupStyle = gsStandard
@@ -96,20 +100,23 @@ object CountBdl: TCountBdl
       #25353#25991#29702#33402#26415#32479#35745)
     TabOrder = 1
     OnClick = RzRadioGroup1Click
+    ExplicitHeight = 471
   end
   object GroupBox1: TGroupBox
     Left = 227
     Top = 0
-    Width = 537
-    Height = 471
+    Width = 662
+    Height = 516
     Align = alClient
     Caption = #32479#35745#32467#26524#65306
     TabOrder = 2
+    ExplicitWidth = 537
+    ExplicitHeight = 471
     object DBGridEH1: TDBGridEh
       Left = 2
       Top = 16
-      Width = 533
-      Height = 453
+      Width = 658
+      Height = 498
       Align = alClient
       DataGrouping.GroupLevels = <>
       DataSource = DataSource1
