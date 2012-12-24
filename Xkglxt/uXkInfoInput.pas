@@ -4,8 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,
-  ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBGridEhGrouping;
+  Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,uXkInfoEdit,
+  ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBGridEhGrouping,
+  dxGDIPlusClasses;
 
 type
   TXkInfoInput = class(TForm)
@@ -43,12 +44,14 @@ type
     procedure btn_DelClick(Sender: TObject);
   private
     { Private declarations }
+    aForm:TXkInfoEdit;
     function  GetWhere:string;
     procedure Open_Table;
     procedure Open_DeltaTable;
     procedure GetSfList;
     procedure GetXkZyList;
     procedure GetYxList;
+    procedure ShowEditForm(const IsAdd:Boolean);
   public
     { Public declarations }
   end;
@@ -62,8 +65,7 @@ uses uDM,uXkDataImport;
 
 procedure TXkInfoInput.btn_AddClick(Sender: TObject);
 begin
-  ClientDataSet2.Append;
-  DBGridEh2.SetFocus;
+  ShowEditForm(True);
 end;
 
 procedure TXkInfoInput.btn_CancelClick(Sender: TObject);
@@ -222,6 +224,39 @@ var
 begin
   sqlstr := 'select * from 校考考点设置表 '+GetWhere+' order by 省份,考点名称';
   ClientDataSet1.XMLData := DM.OpenData(sqlstr);
+end;
+
+procedure TXkInfoInput.ShowEditForm(const IsAdd: Boolean);
+var
+  bm:TBookmark;
+  yx,sf,kdmc:string;
+begin
+  yx := cbb_Yx.Text;
+  sf := ClientDataSet1.FieldByName('省份').AsString;
+  kdmc := ClientDataSet1.FieldByName('考点名称').AsString;
+  if IsAdd then
+  begin
+    aForm.SetYxSfKdValue(fYx,fSf,fKm,fCjIndex,fPw);
+    ClientDataSet1.Last;
+    aForm.edt_Value.Text := '';
+  end else
+  begin
+    fSf := ClientDataSet1.FieldByName('省份').AsString;
+    fPw := ClientDataSet1.FieldByName('评委').AsString;
+    aForm.SetYxSfKmValue(fYx,fSf,fKm,fCjIndex,fPw);
+    aForm.edt_Value.Text := ClientDataSet1.FieldByName('考生号').AsString;
+  end;
+
+  aForm.ShowModal;
+
+  //if DataSetNoSave(ClientDataSet1) then
+  //  UpLoadCj;
+  bm := ClientDataSet1.GetBookmark;
+  try
+    Open_Table;
+  finally
+    ClientDataSet1.GotoBookmark(bm);
+  end;
 end;
 
 end.
