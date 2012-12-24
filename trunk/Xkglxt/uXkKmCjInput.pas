@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,
   ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBFieldComboBox,
-  DBGridEhGrouping,uXkKmCjEdit, Menus;
+  DBGridEhGrouping,uXkKmCjEdit, Menus, dxGDIPlusClasses;
 
 type
   TXkKmCjInput = class(TForm)
@@ -22,11 +22,11 @@ type
     btn_Refresh: TBitBtn;
     rg_UpLoad: TRadioGroup;
     pm1: TPopupMenu;
-    L1: TMenuItem;
+    mniLocate: TMenuItem;
     C1: TMenuItem;
     T1: TMenuItem;
     P1: TMenuItem;
-    E1: TMenuItem;
+    mniDataExport: TMenuItem;
     N1: TMenuItem;
     N2: TMenuItem;
     N3: TMenuItem;

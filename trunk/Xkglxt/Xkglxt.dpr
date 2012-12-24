@@ -54,7 +54,8 @@ uses
   uXkZyCjMerge in 'uXkZyCjMerge.pas' {XkZyCjMerge},
   uZySelect in '..\NewStuBd\uZySelect.pas' {ZySelect},
   uLogin in '..\NewStuBd\uLogin.pas' {Login},
-  uIniFile in '..\NewStuBd\uIniFile.pas';
+  uIniFile in '..\NewStuBd\uIniFile.pas',
+  uXkInfoEdit in 'uXkInfoEdit.pas' {XkInfoEdit};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};
