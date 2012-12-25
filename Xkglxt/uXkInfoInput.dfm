@@ -17,6 +17,7 @@ object XkInfoInput: TXkInfoInput
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 14
   object Splitter1: TSplitter

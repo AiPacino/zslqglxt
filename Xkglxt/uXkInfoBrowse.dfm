@@ -857,6 +857,13 @@ object XkInfoBrowse: TXkInfoBrowse
       end
       item
         EditButtons = <>
+        FieldName = #26657#32771#32534#21495
+        Footers = <>
+        Title.TitleButton = True
+        Width = 81
+      end
+      item
+        EditButtons = <>
         FieldName = #25253#32771#26102#38388
         Footers = <>
         Title.TitleButton = True

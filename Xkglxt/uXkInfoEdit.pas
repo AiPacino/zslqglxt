@@ -12,7 +12,6 @@ type
   TXkInfoEdit = class(TForm)
     Panel2: TPanel;
     btn_Exit: TBitBtn;
-    DataSource1: TDataSource;
     GroupBox1: TGroupBox;
     Label1: TLabel;
     edt_Ksh: TDBEditEh;
@@ -26,7 +25,7 @@ type
     edt_Zkzh: TDBEditEh;
     lbl2: TLabel;
     lbl3: TLabel;
-    edt_zy: TDBEditEh;
+    edt_zy: TDBComboBoxEh;
     lbl4: TLabel;
     DBEditEh3: TDBEditEh;
     lbl5: TLabel;
@@ -39,7 +38,6 @@ type
     lbl_Len: TLabel;
     edt_Length: TDBNumberEditEh;
     procedure btn_ExitClick(Sender: TObject);
-    procedure btn_CancelClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btn_SaveClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -58,11 +56,6 @@ uses uDM,uXkInfoInput,IniFiles;
 {$R *.dfm}
 
 
-procedure TXkInfoEdit.btn_CancelClick(Sender: TObject);
-begin
-  DataSource1.DataSet.Cancel;
-end;
-
 procedure TXkInfoEdit.btn_ExitClick(Sender: TObject);
 begin
   Close;
@@ -77,10 +70,13 @@ begin
     Application.MessageBox('准考证号、姓名和报考专业不能为空！　', '系统提示', MB_OK + MB_ICONSTOP);
     Exit;
   end;
-  cds_Temp := TClientDataSet(DataSource1.DataSet);
+  cds_Temp := TClientDataSet(edt_Zkzh.DataSource.DataSet);
   if IsModified(cds_Temp) then
     if dm.UpdateData('id','select top 0 * from 校考考生报考专业表 ',cds_Temp.Delta) then
+    begin
       cds_Temp.MergeChangeLog;
+      Self.Close;
+    end;
 end;
 
 procedure TXkInfoEdit.edt_ZkzhChange(Sender: TObject);
@@ -90,6 +86,7 @@ end;
 
 procedure TXkInfoEdit.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  edt_Zkzh.DataSource.DataSet.Cancel;
   SaveInfoToIni;
 end;
 
@@ -97,6 +94,10 @@ procedure TXkInfoEdit.FormShow(Sender: TObject);
 begin
   if (edt_Zkzh.Text='') then
     LoadInfoFromIni;
+  if edt_Zkzh.Enabled then
+    edt_Zkzh.SetFocus
+  else
+    edt_Ksh.SetFocus;
 end;
 
 procedure TXkInfoEdit.LoadInfoFromIni;
@@ -137,15 +138,16 @@ var
   vzkzh:string;
 begin
   if IsAdd then
+  begin
+    edt_Zkzh.DataSource.DataSet.Append;
     vzkzh := ''
-  else
+  end else
+  begin
+    edt_Zkzh.DataSource.DataSet.Edit;
     vzkzh := Zkzh;
+  end;
   edt_Zkzh.Text := vzkzh;
   edt_Zkzh.Enabled := IsAdd;
-  if IsAdd then
-    edt_Zkzh.SetFocus
-  else
-    edt_Ksh.SetFocus;
 end;
 
 end.
