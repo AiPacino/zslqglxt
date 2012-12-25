@@ -26,10 +26,9 @@ type
     ClientDataSet2: TClientDataSet;
     DBGridEh2: TDBGridEh;
     Splitter1: TSplitter;
-    btn_Save: TBitBtn;
     btn_Add: TBitBtn;
     btn_Del: TBitBtn;
-    btn_Cancel: TBitBtn;
+    btn_Edit: TBitBtn;
     procedure btn_SaveClick(Sender: TObject);
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
@@ -42,6 +41,7 @@ type
     procedure btn_ImportClick(Sender: TObject);
     procedure ClientDataSet2NewRecord(DataSet: TDataSet);
     procedure btn_DelClick(Sender: TObject);
+    procedure btn_EditClick(Sender: TObject);
   private
     { Private declarations }
     aForm:TXkInfoEdit;
@@ -81,6 +81,12 @@ begin
     Exit;
   end;
   ClientDataSet2.Delete;
+  btn_SaveClick(Self);
+end;
+
+procedure TXkInfoInput.btn_EditClick(Sender: TObject);
+begin
+  ShowEditForm(False);
 end;
 
 procedure TXkInfoInput.btn_ExitClick(Sender: TObject);
@@ -109,7 +115,6 @@ end;
 
 procedure TXkInfoInput.btn_RefreshClick(Sender: TObject);
 begin
-  btn_Save.Click;
   Open_Table;
 end;
 
@@ -139,7 +144,6 @@ end;
 
 procedure TXkInfoInput.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  btn_Save.Click;
   Action := caFree;
 end;
 
@@ -229,23 +233,13 @@ end;
 procedure TXkInfoInput.ShowEditForm(const IsAdd: Boolean);
 var
   bm:TBookmark;
-  yx,sf,kdmc:string;
+  yx,sf,kdmc,zkzh:string;
 begin
   yx := cbb_Yx.Text;
   sf := ClientDataSet1.FieldByName('省份').AsString;
   kdmc := ClientDataSet1.FieldByName('考点名称').AsString;
-  if IsAdd then
-  begin
-    aForm.SetYxSfKdValue(fYx,fSf,fKm,fCjIndex,fPw);
-    ClientDataSet1.Last;
-    aForm.edt_Value.Text := '';
-  end else
-  begin
-    fSf := ClientDataSet1.FieldByName('省份').AsString;
-    fPw := ClientDataSet1.FieldByName('评委').AsString;
-    aForm.SetYxSfKmValue(fYx,fSf,fKm,fCjIndex,fPw);
-    aForm.edt_Value.Text := ClientDataSet1.FieldByName('考生号').AsString;
-  end;
+  zkzh := ClientDataSet1.FieldByName('准考证号').AsString;
+  aForm.SetParam(zkzh,IsAdd);
 
   aForm.ShowModal;
 

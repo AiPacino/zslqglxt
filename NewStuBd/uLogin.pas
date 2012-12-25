@@ -166,7 +166,7 @@ procedure TLogin.GetUserList;
 var
   fn,str:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     str := ReadString('LoginSet','UserList','');
@@ -181,7 +181,7 @@ procedure TLogin.SaveUserList;
 var
   fn,str:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   try
     if Edit1.Items.IndexOf(Edit1.Text)=-1 then
