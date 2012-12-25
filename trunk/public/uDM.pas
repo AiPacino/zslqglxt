@@ -171,7 +171,7 @@ type
 
 //{$DEFINE WAD_DEBUG}
 const
-  GbConnSrvFileName = 'ConnNewStuLqBdSrvSet.ini';
+  gb_UserSetFileName = 'UserSet.ini';
 {$IFNDEF WAD_DEBUG}
   SOAP_NAME   = 'NewStuLqBdSrv.DLL/soap';
 {$ELSE}
@@ -988,7 +988,7 @@ function GetAutoUpdateInfo: string;
 var
   fn,url:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -1016,7 +1016,7 @@ var
 begin
   cjstr := 'Cj'+IntToStr(Cj_No)+'_Pre';
 
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -1049,7 +1049,7 @@ function TDM.GetConnInfo:string;
 var
   fn,url:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -1225,7 +1225,7 @@ function TDM.GetKpyName: string;
 var
   fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -1354,7 +1354,7 @@ function TDM.GetPrintBH: string;
 var
   fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -1428,7 +1428,7 @@ function TDM.GetSkyName: string;
 var
   fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -1790,7 +1790,7 @@ var
 begin
   cjstr := 'Cj'+IntToStr(Cj_No)+'_Pre';
 
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -1806,7 +1806,7 @@ procedure TDM.SetConnInfo(const sUrl:string);
 var
   fn,url,sTemp:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   url := sUrl;
 
   if LowerCase(Copy(url,1,7))<>'http://' then
@@ -1879,7 +1879,7 @@ function TDM.SetKpyName(const sName: string): Boolean;
 var
   fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -1928,7 +1928,7 @@ function TDM.SetPrintBH(const Number: string): Boolean;
 var
   fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -1960,7 +1960,7 @@ function TDM.SetSkyName(const sName: string): Boolean;
 var
   fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   with TIniFile.Create(fn) do
   begin
     try
@@ -2566,3 +2566,4 @@ finalization
   gb_SfDirList.Free;
 
 end.
+

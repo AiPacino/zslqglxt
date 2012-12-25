@@ -278,7 +278,7 @@ var
   fn,str:string;
   iLen:Integer;
 begin
-  fn := ExtractFilePath(ParamStr(0))+MyIniFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   if not FileExists(fn) then Exit;
   with TIniFile.Create(fn) do
   begin
@@ -304,7 +304,7 @@ procedure TXkKmCjEdit.SaveInfoToIni;
 var
   fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+MyIniFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   if not FileExists(fn) then Exit;
   with TIniFile.Create(fn) do
   begin
@@ -329,3 +329,4 @@ begin
 end;
 
 end.
+

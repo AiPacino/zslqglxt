@@ -97,7 +97,7 @@ procedure TServiceSet.btn_IniClick(Sender: TObject);
 var
   fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+GbConnSrvFileName;
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
   dm.SetConnInfo(sSrvUrl); //存储服务器配置信息
   if MessageBox(Handle, '客户端文件已生成！要查看配置文件内容吗？　　',
     '系统提示', MB_YESNO + MB_ICONINFORMATION + MB_TOPMOST) = IDYES  then
