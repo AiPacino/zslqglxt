@@ -173,6 +173,8 @@ type
     dxbrsbtm1: TdxBarSubItem;
     dxbrsbtm2: TdxBarSubItem;
     dxbrsbtm3: TdxBarSubItem;
+    act_XkData_KsBHEdit: TAction;
+    dxBarButton74: TdxBarButton;
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
     procedure mmi_PrnLQTZSClick(Sender: TObject);
@@ -230,6 +232,7 @@ type
     procedure act_XkCj_CountCjInfoExecute(Sender: TObject);
     procedure act_XkCj_SjCjMergeExecute(Sender: TObject);
     procedure act_XkSet_PwRsSetExecute(Sender: TObject);
+    procedure act_XkData_KsBHEditExecute(Sender: TObject);
   private
     { Private declarations }
     IsShowHint:Boolean;
@@ -262,7 +265,7 @@ uses uDM,Net,DBGridEhImpExp,uCzyEdit,uABOUT,uChangeCzyPwd,uXkCjInfoCount,
      uXkZySet,uXkKmSet,uXkZyKmSet,uXkKdSet,uXkKdBrowse,uXkKmCjUpload,uXkKmSjCjMerge,
      uXkKdSetConfirm,uXkZyCjBrowse,uXkInfoImport,uXkKmCjInput,uXkKmPwRsSet,
      uXkDataInit,uXkInfoBrowse,uXkCjInputSet,uXkZsjhSet,uXkKmCjEdit,
-     uXkInfoCount,uXkKmCjBrowse,uXkKmErrorCjInput,uXkKmCjCheck;
+     uXkInfoCount,uXkKmCjBrowse,uXkKmErrorCjInput,uXkKmCjCheck,uXkBmEdit;
 
 {$R *.dfm}
 
@@ -544,6 +547,11 @@ end;
 procedure TMain.act_XkData_InitExecute(Sender: TObject);
 begin
   TXkDataInit.Create(nil).ShowModal;
+end;
+
+procedure TMain.act_XkData_KsBHEditExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TXkBmEdit);
 end;
 
 procedure TMain.act_XkData_TjfxExecute(Sender: TObject);

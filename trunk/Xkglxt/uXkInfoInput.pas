@@ -42,6 +42,7 @@ type
     procedure ClientDataSet2NewRecord(DataSet: TDataSet);
     procedure btn_DelClick(Sender: TObject);
     procedure btn_EditClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
     aForm:TXkInfoEdit;
@@ -149,8 +150,14 @@ end;
 
 procedure TXkInfoInput.FormCreate(Sender: TObject);
 begin
+  aForm := TXkInfoEdit.Create(Self);
   GetYxList;
   Open_Table;
+end;
+
+procedure TXkInfoInput.FormDestroy(Sender: TObject);
+begin
+  aForm.Free;
 end;
 
 procedure TXkInfoInput.GetSfList;
@@ -176,14 +183,14 @@ begin
   cds_Temp := TClientDataSet.Create(nil);
   sList := TStringList.Create;
   try
-    cds_Temp.XMLData := dm.OpenData('select 考试科目 from 校考科目表 '+GetWhere);
-    DBGridEh1.Columns[3].PickList.Clear;
+    cds_Temp.XMLData := dm.OpenData('select 专业 from 校考专业表 where 承考院系='+quotedstr(cbb_Yx.Text)+' order by id');
+    aForm.edt_zy.Items.Clear;
     while not cds_Temp.Eof do
     begin
-      sList.Add(cds_Temp.FieldByName('考试科目').AsString);
+      sList.Add(cds_Temp.Fields[0].AsString);
       cds_Temp.Next;
     end;
-    DBGridEh1.Columns[3].PickList.AddStrings(sList);
+    aForm.edt_zy.Items.AddStrings(sList);
   finally
     sList.Free;
     cds_Temp.Free;
@@ -232,25 +239,17 @@ end;
 
 procedure TXkInfoInput.ShowEditForm(const IsAdd: Boolean);
 var
-  bm:TBookmark;
   yx,sf,kdmc,zkzh:string;
 begin
   yx := cbb_Yx.Text;
-  sf := ClientDataSet1.FieldByName('省份').AsString;
-  kdmc := ClientDataSet1.FieldByName('考点名称').AsString;
-  zkzh := ClientDataSet1.FieldByName('准考证号').AsString;
+  sf := ClientDataSet2.FieldByName('省份').AsString;
+  kdmc := ClientDataSet2.FieldByName('考点名称').AsString;
+  zkzh := ClientDataSet2.FieldByName('准考证号').AsString;
+  GetXkZyList;
   aForm.SetParam(zkzh,IsAdd);
 
   aForm.ShowModal;
 
-  //if DataSetNoSave(ClientDataSet1) then
-  //  UpLoadCj;
-  bm := ClientDataSet1.GetBookmark;
-  try
-    Open_Table;
-  finally
-    ClientDataSet1.GotoBookmark(bm);
-  end;
 end;
 
 end.

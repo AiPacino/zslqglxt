@@ -170,9 +170,8 @@ object XkInfoEdit: TXkInfoEdit
       Height = 22
       Alignment = taLeftJustify
       DataField = #32771#29983#21495
-      DataSource = DataSource1
+      DataSource = XkInfoInput.DataSource2
       EditButtons = <>
-      ReadOnly = True
       TabOrder = 1
       Visible = True
       OnChange = edt_ZkzhChange
@@ -184,9 +183,8 @@ object XkInfoEdit: TXkInfoEdit
       Height = 22
       Alignment = taLeftJustify
       DataField = #22995#21517
-      DataSource = DataSource1
+      DataSource = XkInfoInput.DataSource2
       EditButtons = <>
-      ReadOnly = True
       TabOrder = 3
       Visible = True
       OnChange = edt_ZkzhChange
@@ -198,9 +196,8 @@ object XkInfoEdit: TXkInfoEdit
       Height = 22
       Alignment = taLeftJustify
       DataField = #36523#20221#35777#21495
-      DataSource = DataSource1
+      DataSource = XkInfoInput.DataSource2
       EditButtons = <>
-      ReadOnly = True
       TabOrder = 2
       Visible = True
       OnChange = edt_ZkzhChange
@@ -212,14 +209,13 @@ object XkInfoEdit: TXkInfoEdit
       Height = 22
       Alignment = taLeftJustify
       DataField = #20934#32771#35777#21495
-      DataSource = DataSource1
+      DataSource = XkInfoInput.DataSource2
       EditButtons = <>
-      ReadOnly = True
       TabOrder = 0
       Visible = True
       OnChange = edt_ZkzhChange
     end
-    object edt_zy: TDBEditEh
+    object edt_zy: TDBComboBoxEh
       Left = 93
       Top = 174
       Width = 340
@@ -227,9 +223,8 @@ object XkInfoEdit: TXkInfoEdit
       Alignment = taLeftJustify
       AlwaysShowBorder = True
       DataField = #19987#19994
-      DataSource = DataSource1
+      DataSource = XkInfoInput.DataSource2
       EditButtons = <>
-      ReadOnly = True
       TabOrder = 5
       Visible = True
       OnChange = edt_ZkzhChange
@@ -242,9 +237,8 @@ object XkInfoEdit: TXkInfoEdit
       Alignment = taLeftJustify
       AlwaysShowBorder = True
       DataField = #32852#31995#30005#35805
-      DataSource = DataSource1
+      DataSource = XkInfoInput.DataSource2
       EditButtons = <>
-      ReadOnly = True
       TabOrder = 6
       Visible = True
       OnChange = edt_ZkzhChange
@@ -257,9 +251,8 @@ object XkInfoEdit: TXkInfoEdit
       Alignment = taLeftJustify
       AlwaysShowBorder = True
       DataField = #37038#25919#32534#30721
-      DataSource = DataSource1
+      DataSource = XkInfoInput.DataSource2
       EditButtons = <>
-      ReadOnly = True
       TabOrder = 7
       Visible = True
       OnChange = edt_ZkzhChange
@@ -272,9 +265,8 @@ object XkInfoEdit: TXkInfoEdit
       Alignment = taLeftJustify
       AlwaysShowBorder = True
       DataField = #36890#20449#22320#22336
-      DataSource = DataSource1
+      DataSource = XkInfoInput.DataSource2
       EditButtons = <>
-      ReadOnly = True
       TabOrder = 8
       Visible = True
       OnChange = edt_ZkzhChange
@@ -282,11 +274,11 @@ object XkInfoEdit: TXkInfoEdit
     object cbb_1: TDBComboBoxEh
       Left = 93
       Top = 145
-      Width = 80
+      Width = 60
       Height = 22
-      Alignment = taCenter
+      Alignment = taLeftJustify
       DataField = #24615#21035
-      DataSource = DataSource1
+      DataSource = XkInfoInput.DataSource2
       EditButtons = <>
       Items.Strings = (
         #30007
@@ -306,10 +298,5 @@ object XkInfoEdit: TXkInfoEdit
       Value = 0.000000000000000000
       Visible = True
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = XkInfoInput.ClientDataSet2
-    Left = 360
-    Top = 224
   end
 end

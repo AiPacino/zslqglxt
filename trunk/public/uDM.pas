@@ -138,6 +138,9 @@ type
     function  GetKshByZkzh(const sZkzh:string):string; //通过准考证号得到考生号
     function  GetKshBySfzh(const sSfzh:string):string; //通过身份证号得到考生号
     procedure SetXkYxComboBox(aDbComboBox:TDBComboBoxEh);
+    function  GetIdByZkzh(const sZkzh:string):string; //通过准考证号得到考生号
+    function  GetIdByKsh(const sKsh:string):string; //通过准考证号得到考生号
+    function  GetIdBySfzh(const sSfzh:string):string; //通过身份证号得到考生号
 
     procedure GetCzySfList(const sXlCc:string;out sList:TStrings;const IncludeAll:Boolean=False);
     procedure SetCzySfComboBox(const sXlCc:string;aDbComboBox:TDBComboBoxEh;const IncludeAll:Boolean=False);
@@ -1499,6 +1502,69 @@ var
 begin
   sqlstr := 'select 院系 from 院系信息表 where 教学单位<>0 and 专科教学<>0 order by 院系';
   GetDeptListBySql(sqlstr,sList);
+end;
+
+function TDM.GetIdByKsh(const sKsh: string): string;
+var
+  cds_Temp:TClientDataSet;
+  sSqlStr,sData:string;
+begin
+  cds_Temp := TClientDataSet.Create(nil);
+  try
+    sSqlStr := 'select Id from 校考考生报考专业表 where 考生号='+quotedstr(sKsh);
+    sData := OpenData(sSqlStr);
+    if sData = '' then
+    begin
+       Result := '';
+       Exit;
+    end;
+    cds_Temp.XMLData := sData;
+    Result := cds_Temp.Fields[0].AsString;
+  finally
+    FreeAndNil(cds_Temp);
+  end;
+end;
+
+function TDM.GetIdBySfzh(const sSfzh: string): string;
+var
+  cds_Temp:TClientDataSet;
+  sSqlStr,sData:string;
+begin
+  cds_Temp := TClientDataSet.Create(nil);
+  try
+    sSqlStr := 'select Id from 校考考生报考专业表 where 身份证号='+quotedstr(sSfzh);
+    sData := OpenData(sSqlStr);
+    if sData = '' then
+    begin
+       Result := '';
+       Exit;
+    end;
+    cds_Temp.XMLData := sData;
+    Result := cds_Temp.Fields[0].AsString;
+  finally
+    FreeAndNil(cds_Temp);
+  end;
+end;
+
+function TDM.GetIdByZkzh(const sZkzh: string): string;
+var
+  cds_Temp:TClientDataSet;
+  sSqlStr,sData:string;
+begin
+  cds_Temp := TClientDataSet.Create(nil);
+  try
+    sSqlStr := 'select Id from 校考考生报考专业表 where 准考证号='+quotedstr(sZkzh);
+    sData := OpenData(sSqlStr);
+    if sData = '' then
+    begin
+       Result := '';
+       Exit;
+    end;
+    cds_Temp.XMLData := sData;
+    Result := cds_Temp.Fields[0].AsString;
+  finally
+    FreeAndNil(cds_Temp);
+  end;
 end;
 
 procedure TDM.GetZyList(const XlCc,ZyLb: string; out sList: TStrings);

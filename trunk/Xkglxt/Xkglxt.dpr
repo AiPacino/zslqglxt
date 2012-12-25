@@ -55,7 +55,8 @@ uses
   uZySelect in '..\NewStuBd\uZySelect.pas' {ZySelect},
   uLogin in '..\NewStuBd\uLogin.pas' {Login},
   uIniFile in '..\NewStuBd\uIniFile.pas',
-  uXkInfoEdit in 'uXkInfoEdit.pas' {XkInfoEdit};
+  uXkInfoEdit in 'uXkInfoEdit.pas' {XkInfoEdit},
+  uXkBmEdit in 'uXkBmEdit.pas' {XkBmEdit};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};
