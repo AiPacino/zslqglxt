@@ -56,7 +56,9 @@ uses
   uLogin in '..\NewStuBd\uLogin.pas' {Login},
   uIniFile in '..\NewStuBd\uIniFile.pas',
   uXkInfoEdit in 'uXkInfoEdit.pas' {XkInfoEdit},
-  uXkBmEdit in 'uXkBmEdit.pas' {XkBmEdit};
+  uXkBmEdit in 'uXkBmEdit.pas' {XkBmEdit},
+  uSysRegister in '..\public\uSysRegister.pas' {SysRegister},
+  uFormatBkZy in 'uFormatBkZy.pas' {FormatBkZy};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

@@ -1,6 +1,7 @@
 object XkInfoImport: TXkInfoImport
   Left = 0
   Top = 0
+  ActiveControl = DBGridEh2
   Caption = #26657#32771#32771#29983#25253#32771#20449#24687#23548#20837
   ClientHeight = 595
   ClientWidth = 870
@@ -744,7 +745,7 @@ object XkInfoImport: TXkInfoImport
     OddRowColor = 13823456
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
-    PopupMenu = DM.PopupMenu1
+    PopupMenu = pm1
     ReadOnly = True
     RowDetailPanel.Color = clBtnFace
     SortLocal = True
@@ -911,6 +912,7 @@ object XkInfoImport: TXkInfoImport
     Columns = <
       item
         AlwaysShowEditButton = True
+        AutoFitColWidth = False
         EditButtons = <>
         FieldName = #30465#20221
         Footers = <>
@@ -918,6 +920,7 @@ object XkInfoImport: TXkInfoImport
         Width = 36
       end
       item
+        AutoFitColWidth = False
         EditButtons = <>
         FieldName = #32771#28857#21517#31216
         Footers = <>
@@ -995,6 +998,7 @@ object XkInfoImport: TXkInfoImport
         Width = 61
       end
       item
+        AutoFitColWidth = False
         EditButtons = <>
         FieldName = #20154#25968
         Footers = <>
@@ -1028,5 +1032,36 @@ object XkInfoImport: TXkInfoImport
     OnNewRecord = ClientDataSet2NewRecord
     Left = 784
     Top = 328
+  end
+  object pm1: TPopupMenu
+    OnPopup = pm1Popup
+    Left = 601
+    Top = 190
+    object mi_ZyFormat: TMenuItem
+      Caption = #25253#32771#19987#19994#21517#31216#26684#24335#21270
+      OnClick = mi_ZyFormatClick
+    end
+    object mi_DelMoreRecord: TMenuItem
+      Caption = #21024#38500#37325#22797#25253#32771#35760#24405
+      OnClick = mi_DelMoreRecordClick
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object C1: TMenuItem
+      Action = DM.EditCopy1
+    end
+    object T1: TMenuItem
+      Action = DM.EditCut1
+    end
+    object P1: TMenuItem
+      Action = DM.EditPaste1
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object E1: TMenuItem
+      Action = DM.act_DataExport
+    end
   end
 end

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,
-  ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBGridEhGrouping;
+  ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBGridEhGrouping, Menus;
 
 type
   TXkInfoImport = class(TForm)
@@ -27,6 +27,15 @@ type
     btn_Import: TBitBtn;
     btn_Empty: TBitBtn;
     DBGridEh1: TDBGridEh;
+    pm1: TPopupMenu;
+    C1: TMenuItem;
+    T1: TMenuItem;
+    P1: TMenuItem;
+    E1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    mi_ZyFormat: TMenuItem;
+    mi_DelMoreRecord: TMenuItem;
     procedure btn_SaveClick(Sender: TObject);
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
@@ -40,6 +49,9 @@ type
     procedure ClientDataSet2NewRecord(DataSet: TDataSet);
     procedure btn_DelClick(Sender: TObject);
     procedure btn_EmptyClick(Sender: TObject);
+    procedure mi_DelMoreRecordClick(Sender: TObject);
+    procedure mi_ZyFormatClick(Sender: TObject);
+    procedure pm1Popup(Sender: TObject);
   private
     { Private declarations }
     function  GetWhere:string;
@@ -57,7 +69,7 @@ var
   XkInfoImport: TXkInfoImport;
 
 implementation
-uses uDM,uXkDataImport;
+uses uDM,uXkDataImport,uFormatBkZy;
 {$R *.dfm}
 
 procedure TXkInfoImport.btn_AddClick(Sender: TObject);
@@ -228,6 +240,48 @@ begin
   end;
 end;
 
+procedure TXkInfoImport.mi_ZyFormatClick(Sender: TObject);
+var
+  vsf,vYx,vKd,vZy:string;
+begin
+  with TFormatBkZy.Create(nil) do
+  begin
+    vsf := ClientDataSet2.FieldByName('省份').AsString;
+    vYx := cbb_Yx.Text;//ClientDataSet2.FieldByName('承考院系').AsString;
+    vKd := ClientDataSet2.FieldByName('考点名称').AsString;
+    vZy := ClientDataSet2.FieldByName('专业').AsString;
+    FillData(vSf, vYx, vKd, vZy,ClientDataSet2);
+    ShowModal;
+  end;
+end;
+
+procedure TXkInfoImport.mi_DelMoreRecordClick(Sender: TObject);
+var
+  sqlstr,where:string;
+  sf,yx,kd:string;
+begin
+  sf := ClientDataSet1.FieldByName('省份').AsString;
+  yx := ClientDataSet1.FieldByName('承考院系').Asstring;
+  kd := ClientDataSet1.FieldByName('考点名称').Asstring;
+
+  if MessageBox(Handle, '真的要删除重复的报考记录吗？这一操作执行后' + #13#10
+    + '是无法撤消的，还要执行吗？', '系统提示', MB_YESNO + MB_ICONWARNING +
+    MB_DEFBUTTON2 + MB_TOPMOST) <> IDYES then
+  begin
+    Exit;
+  end;
+  where := 'where 承考院系='+quotedstr(yx)+' and 省份='+quotedstr(sf)+' and 考点名称='+quotedstr(kd);
+  sqlstr := 'delete from 校考考生报考专业表 where id in '+
+            ' (select max(id) from 校考考生报考专业表 '+where+
+            ' group by 考生号,准考证号,专业 having count(*)>1)';
+  if dm.ExecSql(sqlstr) then
+  begin
+    MessageBox(Handle, '执行完成！当前考点的重复的报考记录已删除！', '系统提示',
+      MB_OK + MB_ICONINFORMATION + MB_DEFBUTTON2 + MB_TOPMOST);
+    Open_DeltaTable(ClientDataSet1.FieldByName('人数').AsInteger>3000);
+  end;
+end;
+
 procedure TXkInfoImport.Open_DeltaTable(const ShowHint:Boolean=False);
 var
   sqlstr,sf,yx,kd:string;
@@ -252,6 +306,12 @@ begin
   finally
     ClientDataSet1.EnableControls;
   end;
+end;
+
+procedure TXkInfoImport.pm1Popup(Sender: TObject);
+begin
+  mi_ZyFormat.Enabled := not ClientDataSet2.FieldByName('Id').IsNull;
+  mi_DelMoreRecord.Enabled := mi_ZyFormat.Enabled;
 end;
 
 procedure TXkInfoImport.SaveData;

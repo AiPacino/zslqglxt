@@ -233,6 +233,7 @@ type
     procedure act_XkCj_SjCjMergeExecute(Sender: TObject);
     procedure act_XkSet_PwRsSetExecute(Sender: TObject);
     procedure act_XkData_KsBHEditExecute(Sender: TObject);
+    procedure act_hlp_RegExecute(Sender: TObject);
   private
     { Private declarations }
     IsShowHint:Boolean;
@@ -264,7 +265,7 @@ uses uDM,Net,DBGridEhImpExp,uCzyEdit,uABOUT,uChangeCzyPwd,uXkCjInfoCount,
      uOnlineUpdateSet,uSrvStateSet,uXkInfoInput,uXkZyCjMerge,uXkKmCjInputResultBrowse,
      uXkZySet,uXkKmSet,uXkZyKmSet,uXkKdSet,uXkKdBrowse,uXkKmCjUpload,uXkKmSjCjMerge,
      uXkKdSetConfirm,uXkZyCjBrowse,uXkInfoImport,uXkKmCjInput,uXkKmPwRsSet,
-     uXkDataInit,uXkInfoBrowse,uXkCjInputSet,uXkZsjhSet,uXkKmCjEdit,
+     uXkDataInit,uXkInfoBrowse,uXkCjInputSet,uXkZsjhSet,uXkKmCjEdit,uSysRegister,
      uXkInfoCount,uXkKmCjBrowse,uXkKmErrorCjInput,uXkKmCjCheck,uXkBmEdit;
 
 {$R *.dfm}
@@ -344,6 +345,11 @@ end;
 procedure TMain.act_hlp_aboutExecute(Sender: TObject);
 begin
   TAboutBox.Create(nil).showModal;
+end;
+
+procedure TMain.act_hlp_RegExecute(Sender: TObject);
+begin
+  TSysRegister.Create(nil).showModal;
 end;
 
 procedure TMain.act_hlp_UpdateExecute(Sender: TObject);
