@@ -248,6 +248,7 @@ object XkBmEdit: TXkBmEdit
       Height = 22
       Color = clWhite
       TabOrder = 10
+      OnChange = edt_xkbhChange
       OnKeyPress = edt_CjKeyPress
     end
     object cbb_Field: TDBComboBoxEh
