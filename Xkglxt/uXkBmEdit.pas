@@ -52,6 +52,7 @@ type
     procedure edt_CjKeyPress(Sender: TObject; var Key: Char);
     procedure edt_CjChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure edt_xkbhChange(Sender: TObject);
   private
     { Private declarations }
     fKsh,fId:string;
@@ -185,6 +186,11 @@ begin
     btn_Search.Click;
 end;
 
+procedure TXkBmEdit.edt_xkbhChange(Sender: TObject);
+begin
+  btn_Save.Enabled := edt_xkbh.Text<>'';
+end;
+
 procedure TXkBmEdit.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   SaveInfoToIni;
@@ -226,7 +232,7 @@ procedure TXkBmEdit.Open_Table;
 var
   sqlstr:string;
 begin
-  sqlstr := 'select * from 校考考生信息表 where Id='+fId;
+  sqlstr := 'select * from 校考考生报考专业表 where Id='+fId;
   ClientDataSet1.XMLData := DM.OpenData(sqlstr);
 end;
 

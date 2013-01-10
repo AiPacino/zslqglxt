@@ -141,7 +141,7 @@ begin
   end;
   if iResult>0 then
   begin
-    if dm.UpdateData('id','select top * from 校考考生报考专业表',aDataSet.Delta,False) then
+    if dm.UpdateData('id','select top 0 * from 校考考生报考专业表',aDataSet.Delta,False) then
        aDataSet.MergeChangeLog;
     MessageBox(Handle, PChar('操作完成！共有'+IntToStr(iResult)+'条记录被更新！　'), '系统提示',
     MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
