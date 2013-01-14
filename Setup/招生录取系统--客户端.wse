@@ -799,34 +799,14 @@ item: Install File
   Flags=0000000010001010
 end
 item: Install File
-  Source=..\Exe\ConnNewStuLqBdSrvSet.ini
-  Destination=%MAINDIR%\ConnNewStuLqBdSrvSet.ini
+  Source=..\Exe\UserSet.ini
+  Destination=%MAINDIR%\UserSet.ini
   Flags=0000000010001010
 end
 item: Install File
   Source=..\Exe\NewStuBd.exe
   Destination=%MAINDIR%\NewStuBd.exe
   Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\网上支付系统\Exe\Image\Title.png
-  Destination=%MAINDIR%\Image\Title.png
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\网上支付系统\Exe\Image\男.png
-  Destination=%MAINDIR%\Image\男.png
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\网上支付系统\Exe\Image\女.png
-  Destination=%MAINDIR%\Image\女.png
-  Flags=0000000010000010
-end
-item: Install File
-  Source=c:\Windows\system32\Regsvr32.exe
-  Destination=%SYS32%\Regsvr32.exe
-  Flags=0000000010001010
 end
 item: Install File
   Source=c:\Windows\system32\midas.dll
