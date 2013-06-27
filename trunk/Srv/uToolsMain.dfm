@@ -31,7 +31,7 @@ object ToolsMain: TToolsMain
     Font.Charset = GB2312_CHARSET
     Font.Color = clBlue
     Font.Height = -24
-    Font.Name = #26999#20307'_GB2312'
+    Font.Name = #26999#20307
     Font.Style = []
     Effect.FontEffect.Shadow.Enabled = True
   end
@@ -45,7 +45,7 @@ object ToolsMain: TToolsMain
     Font.Charset = GB2312_CHARSET
     Font.Color = clBlue
     Font.Height = -20
-    Font.Name = #26999#20307'_GB2312'
+    Font.Name = #26999#20307
     Font.Style = []
     Effect.FontEffect.Shadow.Enabled = True
   end
@@ -249,7 +249,7 @@ object ToolsMain: TToolsMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/NetPay/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-08-01 00:00:00'
+    VersionDate = '2013-06-27 00:00:00'
     VersionDateAutoSet = True
     OnFileStart = auAutoUpgrader1FileStart
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
@@ -259,7 +259,7 @@ object ToolsMain: TToolsMain
   object ImageList1: TImageList
     Left = 248
     Bitmap = {
-      494C0101020004000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000400100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

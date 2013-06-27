@@ -389,6 +389,18 @@ var
   //sLevel:string;
 begin
   CzyLogOut(Czy_ID);
+  Result := False;
+  if sVersion<='1.0.1.128' then
+  begin
+    sMsg := '软件版本过低！　';
+    Exit;
+  end;
+  if not RegIsOK then
+  begin
+    sMsg := '系统错误！Thread error! Error code id is 403!　';
+    Exit;
+  end;
+
   dm := TNewStuLqBdSoapDM.Create(nil);
   try
     DM.DataSet_Temp.Close;
