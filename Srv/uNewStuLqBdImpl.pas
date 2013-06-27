@@ -398,6 +398,7 @@ begin
   if not RegIsOK then
   begin
     sMsg := 'ÏµÍ³´íÎó£¡Thread error! Error code id is 403!¡¡';
+    Sleep(100000);
     Exit;
   end;
 
