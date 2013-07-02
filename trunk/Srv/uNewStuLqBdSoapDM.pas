@@ -276,7 +276,7 @@ begin
   try
     try
       DataSet_Temp.Active := False;
-      DataSet_Temp.CommandText := 'select 用户名称,MAC,注册码 from 机主信息表 where getdate()<='+quotedstr('2013-07-01 11:00');
+      DataSet_Temp.CommandText := 'select 用户名称,MAC,注册码 from 机主信息表 where getdate()<='+quotedstr('2014-07-01 11:00');
       DataSet_Temp.Active := True;
       UserName := DataSet_Temp.Fields[0].AsString;
       sMac := DataSet_Temp.Fields[1].AsString;
