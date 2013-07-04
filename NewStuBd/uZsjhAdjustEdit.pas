@@ -7,7 +7,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, uCzyRightGroupSet, uAdjustJhInput,
   Buttons, DB, DBClient,ActnList, CheckLst, Menus, RzPanel, 
   GridsEh, DBGridEh, pngimage, frxpngimage, DBGridEhGrouping, DBCtrlsEh, Mask,
-  DBCtrls;
+  DBCtrls, dxGDIPlusClasses;
 
 type
   TZsjhAdjustEdit = class(TForm)
@@ -95,6 +95,8 @@ type
     procedure btn_RefreshClick(Sender: TObject);
     procedure ds_MasterDataChange(Sender: TObject; Field: TField);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure dbedt1Change(Sender: TObject);
+    procedure ds_DeltaDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
     aForm:TAdjustJhInput;
@@ -111,6 +113,8 @@ type
     function  ItemInEnabled(const sItem:string):Boolean;
     function  ItemInVisabled(const sItem:string):Boolean;
     procedure GetXqList;
+    function  CheckDeltaData:Boolean;
+    function  SaveDeltaData:Boolean;
   public
     { Public declarations }
   end;
@@ -150,7 +154,8 @@ begin
     begin
       DBGridEh1.SaveBookmark;
       Open_MasterTable;
-      DBGridEh1.RestoreBookmark;
+      if cds_Master.RecordCount>0 then
+        DBGridEh1.RestoreBookmark;
     end;
   end;
 end;
@@ -182,6 +187,8 @@ var
   sId:string;
   sError:string;
 begin
+  if btn_Save.Enabled then
+    btn_SaveClick(Self);
   if MessageBox(Handle, '提交成功不能再对本申请单进行修改，确实要提交吗？　' +
     #13#10, '系统提示', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 +
     MB_TOPMOST) = IDNO then
@@ -237,41 +244,8 @@ begin
 end;
 
 procedure TZsjhAdjustEdit.btn_SaveClick(Sender: TObject);
-var
-  sId,Xlcc,Sf,Czlx,sWhy,sDelta:string;
-  sError:string;
 begin
-  sId := cds_Master.FieldByName('Id').AsString;
-  Xlcc := cds_Master.FieldByName('学历层次').AsString;
-  sWhy := cds_Master.FieldByName('说明').AsString;
-  Sf := cds_Master.FieldByName('省份').AsString;
-  Czlx := cds_Master.FieldByName('类型').AsString;
-
-  if DataSetNoSave(cds_Delta) then
-  begin
-    sDelta := cds_Delta.XMLData;
-    if gb_Use_Zip then
-    begin
-      sDelta := dm.VCLZip1.ZLibCompressString(sDelta);
-      sDelta := EncodeString(sDelta);
-    end;
-  end;
-  if vobj.AdjustJH(sId,Xlcc,Sf,Czlx,sWhy,gb_Czy_ID,sDelta,sError) then
-  begin
-    cds_Master.MergeChangeLog;
-    cds_Delta.MergeChangeLog;
-  end else
-    MessageBox(Handle, PChar('调整单保存失败！'+sError), '系统提示', MB_OK + MB_ICONSTOP +
-      MB_TOPMOST);
-{
-  if DataSetNoSave(cds_Master) then
-    if DM.UpdateData('id','select top 0 * from 计划调整表',cds_Master.Delta,False) then
-      cds_Master.MergeChangeLog;
-
-  if DataSetNoSave(cds_Delta) then
-    if DM.UpdateData('id','select top 0 * from 计划调整明细表',cds_Delta.Delta,False) then
-      cds_Delta.MergeChangeLog;
-}
+  SaveDeltaData;
 end;
 
 procedure TZsjhAdjustEdit.cbb_XlccChange(Sender: TObject);
@@ -314,10 +288,51 @@ begin
   DataSet.FieldByName('pid').Value := cds_Master.FieldByName('id').Value;
 end;
 
+function TZsjhAdjustEdit.CheckDeltaData: Boolean;
+var
+  s:Integer;
+begin
+  cds_Delta.DisableControls;
+  DBGridEh2.SaveBookmark;
+  try
+    cds_Delta.First;
+    s := 0;
+    while not cds_Delta.Eof do
+    begin
+      s := s+cds_Delta.FieldByName('增减数').AsInteger;
+      cds_Delta.Next;
+    end;
+    Result := (s=0);
+    if not Result then
+      Application.MessageBox('调入调出计划数不平衡，无法保存或提交！',
+        '系统提示', MB_OK + MB_ICONWARNING + MB_TOPMOST);
+
+  finally
+    DBGridEh2.RestoreBookmark;
+    cds_Delta.EnableControls;
+  end;
+end;
+
+procedure TZsjhAdjustEdit.dbedt1Change(Sender: TObject);
+var
+  bl:Boolean;
+begin
+  bl := (dbedt1.Text<>'') and (dbedt2.Text<>'') and (dbedt3.Text<>'') and (dbedt4.Text<>'') and
+        (edt_sf.Text<>'') and (edt_Lx.Text<>'') and (DBDateTimeEditEh1.Text<>'');
+  btn_Add.Enabled := bl;
+  btn_Post.Enabled := bl;
+end;
+
 procedure TZsjhAdjustEdit.DBGridEh1Exit(Sender: TObject);
 begin
   if cds_Master.State in [dsInsert,dsEdit] then
     cds_Master.Post;
+end;
+
+procedure TZsjhAdjustEdit.ds_DeltaDataChange(Sender: TObject; Field: TField);
+begin
+  btn_Edit.Enabled := cds_Delta.RecordCount>0;
+  btn_Del.Enabled := btn_Edit.Enabled;
 end;
 
 procedure TZsjhAdjustEdit.ds_MasterDataChange(Sender: TObject; Field: TField);
@@ -469,5 +484,50 @@ begin
   Open_MasterTable;
 end;
 
+
+function TZsjhAdjustEdit.SaveDeltaData: Boolean;
+var
+  sId,Xlcc,Sf,Czlx,sWhy,sDelta:string;
+  sError:string;
+begin
+  Result := False;
+  sId := cds_Master.FieldByName('Id').AsString;
+  Xlcc := cds_Master.FieldByName('学历层次').AsString;
+  sWhy := cds_Master.FieldByName('说明').AsString;
+  Sf := cds_Master.FieldByName('省份').AsString;
+  Czlx := cds_Master.FieldByName('类型').AsString;
+
+  if DataSetNoSave(cds_Delta) then
+  begin
+    sDelta := cds_Delta.XMLData;
+    if gb_Use_Zip then
+    begin
+      sDelta := dm.VCLZip1.ZLibCompressString(sDelta);
+      sDelta := EncodeString(sDelta);
+    end;
+  end;
+  if not CheckDeltaData then
+  begin
+    Exit;
+  end;
+
+  if vobj.AdjustJH(sId,Xlcc,Sf,Czlx,sWhy,gb_Czy_ID,sDelta,sError) then
+  begin
+    cds_Master.MergeChangeLog;
+    cds_Delta.MergeChangeLog;
+    Result := True;
+  end else
+    MessageBox(Handle, PChar('调整单保存失败！'+sError), '系统提示', MB_OK + MB_ICONSTOP +
+      MB_TOPMOST);
+{
+  if DataSetNoSave(cds_Master) then
+    if DM.UpdateData('id','select top 0 * from 计划调整表',cds_Master.Delta,False) then
+      cds_Master.MergeChangeLog;
+
+  if DataSetNoSave(cds_Delta) then
+    if DM.UpdateData('id','select top 0 * from 计划调整明细表',cds_Delta.Delta,False) then
+      cds_Delta.MergeChangeLog;
+}
+end;
 
 end.

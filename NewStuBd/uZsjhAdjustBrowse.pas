@@ -7,7 +7,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, uCzyRightGroupSet,
   Buttons, DB, DBClient,ActnList, CheckLst, Menus, RzPanel, 
   GridsEh, DBGridEh, pngimage, frxpngimage, DBGridEhGrouping, Mask, DBCtrlsEh,
-  DBCtrls;
+  DBCtrls, dxGDIPlusClasses;
 
 type
   TZsjhAdjustBrowse = class(TForm)
