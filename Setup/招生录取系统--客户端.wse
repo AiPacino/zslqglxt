@@ -1,7 +1,7 @@
 Document Type: WSE
 item: Global
   Version=9.02
-  Title=高招录取管理系统--客户端 安装
+  Title=学校招生录取管理系统--客户端 安装
   Title French= Installation
   Flags=00000100
   Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -100,7 +100,7 @@ item: Remark
 end
 item: Set Variable
   Variable=APPTITLE
-  Value=高招录取管理系统--客户端
+  Value=学校招生录取管理系统--客户端
   Flags=10000000
 end
 item: Remark
@@ -765,15 +765,6 @@ item: Remark
 end
 item: Include Script
   Pathname=%_WISE_%\INCLUDE\uninstal.wse
-end
-item: Install File
-  Source=c:\Windows\Fonts\楷体_GB2312.ttf
-  Destination=%FONTS%\楷体_GB2312.ttf
-  Flags=0000000010001010
-end
-item: Register Font
-  Filename=楷体_GB2312.ttf
-  Font name=KaiTi_GB2312 (TrueType)
 end
 item: Install File
   Source=e:\xxx\zslqglxt\Exe\lqmd.mdb

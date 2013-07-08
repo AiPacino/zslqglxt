@@ -5,14 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, StdCtrls, Buttons, DBClient, ExtCtrls, auAutoUpgrader,
-  CnAAFont, CnAACtrls, auHTTP, pngimage, frxpngimage, jpeg;
+  CnAAFont, CnAACtrls, auHTTP, pngimage, frxpngimage, jpeg, Mask, DBCtrlsEh;
 
 type
   TLogin = class(TForm)
     btn_OK: TBitBtn;
     btn_Exit: TBitBtn;
     ClientDataSet1: TClientDataSet;
-    Edit2: TEdit;
+    Edit2: TDBEditEh;
     AALabel2: TCnAALabel;
     Bevel1: TBevel;
     AALabel3: TCnAALabel;
@@ -23,7 +23,7 @@ type
     auAutoUpgrader1: TauAutoUpgrader;
     img1: TImage;
     albl1: TCnAALabel;
-    Edit1: TComboBox;
+    Edit1: TDBComboBoxEh;
     procedure btn_OKClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btn_ExitClick(Sender: TObject);

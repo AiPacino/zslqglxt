@@ -1371,10 +1371,14 @@ end;
 procedure TDM.GetSfDirList(out sList: TStrings);
 var
   cds_Temp:TClientDataSet;
+  sqlstr :string;
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := OpenData('select 短名称,目录名 from view_省份表 where 目录名 is not null order by 短名称');
+    //sqlstr := 'select 短名称,目录名 from view_省份表 where 目录名 is not null order by 短名称';
+    sqlstr := 'select distinct 省份,目录名 from view_操作员省份表 where 操作员='+quotedstr(gb_Czy_Id)+' order by 省份';
+
+    cds_Temp.XMLData := OpenData(sqlstr);
     sList.Clear;
     while not cds_Temp.Eof do
     begin

@@ -164,7 +164,8 @@ procedure TMareData_Photo.InitSfCheckList;
 var
   sqlstr:string;
 begin
-  sqlstr := 'select distinct 省份 from lqmd where 学历层次='+quotedstr(rg_XlCc.Items[rg_XlCc.ItemIndex])+' order by 省份';
+  //sqlstr := 'select distinct 省份 from lqmd where 学历层次='+quotedstr(rg_XlCc.Items[rg_XlCc.ItemIndex])+' order by 省份';
+  sqlstr := 'select distinct 省份 from 操作员省份表 where 操作员='+quotedstr(gb_Czy_Id)+' order by 省份';
   cds_lqmd.XMLData := dm.OpenData(sqlstr);
   chklst_Sf.Items.Clear;
   while not cds_lqmd.Eof do
