@@ -146,11 +146,12 @@ object Login: TLogin
     TabOrder = 4
     OnClick = btn_ExitClick
   end
-  object Edit2: TEdit
+  object Edit2: TDBEditEh
     Left = 170
     Top = 178
     Width = 191
     Height = 25
+    EditButtons = <>
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -14
@@ -160,6 +161,7 @@ object Login: TLogin
     ParentFont = False
     PasswordChar = '*'
     TabOrder = 2
+    Visible = True
     OnChange = Edit2Change
     OnKeyPress = Edit2KeyPress
   end
@@ -1125,21 +1127,22 @@ object Login: TLogin
       Effect.FontEffect.Shadow.Enabled = True
     end
   end
-  object Edit1: TComboBox
+  object Edit1: TDBComboBoxEh
     Left = 170
     Top = 123
     Width = 191
     Height = 25
+    EditButtons = <>
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -14
     Font.Name = 'Tahoma'
     Font.Style = []
     ImeMode = imClose
-    ItemHeight = 17
     MaxLength = 20
     ParentFont = False
     TabOrder = 1
+    Visible = True
     OnChange = Edit1Change
     OnKeyPress = Edit1KeyPress
   end
@@ -1156,7 +1159,7 @@ object Login: TLogin
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-06-25 00:00:00'
+    VersionDate = '2013-07-06 00:00:00'
     VersionDateAutoSet = True
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
     Left = 224

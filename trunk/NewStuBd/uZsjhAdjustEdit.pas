@@ -332,6 +332,7 @@ end;
 procedure TZsjhAdjustEdit.ds_DeltaDataChange(Sender: TObject; Field: TField);
 begin
   btn_Edit.Enabled := cds_Delta.RecordCount>0;
+  btn_Save.Enabled := btn_Edit.Enabled;
   btn_Del.Enabled := btn_Edit.Enabled;
 end;
 
