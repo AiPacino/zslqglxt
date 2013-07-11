@@ -83,7 +83,8 @@ uses
   uExportFieldListSet in 'uExportFieldListSet.pas' {ExportFieldListSet},
   uKsLqtzsPrint in 'uKsLqtzsPrint.pas' {KsLqtzsPrint},
   uMareData_BDE in 'uMareData_BDE.pas' {MareData_BDE},
-  uStuInfo_Baodao in 'uStuInfo_Baodao.pas' {StuInfo_Baodao};
+  uStuInfo_Baodao in 'uStuInfo_Baodao.pas' {StuInfo_Baodao},
+  uZdmcSet in 'uZdmcSet.pas' {ZdmcSet};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

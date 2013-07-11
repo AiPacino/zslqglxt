@@ -18,7 +18,7 @@ type
     lbl3: TLabel;
     lbl4: TLabel;
     lbl5: TLabel;
-    edt_OldCount: TEdit;
+    edt_OldCount: TDBEditEh;
     pnl_1: TPanel;
     btn_Post: TBitBtn;
     btn_Exit: TBitBtn;
@@ -26,6 +26,10 @@ type
     cds_Temp: TClientDataSet;
     Label1: TLabel;
     cbb_ZyLb: TDBComboBoxEh;
+    lbl6: TLabel;
+    edt_oldzjs: TDBEditEh;
+    lbl7: TLabel;
+    edt_Syjhs: TDBEditEh;
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_PostClick(Sender: TObject);
     procedure cbb_ZyChange(Sender: TObject);
@@ -34,6 +38,8 @@ type
     procedure cbb_ZyLbChange(Sender: TObject);
     procedure cbb_SfChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure edt_OldCountChange(Sender: TObject);
+    procedure edt_CountChange(Sender: TObject);
   private
     { Private declarations }
     aType:Integer;
@@ -76,10 +82,11 @@ begin
             ' and ¿ÆÀà='+quotedstr(cbb_Kl.Text);
   cds_Temp.XMLData := DM.OpenData(sqlstr);
 
-  //aZyId := cds_Temp.Fields[0].AsString;
+  aZyId := cds_Temp.Fields[0].AsString;
   edt_OldCount.Text := '';
   edt_OldCount.Text := cds_Temp.Fields[1].AsString;
   cds_Temp.Close;
+  edt_oldzjs.Text := IntToStr(vobj.GetZyJHChgCount(aXLCc,cbb_Sf.Text, aZyId,cbb_Kl.Text));
 end;
 
 procedure TAdjustJhInput.cbb_SfChange(Sender: TObject);
@@ -134,6 +141,16 @@ begin
     cds_Temp.Next;
   end;
   cds_Temp.Close;
+end;
+
+procedure TAdjustJhInput.edt_CountChange(Sender: TObject);
+begin
+  btn_Post.Enabled := StrToIntDef(edt_Syjhs.Text,0)+StrToIntDef(TEdit(Sender).Text,0)>=0;
+end;
+
+procedure TAdjustJhInput.edt_OldCountChange(Sender: TObject);
+begin
+  edt_Syjhs.Text := IntToStr(StrToIntDef(edt_OldCount.Text,0)+StrToIntDef(edt_oldzjs.Text,0));
 end;
 
 procedure TAdjustJhInput.FillData(const iType:Integer;const sNo,sXlcc,sSf,sCzLx: string;

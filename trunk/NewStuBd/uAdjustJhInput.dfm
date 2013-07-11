@@ -3,7 +3,7 @@ object AdjustJhInput: TAdjustJhInput
   Top = 0
   BorderStyle = bsDialog
   Caption = #35745#21010#35843#25972#24405#20837
-  ClientHeight = 275
+  ClientHeight = 302
   ClientWidth = 402
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -47,14 +47,14 @@ object AdjustJhInput: TAdjustJhInput
   end
   object lbl5: TLabel
     Left = 40
-    Top = 196
+    Top = 229
     Width = 48
     Height = 14
     Caption = #22686#20943#25968#65306
   end
   object bvl1: TBevel
     Left = 16
-    Top = 169
+    Top = 202
     Width = 374
     Height = 9
     Shape = bsBottomLine
@@ -65,6 +65,20 @@ object AdjustJhInput: TAdjustJhInput
     Width = 60
     Height = 14
     Caption = #19987#19994#31867#21035#65306
+  end
+  object lbl6: TLabel
+    Left = 200
+    Top = 143
+    Width = 60
+    Height = 14
+    Caption = #24050#35843#25972#25968#65306
+  end
+  object lbl7: TLabel
+    Left = 16
+    Top = 175
+    Width = 72
+    Height = 14
+    Caption = #21097#20313#35745#21010#25968#65306
   end
   object cbb_Sf: TDBComboBoxEh
     Left = 92
@@ -98,22 +112,26 @@ object AdjustJhInput: TAdjustJhInput
   end
   object edt_Count: TEdit
     Left = 92
-    Top = 193
+    Top = 226
     Width = 265
     Height = 22
     TabOrder = 5
+    OnChange = edt_CountChange
   end
-  object edt_OldCount: TEdit
+  object edt_OldCount: TDBEditEh
     Left = 92
     Top = 140
-    Width = 265
+    Width = 93
     Height = 22
+    EditButtons = <>
     Enabled = False
     TabOrder = 4
+    Visible = True
+    OnChange = edt_OldCountChange
   end
   object pnl_1: TPanel
     Left = 0
-    Top = 236
+    Top = 263
     Width = 402
     Height = 39
     Align = alBottom
@@ -129,6 +147,7 @@ object AdjustJhInput: TAdjustJhInput
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #25552#20132
+      Enabled = False
       ModalResult = 1
       TabOrder = 0
       OnClick = btn_PostClick
@@ -206,6 +225,27 @@ object AdjustJhInput: TAdjustJhInput
     TabOrder = 1
     Visible = True
     OnChange = cbb_ZyLbChange
+  end
+  object edt_oldzjs: TDBEditEh
+    Left = 264
+    Top = 140
+    Width = 93
+    Height = 22
+    EditButtons = <>
+    Enabled = False
+    TabOrder = 7
+    Visible = True
+    OnChange = edt_OldCountChange
+  end
+  object edt_Syjhs: TDBEditEh
+    Left = 92
+    Top = 172
+    Width = 93
+    Height = 22
+    EditButtons = <>
+    Enabled = False
+    TabOrder = 8
+    Visible = True
   end
   object cds_Zy: TClientDataSet
     Aggregates = <>

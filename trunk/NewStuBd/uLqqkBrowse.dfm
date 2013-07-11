@@ -28,8 +28,6 @@ object LqqkBrowse: TLqqkBrowse
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitTop = 630
-    ExplicitWidth = 1028
     DesignSize = (
       846
       41)
@@ -42,7 +40,6 @@ object LqqkBrowse: TLqqkBrowse
       Caption = #20851#38381'[&C]'
       TabOrder = 4
       OnClick = btn_ExitClick
-      ExplicitLeft = 938
     end
     object btn_Excel: TBitBtn
       Left = 533
@@ -53,7 +50,6 @@ object LqqkBrowse: TLqqkBrowse
       Caption = #23548#20986'Excel'
       TabOrder = 2
       OnClick = btn_ExcelClick
-      ExplicitLeft = 715
     end
     object btn_RefreshBdl: TBitBtn
       Left = 10
@@ -73,7 +69,6 @@ object LqqkBrowse: TLqqkBrowse
       Caption = #25171#21360'[&P]'
       TabOrder = 3
       OnClick = btn_PrintClick
-      ExplicitLeft = 813
     end
     object btn_More: TBitBtn
       Left = 96
@@ -93,7 +88,6 @@ object LqqkBrowse: TLqqkBrowse
       Caption = #38544#34255#26410#24320#22987#30340#19987#19994
       TabOrder = 5
       OnClick = cbb_XlCcChange
-      ExplicitLeft = 566
     end
   end
   object GroupBox1: TGroupBox
@@ -104,8 +98,6 @@ object LqqkBrowse: TLqqkBrowse
     Align = alClient
     Caption = #26597#35810#32467#26524#65306
     TabOrder = 1
-    ExplicitWidth = 1028
-    ExplicitHeight = 580
     object DBGridEH1: TDBGridEh
       Left = 2
       Top = 16
@@ -325,7 +317,6 @@ object LqqkBrowse: TLqqkBrowse
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1028
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -864,7 +855,6 @@ object LqqkBrowse: TLqqkBrowse
       Align = alRight
       Caption = #23618#27425#65306
       TabOrder = 0
-      ExplicitLeft = 900
       object cbb_XlCc: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -885,7 +875,6 @@ object LqqkBrowse: TLqqkBrowse
       Align = alRight
       Caption = #31867#21035#65306
       TabOrder = 1
-      ExplicitLeft = 772
       object cbb_Lb: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -906,7 +895,6 @@ object LqqkBrowse: TLqqkBrowse
       Align = alRight
       Caption = #30465#20221#65306
       TabOrder = 2
-      ExplicitLeft = 644
       object cbb_Sf: TDBComboBoxEh
         Left = 9
         Top = 19

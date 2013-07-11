@@ -109,9 +109,11 @@ object DbTools: TDbTools
       Items.Strings = (
         'Paradox'#25991#20214'(*.db)'
         'dBase'#25991#20214'(*.dbf)'
+        'VFP'#25991#20214'(*.dbf)'
         'Access'#25991#20214'(*.mdb)')
       KeyItems.Strings = (
         '*.db'
+        '*.dbf'
         '*.dbf'
         '*.mdb')
       TabOrder = 0
@@ -276,7 +278,7 @@ object DbTools: TDbTools
     IndicatorTitle.ShowDropDownSign = True
     IndicatorTitle.TitleButton = True
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack, dghExtendVertLines]
-    PopupMenu = DM.PopupMenu1
+    PopupMenu = pm2
     ReadOnly = True
     RowDetailPanel.Color = clBtnFace
     STFilter.InstantApply = True
@@ -335,7 +337,9 @@ object DbTools: TDbTools
   end
   object dlgOpen_1: TOpenDialog
     DefaultExt = '*.db'
-    Filter = 'Paradox'#25991#20214'(*.db)|*.db|dBase'#25991#20214'(*.dbf)|*.dbf|Access'#25991#20214'(*.mdb)|*.mdb'
+    Filter = 
+      'Paradox'#25991#20214'(*.db)|*.db|dBase'#25991#20214'(*.dbf)|*.dbf|VFP'#25991#20214'(*.dbf)|*.dbf|Acc' +
+      'ess'#25991#20214'(*.mdb)|*.mdb'
     Title = #25171#24320#25968#25454#24211#25991#20214
     Left = 256
     Top = 16
@@ -405,6 +409,55 @@ object DbTools: TDbTools
       Caption = #20840#36873
       ShortCut = 16449
       OnClick = N2Click
+    end
+  end
+  object qry_VFP: TADOQuery
+    Connection = con_VFP
+    CursorType = ctStatic
+    AfterOpen = qry_AccessAfterOpen
+    Parameters = <>
+    SQL.Strings = (
+      'select * from t_tddxx')
+    Left = 608
+    Top = 224
+  end
+  object con_VFP: TADOConnection
+    ConnectionString = 
+      'Provider=VFPOLEDB.1;Data Source=C:\Users\Administrator\Desktop;C' +
+      'ollating Sequence=MACHINE;'
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'VFPOLEDB.1'
+    Left = 576
+    Top = 224
+  end
+  object pm2: TPopupMenu
+    Left = 480
+    Top = 248
+    object L1: TMenuItem
+      Action = DM.act_Locate
+    end
+    object MenuItem4: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem1: TMenuItem
+      Action = DM.EditCopy1
+    end
+    object MenuItem2: TMenuItem
+      Action = DM.EditCut1
+    end
+    object MenuItem3: TMenuItem
+      Action = DM.EditPaste1
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object N4: TMenuItem
+      Caption = #21305#37197#20013#25991#23383#27573#21517#31216
+      OnClick = N4Click
+    end
+    object E1: TMenuItem
+      Action = DM.act_DataExport
     end
   end
 end

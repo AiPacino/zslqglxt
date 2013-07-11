@@ -442,9 +442,9 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
       TabOrder = 0
       object GroupBox1: TRzGroupBox
         Left = 0
-        Top = 161
+        Top = 217
         Width = 550
-        Height = 314
+        Height = 258
         Align = alClient
         Caption = #35745#21010#35843#25972#26126#32454#65306
         GroupStyle = gsStandard
@@ -453,7 +453,7 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
           Left = 2
           Top = 16
           Width = 546
-          Height = 296
+          Height = 240
           Align = alClient
           Columns = 3
           ItemHeight = 14
@@ -463,7 +463,7 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
           Left = 2
           Top = 16
           Width = 546
-          Height = 296
+          Height = 240
           Align = alClient
           DataGrouping.GroupLevels = <>
           DataSource = ds_Delta
@@ -552,7 +552,7 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
         Left = 0
         Top = 0
         Width = 550
-        Height = 161
+        Height = 217
         Align = alTop
         Caption = #30003#35831#21333#32534#36753#65306
         TabOrder = 0
@@ -575,7 +575,7 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
         end
         object lbl3: TLabel
           Left = 313
-          Top = 124
+          Top = 184
           Width = 48
           Height = 14
           Caption = #30003#35831#20154#65306
@@ -583,7 +583,7 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
         end
         object lbl4: TLabel
           Left = 36
-          Top = 124
+          Top = 184
           Width = 60
           Height = 14
           Caption = #30003#35831#26102#38388#65306
@@ -623,11 +623,11 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
           TabOrder = 0
           OnChange = dbedt1Change
         end
-        object dbedt2: TDBEdit
+        object dbedt2: TDBMemo
           Left = 95
           Top = 89
           Width = 410
-          Height = 22
+          Height = 85
           DataField = #35828#26126
           DataSource = ds_Master
           TabOrder = 4
@@ -635,7 +635,7 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
         end
         object dbedt3: TDBEdit
           Left = 360
-          Top = 122
+          Top = 182
           Width = 144
           Height = 22
           DataField = #30003#35831#20154
@@ -646,7 +646,7 @@ object ZsjhAdjustEdit: TZsjhAdjustEdit
         end
         object DBDateTimeEditEh1: TDBDateTimeEditEh
           Left = 95
-          Top = 122
+          Top = 182
           Width = 162
           Height = 22
           DataField = #30003#35831#26102#38388

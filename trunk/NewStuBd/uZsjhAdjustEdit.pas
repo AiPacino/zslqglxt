@@ -37,7 +37,7 @@ type
     lbl1: TLabel;
     dbedt1: TDBEdit;
     lbl2: TLabel;
-    dbedt2: TDBEdit;
+    dbedt2: TDBMemo;
     lbl3: TLabel;
     dbedt3: TDBEdit;
     lbl4: TLabel;
@@ -204,7 +204,7 @@ begin
     if MessageBox(Handle, '数据提交成功！要打印计划调整申请单吗？　', 
       '系统提示', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) = IDYES then
     begin
-      ClientDataSet1.XMLData := dm.OpenData('select * from View_计划调整主从明细表 where Id='+quotedstr(sId));
+      ClientDataSet1.XMLData := dm.OpenData('select * from 计划调整表 where Id='+quotedstr(sId));
       dm.PrintReport('计划调整申请表.fr3',ClientDataSet1.XMLData,1);
     end;
     Open_MasterTable;
@@ -218,7 +218,7 @@ var
   sId:string;
 begin
   sId := cds_Master.FieldByName('Id').AsString;
-  ClientDataSet1.XMLData := dm.OpenData('select * from view_计划调整明细表 where Id='+quotedstr(sId));
+  ClientDataSet1.XMLData := dm.OpenData('select * from 计划调整表 where Id='+quotedstr(sId));
   dm.PrintReport('计划调整申请表.fr3',ClientDataSet1.XMLData,1);
 end;
 

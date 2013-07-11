@@ -135,7 +135,7 @@ var
   sId:string;
 begin
   sId := cds_Yx.FieldByName('Id').AsString;
-  ClientDataSet1.XMLData := dm.OpenData('select * from View_计划调整主从明细表 where Id='+quotedstr(sId));
+  ClientDataSet1.XMLData := dm.OpenData('select * from 计划调整表 where Id='+quotedstr(sId));
   dm.PrintReport('计划调整申请表.fr3',ClientDataSet1.XMLData,1);
 end;
 
