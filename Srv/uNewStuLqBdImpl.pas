@@ -22,6 +22,8 @@ type
     function ExecSql(const SqlText: string;var sError:string):Boolean; stdcall;
 
     function GetAdjustJHNo:string;stdcall; //得到计划调编号
+    function GetZyJHCount(const sXlcc,sSf,sZyId,sKl:string):Integer;stdcall; //获取专业原始计划数
+    function GetZyJHChgCount(const sXlcc,sSf,sZyId,sKl:string):Integer;stdcall; //获取专业变更计划数
     function AdjustJH(const sNo,sXlcc,sSf,sCzlx,sWhy,Czy_Id,sDelta:string;out sError:string):Boolean;stdcall; //申请调整计划
     function PostJH(const sNo,Czy_Id:string;out sError:string):Boolean;stdcall; //提交计划调整
     function ConfirmJH(const sNo,Czy_Id:string;out sError:string):Boolean;stdcall; //审核通过计划调整
@@ -909,6 +911,26 @@ begin
   finally
     dm.Free;
   end;
+end;
+
+function TNewStuLqBd.GetZyJHChgCount(const sXlcc, sSf, sZyId, sKl: string): Integer;
+var
+  sqlstr:string;
+begin
+  sqlstr := 'select count(增减数) from View_计划调整明细表 where 省份='+quotedstr(sSf)+
+            ' and 学历层次='+quotedstr(sXlcc)+' and 专业Id='+sZyId+
+            ' and 科类='+quotedstr(sKl);
+  Result := GetRecordCountBySql(sqlstr);
+end;
+
+function TNewStuLqBd.GetZyJHCount(const sXlcc, sSf, sZyId, sKl: string): Integer;
+var
+  sqlstr:string;
+begin
+  sqlstr := 'select 计划数 from View_分省专业计划表 where 省份='+quotedstr(sSf)+
+            ' and 学历层次='+quotedstr(sXlcc)+' and 专业Id='+sZyId+
+            ' and 科类='+quotedstr(sKl);
+  Result := GetRecordCountBySql(sqlstr);
 end;
 
 function TNewStuLqBd.InitCjInputData(const Yx, Sf, Km: string;const DelData:Boolean;

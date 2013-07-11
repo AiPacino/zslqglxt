@@ -9214,7 +9214,7 @@ object Main: TMain
     Left = 520
     Top = 39
     Bitmap = {
-      494C010105000700640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700680010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -9503,7 +9503,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2012-08-07 00:00:00'
+    VersionDate = '2013-07-09 00:00:00'
     VersionDateAutoSet = True
     Left = 680
     Top = 40
@@ -9849,6 +9849,12 @@ object Main: TMain
       Caption = #19987#19994#26684#24335#21270#21629#20196#37197#32622
       ImageIndex = 11
       OnExecute = act_Lq_FormatZySqlSetExecute
+    end
+    object act_Data_ZdMcSet: TAction
+      Category = '02.'#22522#30784#25968#25454
+      Caption = #20013#33521#25991#23383#27573#21517#23545#29031#34920
+      ImageIndex = 1
+      OnExecute = act_Data_ZdMcSetExecute
     end
     object act_Data_ExportFieldSet: TAction
       Category = '02.'#22522#30784#25968#25454
@@ -10221,6 +10227,10 @@ object Main: TMain
         item
           Visible = True
           ItemName = 'dxBarButton53'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbrbtn1'
         end
         item
           Visible = True
@@ -10640,6 +10650,10 @@ object Main: TMain
       Action = act_Lq_FormatZySqlSet
       Category = 3
     end
+    object dxbrbtn1: TdxBarButton
+      Action = act_Data_ZdMcSet
+      Category = 3
+    end
     object dxBarButton66: TdxBarButton
       Action = act_Data_ExportFieldSet
       Category = 3
@@ -10882,7 +10896,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C0101240026006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600700010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

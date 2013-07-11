@@ -177,7 +177,7 @@ begin
     sWhere := sWhere+' and 省份='+quotedstr(cbb_Sf.Text);
 
   if chk_HideNull.Checked then
-    sWhere := sWhere+' and 已录人数 is not null';
+    sWhere := sWhere+' and ((已录人数 is not null) or (增减数<>0))';
   
   sqlstr := 'SELECT * FROM 录取信息分析表'+sWhere+' order by 学历层次,省份,类别';
   ClientDataSet1.XMLData := dm.OpenData(sqlstr);

@@ -180,6 +180,8 @@ type
     dxBarButton67: TdxBarButton;
     act_Lq_DataImport_BDE: TAction;
     dxBarButton68: TdxBarButton;
+    act_Data_ZdMcSet: TAction;
+    dxbrbtn1: TdxBarButton;
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
     procedure mmi_PrnLQTZSClick(Sender: TObject);
@@ -272,6 +274,7 @@ type
     procedure act_Data_ExportFieldSetExecute(Sender: TObject);
     procedure act_Lq_LqtzsPrintExecute(Sender: TObject);
     procedure act_Lq_DataImport_BDEExecute(Sender: TObject);
+    procedure act_Data_ZdMcSetExecute(Sender: TObject);
   private
     { Private declarations }
     WorkHint: TWorkHint;
@@ -302,7 +305,7 @@ uses uDM, Net,DBGridEhImpExp,uNewStuList,uChgZyHistory,uChangeZy,uCzyEdit,uABOUT
      uKsList,uKsInfoBrowse,uPhotoExport, uDataInit,uZsjhSet, uCountXkInfo,uWorkSet,
      uWorkBrowse,uZsjhBrowse,uSqlCmdSet,uZsjhAdjustEdit,uZsjhAdjustConfirm,uMareData_Photo,
      uZsjhAdjustBrowse,uReportDesign,uFormatZySqlSet,uLqqkCount,uLqqkBrowse,uLogInput,
-     uKsInfoBrowse_All,uExportToAccess,uTdKsInfoBrowse,
+     uKsInfoBrowse_All,uExportToAccess,uTdKsInfoBrowse,uZdmcSet,
      uEMSNumberImport,uDbTools,uFileEdit,uFileBrowse,uCzySfSet,uJwInfoImport,
      uKsInfoBrowse_Work,uSysRegister,uExportFieldListSet,uKsLqtzsPrint;
 
@@ -549,6 +552,11 @@ end;
 procedure TMain.act_Data_YxZySetExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TYxZySet);
+end;
+
+procedure TMain.act_Data_ZdMcSetExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TZdmcSet);
 end;
 
 procedure TMain.act_Data_ZySetExecute(Sender: TObject);

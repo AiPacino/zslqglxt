@@ -3,7 +3,7 @@ unit uDbTools;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,DBClient,
   Dialogs, DBGridEhGrouping, RzShellDialogs, GridsEh, DBGridEh, StdCtrls,
   Buttons, Mask, DBCtrlsEh, CnButtonEdit, ExtCtrls, DB, DBTables, ADODB, Menus;
 
@@ -39,6 +39,17 @@ type
     P1: TMenuItem;
     N1: TMenuItem;
     N2: TMenuItem;
+    qry_VFP: TADOQuery;
+    con_VFP: TADOConnection;
+    pm2: TPopupMenu;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    L1: TMenuItem;
+    E1: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
     procedure btn_OpenClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_ExitClick(Sender: TObject);
@@ -53,9 +64,11 @@ type
     procedure chk_EditClick(Sender: TObject);
     procedure btn_OpenSqlClick(Sender: TObject);
     procedure N2Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
   private
     { Private declarations }
     function Init_Con_BDE(const sDir:string):Boolean;
+    function Init_Con_VFP(const sVFPfn:string):Boolean;
     function Init_Con_Access(const sMdbfn:string):Boolean;
     procedure SetDbGridEH;
   public
@@ -85,18 +98,28 @@ begin
   sqlstr := '';
   for i := 0 to mmo_Sql.Lines.Count - 1 do
     sqlstr := sqlstr+mmo_Sql.Lines[i];
-  if (cbb_DbType.ItemIndex=0) or (cbb_DbType.ItemIndex=1) then
-  begin
-    DataSource1.DataSet := qry_BDE;
-    qry_BDE.Close;
-    qry_BDE.SQL.Text := sqlstr;
-    qry_BDE.ExecSQL;
-  end else
-  begin
-    DataSource1.DataSet := qry_Access;
-    qry_Access.Close;
-    qry_Access.SQL.Text := sqlstr;
-    qry_Access.ExecSQL;
+  case cbb_DbType.ItemIndex of
+    0,1: //Paradox,dBase
+    begin
+      DataSource1.DataSet := qry_BDE;
+      qry_BDE.Close;
+      qry_BDE.SQL.Text := sqlstr;
+      qry_BDE.ExecSQL;
+    end;
+    2:  //VFP
+    begin
+      DataSource1.DataSet := qry_VFP;
+      qry_VFP.Close;
+      qry_VFP.SQL.Text := sqlstr;
+      qry_VFP.ExecSQL;
+    end;
+    3:  //Access
+    begin
+      DataSource1.DataSet := qry_Access;
+      qry_Access.Close;
+      qry_Access.SQL.Text := sqlstr;
+      qry_Access.ExecSQL;
+    end;
   end;
 end;
 
@@ -122,20 +145,29 @@ begin
   sqlstr := '';
   for i := 0 to mmo_Sql.Lines.Count - 1 do
     sqlstr := sqlstr+mmo_Sql.Lines[i];
-  if (cbb_DbType.ItemIndex=0) or (cbb_DbType.ItemIndex=1) then
-  begin
-    DataSource1.DataSet := qry_BDE;
-    qry_BDE.Close;
-    qry_BDE.SQL.Text := sqlstr;
-    qry_BDE.Open;
-  end else
-  begin
-    DataSource1.DataSet := qry_Access;
-    qry_Access.Close;
-    qry_Access.SQL.Text := sqlstr;
-    qry_Access.Open;
+  case cbb_DbType.ItemIndex of
+    0,1:
+    begin
+      DataSource1.DataSet := qry_BDE;
+      qry_BDE.Close;
+      qry_BDE.SQL.Text := sqlstr;
+      qry_BDE.Open;
+    end;
+    2:
+    begin
+      DataSource1.DataSet := qry_VFP;
+      qry_VFP.Close;
+      qry_VFP.SQL.Text := sqlstr;
+      qry_VFP.Open;
+    end;
+    3:
+    begin
+      DataSource1.DataSet := qry_Access;
+      qry_Access.Close;
+      qry_Access.SQL.Text := sqlstr;
+      qry_Access.Open;
+    end;
   end;
-
 end;
 
 procedure TDbTools.cbb_TbNameChange(Sender: TObject);
@@ -184,18 +216,28 @@ begin
     Extfn := LowerCase(ExtractFileExt(fn));
     cbb_TbName.Items.Clear;
 
-    if (Extfn = '.db') or (Extfn = '.dbf') then
-    begin
-      if not Init_Con_BDE(sDir) then Exit;
-      Con_BDE.GetTableNames(cbb_TbName.Items);
-      //cbb_TbName.ItemIndex := 0;
-      cbb_TbName.Text := Copy(fn,1,Length(fn)-Length(Extfn));
-    end
-    else if Extfn = '.mdb' then
-    begin
-      if not Init_Con_Access(sdir+'\'+fn) then Exit;
-      Con_Access.GetTableNames(cbb_TbName.Items);
-      cbb_TbName.ItemIndex := 0;
+    case cbb_DbType.ItemIndex of
+      0,1:  //Paradox,dBase
+      begin
+        if not Init_Con_BDE(sDir) then Exit;
+        Con_BDE.GetTableNames(cbb_TbName.Items);
+        //cbb_TbName.ItemIndex := 0;
+        cbb_TbName.Text := Copy(fn,1,Length(fn)-Length(Extfn));
+      end;
+      2: //VFP
+      begin
+        if not Init_Con_VFP(sDir) then Exit;
+        //Con_VFP.GetTableNames(cbb_TbName.Items);
+        cbb_TbName.Items.Add(Copy(fn,1,Length(fn)-Length(Extfn)));
+        cbb_TbName.Text := Copy(fn,1,Length(fn)-Length(Extfn));
+        cbb_TbName.ItemIndex := 0;
+      end;
+      3: //Access
+      begin
+        if not Init_Con_Access(sdir+'\'+fn) then Exit;
+        Con_Access.GetTableNames(cbb_TbName.Items);
+        cbb_TbName.ItemIndex := 0;
+      end;
     end;
     cbb_TbName.Enabled := cbb_TbName.Items.Count>0;
     if cbb_TbName.Text<>'' then
@@ -238,9 +280,42 @@ begin
   Result := Con_BDE.Connected;
 end;
 
+function TDbTools.Init_Con_VFP(const sVFPfn: string): Boolean;
+begin
+  Con_VFP.Close;
+  Con_VFP.ConnectionString := 'Provider=VFPOLEDB.1;Data Source='+sVFPfn+';Collating Sequence=MACHINE;';
+  Con_VFP.Open;
+  Result := Con_VFP.Connected;
+end;
+
 procedure TDbTools.N2Click(Sender: TObject);
 begin
   mmo_Sql.SelectAll;
+end;
+
+procedure TDbTools.N4Click(Sender: TObject);
+var
+  aDataSet:TDataSet;
+  i: Integer;
+  fldName:string;
+  cds_Temp:TClientDataSet;
+  fld1,fld2:string;
+begin
+  cds_Temp := TClientDataSet.Create(nil);
+  try
+    cds_Temp.XmlData := dm.OpenData('select Lower(字段名称) as 字段名称,中文名称 from 字段名对照表');
+    aDataSet := DBGridEh1.DataSource.DataSet;
+    for i := 0 to DBGridEh1.Columns.Count-1 do
+    begin
+      fld1 := LowerCase(DBGridEh1.Columns[i].FieldName);
+      if cds_Temp.Locate('字段名称',fld1,[]) then
+      begin
+        DBGridEh1.Columns[i].Title.Caption := cds_Temp.FieldByName('中文名称').AsString;
+      end;
+    end;
+  finally
+    cds_Temp.Free;
+  end;
 end;
 
 procedure TDbTools.qry_AccessAfterOpen(DataSet: TDataSet);

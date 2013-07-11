@@ -25,6 +25,8 @@ type
     function ExecSql(const SqlText: string;var sError:string):Boolean; stdcall;
 
     function GetAdjustJHNo:string;stdcall; //得到计划调编号
+    function GetZyJHCount(const sXlcc,sSf,sZyId,sKl:string):Integer;stdcall; //获取专业原始计划数
+    function GetZyJHChgCount(const sXlcc,sSf,sZyId,sKl:string):Integer;stdcall; //获取专业变更计划数
     function AdjustJH(const sNo,sXlcc,sSf,sCzlx,sWhy,Czy_Id,sDelta:string;out sError:string):Boolean;stdcall; //申请调整计划
     function PostJH(const sNo,Czy_Id:string;out sError:string):Boolean;stdcall; //提交计划调整
     function ConfirmJH(const sNo,Czy_Id:string;out sError:string):Boolean;stdcall; //审核通过计划调整

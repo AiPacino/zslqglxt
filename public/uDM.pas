@@ -406,7 +406,8 @@ procedure TDM.cds_MasterAfterScroll(DataSet: TDataSet);
 var
   RepFileName,sSqlStr:string;
 begin
-  RepFileName := frxReport1.FileName;
+  RepFileName := ExtractFileName(frxReport1.FileName);
+  //RepFileName := DataSet.FieldByName('报表文件名').AsString;
   sSqlStr := GetDeltaTableSqlText(RepFileName);
   if sSqlStr<>'' then
   begin
@@ -722,6 +723,7 @@ begin
        Exit;
      end;
 
+  frxReport1.FileName := ReportFileName;
   if cds_Master_XMLData<>'' then
     cds_Master.XMLData := cds_Master_XMLData;
 
@@ -740,6 +742,7 @@ begin
 
   if FileExists(fn) then
   begin
+    frxReport1.FileName := fn;
     frxReport1.LoadFromFile(fn);
     frxReport1.Variables.Clear;
     frxReport1.Variables[' User_Var'] := ''; //建立变量分类
