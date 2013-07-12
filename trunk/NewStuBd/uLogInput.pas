@@ -44,7 +44,7 @@ var
   LogInput: TLogInput;
 
 implementation
-uses uDM;
+uses uDM,uMain;
 {$R *.dfm}
 
 procedure TLogInput.btn_CancelClick(Sender: TObject);
@@ -81,7 +81,10 @@ procedure TLogInput.btn_SaveClick(Sender: TObject);
 begin
   if DataSetNoSave(ClientDataSet1) then
     if dm.UpdateData('Id','select top 0 * from 录检员工作日志表',ClientDataSet1.Delta) then
+    begin
       ClientDataSet1.MergeChangeLog;
+      //Main.act_Win_WorkHintExecute(Self);
+    end;
 end;
 
 procedure TLogInput.cbb_XlccChange(Sender: TObject);

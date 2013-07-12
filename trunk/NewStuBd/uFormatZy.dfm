@@ -148,4 +148,15 @@ object FormatZy: TFormatZy
     Enabled = False
     TabOrder = 7
   end
+  object chk_OnlySf: TCheckBox
+    Left = 32
+    Top = 271
+    Width = 137
+    Height = 17
+    Caption = #20165#26684#24335#21270#24403#21069#30465#20221#35760#24405
+    Checked = True
+    State = cbChecked
+    TabOrder = 8
+    OnClick = chk_OnlySfClick
+  end
 end

@@ -23,16 +23,19 @@ type
     lbledt_XlCc: TEdit;
     lbl2: TLabel;
     lbledt_kl: TEdit;
+    chk_OnlySf: TCheckBox;
     procedure btn_CancelClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbb_NewZyChange(Sender: TObject);
     procedure btn_OKClick(Sender: TObject);
+    procedure chk_OnlySfClick(Sender: TObject);
   private
     { Private declarations }
     aXlCc:string;
     aDataSet:TClientDataSet;
     aTableName:string;
     procedure SaveData;
+    procedure InitNewZyList;
   public
     { Public declarations }
     procedure FillData(const vXlCc, vSf, vPc, vKl, vZy: string;cds_Source:TclientDataSet;const sTableName:string);
@@ -53,7 +56,7 @@ var
 begin
   if not ZyIsEqual(lbledt_Zy.Text,cbb_NewZy.Text) then
   begin
-    sHint := '专业规范名和录取专业名称不一致辞！还要执行这一操作吗？　';
+    sHint := '专业规范名和录取专业名称不一致！还要执行这一操作吗？　';
     if MessageBox(Handle, PChar(sHint), '系统提示', MB_YESNO +
       MB_ICONSTOP + MB_DEFBUTTON2 + MB_TOPMOST) = IDNO then
       Exit;
@@ -75,6 +78,11 @@ begin
   btn_OK.Enabled := cbb_NewZy.Text<>'';
 end;
 
+procedure TFormatZy.chk_OnlySfClick(Sender: TObject);
+begin
+  InitNewZyList;
+end;
+
 procedure TFormatZy.FillData(const vXlCc, vSf, vPc, vKl, vZy: string;
   cds_Source: TClientDataSet;const sTableName:string);
 var
@@ -89,7 +97,30 @@ begin
   lbledt_kl.Text := vKl;
   lbledt_Zy.Text := vZy;
 
-  dm.SetZyComboBox(vXlCc,vKl,cbb_NewZy);
+  InitNewZyList;
+  
+  aDataSet := cds_Source;
+end;
+
+procedure TFormatZy.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TFormatZy.InitNewZyList;
+var
+  i:integer;
+  str,vZy:string;
+begin
+  cbb_NewZy.Items.Clear;
+  cbb_NewZy.KeyItems.Clear;
+  cbb_NewZy.Text := '';
+  vZy := lbledt_Zy.Text;
+  //if chk_OnlySf.Checked then
+    dm.SetZyComboBox(lbledt_XlCc.Text,lbledt_kl.Text,lbledt_sf.Text,cbb_NewZy);
+  //else
+  //  dm.SetZyComboBox(lbledt_XlCc.Text,lbledt_kl.Text,'',cbb_NewZy);
+
   cbb_NewZy.Text := '';
   for i := 0 to cbb_NewZy.Items.Count - 1 do
   begin
@@ -110,13 +141,6 @@ begin
       Break;
     end;
   end;
-
-  aDataSet := cds_Source;
-end;
-
-procedure TFormatZy.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := caFree;
 end;
 
 procedure TFormatZy.SaveData;
@@ -131,12 +155,18 @@ begin
   zy := lbledt_Zy.Text;
 
   sWhere := ' where 学历层次='+quotedstr(xlcc)+' and 录取专业='+quotedstr(zy)
+            //+' and 类别='+quotedstr(kl);
             +' and 录取专业规范名=录取专业 and 类别='+quotedstr(kl);
+  if chk_OnlySf.Checked then
+    sWhere := sWhere+' and 省份='+quotedstr(lbledt_sf.Text);
+    
   sqlstr := 'update '+aTableName+' set 录取专业规范名='+quotedstr(cbb_NewZy.Text)+sWhere;
   dm.ExecSql(sqlstr);
 
   sWhere := ' where 学历层次='+quotedstr(xlcc)+' and 录取专业='+quotedstr(zy)
             +' and 录取专业规范名='+quotedstr(cbb_NewZy.Text)+' and 类别='+quotedstr(kl);
+  if chk_OnlySf.Checked then
+    sWhere := sWhere+' and 省份='+quotedstr(lbledt_sf.Text);
   sqlstr := 'select count(*) from '+aTableName+' '+sWhere;
   iResult := vobj.GetRecordCountBySql(sqlstr);
 

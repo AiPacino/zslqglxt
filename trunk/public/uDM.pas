@@ -158,8 +158,8 @@ type
     procedure GetKLList(out sList:TStrings;const IncludeAll:Boolean=False); //科类
     procedure SetKlComboBox(aDbComboBox:TDBComboBoxEh;const IncludeAll:Boolean=False); //专业科类
 
-    procedure GetZyList(const XlCc,ZyLb:string;out sList:TStrings);
-    procedure SetZyComboBox(const XlCc,ZyLb:string;aDbComboBox:TDBComboBoxEh); //专业
+    procedure GetZyList(const XlCc,ZyLb,Sf:string;out sList:TStrings);
+    procedure SetZyComboBox(const XlCc,ZyLb,Sf:string;aDbComboBox:TDBComboBoxEh); //专业
 
     procedure GetZyWithIdList(const XlCc,ZyLb:string;out sList:TStrings);
 
@@ -1574,7 +1574,7 @@ begin
   end;
 end;
 
-procedure TDM.GetZyList(const XlCc,ZyLb: string; out sList: TStrings);
+procedure TDM.GetZyList(const XlCc,ZyLb,Sf: string; out sList: TStrings);
 var
   sWhere:string;
   cds_Temp:TClientDataSet;
@@ -1587,8 +1587,10 @@ begin
       sWhere := ' where 1>0';
     if ZyLb<>'' then
       sWhere := sWhere+' and 类别='+quotedstr(ZyLb);
+    if Sf<>'' then
+      sWhere := sWhere+' and 省份='+quotedstr(Sf);
 
-    cds_Temp.XMLData := OpenData('select 专业 from 专业信息表 '+sWhere);
+    cds_Temp.XMLData := OpenData('select distinct 专业 from View_分省专业计划表 '+sWhere+' order by 专业');
     sList.Clear;
     while not cds_Temp.Eof do
     begin
@@ -2082,13 +2084,13 @@ begin
   end;
 end;
 
-procedure TDM.SetZyComboBox(const XlCc,ZyLb: string; aDbComboBox: TDBComboBoxEh);
+procedure TDM.SetZyComboBox(const XlCc,ZyLb,Sf: string; aDbComboBox: TDBComboBoxEh);
 var
   sList:TStrings;
 begin
   sList := TStringList.Create;
   try
-    GetZyList(XlCc,ZyLb,sList);
+    GetZyList(XlCc,ZyLb,Sf,sList);
     aDbComboBox.Items.Clear;
     aDbComboBox.Items.AddStrings(sList);
     if aDbComboBox.Items.Count>0 then

@@ -151,7 +151,7 @@ begin
   xlcc := ClientDataSet1.FieldByName('学历层次').AsString;
   zykl := ClientDataSet1.FieldByName('类别').AsString;
   edt_NewZy.Items.Clear;
-  dm.SetZyComboBox(xlcc,zykl,edt_NewZy);
+  dm.SetZyComboBox(xlcc,zykl,'',edt_NewZy);
   edt_NewZy.Text := '';
   edt_NewZy.SetFocus;
   btn_OK.Enabled := False;
