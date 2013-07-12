@@ -29,7 +29,6 @@ object LogInput: TLogInput
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 968
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -549,8 +548,6 @@ object LogInput: TLogInput
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 550
-    ExplicitWidth = 968
     DesignSize = (
       466
       44)
@@ -615,7 +612,6 @@ object LogInput: TLogInput
         090909090909090909EEEE8181818181818181818181818181EEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 557
     end
     object DBEditEh1: TDBEditEh
       Left = 170
@@ -649,9 +645,6 @@ object LogInput: TLogInput
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitLeft = 161
-    ExplicitWidth = 807
-    ExplicitHeight = 500
     object DBMemo1: TDBMemo
       Left = 0
       Top = 0
@@ -661,10 +654,6 @@ object LogInput: TLogInput
       DataField = #20869#23481
       DataSource = DataSource1
       TabOrder = 0
-      ExplicitLeft = 6
-      ExplicitTop = 56
-      ExplicitWidth = 515
-      ExplicitHeight = 279
     end
   end
   object ClientDataSet1: TClientDataSet
