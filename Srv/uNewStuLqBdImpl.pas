@@ -917,7 +917,7 @@ function TNewStuLqBd.GetZyJHChgCount(const sXlcc, sSf, sZyId, sKl: string): Inte
 var
   sqlstr:string;
 begin
-  sqlstr := 'select count(增减数) from View_计划调整明细表 where 省份='+quotedstr(sSf)+
+  sqlstr := 'select sum(增减数) from View_计划调整明细表 where 省份='+quotedstr(sSf)+
             ' and 学历层次='+quotedstr(sXlcc)+' and 专业Id='+sZyId+
             ' and 科类='+quotedstr(sKl);
   Result := GetRecordCountBySql(sqlstr);
