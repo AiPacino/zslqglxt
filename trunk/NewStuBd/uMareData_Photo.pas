@@ -151,6 +151,8 @@ begin
   Dir := btnedt_Path.Text;
   if SelectDirectory('Ñ¡ÔñÎÄ¼þ¼Ð','', Dir) then
   begin
+    if RightStr(Dir,1)<>'\' then
+      Dir := Dir+'\';
     btnedt_Path.Text := Dir;
   end;
 end;
