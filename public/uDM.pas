@@ -213,6 +213,7 @@ var
   function  ZyIsEqual(const zy1,zy2:string):Boolean; //专业是否相同
   function  PhotoIsExists(const photofilename:string):Boolean; //考生照片是否存在
   function  GetKsDataPath:string;
+  function  GetKsDataPath_Old:string;
 
   function  GetSfMcBySfDm(const sfDm:string):String;
   function  GetSfDmBySfMc(const sfDm:string):String;
@@ -2588,6 +2589,20 @@ begin
   //  sPath := GetSpecialFolderDir(CSIDL_MYDOCUMENTS);
 
   sPath := sPath+'\.NacuesCStorage2012\';
+  Result := sPath;
+end;
+
+
+function GetKsDataPath_Old:string;
+var
+  sPath: string;
+begin
+  sPath := GetSpecialFolderDir(CSIDL_PERSONAL);//我的文档目录
+  if SysUtils.Win32MajorVersion>=6 then //Windows 2003 以后的版本
+    sPath := sPath+'\.NacuesCStorage\'
+  else
+    sPath := 'C:\Program Files\NacuesC\';
+
   Result := sPath;
 end;
 

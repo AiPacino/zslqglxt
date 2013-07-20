@@ -225,11 +225,7 @@ var
   sPath: string;
   i: Integer;
 begin
-  sPath := GetSpecialFolderDir(CSIDL_PERSONAL);//我的文档目录
-  if SysUtils.Win32MajorVersion>=6 then //Windows 2003 以后的版本
-    sPath := sPath+'\.NacuesCStorage\'
-  else
-    sPath := 'C:\Program Files\NacuesC\';
+  sPath := GetKsDataPath_Old;
   Caption := 'BDE格式的录取考生数据采集【'+sPath+'】';
 
   gb_SfDirList.Clear;
@@ -900,7 +896,7 @@ begin
   dirList := TStringList.Create;
   sQList := TStringList.Create; //有疑问的记录
 
-  sKsDataPath := GetKsDataPath; //考生数据目录
+  sKsDataPath := GetKsDataPath_Old; //考生数据目录
   GetTddDirList(sKsDataPath,dirList); //得到包含 t_tdd.db 文件的目录列表
   try
     Memo1.Lines.Clear;
