@@ -40,7 +40,7 @@ type
     lbl6: TLabel;
     lbl7: TLabel;
     dbedt1: TDBEdit;
-    dbedt2: TDBEdit;
+    dbedt2: TDBMemo;
     dbedt3: TDBEdit;
     DBDateTimeEditEh1: TDBDateTimeEditEh;
     dbedt4: TDBEdit;
@@ -54,7 +54,6 @@ type
     procedure btn_RightGroupClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure ds_YxDataChange(Sender: TObject; Field: TField);
     procedure rg_XlccClick(Sender: TObject);
     procedure btn_AddClick(Sender: TObject);
     procedure btn_DelClick(Sender: TObject);
@@ -63,6 +62,9 @@ type
     procedure cbb_XlccChange(Sender: TObject);
     procedure btn_printClick(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
+    procedure DBGridEh2DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
+    procedure ds_YxDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
     myform :TCzyRightGroupSet;
@@ -195,6 +197,19 @@ begin
   Open_YxTable;
 end;
 
+procedure TZsjhAdjustBrowse.DBGridEh2DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumnEh;
+  State: TGridDrawState);
+begin
+  if Column.FieldName='增减数' then
+  begin
+    if Column.Field.AsInteger>0 then
+      Column.Font.Color := clBlue
+    else
+      Column.Font.Color := clRed;
+  end;
+end;
+
 procedure TZsjhAdjustBrowse.ds_YxDataChange(Sender: TObject; Field: TField);
 begin
   Open_YxZyTable;
@@ -215,7 +230,8 @@ var
 begin
   DBGridEh2.FieldColumns['增减数'].KeyList.Clear;
   DBGridEh2.FieldColumns['增减数'].PickList.Clear;
-  for i := -20 to 20 do
+{
+  for i := -20 to 99 do
   begin
     DBGridEh2.FieldColumns['增减数'].KeyList.Add(IntToStr(i));
     if i>0 then
@@ -223,7 +239,7 @@ begin
     else
       DBGridEh2.FieldColumns['增减数'].PickList.Add(IntToStr(i));
   end;
-
+}
   dm.SetXlCcComboBox(cbb_Xlcc);
   Open_YxTable;
 end;
@@ -296,11 +312,12 @@ var
 begin
   sId := cds_Yx.FieldByName('Id').AsString;
   sWhere := ' where pid='+quotedstr(sId);
-
+  cds_Zy.DisableControls;
   try
-    sqlstr := 'select * from view_计划调整明细表 '+sWhere;
+    sqlstr := 'select * from view_计划调整明细表 '+sWhere+' order by id';
     cds_Zy.XMLData := DM.OpenData(sqlstr);
   finally
+    cds_Zy.EnableControls;
   end;
 end;
 

@@ -629,8 +629,8 @@ object KsList: TKsList
       end
     end
     object chk_Filter: TCheckBox
-      Left = 399
-      Top = 19
+      Left = 307
+      Top = 20
       Width = 80
       Height = 16
       Anchors = [akTop, akRight]
@@ -639,7 +639,7 @@ object KsList: TKsList
       OnClick = chk_FilterClick
     end
     object chk_ZyNoSame: TCheckBox
-      Left = 485
+      Left = 393
       Top = 20
       Width = 92
       Height = 16
@@ -650,6 +650,19 @@ object KsList: TKsList
       ShowHint = True
       TabOrder = 5
       OnClick = chk_ZyNoSameClick
+    end
+    object chk_NoJx: TCheckBox
+      Left = 489
+      Top = 20
+      Width = 92
+      Height = 16
+      Hint = #23631#34109#27743#35199#32771#29983#25968#25454
+      Anchors = [akTop, akRight]
+      Caption = #23631#34109#27743#35199#32771#29983
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 6
+      OnClick = chk_NoJxClick
     end
   end
   object pnl2: TPanel
@@ -1291,7 +1304,7 @@ object KsList: TKsList
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700980010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484

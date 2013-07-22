@@ -4,8 +4,8 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #35745#21010#35843#25972#21333#26597#35810
-  ClientHeight = 556
-  ClientWidth = 821
+  ClientHeight = 561
+  ClientWidth = 836
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,17 +23,17 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
   TextHeight = 14
   object pnl1: TPanel
     Left = 0
-    Top = 515
-    Width = 821
+    Top = 520
+    Width = 836
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
     DesignSize = (
-      821
+      836
       41)
     object btn_Exit: TBitBtn
-      Left = 724
+      Left = 739
       Top = 7
       Width = 75
       Height = 25
@@ -43,7 +43,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
       OnClick = btn_ExitClick
     end
     object btn_print: TBitBtn
-      Left = 560
+      Left = 575
       Top = 7
       Width = 145
       Height = 25
@@ -120,7 +120,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 821
+    Width = 836
     Height = 50
     Align = alTop
     BevelOuter = bvNone
@@ -553,7 +553,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
       Transparent = True
     end
     object grp_Yx: TGroupBox
-      Left = 662
+      Left = 677
       Top = 0
       Width = 159
       Height = 50
@@ -577,7 +577,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
     Left = 0
     Top = 50
     Width = 281
-    Height = 465
+    Height = 470
     Align = alLeft
     Caption = #35745#21010#35843#25972#30003#35831#21333#65306
     GroupStyle = gsStandard
@@ -586,7 +586,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
       Left = 2
       Top = 16
       Width = 277
-      Height = 447
+      Height = 452
       Align = alClient
       DataGrouping.GroupLevels = <>
       DataSource = ds_Yx
@@ -664,24 +664,24 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
   object Panel2: TPanel
     Left = 281
     Top = 50
-    Width = 540
-    Height = 465
+    Width = 555
+    Height = 470
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 3
     object Panel3: TPanel
       Left = 0
       Top = 0
-      Width = 540
-      Height = 465
+      Width = 555
+      Height = 470
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 0
       object GroupBox1: TRzGroupBox
         Left = 0
-        Top = 161
-        Width = 540
-        Height = 304
+        Top = 233
+        Width = 555
+        Height = 237
         Align = alClient
         Caption = #35745#21010#35843#25972#26126#32454#65306
         GroupStyle = gsStandard
@@ -689,8 +689,8 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
         object chklst1: TCheckListBox
           Left = 2
           Top = 16
-          Width = 536
-          Height = 286
+          Width = 551
+          Height = 219
           Align = alClient
           Columns = 3
           ItemHeight = 14
@@ -699,8 +699,8 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
         object DBGridEh2: TDBGridEh
           Left = 2
           Top = 16
-          Width = 536
-          Height = 286
+          Width = 551
+          Height = 219
           Align = alClient
           DataGrouping.GroupLevels = <>
           DataSource = ds_Zy
@@ -715,6 +715,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
           ImeMode = imDisable
           OddRowColor = 13823456
           OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+          PopupMenu = DM.PopupMenu1
           ReadOnly = True
           RowDetailPanel.Color = clBtnFace
           SortLocal = True
@@ -785,7 +786,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
               EditButtons = <>
               FieldName = #22686#20943#25968
               Footers = <>
-              Width = 48
+              Width = 59
             end
             item
               EditButtons = <>
@@ -801,8 +802,8 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
       object GroupBox2: TGroupBox
         Left = 0
         Top = 0
-        Width = 540
-        Height = 161
+        Width = 555
+        Height = 233
         Align = alTop
         Caption = #30003#35831#21333#32534#36753#65306
         TabOrder = 1
@@ -824,7 +825,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
         end
         object lbl3: TLabel
           Left = 313
-          Top = 124
+          Top = 202
           Width = 48
           Height = 14
           Caption = #30003#35831#20154#65306
@@ -832,7 +833,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
         end
         object lbl4: TLabel
           Left = 36
-          Top = 124
+          Top = 202
           Width = 60
           Height = 14
           Caption = #30003#35831#26102#38388#65306
@@ -871,20 +872,21 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
           Enabled = False
           TabOrder = 0
         end
-        object dbedt2: TDBEdit
+        object dbedt2: TDBMemo
           Left = 95
           Top = 89
-          Width = 410
-          Height = 22
+          Width = 447
+          Height = 101
           DataField = #35828#26126
           DataSource = ds_Yx
           Enabled = False
+          ScrollBars = ssVertical
           TabOrder = 4
         end
         object dbedt3: TDBEdit
           Left = 360
-          Top = 122
-          Width = 144
+          Top = 200
+          Width = 181
           Height = 22
           DataField = #30003#35831#20154
           DataSource = ds_Yx
@@ -893,7 +895,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
         end
         object DBDateTimeEditEh1: TDBDateTimeEditEh
           Left = 95
-          Top = 122
+          Top = 200
           Width = 162
           Height = 22
           DataField = #30003#35831#26102#38388
@@ -907,7 +909,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
         object dbedt4: TDBEdit
           Left = 360
           Top = 24
-          Width = 144
+          Width = 181
           Height = 22
           DataField = #29366#24577
           DataSource = ds_Yx
@@ -929,7 +931,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
         object edt_Lx: TDBComboBoxEh
           Left = 360
           Top = 57
-          Width = 144
+          Width = 181
           Height = 22
           DataField = #31867#22411
           DataSource = ds_Yx
@@ -960,7 +962,7 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
   end
   object cds_Zy: TClientDataSet
     Aggregates = <>
-    CommandText = 'select * from View_'#35745#21010#35843#25972#26126#32454#34920' where pid='#39'JH20110024'#39
+    CommandText = 'select * from View_'#35745#21010#35843#25972#26126#32454#34920' where pid='#39'JH20130093'#39
     Params = <>
     ProviderName = 'DSP_Query'
     RemoteServer = DM.SoapConnection1
@@ -976,6 +978,8 @@ object ZsjhAdjustBrowse: TZsjhAdjustBrowse
     Aggregates = <>
     CommandText = 'select * from View_'#35745#21010#35843#25972#26126#32454#34920
     Params = <>
+    ProviderName = 'DSP_Temp'
+    RemoteServer = DM.SoapConnection1
     Left = 616
     Top = 336
   end
