@@ -44,7 +44,7 @@ type
     lbl6: TLabel;
     lbl7: TLabel;
     dbedt1: TDBEdit;
-    dbedt2: TDBEdit;
+    dbedt2: TDBMemo;
     dbedt3: TDBEdit;
     DBDateTimeEditEh1: TDBDateTimeEditEh;
     dbedt4: TDBEdit;
@@ -219,6 +219,7 @@ var
 begin
   DBGridEh2.FieldColumns['增减数'].KeyList.Clear;
   DBGridEh2.FieldColumns['增减数'].PickList.Clear;
+{
   for i := -20 to 20 do
   begin
     DBGridEh2.FieldColumns['增减数'].KeyList.Add(IntToStr(i));
@@ -227,7 +228,7 @@ begin
     else
       DBGridEh2.FieldColumns['增减数'].PickList.Add(IntToStr(i));
   end;
-
+}
   dm.SetXlCcComboBox(cbb_Xlcc);
   Open_YxTable;
 end;
@@ -303,7 +304,7 @@ begin
 
   cds_Zy.DisableControls;
   try
-    sqlstr := 'select * from View_计划调整明细表 '+sWhere;
+    sqlstr := 'select * from View_计划调整明细表 '+sWhere+' order by id';
     cds_Zy.XMLData := DM.OpenData(sqlstr);
   finally
     cds_Zy.EnableControls;

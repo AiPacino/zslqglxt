@@ -70,6 +70,7 @@ type
     pmi_CancelEnd: TMenuItem;
     pmi_Jwxt: TMenuItem;
     N2: TMenuItem;
+    chk_NoJx: TCheckBox;
     procedure RzGroup2Items0Click(Sender: TObject);
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
@@ -129,6 +130,7 @@ type
     procedure pm1Popup(Sender: TObject);
     procedure pmi_CancelEndClick(Sender: TObject);
     procedure pmi_JwxtClick(Sender: TObject);
+    procedure chk_NoJxClick(Sender: TObject);
   private
     { Private declarations }
     //FormatKL:TFormatKL;
@@ -420,6 +422,14 @@ end;
 procedure TKsList.chk_FilterClick(Sender: TObject);
 begin
   DBGridEH1.STFilter.Visible := chk_Filter.Checked;
+end;
+
+procedure TKsList.chk_NoJxClick(Sender: TObject);
+begin
+  if Self.Showing then
+    Open_Access_Table;
+  if Self.Showing then
+    DBGridEH1.SetFocus;
 end;
 
 procedure TKsList.chk_NotJxClick(Sender: TObject);
@@ -775,7 +785,7 @@ begin
 
   if cbb_Sf.Text<>'全部' then
     sWhereList.Add(' and 省份='+quotedstr(cbb_Sf.Text));
-  if not dm.IsDisplayJiangXi then
+  if (not dm.IsDisplayJiangXi) or (chk_NoJx.Checked) then
     sWhereList.Add(' and 省份<>'+quotedstr('江西'));
 
   sTemp := GetFilterString;

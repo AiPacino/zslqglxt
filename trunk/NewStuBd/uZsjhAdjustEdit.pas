@@ -371,6 +371,7 @@ var
 begin
   DBGridEh2.FieldColumns['增减数'].KeyList.Clear;
   DBGridEh2.FieldColumns['增减数'].PickList.Clear;
+{
   for i := -20 to 20 do
   begin
     DBGridEh2.FieldColumns['增减数'].KeyList.Add(IntToStr(i));
@@ -379,7 +380,7 @@ begin
     else
       DBGridEh2.FieldColumns['增减数'].PickList.Add(IntToStr(i));
   end;
-
+}
   aForm := TAdjustJhInput.Create(Self);
   dm.SetXlCcComboBox(cbb_Xlcc);
   sList := TStringList.Create;
@@ -473,7 +474,7 @@ begin
 
   cds_Delta.DisableControls;
   try
-    sqlstr := 'select * from 计划调整明细表 '+sWhere;
+    sqlstr := 'select * from 计划调整明细表 '+sWhere+' order by id';
     cds_Delta.XMLData := DM.OpenData(sqlstr);
   finally
     cds_Delta.EnableControls;

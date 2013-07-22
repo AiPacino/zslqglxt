@@ -5,8 +5,8 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #35745#21010#35843#25972#21333#23457#26680
-  ClientHeight = 558
-  ClientWidth = 803
+  ClientHeight = 564
+  ClientWidth = 828
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,17 +24,19 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
   TextHeight = 14
   object pnl1: TPanel
     Left = 0
-    Top = 517
-    Width = 803
+    Top = 523
+    Width = 828
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitTop = 517
+    ExplicitWidth = 803
     DesignSize = (
-      803
+      828
       41)
     object btn_Exit: TBitBtn
-      Left = 706
+      Left = 731
       Top = 7
       Width = 75
       Height = 25
@@ -42,9 +44,10 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
       Caption = #20851#38381'[&C]'
       TabOrder = 0
       OnClick = btn_ExitClick
+      ExplicitLeft = 706
     end
     object BitBtn2: TBitBtn
-      Left = 321
+      Left = 346
       Top = 7
       Width = 167
       Height = 25
@@ -104,9 +107,10 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 321
     end
     object BitBtn3: TBitBtn
-      Left = 506
+      Left = 531
       Top = 7
       Width = 167
       Height = 25
@@ -166,6 +170,7 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 506
     end
     object btn_Refresh: TBitBtn
       Left = 17
@@ -180,33 +185,38 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
   object pnl_Main: TPanel
     Left = 0
     Top = 50
-    Width = 803
-    Height = 467
+    Width = 828
+    Height = 473
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 803
+    ExplicitHeight = 467
     object pnl7: TPanel
       Left = 0
       Top = 0
-      Width = 803
-      Height = 467
+      Width = 828
+      Height = 473
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitWidth = 803
+      ExplicitHeight = 467
       object RzGroupBox1: TRzGroupBox
         Left = 0
         Top = 0
         Width = 281
-        Height = 467
+        Height = 473
         Align = alLeft
         Caption = #24453#23457#35745#21010#35843#25972#30003#35831#21333#65306
         GroupStyle = gsStandard
         TabOrder = 0
+        ExplicitHeight = 467
         object DBGridEh1: TDBGridEh
           Left = 2
           Top = 16
           Width = 277
-          Height = 449
+          Height = 455
           Align = alClient
           DataGrouping.GroupLevels = <>
           DataSource = ds_Yx
@@ -284,43 +294,51 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
       object Panel2: TPanel
         Left = 281
         Top = 0
-        Width = 522
-        Height = 467
+        Width = 547
+        Height = 473
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
+        ExplicitWidth = 522
+        ExplicitHeight = 467
         object Panel3: TPanel
           Left = 0
           Top = 0
-          Width = 522
-          Height = 467
+          Width = 547
+          Height = 473
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitWidth = 522
+          ExplicitHeight = 467
           object GroupBox1: TRzGroupBox
             Left = 0
-            Top = 161
-            Width = 522
-            Height = 306
+            Top = 227
+            Width = 547
+            Height = 246
             Align = alClient
             Caption = #35745#21010#35843#25972#26126#32454#65306
             GroupStyle = gsStandard
             TabOrder = 0
+            ExplicitWidth = 522
+            ExplicitHeight = 240
             object chklst1: TCheckListBox
               Left = 2
               Top = 16
-              Width = 518
-              Height = 288
+              Width = 543
+              Height = 228
               Align = alClient
               Columns = 3
               ItemHeight = 14
               TabOrder = 1
+              ExplicitWidth = 518
+              ExplicitHeight = 222
             end
             object DBGridEh2: TDBGridEh
               Left = 2
               Top = 16
-              Width = 518
-              Height = 288
+              Width = 543
+              Height = 228
               Align = alClient
               DataGrouping.GroupLevels = <>
               DataSource = ds_Zy
@@ -335,6 +353,7 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
               ImeMode = imDisable
               OddRowColor = 13823456
               OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+              PopupMenu = DM.PopupMenu1
               ReadOnly = True
               RowDetailPanel.Color = clBtnFace
               SortLocal = True
@@ -418,11 +437,12 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
           object GroupBox2: TGroupBox
             Left = 0
             Top = 0
-            Width = 522
-            Height = 161
+            Width = 547
+            Height = 227
             Align = alTop
             Caption = #30003#35831#21333#32534#36753#65306
             TabOrder = 1
+            ExplicitWidth = 522
             object lbl1: TLabel
               Left = 24
               Top = 27
@@ -441,7 +461,7 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
             end
             object lbl3: TLabel
               Left = 313
-              Top = 124
+              Top = 198
               Width = 48
               Height = 14
               Caption = #30003#35831#20154#65306
@@ -449,7 +469,7 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
             end
             object lbl4: TLabel
               Left = 36
-              Top = 124
+              Top = 198
               Width = 60
               Height = 14
               Caption = #30003#35831#26102#38388#65306
@@ -488,20 +508,21 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
               Enabled = False
               TabOrder = 0
             end
-            object dbedt2: TDBEdit
+            object dbedt2: TDBMemo
               Left = 95
               Top = 89
-              Width = 410
-              Height = 22
+              Width = 439
+              Height = 96
               DataField = #35828#26126
               DataSource = ds_Yx
               Enabled = False
+              ScrollBars = ssVertical
               TabOrder = 4
             end
             object dbedt3: TDBEdit
               Left = 360
-              Top = 122
-              Width = 144
+              Top = 196
+              Width = 173
               Height = 22
               DataField = #30003#35831#20154
               DataSource = ds_Yx
@@ -510,7 +531,7 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
             end
             object DBDateTimeEditEh1: TDBDateTimeEditEh
               Left = 95
-              Top = 122
+              Top = 196
               Width = 162
               Height = 22
               DataField = #30003#35831#26102#38388
@@ -524,7 +545,7 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
             object dbedt4: TDBEdit
               Left = 360
               Top = 24
-              Width = 144
+              Width = 173
               Height = 22
               DataField = #29366#24577
               DataSource = ds_Yx
@@ -546,7 +567,7 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
             object edt_Lx: TDBComboBoxEh
               Left = 360
               Top = 57
-              Width = 144
+              Width = 173
               Height = 22
               DataField = #31867#22411
               DataSource = ds_Yx
@@ -567,13 +588,14 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 803
+    Width = 828
     Height = 50
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
+    ExplicitWidth = 803
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -989,13 +1011,14 @@ object ZsjhAdjustConfirm: TZsjhAdjustConfirm
       Transparent = True
     end
     object grp_Yx: TGroupBox
-      Left = 644
+      Left = 669
       Top = 0
       Width = 159
       Height = 50
       Align = alRight
       Caption = #23618#27425#65306
       TabOrder = 0
+      ExplicitLeft = 644
       object cbb_Xlcc: TDBComboBoxEh
         Left = 13
         Top = 19
