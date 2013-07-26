@@ -512,33 +512,41 @@ var
     aSf,aXm,oldksh,ksh,oldzydm,oldzymc,zydm,zymc,oldkszt,kszt,oldcj,cj,oldtel,tel:string;
     pcdm,kldm,jhxz,tddw,xznx,sfsf,sTemp:string;
   begin
-{
+
     //====================================================
+{
     cds_lqmd.Edit;
-    cds_lqmd.FieldByName('计划性质代码').AsString := qry_BDE.FieldByName('计划性质代码').AsString;
-    cds_lqmd.FieldByName('投档单位代码').AsString := qry_BDE.FieldByName('投档单位代码').AsString;
+    //cds_lqmd.FieldByName('计划性质代码').AsString := qry_BDE.FieldByName('计划性质代码').AsString;
+    //cds_lqmd.FieldByName('投档单位代码').AsString := qry_BDE.FieldByName('投档单位代码').AsString;
 
     pcdm := cds_lqmd.FieldByName('批次代码').AsString;
     kldm := cds_lqmd.FieldByName('科类代码').AsString;
     jhxz := cds_lqmd.FieldByName('计划性质代码').AsString;
     tddw := cds_lqmd.FieldByName('投档单位代码').AsString;
 
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业1').AsString);
-    cds_lqmd.FieldByName('专业1名称').AsString := zymc;
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业1').AsString,xznx,sfsf);
+    if cds_lqmd.FieldByName('专业1名称').AsString <> zymc then
+      cds_lqmd.FieldByName('专业1名称').AsString := zymc;
 
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业2').AsString);
-    cds_lqmd.FieldByName('专业2名称').AsString := zymc;
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业3').AsString);
-    cds_lqmd.FieldByName('专业3名称').AsString := zymc;
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业4').AsString);
-    cds_lqmd.FieldByName('专业4名称').AsString := zymc;
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业5').AsString);
-    cds_lqmd.FieldByName('专业5名称').AsString := zymc;
-    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业6').AsString);
-    cds_lqmd.FieldByName('专业6名称').AsString := zymc;
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业2').AsString,xznx,sfsf);
+    if cds_lqmd.FieldByName('专业2名称').AsString <> zymc then
+      cds_lqmd.FieldByName('专业2名称').AsString := zymc;
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业3').AsString,xznx,sfsf);
+    if cds_lqmd.FieldByName('专业3名称').AsString <> zymc then
+      cds_lqmd.FieldByName('专业3名称').AsString := zymc;
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业4').AsString,xznx,sfsf);
+    if cds_lqmd.FieldByName('专业4名称').AsString <> zymc then
+      cds_lqmd.FieldByName('专业4名称').AsString := zymc;
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业5').AsString,xznx,sfsf);
+    if cds_lqmd.FieldByName('专业5名称').AsString <> zymc then
+      cds_lqmd.FieldByName('专业5名称').AsString := zymc;
+    zymc := Get_JHK_Zymc(pcdm,kldm,jhxz,tddw,cds_lqmd.FieldByName('专业6').AsString,xznx,sfsf);
+    if cds_lqmd.FieldByName('专业6名称').AsString <> zymc then
+      cds_lqmd.FieldByName('专业6名称').AsString := zymc;
     cds_lqmd.Post;
-    //====================================================
 }
+    //====================================================
+
     aSf := cds_lqmd.FieldByName('省份').AsString;
     aXm := cds_lqmd.FieldByName('考生姓名').AsString;
     pcdm := cds_lqmd.FieldByName('批次代码').AsString;
@@ -1215,11 +1223,11 @@ begin
   try
     Result := '';
     sqlstr := 'select zymc,xznx,sfsf from t_jhk'+
-              ' where trim(pcdm)='+quotedstr(pcdm)+
-              ' and trim(kldm)='+quotedstr(kldm)+
-              ' and trim(jhxz)='+quotedstr(jhxz)+
-              ' and trim(tddw)='+quotedstr(tddw)+
-              ' and trim(zydh)='+quotedstr(zydm);
+              ' where strcomp(trim(pcdm),'+quotedstr(pcdm)+',0)=0'+
+              ' and strcomp(trim(kldm),'+quotedstr(kldm)+',0)=0'+
+              ' and strcomp(trim(jhxz),'+quotedstr(jhxz)+',0)=0'+
+              ' and strcomp(trim(tddw),'+quotedstr(tddw)+',0)=0'+
+              ' and strcomp(trim(zydh),'+quotedstr(zydm)+',0)=0';
     qry_Temp.Close;
     qry_Temp.SQL.Text := sqlstr;
     qry_Temp.Open;

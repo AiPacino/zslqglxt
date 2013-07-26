@@ -60,6 +60,7 @@ type
     chk_ZyNoSame: TCheckBox;
     pmi_SetTd: TMenuItem;
     pmi_SetEnd: TMenuItem;
+    pmi_SetNormal: TMenuItem;
     procedure RzGroup2Items0Click(Sender: TObject);
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
@@ -111,6 +112,7 @@ type
     procedure chk_FilterClick(Sender: TObject);
     procedure pmi_SetTdClick(Sender: TObject);
     procedure pmi_SetEndClick(Sender: TObject);
+    procedure pmi_SetNormalClick(Sender: TObject);
   private
     { Private declarations }
     //FormatKL:TFormatKL;
@@ -547,6 +549,7 @@ var
 begin
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
   pm_FormatZy.Enabled := zy<>'';
+  pmi_SetNormal.Visible := gb_Czy_Level='-1';
   pmi_SetTd.Visible := gb_Czy_Level='-1';
   pmi_SetEnd.Visible := gb_Czy_Level='-1';
 end;
@@ -568,6 +571,23 @@ begin
               'where 考生号='+quotedstr(ClientDataSet1.FieldByName('考生号').AsString);
     if dm.ExecSql(sqlstr) then
       MessageBox(Handle, '操作完成！已为当前考生作了录取结束处理！　', '系统提示',
+        MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+  end;
+end;
+
+procedure TKsInfoBrowse_All.pmi_SetNormalClick(Sender: TObject);
+var
+  sqlstr:string;
+begin
+  if MessageBox(Handle, '真的要把当前考生设置为阅档录检状态吗？　', '系统提示',
+    MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDYES then
+  begin
+    if UpperCase(InputBox('操作确认','请输入【OK】字符以便确认！',''))<>'OK' then Exit;
+    sqlstr := 'update lqmd set 考生状态='+quotedstr('1')+',录取代码=NULL,录取专业=NULL,录取专业规范名=NULL,'+
+              '院系=NULL,报到校区=NULL,类别=NULL,科类=NULL '+
+              'where 考生号='+quotedstr(ClientDataSet1.FieldByName('考生号').AsString);
+    if dm.ExecSql(sqlstr) then
+      MessageBox(Handle, '操作完成！已把当前考生设置为阅档录检状态了！　', '系统提示',
         MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
   end;
 end;
