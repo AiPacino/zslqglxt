@@ -69,6 +69,8 @@ type
     pmi_Jwxt: TMenuItem;
     N2: TMenuItem;
     pim_AllowPrintNotEndKs: TMenuItem;
+    grp_Yk: TGroupBox;
+    cbb_yk: TDBComboBoxEh;
     procedure RzGroup2Items0Click(Sender: TObject);
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
@@ -215,6 +217,12 @@ var
     fn := '专科录取通知书.fr3';
   end;
 begin
+  if cbb_yk.Text='全部考生' then
+  begin
+    Application.MessageBox('请选择相应的预科过滤条件后编制流水号！', 
+      '系统提示', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+    Exit;
+  end;
   if MessageBox(Handle, '真的要打印当前所显示的所有考生的录取通知书吗？　', 
     '系统提示', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) =
     IDNO then
@@ -644,13 +652,22 @@ begin
 end;
 
 procedure TKsLqtzsPrint.pm_NumberClick(Sender: TObject);
+var
+  sfyk:Boolean;
 begin
+  if cbb_yk.Text='全部考生' then
+  begin
+    Application.MessageBox('请选择相应的预科过滤条件后编制流水号！',
+      '系统提示', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+    Exit;
+  end;
   if MessageBox(Handle, '真的要为当前所显示的记录编制流水号吗？　', '系统提示',
     MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDNO then
   begin
     Exit;
   end;
-  aForm.SetData(cbb_XlCc.Text,ClientDataSet1);
+  sfyk := cbb_yk.Text='预科考生';
+  aForm.SetData(cbb_XlCc.Text,sfyk,ClientDataSet1);
   aForm.Show;
 end;
 
@@ -835,6 +852,8 @@ begin
 
   if cbb_Sf.Text<>'全部' then
     sWhereList.Add(' and 省份='+quotedstr(cbb_Sf.Text));
+  if cbb_yk.Text<>'全部考生' then
+    sWhereList.Add(' and '+cbb_yk.Value);
   if not dm.IsDisplayJiangXi then
     sWhereList.Add(' and 省份<>'+quotedstr('江西'));
 

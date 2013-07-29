@@ -3,8 +3,8 @@ object KsLqtzsPrint: TKsLqtzsPrint
   Top = 46
   ActiveControl = cbb_Value
   Caption = #24405#21462#36890#30693#20070#25171#21360
-  ClientHeight = 687
-  ClientWidth = 1113
+  ClientHeight = 710
+  ClientWidth = 1154
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -24,15 +24,16 @@ object KsLqtzsPrint: TKsLqtzsPrint
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 1113
+    Width = 1154
     Height = 50
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1113
     DesignSize = (
-      1113
+      1154
       50)
     object img_Title: TImage
       Left = 0
@@ -400,13 +401,14 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Transparent = True
     end
     object grp_Yx: TGroupBox
-      Left = 1000
+      Left = 941
       Top = 0
       Width = 113
       Height = 50
       Align = alRight
       Caption = #23618#27425#65306
       TabOrder = 3
+      ExplicitLeft = 1000
       object cbb_XlCc: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -420,13 +422,14 @@ object KsLqtzsPrint: TKsLqtzsPrint
       end
     end
     object GroupBox1: TGroupBox
-      Left = 887
+      Left = 828
       Top = 0
       Width = 113
       Height = 50
       Align = alRight
       Caption = #31185#31867#65306
       TabOrder = 2
+      ExplicitLeft = 887
       object cbb_KL: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -440,13 +443,14 @@ object KsLqtzsPrint: TKsLqtzsPrint
       end
     end
     object grp_Sf: TGroupBox
-      Left = 661
+      Left = 602
       Top = 0
       Width = 113
       Height = 50
       Align = alRight
       Caption = #30465#20221#65306
       TabOrder = 0
+      ExplicitLeft = 661
       object cbb_Sf: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -464,13 +468,14 @@ object KsLqtzsPrint: TKsLqtzsPrint
       end
     end
     object grp_Lb: TGroupBox
-      Left = 774
+      Left = 715
       Top = 0
       Width = 113
       Height = 50
       Align = alRight
       Caption = #31867#21035#65306
       TabOrder = 1
+      ExplicitLeft = 774
       object cbb_Lb: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -484,18 +489,19 @@ object KsLqtzsPrint: TKsLqtzsPrint
       end
     end
     object chk_Filter: TCheckBox
-      Left = 451
-      Top = 19
+      Left = 486
+      Top = 6
       Width = 80
       Height = 16
       Anchors = [akTop, akRight]
       Caption = #25171#24320#36807#28388#22120
       TabOrder = 4
       OnClick = chk_FilterClick
+      ExplicitLeft = 445
     end
     object chk_ZyNoSame: TCheckBox
-      Left = 537
-      Top = 20
+      Left = 486
+      Top = 28
       Width = 110
       Height = 16
       Hint = #26174#31034#19987#19994#21517#31216#19981#19968#33268#30340#35760#24405
@@ -505,21 +511,54 @@ object KsLqtzsPrint: TKsLqtzsPrint
       ShowHint = True
       TabOrder = 5
       OnClick = chk_ZyNoSameClick
+      ExplicitLeft = 445
+    end
+    object grp_Yk: TGroupBox
+      Left = 1054
+      Top = 0
+      Width = 100
+      Height = 50
+      Align = alRight
+      Caption = #39044#31185#36807#28388#65306
+      TabOrder = 6
+      ExplicitLeft = 1044
+      object cbb_yk: TDBComboBoxEh
+        Left = 6
+        Top = 19
+        Width = 88
+        Height = 20
+        Alignment = taCenter
+        EditButtons = <>
+        Items.Strings = (
+          #20840#37096#32771#29983
+          #39044#31185#32771#29983
+          #38750#39044#31185#32771#29983)
+        KeyItems.Strings = (
+          '1>0'
+          #24405#21462#19987#19994' like '#39'%'#39044#31185'%'#39
+          #24405#21462#19987#19994' not like '#39'%'#39044#31185'%'#39)
+        TabOrder = 0
+        Text = #20840#37096#32771#29983
+        Visible = True
+        OnChange = cbb_XlCcChange
+      end
     end
   end
   object pnl2: TPanel
     Left = 0
-    Top = 646
-    Width = 1113
+    Top = 669
+    Width = 1154
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
+    ExplicitTop = 646
+    ExplicitWidth = 1113
     DesignSize = (
-      1113
+      1154
       41)
     object lbl1: TLabel
-      Left = 988
+      Left = 1029
       Top = 15
       Width = 119
       Height = 14
@@ -536,7 +575,7 @@ object KsLqtzsPrint: TKsLqtzsPrint
       ExplicitLeft = 910
     end
     object lbl_Len: TLabel
-      Left = 493
+      Left = 534
       Top = 16
       Width = 18
       Height = 12
@@ -553,15 +592,16 @@ object KsLqtzsPrint: TKsLqtzsPrint
     object cbb_Value: TEdit
       Left = 210
       Top = 11
-      Width = 275
+      Width = 316
       Height = 20
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 6
       OnChange = cbb_ValueChange
       OnKeyPress = cbb_ValueKeyPress
+      ExplicitWidth = 275
     end
     object btn_OK: TBitBtn
-      Left = 519
+      Left = 560
       Top = 9
       Width = 75
       Height = 25
@@ -569,9 +609,10 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Caption = #30830#23450'[&O]'
       TabOrder = 1
       OnClick = btn_OKClick
+      ExplicitLeft = 519
     end
     object btn_Adv: TBitBtn
-      Left = 588
+      Left = 629
       Top = -33
       Width = 75
       Height = 25
@@ -581,6 +622,7 @@ object KsLqtzsPrint: TKsLqtzsPrint
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
+      ExplicitLeft = 588
     end
     object cbb_Field: TDBFieldComboBox
       Left = 7
@@ -593,7 +635,7 @@ object KsLqtzsPrint: TKsLqtzsPrint
       DataSource = ds_Access
     end
     object btn_SqlWhere: TBitBtn
-      Left = 614
+      Left = 655
       Top = 9
       Width = 75
       Height = 25
@@ -601,6 +643,7 @@ object KsLqtzsPrint: TKsLqtzsPrint
       Caption = #39640#32423#26597#35810
       TabOrder = 2
       OnClick = btn_SqlWhereClick
+      ExplicitLeft = 614
     end
     object cbb_Compare: TDBComboBoxEh
       Left = 116
@@ -635,7 +678,7 @@ object KsLqtzsPrint: TKsLqtzsPrint
       OnChange = cbb_CompareChange
     end
     object btn_Save: TBitBtn
-      Left = 695
+      Left = 736
       Top = 9
       Width = 75
       Height = 25
@@ -644,13 +687,14 @@ object KsLqtzsPrint: TKsLqtzsPrint
       TabOrder = 3
       Visible = False
       OnClick = btn_SaveClick
+      ExplicitLeft = 695
     end
   end
   object DBGridEH1: TDBGridEh
     Left = 0
     Top = 50
-    Width = 1113
-    Height = 546
+    Width = 1154
+    Height = 569
     Align = alClient
     AllowedOperations = [alopUpdateEh]
     ColumnDefValues.HighlightRequired = True
@@ -1103,8 +1147,8 @@ object KsLqtzsPrint: TKsLqtzsPrint
   end
   object DBGridEh_Export: TDBGridEh
     Left = 0
-    Top = 596
-    Width = 1113
+    Top = 619
+    Width = 1154
     Height = 50
     Align = alBottom
     AllowedOperations = [alopUpdateEh]
@@ -1149,7 +1193,7 @@ object KsLqtzsPrint: TKsLqtzsPrint
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700980010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101050007009C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484

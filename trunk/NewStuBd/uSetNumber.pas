@@ -32,10 +32,11 @@ type
     { Private declarations }
     start_id:Integer;
     aXlcc:string;
+    aSfyk:Boolean;
     procedure SetMaxNumber;
   public
     { Public declarations }
-    procedure SetData(const xlcc:string;const aDataSet:TDataSet);
+    procedure SetData(const xlcc:string;const sfyk:Boolean;const aDataSet:TDataSet);
   end;
 
 var
@@ -76,6 +77,11 @@ begin
     close;
     cds_Temp.Close;
     sqlstr := 'select max(流水号) from lqmd where 学历层次='+quotedstr(aXlcc);
+    if aSfyk then
+      sqlstr := sqlstr+' and 录取专业规范名 like '+quotedstr('%预科%')
+    else
+      sqlstr := sqlstr+' and 录取专业规范名 not like '+quotedstr('%预科%');
+
     cds_Temp.XMLData := DM.OpenData(sqlstr);
     if cds_Temp.Fields[0].IsNull then
       ii := 1
@@ -89,15 +95,28 @@ begin
   end;
 end;
 
-procedure TSetNumber.SetData(const xlcc: string;
+procedure TSetNumber.SetData(const xlcc: string;const sfyk:Boolean;
   const aDataSet: TDataSet);
 begin
   aXlcc := xlcc;
+  aSfyk := sfyk;
+
   ds_lqmd.DataSet := aDataSet;
   if aXlcc='本科' then
-    edt1.Text := 'B'
+  begin
+    if sfyk then
+      edt1.Text := 'BY'
+    else
+      edt1.Text := 'BK';
+  end
   else
+  begin
     edt1.Text := 'Z';
+    if sfyk then
+      edt1.Text := edt1.Text+'ZY'
+    else
+      edt1.Text := edt1.Text+'ZK';
+  end;
   SetMaxNumber;
 end;
 
@@ -136,8 +155,8 @@ begin
         end;
         if UPPERCASE(InputBox('开始编号确认','请输入OK字符确认！',''))<>'OK' then
           Exit;
-        First;
       end;
+      First;
       while not eof do
       begin
         //sDate := FormatDateTime('yyyy-mm-dd',FieldByName('Action_Time').AsDateTime);

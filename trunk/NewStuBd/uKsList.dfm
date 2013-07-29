@@ -4,7 +4,7 @@ object KsList: TKsList
   ActiveControl = cbb_Value
   Caption = #24405#21462#20449#24687#22788#29702
   ClientHeight = 687
-  ClientWidth = 1035
+  ClientWidth = 1144
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object KsList: TKsList
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 1035
+    Width = 1144
     Height = 50
     Align = alTop
     BevelOuter = bvNone
@@ -32,7 +32,7 @@ object KsList: TKsList
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
-      1035
+      1144
       50)
     object img_Title: TImage
       Left = 0
@@ -545,7 +545,7 @@ object KsList: TKsList
       Transparent = True
     end
     object grp_Yx: TGroupBox
-      Left = 922
+      Left = 931
       Top = 0
       Width = 113
       Height = 50
@@ -565,7 +565,7 @@ object KsList: TKsList
       end
     end
     object GroupBox1: TGroupBox
-      Left = 809
+      Left = 818
       Top = 0
       Width = 113
       Height = 50
@@ -585,7 +585,7 @@ object KsList: TKsList
       end
     end
     object grp_Sf: TGroupBox
-      Left = 583
+      Left = 592
       Top = 0
       Width = 113
       Height = 50
@@ -609,7 +609,7 @@ object KsList: TKsList
       end
     end
     object grp_Lb: TGroupBox
-      Left = 696
+      Left = 705
       Top = 0
       Width = 113
       Height = 50
@@ -629,8 +629,8 @@ object KsList: TKsList
       end
     end
     object chk_Filter: TCheckBox
-      Left = 307
-      Top = 20
+      Left = 486
+      Top = 1
       Width = 80
       Height = 16
       Anchors = [akTop, akRight]
@@ -639,8 +639,8 @@ object KsList: TKsList
       OnClick = chk_FilterClick
     end
     object chk_ZyNoSame: TCheckBox
-      Left = 393
-      Top = 20
+      Left = 486
+      Top = 16
       Width = 92
       Height = 16
       Hint = #26174#31034#19987#19994#21517#31216#19981#19968#33268#30340#35760#24405
@@ -652,8 +652,8 @@ object KsList: TKsList
       OnClick = chk_ZyNoSameClick
     end
     object chk_NoJx: TCheckBox
-      Left = 489
-      Top = 20
+      Left = 486
+      Top = 32
       Width = 92
       Height = 16
       Hint = #23631#34109#27743#35199#32771#29983#25968#25454
@@ -664,20 +664,49 @@ object KsList: TKsList
       TabOrder = 6
       OnClick = chk_NoJxClick
     end
+    object grp_Yk: TGroupBox
+      Left = 1044
+      Top = 0
+      Width = 100
+      Height = 50
+      Align = alRight
+      Caption = #39044#31185#36807#28388#65306
+      TabOrder = 7
+      object cbb_yk: TDBComboBoxEh
+        Left = 6
+        Top = 19
+        Width = 88
+        Height = 20
+        Alignment = taCenter
+        EditButtons = <>
+        Items.Strings = (
+          #20840#37096#32771#29983
+          #39044#31185#32771#29983
+          #38750#39044#31185#32771#29983)
+        KeyItems.Strings = (
+          '1>0'
+          #24405#21462#19987#19994' like '#39'%'#39044#31185'%'#39
+          #24405#21462#19987#19994' not like '#39'%'#39044#31185'%'#39)
+        TabOrder = 0
+        Text = #20840#37096#32771#29983
+        Visible = True
+        OnChange = cbb_XlCcChange
+      end
+    end
   end
   object pnl2: TPanel
     Left = 0
     Top = 646
-    Width = 1035
+    Width = 1144
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
     DesignSize = (
-      1035
+      1144
       41)
     object lbl1: TLabel
-      Left = 910
+      Left = 1019
       Top = 15
       Width = 119
       Height = 14
@@ -691,9 +720,10 @@ object KsList: TKsList
       Font.Name = 'Verdana'
       Font.Style = []
       ParentFont = False
+      ExplicitLeft = 910
     end
     object lbl_Len: TLabel
-      Left = 628
+      Left = 737
       Top = 16
       Width = 18
       Height = 12
@@ -705,6 +735,7 @@ object KsList: TKsList
       Font.Name = #23435#20307
       Font.Style = []
       ParentFont = False
+      ExplicitLeft = 628
     end
     object lbl_Filter: TLabel
       Left = 148
@@ -716,7 +747,7 @@ object KsList: TKsList
     object cbb_Value: TEdit
       Left = 423
       Top = 11
-      Width = 197
+      Width = 306
       Height = 20
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 7
@@ -724,7 +755,7 @@ object KsList: TKsList
       OnKeyPress = cbb_ValueKeyPress
     end
     object btn_OK: TBitBtn
-      Left = 654
+      Left = 763
       Top = 9
       Width = 75
       Height = 25
@@ -734,7 +765,7 @@ object KsList: TKsList
       OnClick = btn_OKClick
     end
     object btn_Adv: TBitBtn
-      Left = 510
+      Left = 619
       Top = -33
       Width = 75
       Height = 25
@@ -765,7 +796,7 @@ object KsList: TKsList
       OnClick = btn_RefreshClick
     end
     object btn_SqlWhere: TBitBtn
-      Left = 749
+      Left = 858
       Top = 9
       Width = 75
       Height = 25
@@ -807,7 +838,7 @@ object KsList: TKsList
       OnChange = cbb_CompareChange
     end
     object btn_Save: TBitBtn
-      Left = 848
+      Left = 957
       Top = 9
       Width = 75
       Height = 25
@@ -821,7 +852,7 @@ object KsList: TKsList
   object DBGridEH1: TDBGridEh
     Left = 0
     Top = 50
-    Width = 1035
+    Width = 1144
     Height = 546
     Align = alClient
     AllowedOperations = [alopUpdateEh]
@@ -1259,7 +1290,7 @@ object KsList: TKsList
   object DBGridEh_Export: TDBGridEh
     Left = 0
     Top = 596
-    Width = 1035
+    Width = 1144
     Height = 50
     Align = alBottom
     AllowedOperations = [alopUpdateEh]
@@ -1304,7 +1335,7 @@ object KsList: TKsList
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700980010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101050007009C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484

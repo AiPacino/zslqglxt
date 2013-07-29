@@ -71,6 +71,8 @@ type
     pmi_Jwxt: TMenuItem;
     N2: TMenuItem;
     chk_NoJx: TCheckBox;
+    grp_Yk: TGroupBox;
+    cbb_yk: TDBComboBoxEh;
     procedure RzGroup2Items0Click(Sender: TObject);
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
@@ -217,7 +219,13 @@ var
     fn := '专科录取通知书.fr3';
   end;
 begin
-  if MessageBox(Handle, '真的要打印当前所显示的所有考生的录取通知书吗？　', 
+  if cbb_yk.Text='全部考生' then
+  begin
+    Application.MessageBox('请选择相应的预科过滤条件后再打印录取通知书！', 
+      '系统提示', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+    Exit;
+  end;
+  if MessageBox(Handle, '真的要打印当前所显示的所有考生的录取通知书吗？　',
     '系统提示', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) =
     IDNO then
   begin
@@ -630,13 +638,22 @@ begin
 end;
 
 procedure TKsList.pm_NumberClick(Sender: TObject);
+var
+  sfyk:Boolean;
 begin
+  if cbb_yk.Text='全部考生' then
+  begin
+    Application.MessageBox('请选择相应的预科过滤条件后编制流水号！',
+      '系统提示', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+    Exit;
+  end;
   if MessageBox(Handle, '真的要为当前所显示的记录编制流水号吗？　', '系统提示',
     MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDNO then
   begin
     Exit;
   end;
-  aForm.SetData(cbb_XlCc.Text,ClientDataSet1);
+  sfyk := cbb_yk.Text='预科考生';
+  aForm.SetData(cbb_XlCc.Text,sfyk,ClientDataSet1);
   aForm.Show;
 end;
 
@@ -787,6 +804,8 @@ begin
     sWhereList.Add(' and 省份='+quotedstr(cbb_Sf.Text));
   if (not dm.IsDisplayJiangXi) or (chk_NoJx.Checked) then
     sWhereList.Add(' and 省份<>'+quotedstr('江西'));
+  if cbb_yk.Text<>'全部考生' then
+    sWhereList.Add(' and '+cbb_yk.Value);
 
   sTemp := GetFilterString;
   
@@ -833,7 +852,7 @@ end;
 procedure TKsList.ExportToExcel(const iType: Integer);
 var
   sTitle,sFldList,sqlstr:string;
-  fn,Ext,mfn:string;
+  fn,Ext,mfn,sMin,sMax,ykstr:string;
 begin
   case iType of
     0:
@@ -859,11 +878,24 @@ begin
   end;
   sFldList := vobj.GetExportFieldList(sTitle);
   if sFldList='' then sFldList := '*';
-  
+
   sqlstr := 'select '+sFldList+' from 录取信息表 '+sWhereList.Text+' order by 流水号';
 
   cds_Export.XMLData := dm.OpenData(sqlstr);
-  fn := FormatDateTime('yyyy',Now)+'江西科技师范大学'+cbb_Xlcc.Text+'录取考生数据('+IntToStr(cds_Export.RecordCount)+'人)'+sTitle+'.xls';
+  case cbb_yk.ItemIndex of
+    0:
+      ykstr := '';
+    1:
+      ykstr := '预科';
+    2:
+      ykstr := '非预科';
+  end;
+  cds_Export.Last;
+  sMax := cds_Export.FieldByName('流水号').AsString;
+  cds_Export.First;
+  sMin := cds_Export.FieldByName('流水号').AsString;
+
+  fn := FormatDateTime('yyyy',Now)+cbb_Xlcc.Text+ykstr+'考生信息【'+sMin+'~'+sMax+'】('+IntToStr(cds_Export.RecordCount)+'人)'+sTitle+'.xls';
   dlgSave_1.FileName := fn;
   if dlgSave_1.Execute then
   begin
