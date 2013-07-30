@@ -88,9 +88,9 @@ object FormatZy: TFormatZy
     TabOrder = 1
   end
   object lbledt_Zy: TEdit
-    Left = 110
+    Left = 160
     Top = 154
-    Width = 324
+    Width = 274
     Height = 21
     ReadOnly = True
     TabOrder = 2
@@ -158,5 +158,13 @@ object FormatZy: TFormatZy
     State = cbChecked
     TabOrder = 8
     OnClick = chk_OnlySfClick
+  end
+  object lbledt_zydm: TEdit
+    Left = 110
+    Top = 153
+    Width = 44
+    Height = 21
+    ReadOnly = True
+    TabOrder = 9
   end
 end

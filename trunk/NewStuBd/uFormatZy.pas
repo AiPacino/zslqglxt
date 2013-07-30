@@ -24,6 +24,7 @@ type
     lbl2: TLabel;
     lbledt_kl: TEdit;
     chk_OnlySf: TCheckBox;
+    lbledt_zydm: TEdit;
     procedure btn_CancelClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbb_NewZyChange(Sender: TObject);
@@ -38,7 +39,7 @@ type
     procedure InitNewZyList;
   public
     { Public declarations }
-    procedure FillData(const vXlCc, vSf, vPc, vKl, vZy: string;cds_Source:TclientDataSet;const sTableName:string);
+    procedure FillData(const vXlCc, vSf, vPc, vKl, vZydm, vZy: string;cds_Source:TclientDataSet;const sTableName:string);
   end;
 
 implementation
@@ -83,7 +84,7 @@ begin
   InitNewZyList;
 end;
 
-procedure TFormatZy.FillData(const vXlCc, vSf, vPc, vKl, vZy: string;
+procedure TFormatZy.FillData(const vXlCc, vSf, vPc, vKl, vZydm, vZy: string;
   cds_Source: TClientDataSet;const sTableName:string);
 var
   i: Integer;
@@ -95,6 +96,7 @@ begin
   lbledt_XlCc.Text := vXlCc;
   lbledt_Pc.Text := vPc;
   lbledt_kl.Text := vKl;
+  lbledt_zydm.Text := vZydm;
   lbledt_Zy.Text := vZy;
 
   InitNewZyList;
@@ -110,11 +112,12 @@ end;
 procedure TFormatZy.InitNewZyList;
 var
   i:integer;
-  str,vZy:string;
+  str,vZydm,vZy:string;
 begin
   cbb_NewZy.Items.Clear;
   cbb_NewZy.KeyItems.Clear;
   cbb_NewZy.Text := '';
+  vZydm := lbledt_zydm.Text;
   vZy := lbledt_Zy.Text;
   //if chk_OnlySf.Checked then
     dm.SetZyComboBox(lbledt_XlCc.Text,lbledt_kl.Text,lbledt_sf.Text,cbb_NewZy);
@@ -145,16 +148,17 @@ end;
 
 procedure TFormatZy.SaveData;
 var
-  xlcc,sf,pc,kl,zy,sqlstr,sWhere:string;
+  xlcc,sf,pc,kl,zydm,zy,sqlstr,sWhere:string;
   iResult :Integer;
 begin
   xlcc := lbledt_XlCc.Text;
   sf := lbledt_sf.Text;
   pc := lbledt_pc.Text;
   kl := lbledt_kl.Text;
+  zydm := lbledt_zydm.Text;
   zy := lbledt_Zy.Text;
 
-  sWhere := ' where 学历层次='+quotedstr(xlcc)+' and 录取专业='+quotedstr(zy)
+  sWhere := ' where 学历层次='+quotedstr(xlcc)+' and 录取代码='+quotedstr(zydm)
             //+' and 类别='+quotedstr(kl);
             +' and 录取专业规范名=录取专业 and 类别='+quotedstr(kl);
   if chk_OnlySf.Checked then
