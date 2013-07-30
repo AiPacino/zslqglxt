@@ -1023,6 +1023,13 @@ object KsList: TKsList
       end
       item
         EditButtons = <>
+        FieldName = #24405#21462#20195#30721
+        Footers = <>
+        Title.TitleButton = True
+        Visible = False
+      end
+      item
+        EditButtons = <>
         FieldName = #24405#21462#19987#19994
         Footers = <>
         Title.TitleButton = True
@@ -1226,13 +1233,6 @@ object KsList: TKsList
       end
       item
         EditButtons = <>
-        FieldName = #24405#21462#20195#30721
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
         FieldName = #19987#19994'6'#21517#31216
         Footers = <>
         Title.TitleButton = True
@@ -1335,7 +1335,7 @@ object KsList: TKsList
     Left = 16
     Top = 91
     Bitmap = {
-      494C0101050007009C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700A00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
