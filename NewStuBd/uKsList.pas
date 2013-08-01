@@ -268,7 +268,7 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 学历层次,省份,类别,科类,录取专业规范名');
+    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 学历层次,采集员,省份,类别,科类,录取专业规范名');
     //Print_LQKSMD();
     dm.PrintReport('专业分类录取名单.fr3',cds_Temp.XMLData,1);
   finally
@@ -887,7 +887,7 @@ begin
     0:
       ykstr := '';
     1:
-      ykstr := '预科';
+      ykstr := '预科班';
     2:
       ykstr := '非预科';
   end;
@@ -896,7 +896,7 @@ begin
   cds_Export.First;
   sMin := cds_Export.FieldByName('流水号').AsString;
 
-  fn := FormatDateTime('yyyy',Now)+cbb_Xlcc.Text+ykstr+'考生信息【'+sMin+'~'+sMax+'】('+IntToStr(cds_Export.RecordCount)+'人)'+sTitle+'.xls';
+  fn := FormatDateTime('yyyy',Now)+cbb_Xlcc.Text+ykstr+sTitle+'信息【'+sMin+'~'+sMax+'】('+IntToStr(cds_Export.RecordCount)+'人).xls';
   dlgSave_1.FileName := fn;
   if dlgSave_1.Execute then
   begin
@@ -930,10 +930,10 @@ begin
   lbl_Len.Caption := '('+IntToStr(Length(cbb_Value.Text))+')';
   if (LeftStr(cbb_Value.Text,1)='B') or (LeftStr(cbb_Value.Text,1)='Z') then
   begin
-    if Copy(cbb_Value.Text,2,1)='0' then
+    if Copy(cbb_Value.Text,2,1)>'9' then
     begin
       cbb_Field.Text := '流水号';
-      if Length(cbb_Value.Text)=5 then btn_OK.Click;
+      if Length(cbb_Value.Text)=7 then btn_OK.Click;
     end else
     begin
       cbb_Field.Text := '通知书编号';

@@ -1,7 +1,7 @@
 object NewStuBdHistory: TNewStuBdHistory
   Left = 0
   Top = 0
-  ActiveControl = edt_Value
+  ActiveControl = cbb_Value
   Caption = #26032#29983#25253#21040#24773#20917#27983#35272
   ClientHeight = 678
   ClientWidth = 998
@@ -629,6 +629,20 @@ object NewStuBdHistory: TNewStuBdHistory
     DesignSize = (
       998
       41)
+    object lbl_Len: TLabel
+      Left = 294
+      Top = 16
+      Width = 18
+      Height = 12
+      Anchors = [akTop, akRight]
+      Caption = '(*)'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
     object cbb_Field: TDBComboBoxEh
       Left = 5
       Top = 10
@@ -662,16 +676,17 @@ object NewStuBdHistory: TNewStuBdHistory
       Text = #36890#30693#20070#32534#21495
       Visible = True
     end
-    object edt_Value: TEdit
+    object cbb_Value: TEdit
       Left = 113
       Top = 10
       Width = 174
       Height = 22
       TabOrder = 6
-      OnKeyPress = edt_ValueKeyPress
+      OnChange = cbb_ValueChange
+      OnKeyPress = cbb_ValueKeyPress
     end
     object btn_Search: TBitBtn
-      Left = 293
+      Left = 322
       Top = 8
       Width = 75
       Height = 25
@@ -835,7 +850,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ParentFont = False
     end
     object lbl_RefreshHint: TLabel
-      Left = 756
+      Left = 748
       Top = 8
       Width = 16
       Height = 14
@@ -851,7 +866,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ExplicitLeft = 812
     end
     object lbl_RefreshHint2: TLabel
-      Left = 777
+      Left = 769
       Top = 8
       Width = 120
       Height = 14
@@ -861,7 +876,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ExplicitLeft = 833
     end
     object chk_AutoRefresh: TCheckBox
-      Left = 901
+      Left = 893
       Top = 7
       Width = 15
       Height = 17

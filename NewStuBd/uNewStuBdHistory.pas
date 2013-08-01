@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, GridsEh, DBGridEh, ExtCtrls,
+  Dialogs, StdCtrls, GridsEh, DBGridEh, ExtCtrls,StrUtils,
   Mask, DBCtrlsEh, Buttons, DB, ADODB, Menus,DBGridEhImpExp, DBClient, pngimage,
   frxClass, frxDBSet,uStuInfo, frxpngimage, DBGridEhGrouping;
 
@@ -12,7 +12,7 @@ type
   TNewStuBdHistory = class(TForm)
     Panel1: TPanel;
     cbb_Field: TDBComboBoxEh;
-    edt_Value: TEdit;
+    cbb_Value: TEdit;
     btn_Search: TBitBtn;
     btn_Exit: TBitBtn;
     DataSource1: TDataSource;
@@ -56,6 +56,7 @@ type
     img_Hint: TImage;
     GroupBox1: TGroupBox;
     cbb_XlCc: TDBComboBoxEh;
+    lbl_Len: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure dxgrd_1DrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -89,7 +90,8 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure chk_AutoRefreshClick(Sender: TObject);
     procedure btn_SearchClick(Sender: TObject);
-    procedure edt_ValueKeyPress(Sender: TObject; var Key: Char);
+    procedure cbb_ValueKeyPress(Sender: TObject; var Key: Char);
+    procedure cbb_ValueChange(Sender: TObject);
   private
     { Private declarations }
     iSecound :Integer;
@@ -208,10 +210,10 @@ var
 begin
   try
     sField := cbb_Field.KeyItems[cbb_Field.ItemIndex];
-    if not ClientDataSet1.Locate(sField,edt_Value.Text,[]) then
+    if not ClientDataSet1.Locate(sField,cbb_Value.Text,[]) then
     begin
       StuInfo.Close;
-      MessageBox(Handle, PChar('【'+sField+'】为【'+edt_Value.Text+'】的新生信息不存在！请检查后重试！　'),
+      MessageBox(Handle, PChar('【'+sField+'】为【'+cbb_Value.Text+'】的新生信息不存在！请检查后重试！　'),
         '系统提示', MB_OK + MB_ICONSTOP + MB_TOPMOST);
     end
     else
@@ -221,8 +223,8 @@ begin
   finally
     Self.BringToFront;
     if sField='通知书编号' then
-      edt_Value.Text := '';
-    edt_Value.SetFocus;
+      cbb_Value.Text := '';
+    cbb_Value.SetFocus;
   end;
 end;
 
@@ -236,7 +238,7 @@ begin
   if Self.Showing then
   begin
     Open_Table;
-    edt_Value.SetFocus;
+    cbb_Value.SetFocus;
   end;
 end;
 
@@ -282,7 +284,26 @@ begin
   TDBGridEh(Sender).DefaultDrawColumnCell(Rect,   DataCol,   Column,   State);
 end;
 
-procedure TNewStuBdHistory.edt_ValueKeyPress(Sender: TObject; var Key: Char);
+procedure TNewStuBdHistory.cbb_ValueChange(Sender: TObject);
+begin
+  lbl_Len.Caption := '('+IntToStr(Length(cbb_Value.Text))+')';
+  if (LeftStr(cbb_Value.Text,1)='B') or (LeftStr(cbb_Value.Text,1)='Z') then
+  begin
+    if Copy(cbb_Value.Text,2,1)>'9' then
+    begin
+      cbb_Field.Text := '流水号';
+      if Length(cbb_Value.Text)=7 then btn_Search.Click;
+    end else
+    begin
+      cbb_Field.Text := '通知书编号';
+      if Length(cbb_Value.Text)=8 then btn_Search.Click;
+    end;
+  end
+  else  if LeftStr(cbb_Value.Text,2)=Copy(FormatDateTime('yyyy',Now),3,2) then
+    cbb_Field.Text := '考生号';
+end;
+
+procedure TNewStuBdHistory.cbb_ValueKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
     btn_Search.Click;
@@ -526,7 +547,7 @@ procedure TNewStuBdHistory.rg_BdStateClick(Sender: TObject);
 begin
   ClientDataSet1.Filtered := False;
   ClientDataSet1.Filtered := rg_BdState.ItemIndex<>0;
-  edt_Value.SetFocus;
+  cbb_Value.SetFocus;
 end;
 
 procedure TNewStuBdHistory.rg_StuClick(Sender: TObject);

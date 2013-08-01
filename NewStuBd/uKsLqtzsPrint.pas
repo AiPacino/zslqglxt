@@ -472,7 +472,7 @@ begin
 
   if (chk_ZyNoSame.Checked)  then
   begin
-    Accept := not PhotoIsExists(ClientDataSet1.FieldByName('照片文件').AsString);
+    Accept := not PhotoIsExists(Trim(ClientDataSet1.FieldByName('照片文件').AsString));
   end else
     Accept := True;
 end;
@@ -966,10 +966,10 @@ begin
   lbl_Len.Caption := '('+IntToStr(Length(cbb_Value.Text))+')';
   if (LeftStr(cbb_Value.Text,1)='B') or (LeftStr(cbb_Value.Text,1)='Z') then
   begin
-    if Copy(cbb_Value.Text,2,1)='0' then
+    if Copy(cbb_Value.Text,2,1)>'9' then
     begin
       cbb_Field.Text := '流水号';
-      if Length(cbb_Value.Text)=5 then btn_OK.Click;
+      if Length(cbb_Value.Text)=7 then btn_OK.Click;
     end else
     begin
       cbb_Field.Text := '通知书编号';

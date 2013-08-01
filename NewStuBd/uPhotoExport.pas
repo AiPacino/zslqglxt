@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, GridsEh, DBGridEh, StdCtrls, Buttons, Mask,ShellAPI,
+  Dialogs, GridsEh, DBGridEh, StdCtrls, Buttons, Mask,ShellAPI, StrUtils,
   DBCtrlsEh, ExtCtrls, pngimage,uStuInfo, Menus, DB, DBClient, ExtDlgs,CnProgressFrm,
   frxpngimage, DBGridEhGrouping;
 
@@ -19,7 +19,7 @@ type
     cbb_Yx: TDBComboBoxEh;
     Panel1: TPanel;
     cbb_Field: TDBComboBoxEh;
-    edt_Value: TEdit;
+    cbb_Value: TEdit;
     btn_Exit: TBitBtn;
     btn_PhotoExport: TBitBtn;
     dxgrd_1: TDBGridEh;
@@ -31,6 +31,7 @@ type
     SavePictureDialog1: TSavePictureDialog;
     pnl_Photo: TPanel;
     img_Photo: TImage;
+    lbl_Len: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btn_PhotoExportClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
@@ -39,7 +40,8 @@ type
     procedure cbb_YxChange(Sender: TObject);
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_SearchClick(Sender: TObject);
-    procedure edt_ValueKeyPress(Sender: TObject; var Key: Char);
+    procedure cbb_ValueKeyPress(Sender: TObject; var Key: Char);
+    procedure cbb_ValueChange(Sender: TObject);
   private
     { Private declarations }
     sWebSrvUrl:string;
@@ -112,7 +114,7 @@ end;
 
 procedure TPhotoExport.btn_SearchClick(Sender: TObject);
 begin
-  ClientDataSet1.Locate(cbb_Field.Text,edt_Value.Text,[loCaseInsensitive, loPartialKey]);
+  ClientDataSet1.Locate(cbb_Field.Text,cbb_Value.Text,[loCaseInsensitive, loPartialKey]);
 end;
 
 procedure TPhotoExport.cbb_YxChange(Sender: TObject);
@@ -138,7 +140,26 @@ begin
   dm.DownLoadKsPhoto(sUrl,aImage,OverPhoto);
 end;
 
-procedure TPhotoExport.edt_ValueKeyPress(Sender: TObject; var Key: Char);
+procedure TPhotoExport.cbb_ValueChange(Sender: TObject);
+begin
+  lbl_Len.Caption := '('+IntToStr(Length(cbb_Value.Text))+')';
+  if (LeftStr(cbb_Value.Text,1)='B') or (LeftStr(cbb_Value.Text,1)='Z') then
+  begin
+    if Copy(cbb_Value.Text,2,1)>'9' then
+    begin
+      cbb_Field.Text := '流水号';
+      if Length(cbb_Value.Text)=7 then btn_Search.Click;
+    end else
+    begin
+      cbb_Field.Text := '通知书编号';
+      if Length(cbb_Value.Text)=8 then btn_Search.Click;
+    end;
+  end
+  else  if LeftStr(cbb_Value.Text,2)=Copy(FormatDateTime('yyyy',Now),3,2) then
+    cbb_Field.Text := '考生号';
+end;
+
+procedure TPhotoExport.cbb_ValueKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key=#13 then
     btn_Search.Click;

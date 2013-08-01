@@ -1,7 +1,7 @@
 object NewStuList: TNewStuList
   Left = 0
   Top = 0
-  ActiveControl = edt_Value
+  ActiveControl = cbb_Value
   Caption = #26032#29983#25253#21040#22788#29702
   ClientHeight = 640
   ClientWidth = 998
@@ -609,13 +609,28 @@ object NewStuList: TNewStuList
     DesignSize = (
       998
       41)
-    object edt_Value: TEdit
+    object lbl_Len: TLabel
+      Left = 269
+      Top = 16
+      Width = 18
+      Height = 12
+      Anchors = [akTop, akRight]
+      Caption = '(*)'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object cbb_Value: TEdit
       Left = 113
       Top = 10
-      Width = 174
+      Width = 152
       Height = 22
       TabOrder = 7
-      OnKeyPress = edt_ValueKeyPress
+      OnChange = cbb_ValueChange
+      OnKeyPress = cbb_ValueKeyPress
     end
     object btn_Search: TBitBtn
       Left = 293
@@ -835,8 +850,8 @@ object NewStuList: TNewStuList
       ParentFont = False
     end
     object chk1: TCheckBox
-      Left = 868
-      Top = -10
+      Left = 860
+      Top = -18
       Width = 91
       Height = 17
       Hint = #27599#38548'10'#31186#20809#26631#33258#21160#23450#20301#33267#26597#35810#26694
