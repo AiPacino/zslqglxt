@@ -2568,6 +2568,9 @@ begin
   sTemp := ReplaceStr(sTemp,'◎','');
   sTemp := ReplaceStr(sTemp,'(','（');
   sTemp := ReplaceStr(sTemp,')','）');
+  sTemp := ReplaceStr(sTemp,' ','');
+  sTemp := ReplaceStr(sTemp,'师范类','师范');
+  sTemp := ReplaceStr(sTemp,'方向','');
   iLen := Length(sTemp);
 
   _Zy2 := Trim(zy2);

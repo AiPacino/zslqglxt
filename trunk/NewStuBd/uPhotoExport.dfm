@@ -595,6 +595,20 @@ object PhotoExport: TPhotoExport
       Height = 14
       Caption = #29031#29255#21629#21517#35268#21017#65306
     end
+    object lbl_Len: TLabel
+      Left = 263
+      Top = 16
+      Width = 18
+      Height = 12
+      Anchors = [akTop, akRight]
+      Caption = '(*)'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
     object cbb_Field: TDBComboBoxEh
       Left = 5
       Top = 10
@@ -617,13 +631,14 @@ object PhotoExport: TPhotoExport
       Text = #27969#27700#21495
       Visible = True
     end
-    object edt_Value: TEdit
+    object cbb_Value: TEdit
       Left = 113
       Top = 10
       Width = 144
       Height = 22
       TabOrder = 3
-      OnKeyPress = edt_ValueKeyPress
+      OnChange = cbb_ValueChange
+      OnKeyPress = cbb_ValueKeyPress
     end
     object btn_Exit: TBitBtn
       Left = 846
@@ -645,7 +660,7 @@ object PhotoExport: TPhotoExport
       OnClick = btn_PhotoExportClick
     end
     object btn_Search: TBitBtn
-      Left = 270
+      Left = 289
       Top = 8
       Width = 75
       Height = 25
