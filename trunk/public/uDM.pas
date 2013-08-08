@@ -210,7 +210,7 @@ var
   function  PosRight(const subStr,S:string):Integer;
   procedure RealseSortedIcon(const aDBGrid:TDBGridEh);
   procedure SetDBGridEHColumnWidth(const aDBGrid:TDBGridEh);
-  function  ZyIsEqual(const zy1,zy2:string):Boolean; //专业是否相同
+  function  ZyIsEqual(const zy1,zy2:string;const bSame:Boolean=False):Boolean; //专业是否相同
   function  PhotoIsExists(const photofilename:string):Boolean; //考生照片是否存在
   function  GetKsDataPath:string;
   function  GetKsDataPath_Old:string;
@@ -2545,7 +2545,7 @@ begin
   end;
 end;
 
-function  ZyIsEqual(const zy1,zy2:string):Boolean;
+function  ZyIsEqual(const zy1,zy2:string;const bSame:Boolean=False):Boolean;
 var
   sTemp,_Zy2:string;
   iLen:Integer;
@@ -2555,7 +2555,7 @@ begin
     Result := True;
     Exit;
   end;
-  
+
   sTemp := Trim(Zy1);
   if Pos('(',sTemp)=1 then
   begin
@@ -2575,11 +2575,19 @@ begin
 
   _Zy2 := Trim(zy2);
 
+  if bSame then //精确比较
+  begin
+    Result := (sTemp=_Zy2);
+    Exit;
+  end;
+
   if Length(_Zy2)<iLen then
     iLen := Length(_Zy2);
-  if iLen>6 then iLen := 6;
+
+  if Length(sTemp)<>Length(_Zy2) then //专业字数相等，则全串比较，否则比较前3个汉字
+    if iLen>6 then iLen := 6;
   Result := (Copy(sTemp,1,iLen)=Copy(_Zy2,1,iLen));
-  
+
 end;
 
 function GetKsDataPath:string;

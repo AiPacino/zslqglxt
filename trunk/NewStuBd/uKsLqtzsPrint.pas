@@ -287,22 +287,23 @@ end;
 
 procedure TKsLqtzsPrint.mmi_FormatZymcClick(Sender: TObject);
 var
-  xlcc,sf,pc,kl,zydm,zy:string;
+  xlcc,sf,pc,lb,kl,zydm,zy:string;
 //  bm:TBookmark;
 begin
   xlcc := ClientDataSet1.FieldByName('学历层次').Asstring;
   sf := ClientDataSet1.FieldByName('省份').Asstring;
   pc := ClientDataSet1.FieldByName('批次名称').Asstring;
-  kl := ClientDataSet1.FieldByName('类别').Asstring;//ClientDataSet1.FieldByName('科类名称').Asstring;
+  lb := ClientDataSet1.FieldByName('类别').Asstring;//
+  kl := ClientDataSet1.FieldByName('科类名称').Asstring;
   zydm := ClientDataSet1.FieldByName('录取代码').Asstring;
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
 
   with TFormatZy.Create(Application) do
   begin
     if pim_AllowPrintNotEndKs.Checked then
-      FillData(xlcc,sf,pc,kl,zydm,zy,ClientDataSet1,'已安排专业录取信息表')
+      FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,'已安排专业录取信息表')
     else
-      FillData(xlcc,sf,pc,kl,zydm,zy,ClientDataSet1,'录取信息表');
+      FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,'录取信息表');
 
     if ShowModal=mrOk then
     try
@@ -684,7 +685,7 @@ begin
     Exit;
   end;
 
-  DBGridEH1.SaveBookmark;
+  //DBGridEH1.SaveBookmark;
   Screen.Cursor := crHourGlass;
   ClientDataSet1.DisableControls;
   try
@@ -716,7 +717,7 @@ begin
     end;
   finally
     ClientDataSet1.EnableControls;
-    DBGridEH1.RestoreBookmark;
+    //DBGridEH1.RestoreBookmark;
     Screen.Cursor := crDefault;
   end;
 

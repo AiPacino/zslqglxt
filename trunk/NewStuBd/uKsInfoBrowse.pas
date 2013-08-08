@@ -237,19 +237,20 @@ end;
 
 procedure TKsInfoBrowse.mmi_FormatZymcClick(Sender: TObject);
 var
-  xlcc,sf,pc,kl,zydm,zy:string;
+  xlcc,sf,pc,lb,kl,zydm,zy:string;
 //  bm:TBookmark;
 begin
   xlcc := ClientDataSet1.FieldByName('学历层次').Asstring;
   sf := ClientDataSet1.FieldByName('省份').Asstring;
   pc := ClientDataSet1.FieldByName('批次名称').Asstring;
-  kl := ClientDataSet1.FieldByName('类别').Asstring;//ClientDataSet1.FieldByName('科类名称').Asstring;
+  lb := ClientDataSet1.FieldByName('类别').Asstring;//
+  kl := ClientDataSet1.FieldByName('科类名称').Asstring;
   zydm := ClientDataSet1.FieldByName('录取代码').Asstring;
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
 
   with TFormatZy.Create(Application) do
   begin
-    FillData(xlcc,sf,pc,kl,zydm,zy,ClientDataSet1,'录取考生信息表');
+    FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,'录取考生信息表');
     if ShowModal=mrOk then
     try
       DBGridEH1.SaveBookmark;
@@ -532,7 +533,7 @@ begin
     Exit;
   end;
 
-  DBGridEH1.SaveBookmark;
+  //DBGridEH1.SaveBookmark;
   Screen.Cursor := crHourGlass;
   ClientDataSet1.DisableControls;
   try
@@ -559,7 +560,7 @@ begin
     MessageBox(Handle, '录取通知书号码编制成功！　', '系统提示', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
   finally
     ClientDataSet1.EnableControls;
-    DBGridEH1.RestoreBookmark;
+    //DBGridEH1.RestoreBookmark;
     Screen.Cursor := crDefault;
   end;
 

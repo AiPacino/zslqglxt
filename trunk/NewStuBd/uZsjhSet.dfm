@@ -32,7 +32,6 @@ object ZsjhSet: TZsjhSet
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 778
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -551,7 +550,6 @@ object ZsjhSet: TZsjhSet
       Align = alRight
       Caption = #23618#27425#65306
       TabOrder = 0
-      ExplicitLeft = 621
       object cbb_Xlcc: TDBComboBoxEh
         Left = 9
         Top = 19
@@ -573,7 +571,6 @@ object ZsjhSet: TZsjhSet
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 778
     DesignSize = (
       825
       41)
@@ -586,7 +583,6 @@ object ZsjhSet: TZsjhSet
       Caption = #20851#38381'[&C]'
       TabOrder = 4
       OnClick = btn_ExitClick
-      ExplicitLeft = 698
     end
     object btn_Save: TBitBtn
       Left = 629
@@ -649,7 +645,6 @@ object ZsjhSet: TZsjhSet
         090909090909090909EEEE8181818181818181818181818181EEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 582
     end
     object btn_Refresh: TBitBtn
       Left = 16
@@ -721,7 +716,6 @@ object ZsjhSet: TZsjhSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 424
     end
     object btn_Del: TBitBtn
       Left = 550
@@ -784,7 +778,6 @@ object ZsjhSet: TZsjhSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 503
     end
   end
   object GroupBox2: TGroupBox
@@ -814,7 +807,6 @@ object ZsjhSet: TZsjhSet
     Align = alClient
     Caption = #35745#21010#20449#24687#65306
     TabOrder = 3
-    ExplicitWidth = 593
     object DBGridEh1: TDBGridEh
       Left = 2
       Top = 16

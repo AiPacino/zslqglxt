@@ -239,19 +239,20 @@ end;
 
 procedure TKsInfoBrowse_All.mmi_FormatZymcClick(Sender: TObject);
 var
-  xlcc,sf,pc,kl,zydm,zy:string;
+  xlcc,sf,pc,lb,kl,zydm,zy:string;
 //  bm:TBookmark;
 begin
   xlcc := ClientDataSet1.FieldByName('学历层次').Asstring;
   sf := ClientDataSet1.FieldByName('省份').Asstring;
   pc := ClientDataSet1.FieldByName('批次名称').Asstring;
+  lb := ClientDataSet1.FieldByName('类别').Asstring;//
   kl := ClientDataSet1.FieldByName('科类名称').Asstring;
   zydm := ClientDataSet1.FieldByName('录取代码').Asstring;
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
 
   with TFormatZy.Create(Application) do
   begin
-    FillData(xlcc,sf,pc,kl,zydm,zy,ClientDataSet1,'在阅考生信息表');
+    FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,'在阅考生信息表');
     if ShowModal=mrOk then
     try
       DBGridEH1.SaveBookmark;
@@ -878,18 +879,19 @@ end;
 
 procedure TKsInfoBrowse_All.pm_FormatZyClick(Sender: TObject);
 var
-  xlcc,sf,pc,kl,zydm,zy:string;
+  xlcc,sf,pc,lb,kl,zydm,zy:string;
 //  bm:TBookmark;
 begin
   xlcc := ClientDataSet1.FieldByName('学历层次').Asstring;
   sf := ClientDataSet1.FieldByName('省份').Asstring;
   pc := ClientDataSet1.FieldByName('批次名称').Asstring;
-  kl := ClientDataSet1.FieldByName('类别').Asstring;//ClientDataSet1.FieldByName('科类名称').Asstring;
+  lb := ClientDataSet1.FieldByName('类别').Asstring;//
+  kl := ClientDataSet1.FieldByName('科类名称').Asstring;
   zydm := ClientDataSet1.FieldByName('录取代码').Asstring;
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
   with TFormatZy.Create(Application) do
   begin
-    FillData(xlcc,sf,pc,kl,zydm,zy,ClientDataSet1,'在阅考生信息表');
+    FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,'在阅考生信息表');
     if ShowModal=mrOk then
     try
       DBGridEH1.SaveBookmark;
