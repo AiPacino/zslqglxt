@@ -104,15 +104,6 @@ procedure TZsjhSet.btn_DelClick(Sender: TObject);
 var
   bl :Boolean;
 begin
-{
-  bl := ClientDataSet1.FieldByName('状态').IsNull or (ClientDataSet1.FieldByName('状态').AsString='编辑中');
-  if not bl then
-  begin
-    MessageBox(Handle, '招生计划已提交，不能再进行修改！　', '系统提示', MB_OK
-      + MB_ICONSTOP + MB_TOPMOST);
-    Exit;
-  end;
-}
   if MessageBox(Handle, '真的要删除当前记录吗？　', '系统提示', MB_YESNO +
     MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDYES then
   begin
@@ -159,7 +150,7 @@ end;
 procedure TZsjhSet.btn_SaveClick(Sender: TObject);
 begin
   if DataSetNoSave(ClientDataSet1) then
-    if dm.UpdateData('Id','select * from view_分省专业计划表 ',ClientDataSet1.Delta) then
+    if dm.UpdateData('Id','select * from view_分省专业计划录入表 ',ClientDataSet1.Delta) then
       ClientDataSet1.MergeChangeLog;
 end;
 
@@ -258,7 +249,7 @@ var
 begin
   if Self.Showing then
   begin
-    sqlstr := 'select * from view_分省专业计划表 '+GetWhere+' order by 省份,专业';
+    sqlstr := 'select * from view_分省专业计划录入表 '+GetWhere+' order by 省份,专业';
     ClientDataSet1.XMLData := DM.OpenData(sqlstr);
   end;
 end;

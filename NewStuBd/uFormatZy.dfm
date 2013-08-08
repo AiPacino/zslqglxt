@@ -34,7 +34,7 @@ object FormatZy: TFormatZy
   end
   object Label2: TLabel
     Left = 68
-    Top = 89
+    Top = 76
     Width = 36
     Height = 13
     Caption = #25209#27425#65306
@@ -57,7 +57,7 @@ object FormatZy: TFormatZy
   end
   object lbl1: TLabel
     Left = 68
-    Top = 55
+    Top = 49
     Width = 36
     Height = 13
     Caption = #23618#27425#65306
@@ -65,10 +65,18 @@ object FormatZy: TFormatZy
   end
   object lbl2: TLabel
     Left = 56
-    Top = 123
+    Top = 129
     Width = 48
     Height = 13
     Caption = #21407#31185#31867#65306
+    Enabled = False
+  end
+  object lbl3: TLabel
+    Left = 68
+    Top = 102
+    Width = 36
+    Height = 13
+    Caption = #31867#21035#65306
     Enabled = False
   end
   object lbledt_sf: TEdit
@@ -81,19 +89,19 @@ object FormatZy: TFormatZy
   end
   object lbledt_Pc: TEdit
     Left = 110
-    Top = 87
+    Top = 73
     Width = 324
     Height = 21
     Enabled = False
-    TabOrder = 1
+    TabOrder = 2
   end
   object lbledt_Zy: TEdit
     Left = 160
-    Top = 154
+    Top = 153
     Width = 274
     Height = 21
     ReadOnly = True
-    TabOrder = 2
+    TabOrder = 6
   end
   object cbb_NewZy: TDBComboBoxEh
     Left = 110
@@ -107,7 +115,7 @@ object FormatZy: TFormatZy
       #33402#26415
       #20307#32946
       #38899#20048)
-    TabOrder = 3
+    TabOrder = 7
     Visible = True
     OnChange = cbb_NewZyChange
   end
@@ -119,7 +127,7 @@ object FormatZy: TFormatZy
     Caption = #30830#23450#25191#34892
     Enabled = False
     ModalResult = 1
-    TabOrder = 4
+    TabOrder = 8
     OnClick = btn_OKClick
   end
   object btn_Cancel: TBitBtn
@@ -129,24 +137,24 @@ object FormatZy: TFormatZy
     Height = 25
     Caption = #20851#38381'[&C]'
     ModalResult = 2
-    TabOrder = 5
+    TabOrder = 9
     OnClick = btn_CancelClick
   end
   object lbledt_XlCc: TEdit
     Left = 110
-    Top = 53
+    Top = 46
     Width = 324
     Height = 21
     Enabled = False
-    TabOrder = 6
+    TabOrder = 1
   end
   object lbledt_kl: TEdit
     Left = 110
-    Top = 120
+    Top = 126
     Width = 324
     Height = 21
     Enabled = False
-    TabOrder = 7
+    TabOrder = 4
   end
   object chk_OnlySf: TCheckBox
     Left = 32
@@ -155,8 +163,9 @@ object FormatZy: TFormatZy
     Height = 17
     Caption = #20165#26684#24335#21270#24403#21069#30465#20221#35760#24405
     Checked = True
+    Enabled = False
     State = cbChecked
-    TabOrder = 8
+    TabOrder = 10
     OnClick = chk_OnlySfClick
   end
   object lbledt_zydm: TEdit
@@ -165,6 +174,14 @@ object FormatZy: TFormatZy
     Width = 44
     Height = 21
     ReadOnly = True
-    TabOrder = 9
+    TabOrder = 5
+  end
+  object lbledt_Lb: TEdit
+    Left = 110
+    Top = 99
+    Width = 324
+    Height = 21
+    Enabled = False
+    TabOrder = 3
   end
 end

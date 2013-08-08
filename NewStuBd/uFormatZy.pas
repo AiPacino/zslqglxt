@@ -25,6 +25,8 @@ type
     lbledt_kl: TEdit;
     chk_OnlySf: TCheckBox;
     lbledt_zydm: TEdit;
+    lbl3: TLabel;
+    lbledt_Lb: TEdit;
     procedure btn_CancelClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbb_NewZyChange(Sender: TObject);
@@ -35,11 +37,11 @@ type
     aXlCc:string;
     aDataSet:TClientDataSet;
     aTableName:string;
-    procedure SaveData;
+    function FormatZymc:Boolean;
     procedure InitNewZyList;
   public
     { Public declarations }
-    procedure FillData(const vXlCc, vSf, vPc, vKl, vZydm, vZy: string;cds_Source:TclientDataSet;const sTableName:string);
+    procedure FillData(const vXlCc, vSf, vPc, vLb, vKl, vZydm, vZy: string;cds_Source:TclientDataSet;const sTableName:string);
   end;
 
 implementation
@@ -63,15 +65,11 @@ begin
       Exit;
     if UpperCase(InputBox('操作确认','请输入【OK】以确认操作：',''))<>'OK' then
       Exit;
-  end else
-  begin
-    if MessageBox(Handle, '确定要执行这一操作吗？　', '系统提示', MB_YESNO +
-      MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDNO then
-    begin
-      Exit;
-    end;
   end;
-  SaveData;
+  if FormatZymc then
+    Self.ModalResult := mrOk
+  else
+    Self.ModalResult := mrCancel;
 end;
 
 procedure TFormatZy.cbb_NewZyChange(Sender: TObject);
@@ -84,7 +82,7 @@ begin
   InitNewZyList;
 end;
 
-procedure TFormatZy.FillData(const vXlCc, vSf, vPc, vKl, vZydm, vZy: string;
+procedure TFormatZy.FillData(const vXlCc, vSf, vPc, vLb, vKl, vZydm, vZy: string;
   cds_Source: TClientDataSet;const sTableName:string);
 var
   i: Integer;
@@ -95,6 +93,7 @@ begin
   lbledt_sf.Text := vSf;
   lbledt_XlCc.Text := vXlCc;
   lbledt_Pc.Text := vPc;
+  lbledt_Lb.Text := vLb;
   lbledt_kl.Text := vKl;
   lbledt_zydm.Text := vZydm;
   lbledt_Zy.Text := vZy;
@@ -120,7 +119,7 @@ begin
   vZydm := lbledt_zydm.Text;
   vZy := lbledt_Zy.Text;
   //if chk_OnlySf.Checked then
-    dm.SetZyComboBox(lbledt_XlCc.Text,lbledt_kl.Text,lbledt_sf.Text,cbb_NewZy);
+    dm.SetZyComboBox(lbledt_XlCc.Text,lbledt_Lb.Text,lbledt_sf.Text,cbb_NewZy);
   //else
   //  dm.SetZyComboBox(lbledt_XlCc.Text,lbledt_kl.Text,'',cbb_NewZy);
 
@@ -128,7 +127,8 @@ begin
   for i := 0 to cbb_NewZy.Items.Count - 1 do
   begin
     str := cbb_NewZy.Items[i];
-    if Pos(vZy,str)>0 then
+    //if vZy=str then
+    if ZyIsEqual(vZy,str,True) then //精确比较
     begin
       cbb_NewZy.ItemIndex := i;
       Break;
@@ -138,7 +138,7 @@ begin
   for i := 0 to cbb_NewZy.Items.Count - 1 do
   begin
     str := cbb_NewZy.Items[i];
-    if Pos(str,vZy)>0 then
+    if ZyIsEqual(vZy,str) then
     begin
       cbb_NewZy.ItemIndex := i;
       Break;
@@ -146,38 +146,48 @@ begin
   end;
 end;
 
-procedure TFormatZy.SaveData;
+function TFormatZy.FormatZymc:Boolean;
 var
-  xlcc,sf,pc,kl,zydm,zy,sqlstr,sWhere:string;
+  xlcc,sf,pc,lb,kl,zydm,zy,sqlstr,sWhere:string;
   iResult :Integer;
 begin
+  Result := False;
   xlcc := lbledt_XlCc.Text;
   sf := lbledt_sf.Text;
   pc := lbledt_pc.Text;
+  lb := lbledt_Lb.Text;
   kl := lbledt_kl.Text;
   zydm := lbledt_zydm.Text;
   zy := lbledt_Zy.Text;
 
   sWhere := ' where 学历层次='+quotedstr(xlcc)+' and 录取代码='+quotedstr(zydm)
-            //+' and 类别='+quotedstr(kl);
-            +' and 录取专业规范名=录取专业 and 类别='+quotedstr(kl);
+            //+' and 类别='+quotedstr(lb);
+            +' and 录取专业规范名=录取专业 and 科类名称='+quotedstr(kl);
   if chk_OnlySf.Checked then
     sWhere := sWhere+' and 省份='+quotedstr(lbledt_sf.Text);
-    
-  sqlstr := 'update '+aTableName+' set 录取专业规范名='+quotedstr(cbb_NewZy.Text)+sWhere;
-  dm.ExecSql(sqlstr);
 
-  sWhere := ' where 学历层次='+quotedstr(xlcc)+' and 录取专业='+quotedstr(zy)
-            +' and 录取专业规范名='+quotedstr(cbb_NewZy.Text)+' and 类别='+quotedstr(kl);
-  if chk_OnlySf.Checked then
-    sWhere := sWhere+' and 省份='+quotedstr(lbledt_sf.Text);
   sqlstr := 'select count(*) from '+aTableName+' '+sWhere;
   iResult := vobj.GetRecordCountBySql(sqlstr);
 
   if iResult>0 then
-    vobj.UpdateLqInfo(xlcc);
-  MessageBox(Handle, PChar('操作完成！共有'+IntToStr(iResult)+'条记录被更新！　'), '系统提示',
-    MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+  begin
+    if MessageBox(Handle, PChar('共有'+IntToStr(iResult)+'条记录将被更新！确定要执行这一操作吗？　'), '系统提示', MB_YESNO +
+      MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDYES then
+    begin
+      sqlstr := 'update '+aTableName+' set 录取专业规范名='+quotedstr(cbb_NewZy.Text)+sWhere;
+      dm.ExecSql(sqlstr);
+      vobj.UpdateLqInfo(xlcc);
+      MessageBox(Handle, PChar('操作完成！共有'+IntToStr(iResult)+'条记录被更新！　'), '系统提示',
+        MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+      Result := True;
+    end;
+  end else
+  begin
+    MessageBox(Handle, '没有满足条件的记录可以更新　', '系统提示', MB_OK +
+      MB_ICONINFORMATION + MB_TOPMOST);
+    Exit;
+  end;
+
 end;
 
 end.
