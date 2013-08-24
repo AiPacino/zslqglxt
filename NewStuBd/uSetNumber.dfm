@@ -15,6 +15,7 @@ object SetNumber: TSetNumber
   FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
   object grp1: TGroupBox
@@ -41,9 +42,9 @@ object SetNumber: TSetNumber
     object lbl3: TLabel
       Left = 73
       Top = 159
-      Width = 102
+      Width = 109
       Height = 14
-      Caption = #26368#32456#26679#24335#65306'Z00001'
+      Caption = #26368#32456#26679#24335#65306'ZK00001'
       Transparent = True
     end
     object lbl1: TLabel

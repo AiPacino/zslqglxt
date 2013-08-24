@@ -1160,8 +1160,20 @@ object KsList: TKsList
         EditButtons = <>
         FieldName = #32771#29983#29366#24577
         Footers = <>
+        KeyList.Strings = (
+          '0'
+          '1'
+          '2'
+          '3'
+          '5')
+        PickList.Strings = (
+          #38405#26723#20013
+          #38405#26723#20013
+          #25311#36864#26723
+          #24050#36864#26723
+          #24050#24405#21462)
         Title.TitleButton = True
-        Visible = False
+        Width = 56
       end
       item
         EditButtons = <>
@@ -1335,7 +1347,7 @@ object KsList: TKsList
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700A80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700AC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -1636,6 +1648,11 @@ object KsList: TKsList
     end
     object N4: TMenuItem
       Caption = '-'
+    end
+    object mmi_DisplayNot5: TMenuItem
+      AutoCheck = True
+      Caption = #26174#31034#24405#21462#26410#32467#26463#29366#24577#30340#32771#29983
+      OnClick = mmi_DisplayNot5Click
     end
     object mmi_AllowEdit: TMenuItem
       AutoCheck = True
