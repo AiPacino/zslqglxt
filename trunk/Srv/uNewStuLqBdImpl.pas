@@ -101,7 +101,7 @@ type
                         const bOverWrite:Boolean=False):Boolean;stdcall;
     function DownLoadPhoto(const sKsh:string;out sXmlData,sError:string):Boolean;stdcall;
 
-    function UpdateLqtzsNo(const ksh:string;out sMsg:string):Boolean;stdcall; //更新录取通知书编号
+    function UpdateLqtzsNo(const ksh:string;out sMsg:string;const sTbName:string='录取信息表'):Boolean;stdcall; //更新录取通知书编号
 
     function GetExportFieldList(const sType:string):string;stdcall;//得到导出信息字段列表
     function SetExportFieldList(const sType,sFieldList:string):Boolean;stdcall;//得到导出信息字段列表
@@ -1368,12 +1368,13 @@ begin
   end;
 end;
 
-function TNewStuLqBd.UpdateLqtzsNo(const ksh: string;out sMsg:string): Boolean;
+function TNewStuLqBd.UpdateLqtzsNo(const ksh: string;out sMsg:string;const sTbName:string='录取信息表'): Boolean;
 var
-  sKsh,sNo,sqlstr,sData:string;
+  sKsh,sNo,sqlstr,sData,aTableName:string;
   dm:TNewStuLqBdSoapDM;
   cds_Temp:TClientDataSet;
 begin
+  aTableName := sTbName;
   Result := False;
   dm := TNewStuLqBdSoapDM.Create(nil);
   cds_Temp := TClientDataSet.Create(nil);
@@ -1390,7 +1391,7 @@ begin
       end;
     end;
 
-    sqlstr := 'select 考生号 from 录取信息表 where (流水号 is not null) and ((通知书编号 is null) or 通知书编号='+quotedstr('')+')';
+    sqlstr := 'select 考生号 from '+aTableName+' where (流水号 is not null) and ((通知书编号 is null) or 通知书编号='+quotedstr('')+')';
     if ksh<>'' then
       sqlstr := sqlstr+' and 考生号='+quotedstr(ksh);
     sqlstr := sqlstr+' order by 省份,流水号';
@@ -1407,7 +1408,7 @@ begin
     begin
       sKsh := cds_Temp.FieldByName('考生号').AsString;
       sNo := dm.GetLqtzsNo(sKsh);
-      sqlstr := 'update 录取信息表 set 通知书编号='+quotedstr(sNo)+' where 考生号='+quotedstr(sKsh);
+      sqlstr := 'update '+aTableName+' set 通知书编号='+quotedstr(sNo)+' where 考生号='+quotedstr(sKsh);
       Result := dm.ExecSqlCmd(sqlstr,sMsg);
       if not Result then Exit;
       cds_Temp.Next;

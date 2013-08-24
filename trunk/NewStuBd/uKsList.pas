@@ -73,6 +73,7 @@ type
     chk_NoJx: TCheckBox;
     grp_Yk: TGroupBox;
     cbb_yk: TDBComboBoxEh;
+    mmi_DisplayNot5: TMenuItem;
     procedure RzGroup2Items0Click(Sender: TObject);
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
@@ -133,6 +134,7 @@ type
     procedure pmi_CancelEndClick(Sender: TObject);
     procedure pmi_JwxtClick(Sender: TObject);
     procedure chk_NoJxClick(Sender: TObject);
+    procedure mmi_DisplayNot5Click(Sender: TObject);
   private
     { Private declarations }
     //FormatKL:TFormatKL;
@@ -140,7 +142,8 @@ type
     aForm :TSetNumber;
     StuInfo:TStuInfo;
     vsorted :Boolean;
-    repfn:string;
+    aTableName,repfn:string;
+
     sWhereList:Tstrings;
     procedure ExportToExcel(const iType:Integer);
     procedure Open_Access_Table(const sWhere:string='');
@@ -238,7 +241,7 @@ begin
   DBGridEH1.SaveBookmark;
 
   //cds_Temp.XMLData := ClientDataSet1.XMLData;
-  cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 流水号');
+  cds_Temp.XMLData := dm.OpenData('select * from '+aTableName+' '+sWhereList.Text+' order by 流水号');
   GetRepName;
   dm.PrintReport(fn,cds_Temp.XMLData,1,True);
 
@@ -248,7 +251,7 @@ begin
     while not ClientDataSet1.Eof do
     begin
       ksh := ClientDataSet1.FieldByName('考生号').AsString;
-      cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 where 考生号='+quotedstr(ksh));
+      cds_Temp.XMLData := dm.OpenData('select * from '+sTableName+'+ where 考生号='+quotedstr(ksh));
       GetRepName;
       dm.PrintReport(fn,cds_Temp.XMLData,1,False);
       ClientDataSet1.Next;
@@ -268,7 +271,7 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 学历层次,采集员,省份,类别,科类,录取专业规范名');
+    cds_Temp.XMLData := dm.OpenData('select * from '+aTableName+' '+sWhereList.Text+' order by 学历层次,采集员,省份,类别,科类,录取专业规范名');
     //Print_LQKSMD();
     dm.PrintReport('专业分类录取名单.fr3',cds_Temp.XMLData,1);
   finally
@@ -296,7 +299,7 @@ begin
 
   with TFormatZy.Create(Application) do
   begin
-    FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,'录取信息表');
+    FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,aTableName);
     if ShowModal=mrOk then
     try
       DBGridEH1.SaveBookmark;
@@ -347,7 +350,7 @@ begin
   begin
     Exit;
   end;
-  if dm.UpdateData('考生号','select top 0 * from 录取信息表',ClientDataSet1.Delta,True) then
+  if dm.UpdateData('考生号','select top 0 * from '+aTableName,ClientDataSet1.Delta,True) then
     ClientDataSet1.MergeChangeLog;
 end;
 
@@ -376,7 +379,7 @@ begin
   if (ii>=0) and (not dm.IsDisplayJiangXi) then
     cbb_Sf.Items.Delete(ii);
 }
-
+  mmi_DisplayNot5Click(Self);
   dm.SetLbComboBox(cbb_Lb,True);
 
   dm.SetKlComboBox(cbb_KL,True);
@@ -415,7 +418,7 @@ begin
   Screen.Cursor := crHourGlass;
   ClientDataSet1.DisableControls;
   try
-    sqlStr := 'select * from 录取信息表 '+sWhereList.Text+' order by 流水号';
+    sqlStr := 'select * from '+aTableName+' '+sWhereList.Text+' order by 流水号';
     ClientDataSet1.XMLData := dm.OpenData(sqlStr);
   finally
     ClientDataSet1.EnableControls;
@@ -486,7 +489,7 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.XMLData := dm.OpenData('select * from 录取信息表 '+sWhereList.Text+' order by 流水号');
+    cds_Temp.XMLData := dm.OpenData('select * from '+aTableName+' '+sWhereList.Text+' order by 流水号');
     //Print_LQTZS(True);
     dm.PrintReport('EMS.fr3',cds_Temp.XMLData,1);
   finally
@@ -548,6 +551,32 @@ end;
 procedure TKsList.mmi_DesLQTZSClick(Sender: TObject);
 begin
   Print_LQTZS(True);
+end;
+
+procedure TKsList.mmi_DisplayNot5Click(Sender: TObject);
+begin
+  if mmi_DisplayNot5.Checked then
+  begin
+    if Application.MessageBox('真的要显示录取没有结束状态的考生信息吗？　',
+      '系统提示', MB_YESNO + MB_ICONWARNING + MB_DEFBUTTON2 + MB_TOPMOST) =
+      IDYES then
+    begin
+      if UpperCase(InputBox('操作确认','请输入【OK】字符以便确认！',''))<>'OK' then
+      begin
+        mmi_DisplayNot5.Checked := False;
+        Exit;
+      end;
+    end
+    else
+      Exit;
+  end;
+
+  if mmi_DisplayNot5.Checked then
+    aTableName := '录取信息表_含未结束'
+  else
+    aTableName := '录取信息表';
+  if Self.Showing then
+    Open_Access_Table();
 end;
 
 procedure TKsList.mmi_DesLQKSMDClick(Sender: TObject);
@@ -655,7 +684,7 @@ begin
     Exit;
   end;
   sfyk := cbb_yk.Text='预科考生';
-  aForm.SetData(cbb_XlCc.Text,sfyk,ClientDataSet1);
+  aForm.SetData(cbb_XlCc.Text,sfyk,ClientDataSet1,aTableName);
   aForm.Show;
 end;
 
@@ -691,7 +720,7 @@ begin
       ClientDataSet1.Next;
     end;
 }
-    if not vobj.UpdateLqtzsNo('',sMsg) then
+    if not vobj.UpdateLqtzsNo('',sMsg,aTableName) then
     begin
       MessageBox(Handle, PChar('录取通知书号码编制失败！　'+#13+sMsg), '系统提示', MB_OK
         + MB_ICONSTOP + MB_TOPMOST);
@@ -736,7 +765,7 @@ procedure TKsList.DBGridEH1DrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
 var
   zy1,zy2:string;
-  iLen:Integer;
+  iLen,iKszt:Integer;
 begin
   if (Column.FieldName='备注') then
   begin
@@ -745,6 +774,42 @@ begin
       Column.Font.Color := clWhite;
       TDBGridEh(Sender).Canvas.Brush.Color := clRed;
     end;
+  end;
+
+  if (Column.FieldName='考生状态') then
+  begin
+    if not ClientDataSet1.FieldByName('考生状态').IsNull then
+    begin
+      if ClientDataSet1.FieldByName('考生状态').AsString<>'' then
+        iKszt := ClientDataSet1.FieldByName('考生状态').AsInteger
+      else
+        iKszt := 0;
+    end else
+      iKszt := 0;
+    Case iKszt of
+      0: //专业未定
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := $008DB48D;
+        //Column.Field.Text := '专业未定';
+      end;
+      1: //已拟录专业
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := $008DB48D;
+        //
+      end;
+      2: //拟退档考生
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := $00FF80FF;
+      end;
+      3: //已退档考生
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := clRed;
+      end;
+      5: //录取专业已确定且已结束的考生
+      begin
+        TDBGridEh(Sender).Canvas.Brush.Color := clOlive;
+      end;
+    End;
   end;
 
   if (Column.FieldName='录取专业规范名') then
@@ -881,7 +946,7 @@ begin
   sFldList := vobj.GetExportFieldList(sTitle);
   if sFldList='' then sFldList := '*';
 
-  sqlstr := 'select '+sFldList+' from 录取信息表 '+sWhereList.Text+' order by 流水号';
+  sqlstr := 'select '+sFldList+' from '+aTableName+' '+sWhereList.Text+' order by 流水号';
 
   cds_Export.XMLData := dm.OpenData(sqlstr);
   case cbb_yk.ItemIndex of
@@ -977,7 +1042,7 @@ var
   sKsh,sMsg,sqlstr:string;
   cds_Temp:TClientDataSet;
 begin
-  sqlstr := 'select max(通知书编号) from 录取信息表 where 省份='+quotedstr(Sf)+
+  sqlstr := 'select max(通知书编号) from '+aTableName+' where 省份='+quotedstr(Sf)+
             ' and 类别='+quotedstr(Lb);
   DBGridEH1.SaveBookmark;
   Screen.Cursor := crHourGlass;
@@ -1019,7 +1084,7 @@ begin
     Exit;
   end;
 
-  sqlstr := 'update 录取信息表 set 收件人=考生姓名 '+GetXznxString+' and 收件人 is null';
+  sqlstr := 'update '+aTableName+' set 收件人=考生姓名 '+GetXznxString+' and 收件人 is null';
   dm.ExecSql(sqlstr);
   Application.MessageBox(PChar('操作完成！　'), '系统提示', MB_OK + MB_ICONINFORMATION + MB_DEFBUTTON2);
 end;
@@ -1065,7 +1130,7 @@ begin
   begin
     Exit;
   end;
-  sqlstr := 'update 录取信息表 set 录取结束日期=format(Action_Time,'+quotedstr('yyyy-mm-dd')+') where 录取结束日期 is null';
+  sqlstr := 'update '+aTableName+' set 录取结束日期=format(Action_Time,'+quotedstr('yyyy-mm-dd')+') where 录取结束日期 is null';
   dm.ExecSql(sqlstr);
   Application.MessageBox(PChar('操作完成！　　'), '系统提示', MB_OK + MB_ICONINFORMATION + MB_DEFBUTTON2);
 end;

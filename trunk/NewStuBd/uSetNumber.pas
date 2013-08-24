@@ -28,15 +28,16 @@ type
     procedure edt2Change(Sender: TObject);
     procedure btn_ExitClick(Sender: TObject);
     procedure edt1Change(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     start_id:Integer;
-    aXlcc:string;
+    aTableName,aXlcc:string;
     aSfyk:Boolean;
     procedure SetMaxNumber;
   public
     { Public declarations }
-    procedure SetData(const xlcc:string;const sfyk:Boolean;const aDataSet:TDataSet);
+    procedure SetData(const xlcc:string;const sfyk:Boolean;const aDataSet:TDataSet;const sTbName:string='录取信息表');
   end;
 
 var
@@ -68,6 +69,11 @@ begin
   end;
 end;
 
+procedure TSetNumber.FormCreate(Sender: TObject);
+begin
+  aTableName := '录取信息表';
+end;
+
 procedure TSetNumber.SetMaxNumber;
 var
   s,sqlstr :string;
@@ -96,11 +102,12 @@ begin
 end;
 
 procedure TSetNumber.SetData(const xlcc: string;const sfyk:Boolean;
-  const aDataSet: TDataSet);
+  const aDataSet: TDataSet;const sTbName:string='录取信息表');
 begin
   aXlcc := xlcc;
   aSfyk := sfyk;
 
+  aTableName := sTbName;
   ds_lqmd.DataSet := aDataSet;
   if aXlcc='本科' then
   begin
@@ -111,11 +118,10 @@ begin
   end
   else
   begin
-    edt1.Text := 'Z';
     if sfyk then
-      edt1.Text := edt1.Text+'ZY'
+      edt1.Text := 'ZY'
     else
-      edt1.Text := edt1.Text+'ZK';
+      edt1.Text := 'ZK';
   end;
   SetMaxNumber;
 end;
@@ -131,7 +137,7 @@ var
   iCount :Integer;
   //sDate :string;
 begin
-  if Application.MessageBox('真的开始编号吗？　　', '编号确认', MB_YESNO +
+  if Application.MessageBox('真的开始编制流水号吗？　　', '编号确认', MB_YESNO +
     MB_ICONINFORMATION + MB_DEFBUTTON2) = IDNO then
   begin
     Exit;
@@ -181,7 +187,7 @@ begin
       end;
 //-------------------------------------------------//
       if not DataSetNoSave(TClientDataSet(ds_lqmd.DataSet)) then Exit;
-      if dm.UpdateData('考生号','select top 0 * from 录取信息表',TClientDataSet(ds_lqmd.DataSet).Delta,False) then
+      if dm.UpdateData('考生号','select top 0 * from '+aTableName,TClientDataSet(ds_lqmd.DataSet).Delta,False) then
          TClientDataSet(ds_lqmd.DataSet).MergeChangeLog;
       //Open_Access_Table;
 //-------------------------------------------------//
