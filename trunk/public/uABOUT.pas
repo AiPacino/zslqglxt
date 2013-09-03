@@ -69,7 +69,7 @@ begin
   else
   begin
     Version.Caption := 'Ver '+Get_Version;
-    if Application.Title<>'About' then
+    //if Application.Title<>'About' then
       albl_Title.Caption := Application.Title;
   end;
     

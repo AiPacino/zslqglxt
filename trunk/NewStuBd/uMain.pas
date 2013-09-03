@@ -8,7 +8,7 @@ uses
   Spin, DBCtrls, MyDBNavigator, StatusBarEx, DBGridEh, DBFieldComboBox, StdActns,
   RzBckgnd, dxBar, cxClasses, XPStyleActnCtrls, ActnMan, DBClient, auHTTP, auAutoUpgrader,
   RzStatus, RzPanel, uWorkHint, pngimage, StdCtrls, frxpngimage,
-  dxGDIPlusClasses, cxControls, dxNavBar;
+  dxGDIPlusClasses, cxControls, dxNavBar, CnAAFont, CnAACtrls;
 
 type
   TMain = class(TForm)
@@ -182,6 +182,9 @@ type
     dxBarButton68: TdxBarButton;
     act_Data_ZdMcSet: TAction;
     dxbrbtn1: TdxBarButton;
+    act_Data_NoBDxmSet: TAction;
+    dxBarButton69: TdxBarButton;
+    albl_Title: TCnAALabel;
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
     procedure mmi_PrnLQTZSClick(Sender: TObject);
@@ -275,6 +278,7 @@ type
     procedure act_Lq_LqtzsPrintExecute(Sender: TObject);
     procedure act_Lq_DataImport_BDEExecute(Sender: TObject);
     procedure act_Data_ZdMcSetExecute(Sender: TObject);
+    procedure act_Data_NoBDxmSetExecute(Sender: TObject);
   private
     { Private declarations }
     WorkHint: TWorkHint;
@@ -305,7 +309,7 @@ uses uDM, Net,DBGridEhImpExp,uNewStuList,uChgZyHistory,uChangeZy,uCzyEdit,uABOUT
      uKsList,uKsInfoBrowse,uPhotoExport, uDataInit,uZsjhSet, uCountXkInfo,uWorkSet,
      uWorkBrowse,uZsjhBrowse,uSqlCmdSet,uZsjhAdjustEdit,uZsjhAdjustConfirm,uMareData_Photo,
      uZsjhAdjustBrowse,uReportDesign,uFormatZySqlSet,uLqqkCount,uLqqkBrowse,uLogInput,
-     uKsInfoBrowse_All,uExportToAccess,uTdKsInfoBrowse,uZdmcSet,
+     uKsInfoBrowse_All,uExportToAccess,uTdKsInfoBrowse,uZdmcSet,uNoBDxmSet,
      uEMSNumberImport,uDbTools,uFileEdit,uFileBrowse,uCzySfSet,uJwInfoImport,
      uKsInfoBrowse_Work,uSysRegister,uExportFieldListSet,uKsLqtzsPrint;
 
@@ -532,6 +536,11 @@ end;
 procedure TMain.act_Data_JlxmSetExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TJlxmSet);
+end;
+
+procedure TMain.act_Data_NoBDxmSetExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TNoBDxmSet);
 end;
 
 procedure TMain.act_Data_SrvSetExecute(Sender: TObject);
@@ -826,6 +835,9 @@ end;
 
 procedure TMain.act_Win_WorkHintExecute(Sender: TObject);
 begin
+  if (StrToInt(gb_Czy_Level)>0) then Exit;
+  if gb_System_Mode<>'¼ȡ' then Exit;
+  
   if act_Win_WorkHint.Checked then
   begin
     if Assigned(WorkHint) then
@@ -916,11 +928,19 @@ begin
 end;
 
 procedure TMain.FormCreate(Sender: TObject);
+//var
+//  fn:string;
 begin
   Self.Top := 0;
   Self.Left := 0;
   Self.Width := Screen.Width;
   Self.Height := Screen.Height;
+{
+  fn := ExtractFilePath(ParamStr(0))+'image\'+gb_system_mode+'.png';
+  if FileExists(fn) then
+    img_Show.Picture.LoadFromFile(fn);
+}
+  albl_Title.Caption := Application.Title;
 end;
 
 procedure TMain.FormDestroy(Sender: TObject);
@@ -949,6 +969,8 @@ begin
   end;
   img_Show.Left := Trunc((Self.Width-img_Show.Width)/2);
   img_Show.Top := Trunc((Self.Height-img_Show.Height)/2)-5;
+  albl_Title.Left := img_Show.Left+Trunc((img_Show.Width-albl_Title.Width)/2);
+  albl_Title.Top := img_Show.Top+Trunc((img_Show.Height-albl_Title.Height)/2)-45;
   lbl_Ver.Left := img_Show.Left+502;
   lbl_Ver.Top := img_Show.Top+277;
   lbl_Year.Left := img_Show.Left+25;

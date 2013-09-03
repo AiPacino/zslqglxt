@@ -65,7 +65,7 @@ end;
 
 procedure TFormatZySqlSet.ClientDataSet1NewRecord(DataSet: TDataSet);
 begin
-  ClientDataSet1.FieldByName('模块').AsString := gb_System_Mode;
+  ClientDataSet1.FieldByName('模块').AsString := '录取';//gb_System_Mode;
   ClientDataSet1.FieldByName('类别').AsString := '专业格式化';
 end;
 
