@@ -548,7 +548,7 @@ object NoBDxmSet: TNoBDxmSet
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 1
+    TabOrder = 2
     DesignSize = (
       610
       41)
@@ -559,7 +559,7 @@ object NoBDxmSet: TNoBDxmSet
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #20851#38381'[&C]'
-      TabOrder = 0
+      TabOrder = 5
       OnClick = btn_ExitClick
     end
     object btn_Save: TBitBtn
@@ -569,7 +569,7 @@ object NoBDxmSet: TNoBDxmSet
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #20445#23384
-      TabOrder = 1
+      TabOrder = 4
       OnClick = btn_SaveClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
@@ -630,7 +630,7 @@ object NoBDxmSet: TNoBDxmSet
       Width = 75
       Height = 25
       Caption = #21047#26032'[&R]'
-      TabOrder = 2
+      TabOrder = 0
       OnClick = btn_RefreshClick
     end
     object btn_Add: TBitBtn
@@ -640,7 +640,7 @@ object NoBDxmSet: TNoBDxmSet
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #26032#22686
-      TabOrder = 3
+      TabOrder = 1
       OnClick = btn_AddClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
@@ -702,7 +702,7 @@ object NoBDxmSet: TNoBDxmSet
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #21024#38500
-      TabOrder = 4
+      TabOrder = 2
       OnClick = btn_DelClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
@@ -764,7 +764,7 @@ object NoBDxmSet: TNoBDxmSet
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #21462#28040
-      TabOrder = 5
+      TabOrder = 3
       OnClick = btn_CancelClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
@@ -836,12 +836,13 @@ object NoBDxmSet: TNoBDxmSet
     FooterFont.Height = -12
     FooterFont.Name = 'Tahoma'
     FooterFont.Style = []
+    ImeMode = imDisable
     OddRowColor = 13823456
     OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
     PopupMenu = DM.PopupMenu1
     RowDetailPanel.Color = clBtnFace
     SortLocal = True
-    TabOrder = 2
+    TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -12
@@ -879,7 +880,6 @@ object NoBDxmSet: TNoBDxmSet
     Top = 200
   end
   object ClientDataSet1: TClientDataSet
-    Active = True
     Aggregates = <>
     CommandText = 'select * from '#26410#25253#21040#21407#22240#39033#30446#34920
     Params = <>
