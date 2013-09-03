@@ -756,37 +756,40 @@ item: Include Script
   Pathname=%_WISE_%\INCLUDE\uninstal.wse
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\ConnNewStuLqBdSrvSet.ini
-  Destination=%MAINDIR%\ConnNewStuLqBdSrvSet.ini
+  Source=..\Exe\Image\报到.png
+  Destination=%MAINDIR%\Image\报到.png
   Flags=0000000010000010
 end
+item: Create Directory
+  Pathname=%MAINDIR%\kszp
+end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\Rep\未报到新生名单.fr3
+  Source=..\Exe\Rep\未报到新生名单.fr3
   Destination=%MAINDIR%\Rep\未报到新生名单.fr3
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\Rep\系统日志报表.fr3
+  Source=..\Exe\Rep\系统日志报表.fr3
   Destination=%MAINDIR%\Rep\系统日志报表.fr3
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\Rep\更换专业审核表.fr3
+  Source=..\Exe\Rep\更换专业审核表.fr3
   Destination=%MAINDIR%\Rep\更换专业审核表.fr3
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\Rep\操作员登录日志.fr3
+  Source=..\Exe\Rep\操作员登录日志.fr3
   Destination=%MAINDIR%\Rep\操作员登录日志.fr3
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\Rep\操作员操作日志.fr3
+  Source=..\Exe\Rep\操作员操作日志.fr3
   Destination=%MAINDIR%\Rep\操作员操作日志.fr3
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\NewStuBd.exe
+  Source=..\Exe\NewStuBd.exe
   Destination=%MAINDIR%\NewStuBd.exe
   Flags=0000000010000011
 end
@@ -798,21 +801,6 @@ end
 item: Register Font
   Filename=方正姚体简体.ttf
   Font name=FZYaoTi-M06S (TrueType)
-end
-item: Install File
-  Source=e:\xxx\网上支付系统\Exe\Image\Title.png
-  Destination=%MAINDIR%\Image\Title.png
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\网上支付系统\Exe\Image\男.png
-  Destination=%MAINDIR%\Image\男.png
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\网上支付系统\Exe\Image\女.png
-  Destination=%MAINDIR%\Image\女.png
-  Flags=0000000010000010
 end
 item: Install File
   Source=c:\Windows\system32\Regsvr32.exe

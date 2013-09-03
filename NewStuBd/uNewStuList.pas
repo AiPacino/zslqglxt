@@ -199,8 +199,8 @@ begin
     Exit;
   end;
   print_sqlstr := ' select * from 录取信息表 '+GetWhere+
-                  ' and 报到状态='+quotedstr('未报到')+' and 未报到原因 like '+quotedstr('%放弃入学资格%')+
-                  ' order by 院系,流水号';
+                  ' and 报到状态='+quotedstr('未报到')+//' and 未报到原因 like '+quotedstr('%放弃入学资格%')+
+                  ' order by 院系,学历层次,未报到原因';
 
   cds_Master.XMLData := dm.OpenData(print_sqlstr);//ClientDataSet1.XMLData;
   frxReport1.LoadFromFile(fn);

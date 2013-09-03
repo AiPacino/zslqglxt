@@ -84,7 +84,8 @@ uses
   uKsLqtzsPrint in 'uKsLqtzsPrint.pas' {KsLqtzsPrint},
   uMareData_BDE in 'uMareData_BDE.pas' {MareData_BDE},
   uStuInfo_Baodao in 'uStuInfo_Baodao.pas' {StuInfo_Baodao},
-  uZdmcSet in 'uZdmcSet.pas' {ZdmcSet};
+  uZdmcSet in 'uZdmcSet.pas' {ZdmcSet},
+  uNoBDxmSet in 'uNoBDxmSet.pas' {NoBDxmSet};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};
@@ -93,9 +94,13 @@ uses
 
 begin
   Application.Initialize;
-  Application.Title := '高招录取管理系统';
+  gb_System_Mode := '报到';//'录取';
+  if gb_System_Mode='录取' then
+    Application.Title := '高招录取管理系统'
+  else
+    Application.Title := '新生报到管理系统';
+
   dm := TDM.Create(Application);
-  gb_System_Mode := '录取';
   gbIsOK := False;
   Login := TLogin.Create(Application);
   Login.ShowModal;
