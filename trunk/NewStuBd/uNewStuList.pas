@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, GridsEh, DBGridEh, ExtCtrls, uStuInfo_Baodao,StrUtils, 
   Mask, DBCtrlsEh, Buttons, DB, ADODB, Menus,DBGridEhImpExp, DBClient, pngimage,
-  frxClass, frxDBSet,uStuInfo, frxpngimage, DBGridEhGrouping;
+  frxClass, frxDBSet,uStuInfo, frxpngimage, DBGridEhGrouping,IniFiles;
 
 type
   TNewStuList = class(TForm)
@@ -66,6 +66,7 @@ type
     P1: TMenuItem;
     L1: TMenuItem;
     lbl_Len: TLabel;
+    chk_AutoOK: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure dxgrd_1DrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -109,7 +110,8 @@ type
     procedure Open_Table;
     procedure SetBDState(const sState:string;const bShowConfirmBox:Boolean=True);
     procedure SetCountState;
-
+    procedure GetAutoOKSet;
+    procedure SetAutoOKSet;
   public
     { Public declarations }
   end;
@@ -339,7 +341,11 @@ begin
     end else
     begin
       cbb_Field.Text := '通知书编号';
-      if Length(cbb_Value.Text)=8 then btn_Search.Click;
+      if Length(cbb_Value.Text)=8 then
+      begin
+        if chk_AutoOK.Checked then
+          btn_Search.Click;
+      end;
     end;
   end
   else  if LeftStr(cbb_Value.Text,2)=Copy(FormatDateTime('yyyy',Now),3,2) then
@@ -354,6 +360,7 @@ end;
 
 procedure TNewStuList.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  SetAutoOKSet;
   ClientDataSet1.Close;
   Action := caFree;
 end;
@@ -387,7 +394,7 @@ begin
       Self.Caption := '【'+gb_Czy_Dept+'】新生报到处理';
       lbl_Title.Caption := '新生报到处理';
     end;
-
+    GetAutoOKSet;
     dm.SetXlCcComboBox(cbb_XlCc,True);
 
 {
@@ -424,6 +431,17 @@ begin
     Value := lbl_NoBaoDao.Caption;
   if VarName = 'Bd_Pre' then
     Value := lbl_BaoDaoLi.Caption; //报到率
+end;
+
+procedure TNewStuList.GetAutoOKSet;
+var
+  fn:string;
+begin
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
+  with TIniFile.Create(fn) do
+  begin
+    chk_AutoOK.Checked := ReadInteger('KeySet','AutoEnter',0)=1;
+  end;
 end;
 
 function TNewStuList.GetWhere: string;
@@ -593,6 +611,20 @@ procedure TNewStuList.rg_StuClick(Sender: TObject);
 begin
   if Self.Showing then
     Open_Table;
+end;
+
+procedure TNewStuList.SetAutoOKSet;
+var
+  fn:string;
+begin
+  fn := ExtractFilePath(ParamStr(0))+gb_UserSetFileName;
+  with TIniFile.Create(fn) do
+  begin
+    if chk_AutoOK.Checked then
+      WriteInteger('KeySet','AutoEnter',1)
+    else
+      WriteInteger('KeySet','AutoEnter',0);
+  end;
 end;
 
 procedure TNewStuList.SetBDState(const sState: string;const bShowConfirmBox:Boolean=True);

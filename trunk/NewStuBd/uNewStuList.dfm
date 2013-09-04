@@ -850,8 +850,8 @@ object NewStuList: TNewStuList
       ParentFont = False
     end
     object chk1: TCheckBox
-      Left = 852
-      Top = -26
+      Left = 844
+      Top = -34
       Width = 91
       Height = 17
       Hint = #27599#38548'10'#31186#20809#26631#33258#21160#23450#20301#33267#26597#35810#26694
@@ -863,6 +863,15 @@ object NewStuList: TNewStuList
       State = cbChecked
       TabOrder = 0
       OnClick = chk1Click
+    end
+    object chk_AutoOK: TCheckBox
+      Left = 917
+      Top = 6
+      Width = 73
+      Height = 17
+      Anchors = [akRight, akBottom]
+      Caption = #33258#21160#22238#36710
+      TabOrder = 1
     end
   end
   object dxgrd_1: TDBGridEh
