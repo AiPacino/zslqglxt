@@ -9037,7 +9037,7 @@ object Main: TMain
     Left = 520
     Top = 39
     Bitmap = {
-      494C010105000700700010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700840010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -9326,7 +9326,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2013-09-03 00:00:00'
+    VersionDate = '2013-09-04 00:00:00'
     VersionDateAutoSet = True
     Left = 680
     Top = 40
@@ -9660,6 +9660,13 @@ object Main: TMain
       Caption = #25307#29983#35268#33539#25991#20214#26597#35810
       ImageIndex = 7
       OnExecute = act_File_FileBrowseExecute
+    end
+    object act_Data_PhotoSavePathSet: TAction
+      Category = '02.'#22522#30784#25968#25454
+      Caption = #29031#29255#23384#25918#36335#24452#35774#32622
+      Hint = #26381#21153#22120#29031#29255#23384#25918#36335#24452#35774#32622
+      ImageIndex = 15
+      OnExecute = act_Data_PhotoSavePathSetExecute
     end
     object act_Lq_SqlSet: TAction
       Category = '02.'#22522#30784#25968#25454
@@ -10051,6 +10058,10 @@ object Main: TMain
       ItemLinks = <
         item
           Visible = True
+          ItemName = 'dxBarButton70'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton38'
         end
         item
@@ -10084,10 +10095,6 @@ object Main: TMain
         item
           Visible = True
           ItemName = 'dxBarSeparator1'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton22'
         end
         item
           Visible = True
@@ -10479,6 +10486,10 @@ object Main: TMain
       Action = act_sys_Exit
       Category = 2
     end
+    object dxBarButton70: TdxBarButton
+      Action = act_Data_PhotoSavePathSet
+      Category = 3
+    end
     object dxBarButton38: TdxBarButton
       Action = act_Lq_SqlSet
       Category = 3
@@ -10505,10 +10516,6 @@ object Main: TMain
     end
     object dxBarButton10: TdxBarButton
       Action = act_Data_YxZySet
-      Category = 3
-    end
-    object dxBarButton22: TdxBarButton
-      Action = act_Data_SrvSet
       Category = 3
     end
     object dxBarButton69: TdxBarButton
@@ -10737,7 +10744,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C010124002600780010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101240026008C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

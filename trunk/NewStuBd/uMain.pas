@@ -103,7 +103,6 @@ type
     dxBarButton19: TdxBarButton;
     act_Data_SrvSet: TAction;
     act_Data_BdTimeSet: TAction;
-    dxBarButton22: TdxBarButton;
     dxBarButton23: TdxBarButton;
     dxBarButton20: TdxBarButton;
     dxBarButton24: TdxBarButton;
@@ -185,6 +184,8 @@ type
     act_Data_NoBDxmSet: TAction;
     dxBarButton69: TdxBarButton;
     albl_Title: TCnAALabel;
+    act_Data_PhotoSavePathSet: TAction;
+    dxBarButton70: TdxBarButton;
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
     procedure mmi_PrnLQTZSClick(Sender: TObject);
@@ -279,6 +280,7 @@ type
     procedure act_Lq_DataImport_BDEExecute(Sender: TObject);
     procedure act_Data_ZdMcSetExecute(Sender: TObject);
     procedure act_Data_NoBDxmSetExecute(Sender: TObject);
+    procedure act_Data_PhotoSavePathSetExecute(Sender: TObject);
   private
     { Private declarations }
     WorkHint: TWorkHint;
@@ -311,7 +313,7 @@ uses uDM, Net,DBGridEhImpExp,uNewStuList,uChgZyHistory,uChangeZy,uCzyEdit,uABOUT
      uZsjhAdjustBrowse,uReportDesign,uFormatZySqlSet,uLqqkCount,uLqqkBrowse,uLogInput,
      uKsInfoBrowse_All,uExportToAccess,uTdKsInfoBrowse,uZdmcSet,uNoBDxmSet,
      uEMSNumberImport,uDbTools,uFileEdit,uFileBrowse,uCzySfSet,uJwInfoImport,
-     uKsInfoBrowse_Work,uSysRegister,uExportFieldListSet,uKsLqtzsPrint;
+     uKsInfoBrowse_Work,uSysRegister,uExportFieldListSet,uKsLqtzsPrint,uPhotoSavePath;
 
 {$R *.dfm}
 
@@ -541,6 +543,11 @@ end;
 procedure TMain.act_Data_NoBDxmSetExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TNoBDxmSet);
+end;
+
+procedure TMain.act_Data_PhotoSavePathSetExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TPhotoSavePath);
 end;
 
 procedure TMain.act_Data_SrvSetExecute(Sender: TObject);
@@ -928,19 +935,24 @@ begin
 end;
 
 procedure TMain.FormCreate(Sender: TObject);
-//var
-//  fn:string;
+var
+  fn:string;
 begin
   Self.Top := 0;
   Self.Left := 0;
   Self.Width := Screen.Width;
   Self.Height := Screen.Height;
-{
+
   fn := ExtractFilePath(ParamStr(0))+'image\'+gb_system_mode+'.png';
   if FileExists(fn) then
+  begin
+    albl_Title.Visible := False;
     img_Show.Picture.LoadFromFile(fn);
-}
-  albl_Title.Caption := Application.Title;
+  end else
+  begin
+    albl_Title.Visible := True;
+    albl_Title.Caption := Application.Title;
+  end;
 end;
 
 procedure TMain.FormDestroy(Sender: TObject);

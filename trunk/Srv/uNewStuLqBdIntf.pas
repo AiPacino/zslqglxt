@@ -94,6 +94,8 @@ type
 
     function UpdateLqInfo(const sXlCc:string):Boolean;stdcall; //更新录取信息，如更新科类、专业志愿情况等
 
+    function GetSrvPath:string;stdcall; //服务器路径
+    function GetSrvUrlPath:string;stdcall;  //服务器URL路径
     function GetPhotoSavePath:string;stdcall; //照片存储路径
     function GetPhotoUrlPath:string;stdcall;  //照片Url路径
     function UpLoadFile(const sPath,sXmlData:string;out sError:string;

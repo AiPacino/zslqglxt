@@ -1,10 +1,10 @@
 object ToolsMain: TToolsMain
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMinimize]
+  BorderIcons = [biSystemMenu]
   Caption = #31995#32479#26381#21153#37197#32622#24037#20855
-  ClientHeight = 248
-  ClientWidth = 394
+  ClientHeight = 284
+  ClientWidth = 460
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,8 +22,8 @@ object ToolsMain: TToolsMain
   PixelsPerInch = 96
   TextHeight = 14
   object albl_Title: TCnAALabel
-    Left = 16
-    Top = 65
+    Left = 53
+    Top = 78
     Width = 362
     Height = 26
     ParentEffect.ParentFont = False
@@ -36,8 +36,8 @@ object ToolsMain: TToolsMain
     Effect.FontEffect.Shadow.Enabled = True
   end
   object albl_Dwmc: TCnAALabel
-    Left = 69
-    Top = 128
+    Left = 106
+    Top = 141
     Width = 272
     Height = 22
     ParentEffect.ParentFont = False
@@ -51,8 +51,8 @@ object ToolsMain: TToolsMain
   end
   object RzStatusBar1: TRzStatusBar
     Left = 0
-    Top = 229
-    Width = 394
+    Top = 265
+    Width = 460
     Height = 19
     BorderInner = fsNone
     BorderOuter = fsNone
@@ -60,7 +60,7 @@ object ToolsMain: TToolsMain
     BorderWidth = 0
     TabOrder = 0
     object RzImage_msg: TRzGlyphStatus
-      Left = 356
+      Left = 422
       Top = 0
       Width = 38
       Height = 19
@@ -73,10 +73,10 @@ object ToolsMain: TToolsMain
       ImageIndex = 5
       ExplicitLeft = 395
     end
-    object sp_Time: TRzStatusPane
+    object sp_SrvState: TRzStatusPane
       Left = 93
       Top = 0
-      Width = 263
+      Width = 329
       Height = 19
       FrameStyle = fsStatus
       Align = alClient
@@ -86,7 +86,7 @@ object ToolsMain: TToolsMain
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      Caption = #31995#32479#24050#31283#23450#36816#34892#65306
+      Caption = #27491#22312#33719#21462#26381#21153#22120#29366#24577'......'
       ExplicitLeft = 216
       ExplicitWidth = 173
     end
@@ -104,7 +104,7 @@ object ToolsMain: TToolsMain
       Font.Style = []
       ParentFont = False
       Alignment = taRightJustify
-      Caption = #31995#32479#21551#21160#26102#38388#65306
+      Caption = #26381#21153#22120#29366#24577#65306
     end
   end
   object MainMenu1: TMainMenu
@@ -118,6 +118,17 @@ object ToolsMain: TToolsMain
       object N2: TMenuItem
         Caption = #26381#21153#22120#21442#25968#35774#32622'[&S]'
         OnClick = N2Click
+      end
+      object N10: TMenuItem
+        Caption = #29031#29255#23384#25918#36335#24452#35774#32622'[&P]'
+        OnClick = N10Click
+      end
+      object N11: TMenuItem
+        Caption = #31995#32479#26381#21153#21551#29992'/'#20572#27490
+        OnClick = N11Click
+      end
+      object N12: TMenuItem
+        Caption = '-'
       end
       object mi_BackUp_Restore: TMenuItem
         Caption = #25968#25454#22791#20221'/'#24674#22797
@@ -249,7 +260,7 @@ object ToolsMain: TToolsMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/NetPay/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2013-06-27 00:00:00'
+    VersionDate = '2013-09-04 00:00:00'
     VersionDateAutoSet = True
     OnFileStart = auAutoUpgrader1FileStart
     OnDoOwnCloseAppMethod = auAutoUpgrader1DoOwnCloseAppMethod
@@ -259,7 +270,7 @@ object ToolsMain: TToolsMain
   object ImageList1: TImageList
     Left = 248
     Bitmap = {
-      494C010102000400100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000400200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

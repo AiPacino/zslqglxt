@@ -15,7 +15,9 @@ uses
   uInputSaPwd in 'uInputSaPwd.pas' {InputSaPwd},
   EncdDecdEx in '..\public\EncdDecdEx.pas',
   uNewStuLqBdIntf in 'uNewStuLqBdIntf.pas',
-  uZySelect in '..\NewStuBd\uZySelect.pas' {ZySelect};
+  uZySelect in '..\NewStuBd\uZySelect.pas' {ZySelect},
+  uPhotoSavePathSet in 'uPhotoSavePathSet.pas' {PhotoSavePathSet},
+  uSrvStateSet in 'uSrvStateSet.pas' {SrvStateSet};
 
 {$R *.res}
 

@@ -192,8 +192,8 @@ begin
     Exit;
   end;
   print_sqlstr := ' select * from 录取信息表 '+GetWhere+
-                  ' and 报到状态='+quotedstr('未报到')+' and 未报到原因 like '+quotedstr('%放弃入学资格%')+
-                  ' order by 院系,流水号';
+                  ' and 报到状态='+quotedstr('未报到')+//' and 未报到原因 like '+quotedstr('%放弃入学资格%')+
+                  ' order by 院系,学历层次,未报到原因';
   cds_Master.XMLData := dm.OpenData(print_sqlstr);//ClientDataSet1.XMLData;
   frxReport1.LoadFromFile(fn);
   frxReport1.ShowReport;
@@ -210,7 +210,7 @@ var
 begin
   try
     sField := cbb_Field.KeyItems[cbb_Field.ItemIndex];
-    if not ClientDataSet1.Locate(sField,cbb_Value.Text,[]) then
+    if not ClientDataSet1.Locate(sField,vararrayof([cbb_Value.Text]),[]) then
     begin
       StuInfo.Close;
       MessageBox(Handle, PChar('【'+sField+'】为【'+cbb_Value.Text+'】的新生信息不存在！请检查后重试！　'),

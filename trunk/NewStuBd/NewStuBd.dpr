@@ -25,7 +25,6 @@ uses
   uBaoDaoTimeSet in 'uBaoDaoTimeSet.pas' {BaoDaoTimeSet},
   uJlxmSet in 'uJlxmSet.pas' {JlxmSet},
   uIpSet in 'uIpSet.pas' {IpSet},
-  uSrvStateSet in 'uSrvStateSet.pas' {SrvStateSet},
   uCzyRightSet in 'uCzyRightSet.pas' {CzyRightSet},
   uCzyRightGroupSet in 'uCzyRightGroupSet.pas' {CzyRightGroupSet},
   uLockScreen in 'uLockScreen.pas' {LockScreen},
@@ -85,7 +84,9 @@ uses
   uMareData_BDE in 'uMareData_BDE.pas' {MareData_BDE},
   uStuInfo_Baodao in 'uStuInfo_Baodao.pas' {StuInfo_Baodao},
   uZdmcSet in 'uZdmcSet.pas' {ZdmcSet},
-  uNoBDxmSet in 'uNoBDxmSet.pas' {NoBDxmSet};
+  uNoBDxmSet in 'uNoBDxmSet.pas' {NoBDxmSet},
+  uPhotoSavePath in 'uPhotoSavePath.pas' {PhotoSavePath},
+  uSrvStateSet in 'uSrvStateSet.pas' {SrvStateSet};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

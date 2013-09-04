@@ -216,7 +216,8 @@ begin
   //aForm.DataSource1.DataSet := ClientDataSet1;
   try
     sField := cbb_Field.KeyItems[cbb_Field.ItemIndex];
-    if not ClientDataSet1.Locate(sField,cbb_Value.Text,[]) then
+    if not ClientDataSet1.Locate(sField,vararrayof([cbb_Value.Text]),[]) then
+    //if not ClientDataSet1.Locate(sField,cbb_Value.Text,[]) then
     begin
       StuInfo.Close;
       MessageBox(Handle, PChar('【'+sField+'】为【'+cbb_Value.Text+'】的新生信息不存在！请检查后重试！　'),
