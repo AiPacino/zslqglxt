@@ -11,7 +11,7 @@ item: Global
   Progress Bar DLL=%_WISE_%\Progress\WizWin32a.DLL
   Start Gradient=0 0 255
   End Gradient=0 0 0
-  Windows Flags=00000100000000010000110000001010
+  Windows Flags=00000100000000110000110000001010
   Log Pathname=%MAINDIR%\INSTALL.LOG
   Message Font=ËÎÌå
   Font Size=9
@@ -761,11 +761,6 @@ item: Install File
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\midas.dll
-  Destination=%MAINDIR%\midas.dll
-  Flags=0001000010000011
-end
-item: Install File
   Source=e:\xxx\zslqglxt\Exe\VFPODBC.msi
   Destination=%MAINDIR%\VFPODBC.msi
   Flags=0000000010000010
@@ -778,7 +773,7 @@ end
 item: Install File
   Source=c:\Windows\System32\midas.dll
   Destination=%SYS32%\midas.dll
-  Flags=0001001010000010
+  Flags=0001001010001010
 end
 item: Install File
   Source=..\Exe\Image\±¨µ½.png
