@@ -91,6 +91,8 @@ type
 
     function UpdateLqInfo(const sXlCc:string):Boolean;stdcall; //更新录取信息，如更新科类、专业志愿情况等
 
+    function GetSrvPath:string;stdcall; //服务器路径
+    function GetSrvUrlPath:string;stdcall;  //服务器URL路径
     function GetPhotoSavePath:string;stdcall; //照片存储路径
     function GetPhotoUrlPath:string;stdcall;  //照片Url路径
     function UpLoadFile(const sPath,sXmlData:string;out sError:string;
@@ -397,6 +399,12 @@ begin
     sMsg := '软件版本过低！　';
     Exit;
   end;
+  if not SrvIsOpen then
+  begin
+    sMsg := '登录失败！系统服务功能已关闭!　';
+    Exit;
+  end;
+
   if not RegIsOK then
   begin
     sMsg := '系统错误！Thread error! Error code id is 403!　';
@@ -484,7 +492,7 @@ begin
 
   if not FileExists(sFileName) then
   begin
-    sError := '文件不存在！';
+    sError := '照片文件不存在！'+sFileName;
     Exit;
   end;
   cds_Temp := TClientDataSet.Create(nil);
@@ -836,6 +844,16 @@ begin
   except
     Result := '';
   end;
+end;
+
+function TNewStuLqBd.GetSrvPath: string;
+begin
+  Result := GetCurrentDir+'/';
+end;
+
+function TNewStuLqBd.GetSrvUrlPath: string;
+begin
+  Result := 'http://'+GetLocalIpStr+'/';
 end;
 
 function TNewStuLqBd.GetTddCountSql(const sXlcc: string): string;

@@ -12,10 +12,8 @@ object SrvStateSet: TSrvStateSet
   Font.Height = -12
   Font.Name = 'Tahoma'
   Font.Style = []
-  FormStyle = fsMDIChild
   OldCreateOrder = False
   Position = poMainFormCenter
-  Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -90,18 +88,14 @@ object SrvStateSet: TSrvStateSet
       TabOrder = 0
     end
   end
-  object cds_1: TClientDataSet
-    Aggregates = <>
-    CommandText = 'select * from '#26381#21153#22120#29366#24577#37197#32622#34920
-    Params = <>
-    BeforePost = cds_1BeforePost
-    OnNewRecord = cds_1NewRecord
-    Left = 64
+  object ds1: TDataSource
+    DataSet = qry1
+    Left = 32
     Top = 152
   end
-  object ds1: TDataSource
-    DataSet = cds_1
-    Left = 32
+  object qry1: TADOQuery
+    Parameters = <>
+    Left = 72
     Top = 152
   end
 end

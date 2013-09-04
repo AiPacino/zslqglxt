@@ -25,7 +25,7 @@ type
     A1: TMenuItem;
     RzStatusBar1: TRzStatusBar;
     RzImage_msg: TRzGlyphStatus;
-    sp_Time: TRzStatusPane;
+    sp_SrvState: TRzStatusPane;
     RzStatusPane1: TRzStatusPane;
     PopupMenu1: TPopupMenu;
     pi_Show: TMenuItem;
@@ -42,6 +42,9 @@ type
     mi_Update: TMenuItem;
     ImageList1: TImageList;
     N9: TMenuItem;
+    N10: TMenuItem;
+    N11: TMenuItem;
+    N12: TMenuItem;
     procedure mi_DbSetClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure mi_HideClick(Sender: TObject);
@@ -68,11 +71,14 @@ type
     procedure auAutoUpgrader1EndUpgrade(Sender: TObject);
     procedure auAutoUpgrader1FileStart(Sender: TObject; const FileURL: string;
       FileSize: Integer; FileTime: TDateTime; var CanUpgrade: Boolean);
+    procedure N10Click(Sender: TObject);
+    procedure N11Click(Sender: TObject);
   private
     { Private declarations }
     UserName,UserCode:string;
     procedure QueryEndSession(var Msg:TMessage);Message WM_QueryEndSession;
     function GetUserInfo:Boolean;
+    function SrvIsOpened:Boolean;
     function RegIsOK:Boolean;
     procedure UpdateSrvStatus;
     function IsAutoBackup:Boolean;
@@ -90,7 +96,7 @@ var
 implementation
 
 uses uDM,Net,uDbInfoSet,uServiceSet,uDbConnect,PwdFunUnit,
-  uSQLBackupRestore,uDbBackupRestore;
+  uSQLBackupRestore,uDbBackupRestore,uPhotoSavePathSet,uSrvStateSet;
 
 {$R *.dfm}
 
@@ -172,15 +178,14 @@ end;
 
 procedure TToolsMain.FormCreate(Sender: TObject);
 begin
-  if Screen.Fonts.IndexOf('楷体')<>-1 then
+  if Screen.Fonts.IndexOf('楷体_GB2312')<>-1 then
   begin
-    albl_Title.Font.Name := '楷体';
-    albl_Dwmc.Font.Name := '楷体';
+    albl_Title.Font.Name := '楷体_GB2312';
+    albl_Dwmc.Font.Name := '楷体_GB2312';
   end;
 
   gbCanClose := False;
   Application.ShowMainForm := False;
-  sp_Time.Caption := DateTimeToStr(Now);
   Self.CoolTrayIcon1.Hint := SYS_TITLE;
   Application.Title := SYS_TITLE;
   UpdateSrvStatus;
@@ -281,6 +286,17 @@ begin
   CoolTrayIcon1.HideMainForm;
 end;
 
+procedure TToolsMain.N10Click(Sender: TObject);
+begin
+  TPhotoSavePathSet.Create(nil).ShowModal;
+end;
+
+procedure TToolsMain.N11Click(Sender: TObject);
+begin
+  TSrvStateSet.Create(nil).ShowModal;
+  UpdateSrvStatus;
+end;
+
 procedure TToolsMain.N2Click(Sender: TObject);
 begin
   TServiceSet.Create(nil).ShowModal;
@@ -339,6 +355,32 @@ begin
   //Result := vobj_Account.RegIsOK;
 end;
 
+function TToolsMain.SrvIsOpened: Boolean;
+var
+  qry_Temp:TAdoquery;
+begin
+  Result := DbSrvIsOK;
+  if not Result then
+    Exit;
+
+  Result := False;
+  qry_Temp := TAdoquery.Create(nil);
+  try
+    try
+      qry_Temp.Active := False;
+      qry_Temp.ConnectionString := GetConnectString;
+      qry_Temp.CommandTimeout := 3;
+      qry_Temp.SQL.Text := 'select 是否启用 from 服务器状态配置表';
+      qry_Temp.Active := True;
+      Result := qry_Temp.Fields[0].AsBoolean;
+    except;
+      Result := False;
+    end;
+  finally
+    qry_temp.Free;
+  end;
+end;
+
 procedure TToolsMain.tmr_AutoBackupTimer(Sender: TObject);
 var
   sTime:string;
@@ -353,19 +395,37 @@ end;
 
 procedure TToolsMain.UpdateSrvStatus;
 begin
-  if GetUserInfo then
+  if not DbSrvIsOK then
   begin
-    Caption := SYS_TITLE+' Ver '+Get_Version;
-    if RegIsOK then
+    sp_SrvState.Font.Color := clBlack;
+    sp_SrvState.Caption := '正在获取服务器状态...';
+  end else
+  begin
+    if GetUserInfo then
     begin
-      Caption := Caption + ' [已注册版本]';
-      albl_Dwmc.Font.Color := clBlue;
-      albl_Dwmc.Caption := Format('%26s',['---已授权:'+UserName]);
+      Caption := SYS_TITLE+' Ver '+Get_Version;
+      if RegIsOK then
+      begin
+        Caption := Caption + ' [已注册版本]';
+        albl_Dwmc.Font.Color := clBlue;
+        albl_Dwmc.Caption := Format('%26s',['---已授权:'+UserName]);
+      end else
+      begin
+        Caption := Caption + ' [未注册版本]';
+        albl_Dwmc.Font.Color := clRed;
+        albl_Dwmc.Caption := '---'+'系统未注册！请尽快注册！';
+      end;
+    end;
+    if SrvIsOpened then
+    begin
+      sp_SrvState.Font.Color := clBlue;
+      sp_SrvState.Caption := '系统服务运行中...';
+      CoolTrayIcon1.IconIndex := 0;
     end else
     begin
-      Caption := Caption + ' [未注册版本]';
-      albl_Dwmc.Font.Color := clRed;
-      albl_Dwmc.Caption := '---'+'系统未注册！请尽快注册！';
+      sp_SrvState.Font.Color := clRed;
+      sp_SrvState.Caption := '系统服务已停止！';
+      CoolTrayIcon1.IconIndex := 1;
     end;
   end;
 end;

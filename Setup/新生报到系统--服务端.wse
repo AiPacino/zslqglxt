@@ -118,7 +118,7 @@ item: Remark
 end
 item: Set Variable
   Variable=MAINDIR
-  Value=NewStuLqBd\Srv
+  Value=zslqxt\Srv
   Flags=10000000
 end
 item: Remark
@@ -1024,32 +1024,27 @@ item: Include Script
   Pathname=%_WISE_%\INCLUDE\uninstal.wse
 end
 item: Install File
-  Source=c:\BDS2007liteV8\bin\serverinfo.exe
-  Destination=%MAINDIR%\serverinfo.exe
-  Flags=0000000010000011
+  Source=c:\Windows\System32\midas.dll
+  Destination=%SYS32%\midas.dll
+  Flags=0001001010001010
 end
 item: Install File
-  Source=c:\BDS2007liteV8\bin\webappdbg.exe
-  Destination=%MAINDIR%\webappdbg.exe
-  Flags=0000000010000011
+  Source=..\Exe\template.dll
+  Destination=%MAINDIR%\template.dll
+  Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\NewStuLqBdWadSrv.exe
-  Destination=%MAINDIR%\NewStuLqBdWadSrv.exe
+  Source=..\Exe\NewStuLqBdSetTools.exe
+  Destination=%MAINDIR%\NewStuLqBdSetTools.exe
   Flags=0000000010000011
 end
 item: Install File
   Source=c:\Windows\NewStuLqBdDbConnSet.INI
   Destination=%WIN%\NewStuLqBdDbConnSet.INI
-  Flags=0000000010000010
+  Flags=0000000010001010
 end
 item: Install File
-  Source=e:\xxx\招生系统\Exe\Data\lqmd.mdb
-  Destination=%MAINDIR%\Data\lqmd.mdb
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\招生系统\Exe\NewStuLqBdSrv.dll
+  Source=..\Exe\NewStuLqBdSrv.dll
   Destination=%MAINDIR%\NewStuLqBdSrv.dll
   Flags=0001000010000011
 end
@@ -1155,19 +1150,18 @@ item: Set Variable
   Value=%GROUPDIR%\%GROUP%
 end
 item: Create Shortcut
-  Source=%MAINDIR%\webappdbg.exe
-  Destination=%DESKTOPDIR%\WebAppDbg.lnk
-  Working Directory=C:\BDS2007liteV8\bin
+  Source=%MAINDIR%\NewStuLqBdSetTools.exe
+  Destination=%CGROUPDIR%\%CGROUP_SAVE%\系统配置程序.lnk
+  Working Directory=%MAINDIR%
   Icon Number=0
 end
 item: Else Statement
 end
 item: Add ProgMan Icon
   Group=%GROUP%
-  Icon Name=WebAppDbg
-  Command Line=%MAINDIR%\webappdbg.exe
-  Default Directory=C:\BDS2007liteV8\bin
-  Flags=01000000
+  Icon Name=系统配置程序
+  Command Line=%MAINDIR%\NewStuLqBdSetTools.exe
+  Default Directory=%MAINDIR%
 end
 item: End Block
 end

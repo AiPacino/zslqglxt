@@ -719,7 +719,7 @@ object NewStuBdHistory: TNewStuBdHistory
       Top = 8
       Width = 123
       Height = 25
-      Caption = #25171#21360#36864#26723#32771#29983#21517#21333
+      Caption = #25171#21360#26410#25253#21040#26032#29983#21517#21333
       TabOrder = 3
       OnClick = btn_PrintNoBDClick
     end
@@ -850,7 +850,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ParentFont = False
     end
     object lbl_RefreshHint: TLabel
-      Left = 748
+      Left = 744
       Top = 8
       Width = 16
       Height = 14
@@ -866,7 +866,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ExplicitLeft = 812
     end
     object lbl_RefreshHint2: TLabel
-      Left = 769
+      Left = 765
       Top = 8
       Width = 120
       Height = 14
@@ -876,7 +876,7 @@ object NewStuBdHistory: TNewStuBdHistory
       ExplicitLeft = 833
     end
     object chk_AutoRefresh: TCheckBox
-      Left = 893
+      Left = 889
       Top = 7
       Width = 15
       Height = 17
@@ -1076,7 +1076,7 @@ object NewStuBdHistory: TNewStuBdHistory
         FieldName = #26410#25253#21040#21407#22240
         Footers = <>
         Title.TitleButton = True
-        Width = 99
+        Width = 199
       end
       item
         EditButtons = <>

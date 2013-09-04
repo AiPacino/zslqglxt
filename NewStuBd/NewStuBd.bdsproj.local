@@ -11,5 +11,7 @@
     <Transaction>2012-08-01 09:21:20.361.dfm,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE_Photo.dfm=E:\xxx\zslqglxt\NewStuBd\uMareData_Photo.dfm</Transaction>
     <Transaction>2012-08-01 09:36:41.022.pas,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE_Photo.pas=</Transaction>
     <Transaction>2012-08-01 09:36:41.022.dfm,E:\xxx\zslqglxt\NewStuBd\uMareData_BDE_Photo.dfm=</Transaction>
+    <Transaction>2013-09-04 11:45:59.601.pas,E:\xxx\zslqglxt\NewStuBd\uPhotoSavePathSet.pas=E:\xxx\zslqglxt\NewStuBd\uPhotoSavePath.pas</Transaction>
+    <Transaction>2013-09-04 11:45:59.601.dfm,E:\xxx\zslqglxt\NewStuBd\uPhotoSavePathSet.dfm=E:\xxx\zslqglxt\NewStuBd\uPhotoSavePath.dfm</Transaction>
   </Transactions>
 </BorlandProject>

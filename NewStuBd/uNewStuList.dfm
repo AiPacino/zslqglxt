@@ -850,8 +850,8 @@ object NewStuList: TNewStuList
       ParentFont = False
     end
     object chk1: TCheckBox
-      Left = 856
-      Top = -22
+      Left = 852
+      Top = -26
       Width = 91
       Height = 17
       Hint = #27599#38548'10'#31186#20809#26631#33258#21160#23450#20301#33267#26597#35810#26694

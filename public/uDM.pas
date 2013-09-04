@@ -537,7 +537,11 @@ begin
   try
     try
       if not vobj.DownLoadPhoto(sKsh,sData,sError) then
+      begin
+        //Application.MessageBox(PChar('照片下载失败！'+sError), '系统提示', MB_OK + MB_ICONSTOP + MB_TOPMOST);
         Exit;
+      end;
+
       cds_Temp.XMLData := sData;
 
       if sData='' then Exit;
