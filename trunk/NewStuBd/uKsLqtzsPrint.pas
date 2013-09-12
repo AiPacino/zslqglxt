@@ -287,7 +287,7 @@ end;
 
 procedure TKsLqtzsPrint.mmi_FormatZymcClick(Sender: TObject);
 var
-  xlcc,sf,pc,lb,kl,zydm,zy:string;
+  xlcc,sf,pc,lb,kl,zydm,zy,zygfm:string;
 //  bm:TBookmark;
 begin
   xlcc := ClientDataSet1.FieldByName('学历层次').Asstring;
@@ -297,13 +297,14 @@ begin
   kl := ClientDataSet1.FieldByName('科类名称').Asstring;
   zydm := ClientDataSet1.FieldByName('录取代码').Asstring;
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
+  zygfm := ClientDataSet1.FieldByName('录取专业规范名').Asstring;
 
   with TFormatZy.Create(Application) do
   begin
     if pim_AllowPrintNotEndKs.Checked then
-      FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,'已安排专业录取信息表')
+      FillData(xlcc,sf,pc,lb,kl,zydm,zy,zygfm,ClientDataSet1,'已安排专业录取信息表')
     else
-      FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,'录取信息表');
+      FillData(xlcc,sf,pc,lb,kl,zydm,zy,zygfm,ClientDataSet1,'录取信息表');
 
     if ShowModal=mrOk then
     try

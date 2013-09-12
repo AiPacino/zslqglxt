@@ -186,6 +186,10 @@ type
     albl_Title: TCnAALabel;
     act_Data_PhotoSavePathSet: TAction;
     dxBarButton70: TdxBarButton;
+    act_Lq_KsHmcBrowser: TAction;
+    act_Lq_KsHmcEdit: TAction;
+    dxbrbtn2: TdxBarButton;
+    dxbrbtn3: TdxBarButton;
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
     procedure mmi_PrnLQTZSClick(Sender: TObject);
@@ -281,6 +285,8 @@ type
     procedure act_Data_ZdMcSetExecute(Sender: TObject);
     procedure act_Data_NoBDxmSetExecute(Sender: TObject);
     procedure act_Data_PhotoSavePathSetExecute(Sender: TObject);
+    procedure act_Lq_KsHmcBrowserExecute(Sender: TObject);
+    procedure act_Lq_KsHmcEditExecute(Sender: TObject);
   private
     { Private declarations }
     WorkHint: TWorkHint;
@@ -311,8 +317,8 @@ uses uDM, Net,DBGridEhImpExp,uNewStuList,uChgZyHistory,uChangeZy,uCzyEdit,uABOUT
      uKsList,uKsInfoBrowse,uPhotoExport, uDataInit,uZsjhSet, uCountXkInfo,uWorkSet,
      uWorkBrowse,uZsjhBrowse,uSqlCmdSet,uZsjhAdjustEdit,uZsjhAdjustConfirm,uMareData_Photo,
      uZsjhAdjustBrowse,uReportDesign,uFormatZySqlSet,uLqqkCount,uLqqkBrowse,uLogInput,
-     uKsInfoBrowse_All,uExportToAccess,uTdKsInfoBrowse,uZdmcSet,uNoBDxmSet,
-     uEMSNumberImport,uDbTools,uFileEdit,uFileBrowse,uCzySfSet,uJwInfoImport,
+     uKsInfoBrowse_All,uExportToAccess,uTdKsInfoBrowse,uZdmcSet,uNoBDxmSet,uKsHmcBrowse,
+     uEMSNumberImport,uDbTools,uFileEdit,uFileBrowse,uCzySfSet,uJwInfoImport,uKsHmcInput,
      uKsInfoBrowse_Work,uSysRegister,uExportFieldListSet,uKsLqtzsPrint,uPhotoSavePath;
 
 {$R *.dfm}
@@ -691,6 +697,16 @@ end;
 procedure TMain.act_Lq_JwInfoImportExecute(Sender: TObject);
 begin
   ShowMdiChildForm(TJwInfoImport);
+end;
+
+procedure TMain.act_Lq_KsHmcBrowserExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TKsHmcBrowse);
+end;
+
+procedure TMain.act_Lq_KsHmcEditExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TKsHmcInput);
 end;
 
 procedure TMain.act_Lq_lqqkCountExecute(Sender: TObject);
