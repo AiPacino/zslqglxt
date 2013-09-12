@@ -9037,7 +9037,7 @@ object Main: TMain
     Left = 520
     Top = 39
     Bitmap = {
-      494C010105000700840010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700880010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -9326,7 +9326,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2013-09-04 00:00:00'
+    VersionDate = '09/12/2013'
     VersionDateAutoSet = True
     Left = 680
     Top = 40
@@ -9864,6 +9864,18 @@ object Main: TMain
       ImageIndex = 19
       OnExecute = act_Lq_LqtzsPrintExecute
     end
+    object act_Lq_KsHmcEdit: TAction
+      Category = '09.'#24405#21462#22788#29702
+      Caption = #32771#29983#33457#21517#20876#20449#24687#24405#20837
+      ImageIndex = 5
+      OnExecute = act_Lq_KsHmcEditExecute
+    end
+    object act_Lq_KsHmcBrowser: TAction
+      Category = '09.'#24405#21462#22788#29702
+      Caption = #32771#29983#33457#21517#20876#24405#20837#26597#35810
+      ImageIndex = 7
+      OnExecute = act_Lq_KsHmcBrowserExecute
+    end
     object act_Tools_DbTools: TAction
       Category = '09.'#24405#21462#22788#29702
       Caption = #25968#25454#24211#25171#24320#24037#20855
@@ -10237,6 +10249,18 @@ object Main: TMain
         item
           Visible = True
           ItemName = 'dxBarButton58'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarSeparator1'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbrbtn3'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbrbtn2'
         end
         item
           Visible = True
@@ -10624,6 +10648,14 @@ object Main: TMain
       Action = act_Rep_UpdateZyHistory
       Category = 5
     end
+    object dxbrbtn3: TdxBarButton
+      Action = act_Lq_KsHmcEdit
+      Category = 5
+    end
+    object dxbrbtn2: TdxBarButton
+      Action = act_Lq_KsHmcBrowser
+      Category = 5
+    end
     object dxBarButton60: TdxBarButton
       Action = act_Tools_DbTools
       Category = 5
@@ -10744,7 +10776,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C0101240026008C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600900010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

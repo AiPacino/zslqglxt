@@ -86,7 +86,10 @@ uses
   uZdmcSet in 'uZdmcSet.pas' {ZdmcSet},
   uNoBDxmSet in 'uNoBDxmSet.pas' {NoBDxmSet},
   uPhotoSavePath in 'uPhotoSavePath.pas' {PhotoSavePath},
-  uSrvStateSet in 'uSrvStateSet.pas' {SrvStateSet};
+  uSrvStateSet in 'uSrvStateSet.pas' {SrvStateSet},
+  uKsHmcBrowse in 'uKsHmcBrowse.pas' {KsHmcBrowse},
+  uKsHmcEdit in 'uKsHmcEdit.pas' {KsHmcEdit},
+  uKsHmcInput in 'uKsHmcInput.pas' {KsHmcInput};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

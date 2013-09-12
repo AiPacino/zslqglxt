@@ -286,7 +286,7 @@ end;
 
 procedure TKsList.mmi_FormatZymcClick(Sender: TObject);
 var
-  xlcc,sf,pc,lb,kl,zydm,zy:string;
+  xlcc,sf,pc,lb,kl,zydm,zy,zygfm:string;
 //  bm:TBookmark;
 begin
   xlcc := ClientDataSet1.FieldByName('学历层次').Asstring;
@@ -296,10 +296,11 @@ begin
   kl := ClientDataSet1.FieldByName('科类名称').Asstring;
   zydm := ClientDataSet1.FieldByName('录取代码').Asstring;
   zy := ClientDataSet1.FieldByName('录取专业').Asstring;
+  zygfm := ClientDataSet1.FieldByName('录取专业规范名').Asstring;
 
   with TFormatZy.Create(Application) do
   begin
-    FillData(xlcc,sf,pc,lb,kl,zydm,zy,ClientDataSet1,aTableName);
+    FillData(xlcc,sf,pc,lb,kl,zydm,zy,zygfm,ClientDataSet1,aTableName);
     if ShowModal=mrOk then
     try
       DBGridEH1.SaveBookmark;

@@ -27,6 +27,8 @@ type
     lbledt_zydm: TEdit;
     lbl3: TLabel;
     lbledt_Lb: TEdit;
+    lbl4: TLabel;
+    edt_oldzygfm: TEdit;
     procedure btn_CancelClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbb_NewZyChange(Sender: TObject);
@@ -41,7 +43,7 @@ type
     procedure InitNewZyList;
   public
     { Public declarations }
-    procedure FillData(const vXlCc, vSf, vPc, vLb, vKl, vZydm, vZy: string;cds_Source:TclientDataSet;const sTableName:string);
+    procedure FillData(const vXlCc, vSf, vPc, vLb, vKl, vZydm, vZy, vZygfm: string;cds_Source:TclientDataSet;const sTableName:string);
   end;
 
 implementation
@@ -82,7 +84,7 @@ begin
   InitNewZyList;
 end;
 
-procedure TFormatZy.FillData(const vXlCc, vSf, vPc, vLb, vKl, vZydm, vZy: string;
+procedure TFormatZy.FillData(const vXlCc, vSf, vPc, vLb, vKl, vZydm, vZy,vZygfm: string;
   cds_Source: TClientDataSet;const sTableName:string);
 var
   i: Integer;
@@ -97,6 +99,7 @@ begin
   lbledt_kl.Text := vKl;
   lbledt_zydm.Text := vZydm;
   lbledt_Zy.Text := vZy;
+  edt_oldZygfm.Text := vZygfm;
 
   InitNewZyList;
   
@@ -148,7 +151,7 @@ end;
 
 function TFormatZy.FormatZymc:Boolean;
 var
-  xlcc,sf,pc,lb,kl,zydm,zy,sqlstr,sWhere:string;
+  xlcc,sf,pc,lb,kl,zydm,zy,oldzygfm,sqlstr,sWhere:string;
   iResult :Integer;
 begin
   Result := False;
@@ -159,10 +162,11 @@ begin
   kl := lbledt_kl.Text;
   zydm := lbledt_zydm.Text;
   zy := lbledt_Zy.Text;
+  oldzygfm := edt_oldzygfm.Text;
 
   sWhere := ' where 学历层次='+quotedstr(xlcc)+' and 录取代码='+quotedstr(zydm)
             //+' and 类别='+quotedstr(lb);
-            +' and 录取专业规范名=录取专业 and 科类名称='+quotedstr(kl);
+            +' and 录取专业规范名='+quotedstr(oldzygfm)+' and 科类名称='+quotedstr(kl);
   if chk_OnlySf.Checked then
     sWhere := sWhere+' and 省份='+quotedstr(lbledt_sf.Text);
 

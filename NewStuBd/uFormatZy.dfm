@@ -18,15 +18,15 @@ object FormatZy: TFormatZy
   PixelsPerInch = 96
   TextHeight = 13
   object lbl_NewKl: TLabel
-    Left = 32
-    Top = 199
-    Width = 72
+    Left = 20
+    Top = 213
+    Width = 84
     Height = 13
-    Caption = #35268#33539#19987#19994#21517#65306
+    Caption = #26032#35268#33539#19987#19994#21517#65306
   end
   object Label1: TLabel
     Left = 68
-    Top = 22
+    Top = 17
     Width = 36
     Height = 13
     Caption = #30465#20221#65306
@@ -34,7 +34,7 @@ object FormatZy: TFormatZy
   end
   object Label2: TLabel
     Left = 68
-    Top = 76
+    Top = 71
     Width = 36
     Height = 13
     Caption = #25209#27425#65306
@@ -42,7 +42,7 @@ object FormatZy: TFormatZy
   end
   object Label3: TLabel
     Left = 44
-    Top = 156
+    Top = 151
     Width = 60
     Height = 13
     Caption = #21407#22987#19987#19994#65306
@@ -57,7 +57,7 @@ object FormatZy: TFormatZy
   end
   object lbl1: TLabel
     Left = 68
-    Top = 49
+    Top = 44
     Width = 36
     Height = 13
     Caption = #23618#27425#65306
@@ -65,7 +65,7 @@ object FormatZy: TFormatZy
   end
   object lbl2: TLabel
     Left = 56
-    Top = 129
+    Top = 124
     Width = 48
     Height = 13
     Caption = #21407#31185#31867#65306
@@ -73,15 +73,23 @@ object FormatZy: TFormatZy
   end
   object lbl3: TLabel
     Left = 68
-    Top = 102
+    Top = 97
     Width = 36
     Height = 13
     Caption = #31867#21035#65306
     Enabled = False
   end
+  object lbl4: TLabel
+    Left = 20
+    Top = 179
+    Width = 84
+    Height = 13
+    Caption = #21407#35268#33539#19987#19994#21517#65306
+    Enabled = False
+  end
   object lbledt_sf: TEdit
     Left = 110
-    Top = 19
+    Top = 14
     Width = 324
     Height = 21
     Enabled = False
@@ -89,7 +97,7 @@ object FormatZy: TFormatZy
   end
   object lbledt_Pc: TEdit
     Left = 110
-    Top = 73
+    Top = 68
     Width = 324
     Height = 21
     Enabled = False
@@ -97,15 +105,16 @@ object FormatZy: TFormatZy
   end
   object lbledt_Zy: TEdit
     Left = 160
-    Top = 153
+    Top = 148
     Width = 274
     Height = 21
+    Enabled = False
     ReadOnly = True
     TabOrder = 6
   end
   object cbb_NewZy: TDBComboBoxEh
     Left = 110
-    Top = 196
+    Top = 210
     Width = 326
     Height = 21
     EditButtons = <>
@@ -142,7 +151,7 @@ object FormatZy: TFormatZy
   end
   object lbledt_XlCc: TEdit
     Left = 110
-    Top = 46
+    Top = 41
     Width = 324
     Height = 21
     Enabled = False
@@ -150,7 +159,7 @@ object FormatZy: TFormatZy
   end
   object lbledt_kl: TEdit
     Left = 110
-    Top = 126
+    Top = 121
     Width = 324
     Height = 21
     Enabled = False
@@ -170,18 +179,28 @@ object FormatZy: TFormatZy
   end
   object lbledt_zydm: TEdit
     Left = 110
-    Top = 153
+    Top = 148
     Width = 44
     Height = 21
+    Enabled = False
     ReadOnly = True
     TabOrder = 5
   end
   object lbledt_Lb: TEdit
     Left = 110
-    Top = 99
+    Top = 94
     Width = 324
     Height = 21
     Enabled = False
     TabOrder = 3
+  end
+  object edt_oldzygfm: TEdit
+    Left = 110
+    Top = 178
+    Width = 324
+    Height = 21
+    Enabled = False
+    ReadOnly = True
+    TabOrder = 11
   end
 end

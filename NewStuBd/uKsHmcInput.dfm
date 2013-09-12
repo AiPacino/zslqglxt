@@ -1,8 +1,8 @@
-object KsInfoBrowse: TKsInfoBrowse
+object KsHmcInput: TKsHmcInput
   Left = 82
   Top = 46
   ActiveControl = cbb_Value
-  Caption = #24405#21462#32771#29983#20449#24687#27983#35272
+  Caption = #32771#29983#33457#21517#20876#24405#20837
   ClientHeight = 687
   ClientWidth = 1035
   Color = clBtnFace
@@ -30,9 +30,6 @@ object KsInfoBrowse: TKsInfoBrowse
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    DesignSize = (
-      1035
-      50)
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -316,9 +313,9 @@ object KsInfoBrowse: TKsInfoBrowse
     object lbl_Title: TLabel
       Left = 80
       Top = 13
-      Width = 160
+      Width = 140
       Height = 23
-      Caption = #24405#21462#32771#29983#20449#24687#27983#35272
+      Caption = #32771#29983#33457#21517#20876#24405#20837
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -19
@@ -590,29 +587,6 @@ object KsInfoBrowse: TKsInfoBrowse
         OnChange = cbb_XlCcChange
       end
     end
-    object chk_Filter: TCheckBox
-      Left = 399
-      Top = 19
-      Width = 80
-      Height = 16
-      Anchors = [akTop, akRight]
-      Caption = #25171#24320#36807#28388#22120
-      TabOrder = 4
-      OnClick = chk_FilterClick
-    end
-    object chk_ZyNoSame: TCheckBox
-      Left = 485
-      Top = 20
-      Width = 92
-      Height = 16
-      Hint = #26174#31034#19987#19994#21517#31216#19981#19968#33268#30340#35760#24405
-      Anchors = [akTop, akRight]
-      Caption = #26174#31034#30097#38382#19987#19994
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 5
-      OnClick = chk_ZyNoSameClick
-    end
   end
   object pnl2: TPanel
     Left = 0
@@ -642,7 +616,7 @@ object KsInfoBrowse: TKsInfoBrowse
       ParentFont = False
     end
     object lbl_Len: TLabel
-      Left = 570
+      Left = 488
       Top = 16
       Width = 18
       Height = 12
@@ -656,24 +630,24 @@ object KsInfoBrowse: TKsInfoBrowse
       ParentFont = False
     end
     object lbl_Filter: TLabel
-      Left = 101
+      Left = 17
       Top = 14
       Width = 60
       Height = 12
       Caption = #25968#25454#26597#35810#65306
     end
     object cbb_Value: TEdit
-      Left = 365
+      Left = 283
       Top = 11
       Width = 197
       Height = 20
       Anchors = [akLeft, akTop, akRight]
-      TabOrder = 7
+      TabOrder = 5
       OnChange = cbb_ValueChange
       OnKeyPress = cbb_ValueKeyPress
     end
     object btn_OK: TBitBtn
-      Left = 602
+      Left = 520
       Top = 9
       Width = 75
       Height = 25
@@ -695,26 +669,17 @@ object KsInfoBrowse: TKsInfoBrowse
       TabOrder = 0
     end
     object cbb_Field: TDBFieldComboBox
-      Left = 162
+      Left = 80
       Top = 11
       Width = 106
       Height = 20
-      ItemHeight = 0
-      TabOrder = 5
+      ItemHeight = 12
+      TabOrder = 3
       Text = #32771#29983#21495
       DataSource = ds_Access
     end
-    object btn_Refresh: TBitBtn
-      Left = 11
-      Top = 10
-      Width = 75
-      Height = 25
-      Caption = #21047#26032'[&R]'
-      TabOrder = 4
-      OnClick = btn_RefreshClick
-    end
     object btn_SqlWhere: TBitBtn
-      Left = 697
+      Left = 615
       Top = 9
       Width = 75
       Height = 25
@@ -724,7 +689,7 @@ object KsInfoBrowse: TKsInfoBrowse
       OnClick = btn_SqlWhereClick
     end
     object cbb_Compare: TDBComboBoxEh
-      Left = 271
+      Left = 189
       Top = 11
       Width = 88
       Height = 20
@@ -750,21 +715,72 @@ object KsInfoBrowse: TKsInfoBrowse
         '<'
         'Is Null'
         'Is not Null')
-      TabOrder = 6
+      TabOrder = 4
       Text = #21253#21547
       Visible = True
       OnChange = cbb_CompareChange
     end
-    object btn_Save: TBitBtn
-      Left = 854
+    object btn_Edit: TBitBtn
+      Left = 760
       Top = 9
-      Width = 75
+      Width = 129
       Height = 25
-      Anchors = [akTop, akRight]
-      Caption = #20445#23384#25968#25454
-      TabOrder = 3
-      Visible = False
-      OnClick = btn_SaveClick
+      Anchors = [akRight, akBottom]
+      Caption = #33457#21517#20876#20449#24687#24405#20837
+      TabOrder = 6
+      OnClick = btn_EditClick
+      Glyph.Data = {
+        36060000424D3606000000000000360400002800000020000000100000000100
+        08000000000000020000610D0000610D00000001000000000000000000003300
+        00006600000099000000CC000000FF0000000033000033330000663300009933
+        0000CC330000FF33000000660000336600006666000099660000CC660000FF66
+        000000990000339900006699000099990000CC990000FF99000000CC000033CC
+        000066CC000099CC0000CCCC0000FFCC000000FF000033FF000066FF000099FF
+        0000CCFF0000FFFF000000003300330033006600330099003300CC003300FF00
+        330000333300333333006633330099333300CC333300FF333300006633003366
+        33006666330099663300CC663300FF6633000099330033993300669933009999
+        3300CC993300FF99330000CC330033CC330066CC330099CC3300CCCC3300FFCC
+        330000FF330033FF330066FF330099FF3300CCFF3300FFFF3300000066003300
+        66006600660099006600CC006600FF0066000033660033336600663366009933
+        6600CC336600FF33660000666600336666006666660099666600CC666600FF66
+        660000996600339966006699660099996600CC996600FF99660000CC660033CC
+        660066CC660099CC6600CCCC6600FFCC660000FF660033FF660066FF660099FF
+        6600CCFF6600FFFF660000009900330099006600990099009900CC009900FF00
+        990000339900333399006633990099339900CC339900FF339900006699003366
+        99006666990099669900CC669900FF6699000099990033999900669999009999
+        9900CC999900FF99990000CC990033CC990066CC990099CC9900CCCC9900FFCC
+        990000FF990033FF990066FF990099FF9900CCFF9900FFFF99000000CC003300
+        CC006600CC009900CC00CC00CC00FF00CC000033CC003333CC006633CC009933
+        CC00CC33CC00FF33CC000066CC003366CC006666CC009966CC00CC66CC00FF66
+        CC000099CC003399CC006699CC009999CC00CC99CC00FF99CC0000CCCC0033CC
+        CC0066CCCC0099CCCC00CCCCCC00FFCCCC0000FFCC0033FFCC0066FFCC0099FF
+        CC00CCFFCC00FFFFCC000000FF003300FF006600FF009900FF00CC00FF00FF00
+        FF000033FF003333FF006633FF009933FF00CC33FF00FF33FF000066FF003366
+        FF006666FF009966FF00CC66FF00FF66FF000099FF003399FF006699FF009999
+        FF00CC99FF00FF99FF0000CCFF0033CCFF0066CCFF0099CCFF00CCCCFF00FFCC
+        FF0000FFFF0033FFFF0066FFFF0099FFFF00CCFFFF00FFFFFF00000080000080
+        000000808000800000008000800080800000C0C0C00080808000191919004C4C
+        4C00B2B2B200E5E5E5005A1E1E00783C3C0096646400C8969600FFC8C800465F
+        82005591B9006EB9D7008CD2E600B4E6F000D8E9EC0099A8AC00646F7100E2EF
+        F100C56A31000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000EEEEEEEEEEEE
+        EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE09
+        09EEEEEEEEEEEEEEEEEEEEEEEEEEEE8181EEEEEEEEEEEEEEEEEEEEEEEEEEEE09
+        1009EEEEEEEEEEEEEEEEEEEEEEEEEE81AC81EEEEEEEEEEEEEEEEEEEEEEEEEE09
+        101009EEEEEEEEEEEEEEEEEEEEEEEE81ACAC81EEEEEEEEEEEEEEEEEEEE090909
+        10101009EEEEEEEEEEEEEEEEEE818181ACACAC81EEEEEEEEEEEEEEEEEE091010
+        1010101009EEEEEEEEEEEEEEEE81ACACACACACAC81EEEEEEEEEEEEEEEE091010
+        101010101009EEEEEEEEEEEEEE81ACACACACACACAC81EEEEEEEEEEEEEE091010
+        10101010101009EEEEEEEEEEEE81ACACACACACACACAC81EEEEEEEEEEEE091010
+        101010101009EEEEEEEEEEEEEE81ACACACACACACAC81EEEEEEEEEEEEEE091010
+        1010101009EEEEEEEEEEEEEEEE81ACACACACACAC81EEEEEEEEEEEEEEEE090909
+        10101009EEEEEEEEEEEEEEEEEE818181ACACAC81EEEEEEEEEEEEEEEEEEEEEE09
+        101009EEEEEEEEEEEEEEEEEEEEEEEE81ACAC81EEEEEEEEEEEEEEEEEEEEEEEE09
+        1009EEEEEEEEEEEEEEEEEEEEEEEEEE81AC81EEEEEEEEEEEEEEEEEEEEEEEEEE09
+        09EEEEEEEEEEEEEEEEEEEEEEEEEEEE8181EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
+      NumGlyphs = 2
     end
   end
   object DBGridEH1: TDBGridEh
@@ -809,7 +825,6 @@ object KsInfoBrowse: TKsInfoBrowse
     TitleFont.Name = 'Verdana'
     TitleFont.Style = []
     OnDblClick = DBGridEH1DblClick
-    OnDrawColumnCell = DBGridEH1DrawColumnCell
     OnMouseUp = DBGridEH1MouseUp
     OnTitleClick = DBGridEH1TitleClick
     Columns = <
@@ -928,12 +943,14 @@ object KsInfoBrowse: TKsInfoBrowse
         FieldName = #24405#21462#19987#19994
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 134
       end
       item
         EditButtons = <>
         FieldName = #24405#21462#19987#19994#35268#33539#21517
         Footers = <>
+        Title.Caption = #24405#21462#19987#19994
         Title.TitleButton = True
         Width = 136
       end
@@ -967,6 +984,7 @@ object KsInfoBrowse: TKsInfoBrowse
         FieldName = #38498#31995
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 96
       end
       item
@@ -974,6 +992,7 @@ object KsInfoBrowse: TKsInfoBrowse
         FieldName = #25253#21040#26657#21306
         Footers = <>
         Title.TitleButton = True
+        Visible = False
       end
       item
         EditButtons = <>
@@ -1032,6 +1051,7 @@ object KsInfoBrowse: TKsInfoBrowse
         FieldName = #25237#26723#24535#24895
         Footers = <>
         Title.TitleButton = True
+        Visible = False
       end
       item
         EditButtons = <>
@@ -1147,6 +1167,7 @@ object KsInfoBrowse: TKsInfoBrowse
         FieldName = #37319#38598#21592
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 73
       end
       item
@@ -1162,6 +1183,7 @@ object KsInfoBrowse: TKsInfoBrowse
         FieldName = #25171#21360#29366#24577
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 55
       end
       item
@@ -1169,6 +1191,7 @@ object KsInfoBrowse: TKsInfoBrowse
         FieldName = 'Action_Time'
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 121
       end
       item
@@ -1176,6 +1199,23 @@ object KsInfoBrowse: TKsInfoBrowse
         FieldName = #24405#21462#32467#26463#26085#26399
         Footers = <>
         Title.TitleButton = True
+        Visible = False
+      end
+      item
+        Alignment = taCenter
+        EditButtons = <>
+        FieldName = #33457#21517#20876#39029#30721
+        Footers = <>
+        Title.TitleButton = True
+        Width = 70
+      end
+      item
+        Alignment = taCenter
+        EditButtons = <>
+        FieldName = #33457#21517#20876#34892#21495
+        Footers = <>
+        Title.TitleButton = True
+        Width = 70
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -1184,7 +1224,7 @@ object KsInfoBrowse: TKsInfoBrowse
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700680010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -1470,6 +1510,10 @@ object KsInfoBrowse: TKsInfoBrowse
       ShortCut = 118
       OnClick = mni_SfClick
     end
+    object mniN2: TMenuItem
+      Caption = #26174#31034#32771#29983#26723#26696
+      OnClick = mniN2Click
+    end
     object N1: TMenuItem
       Caption = '-'
     end
@@ -1485,45 +1529,10 @@ object KsInfoBrowse: TKsInfoBrowse
     object N4: TMenuItem
       Caption = '-'
     end
-    object mmi_AllowEdit: TMenuItem
-      AutoCheck = True
-      Caption = #21551#29992#25163#24037#32534#36753#21151#33021
-      Visible = False
-      OnClick = mmi_AllowEditClick
-    end
-    object mmi_BH: TMenuItem
-      Caption = #32534#21046#24405#21462#36890#30693#20070#21495
-      ImageIndex = 2
-      Visible = False
-      OnClick = mmi_BHClick
-    end
-    object mmi_FormatZymc: TMenuItem
-      Caption = #26684#24335#21270#19987#19994#35268#33539#21517
-      Visible = False
-      OnClick = mmi_FormatZymcClick
-    end
-    object MenuItem1: TMenuItem
-      Caption = '-'
-      Visible = False
-    end
-    object pmi_PrnEMS: TMenuItem
-      Caption = #25171#21360'EMS'#24555#36882#21333
-      ImageIndex = 1
-      Visible = False
-      OnClick = mmi_PrnEMSClick
-    end
-    object pmi_PrnLqtzs: TMenuItem
-      Caption = #25171#21360#24405#21462#36890#30693#20070
-      Hint = #25171#21360#24405#21462#36890#30693#20070
-      ImageIndex = 1
-      Visible = False
-      OnClick = mmi_PrnLQTZSClick
-    end
     object pmi_PrnLqmd: TMenuItem
       Caption = #25171#21360#24405#21462#32771#29983#21517#20876
       Hint = #25353#19987#19994#25171#21360#24405#21462#21517#21333
       ImageIndex = 1
-      OnClick = mmi_PrnLQKSMDClick
     end
     object MenuItem3: TMenuItem
       Caption = '-'
@@ -1553,7 +1562,6 @@ object KsInfoBrowse: TKsInfoBrowse
     CommandText = 'select * from '#24405#21462#20449#24687#34920
     Params = <>
     AfterOpen = ClientDataSet1AfterOpen
-    OnFilterRecord = ClientDataSet1FilterRecord
     Left = 440
     Top = 368
   end
