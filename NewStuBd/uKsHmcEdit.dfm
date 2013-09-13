@@ -317,7 +317,7 @@ object KsHmcEdit: TKsHmcEdit
       Alignment = taCenter
       EditButtons = <>
       TabOrder = 3
-      Value = 0.000000000000000000
+      Value = 4.000000000000000000
       Visible = True
     end
   end

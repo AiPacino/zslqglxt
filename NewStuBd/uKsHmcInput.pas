@@ -16,14 +16,12 @@ type
     cbb_Value: TEdit;
     il1: TImageList;
     pm1: TPopupMenu;
-    pmi_PrnLqmd: TMenuItem;
     MenuItem3: TMenuItem;
     pmi_Excel: TMenuItem;
     ds_Access: TDataSource;
     dlgSave_1: TSaveDialog;
     btn_OK: TBitBtn;
     btn_Adv: TBitBtn;
-    N4: TMenuItem;
     pmi_Refresh: TMenuItem;
     cbb_Field: TDBFieldComboBox;
     C1: TMenuItem;
@@ -52,6 +50,7 @@ type
     btn_Edit: TBitBtn;
     lbl_Filter: TLabel;
     mniN2: TMenuItem;
+    N2: TMenuItem;
     procedure mmi_ExitClick(Sender: TObject);
     procedure mmi_ExcelClick(Sender: TObject);
     procedure btn_OKClick(Sender: TObject);
@@ -79,6 +78,7 @@ type
     procedure cbb_ValueChange(Sender: TObject);
     procedure btn_EditClick(Sender: TObject);
     procedure mniN2Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
   private
     { Private declarations }
     //FormatKL:TFormatKL;
@@ -93,6 +93,7 @@ type
     function  GetOrderString:string;
     procedure GetWhereList;
     procedure ShowEditForm(const ksh:string);
+    procedure SaveData;
   public
     { Public declarations }
   end;
@@ -226,7 +227,7 @@ begin
   Screen.Cursor := crHourGlass;
   ClientDataSet1.DisableControls;
   try
-    sqlStr := 'select * from 录取信息表 '+sWhereList.Text+' order by 省份,考生号';
+    sqlStr := 'select * from 录取信息表 '+sWhereList.Text+' order by 省份,批次名称,科类名称,投档成绩 desc';
     ClientDataSet1.XMLData := dm.OpenData(sqlStr);
   finally
     ClientDataSet1.EnableControls;
@@ -278,6 +279,15 @@ begin
   Open_Access_Table;
 end;
 
+procedure TKsHmcInput.SaveData;
+begin
+  if DataSetNoSave(ClientDataSet1) then
+  begin
+    if DM.UpdateData('考生号','select top 0 * from 录取信息表',ClientDataSet1.Delta) then
+      ClientDataSet1.MergeChangeLog;
+  end;
+end;
+
 procedure TKsHmcInput.ShowEditForm(const ksh: string);
 var
   bm:TBookmark;
@@ -287,11 +297,7 @@ begin
   try
     aForm.SetData(ksh,ClientDataSet1);
     aForm.ShowModal;
-    if DataSetNoSave(ClientDataSet1) then
-    begin
-      if DM.UpdateData('考生号','select top 0 * from 录取信息表',ClientDataSet1.Delta) then
-        ClientDataSet1.MergeChangeLog;
-    end;
+    Self.SaveData;
   finally
     ClientDataSet1.GotoBookmark(bm);
     //ClientDataSet1.EnableControls;
@@ -440,6 +446,24 @@ begin
     cbb_sf.Text := ClientDataSet1.FieldByName('省份').AsString
   else
     cbb_Sf.Text := '全部';
+end;
+
+procedure TKsHmcInput.N2Click(Sender: TObject);
+begin
+  if Application.MessageBox('真的要清除当前考生的花名册信息吗？ ', '系统提示', 
+    MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDNO then
+  begin
+    Exit;
+  end;
+
+  with ClientDataSet1 do
+  begin
+    Edit;
+    FieldByName('花名册页码').Clear;
+    FieldByName('花名册行号').Clear;
+    Post;
+  end;
+  SaveData;
 end;
 
 end.

@@ -4,7 +4,7 @@ object CountSqlSet: TCountSqlSet
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = #32479#35745#39033#30446#23450#20041
   ClientHeight = 562
-  ClientWidth = 814
+  ClientWidth = 893
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,16 +22,17 @@ object CountSqlSet: TCountSqlSet
   object Panel2: TPanel
     Left = 0
     Top = 521
-    Width = 814
+    Width = 893
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitWidth = 814
     DesignSize = (
-      814
+      893
       41)
     object btn_Exit: TBitBtn
-      Left = 724
+      Left = 803
       Top = 9
       Width = 75
       Height = 25
@@ -39,9 +40,10 @@ object CountSqlSet: TCountSqlSet
       Caption = #20851#38381'[&C]'
       TabOrder = 0
       OnClick = btn_ExitClick
+      ExplicitLeft = 724
     end
     object btn_Save: TBitBtn
-      Left = 605
+      Left = 684
       Top = 9
       Width = 78
       Height = 25
@@ -101,6 +103,7 @@ object CountSqlSet: TCountSqlSet
         090909090909090909EEEE8181818181818181818181818181EEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 605
     end
     object btn_Refresh: TBitBtn
       Left = 16
@@ -112,7 +115,7 @@ object CountSqlSet: TCountSqlSet
       OnClick = btn_RefreshClick
     end
     object btn_Add: TBitBtn
-      Left = 371
+      Left = 450
       Top = 9
       Width = 78
       Height = 25
@@ -172,9 +175,10 @@ object CountSqlSet: TCountSqlSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 371
     end
     object btn_Del: TBitBtn
-      Left = 449
+      Left = 528
       Top = 9
       Width = 78
       Height = 25
@@ -234,9 +238,10 @@ object CountSqlSet: TCountSqlSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 449
     end
     object btn_Cancel: TBitBtn
-      Left = 527
+      Left = 606
       Top = 9
       Width = 78
       Height = 25
@@ -296,31 +301,34 @@ object CountSqlSet: TCountSqlSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 527
     end
   end
   object Panel1: TPanel
     Left = 257
     Top = 0
-    Width = 557
+    Width = 636
     Height = 521
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 557
     object Splitter1: TSplitter
       Left = 0
       Top = 239
-      Width = 557
+      Width = 636
       Height = 2
       Cursor = crVSplit
       Align = alTop
       Color = clSkyBlue
       ParentColor = False
       ExplicitTop = 245
+      ExplicitWidth = 557
     end
     object DBGridEh1: TDBGridEh
       Left = 0
       Top = 241
-      Width = 557
+      Width = 636
       Height = 280
       Align = alClient
       DataGrouping.GroupLevels = <>
@@ -361,13 +369,14 @@ object CountSqlSet: TCountSqlSet
     object grp1: TGroupBox
       Left = 0
       Top = 0
-      Width = 557
+      Width = 636
       Height = 239
       Align = alTop
       Caption = #32479#35745#39033#30446#32534#36753#65306
       TabOrder = 1
+      ExplicitWidth = 557
       DesignSize = (
-        557
+        636
         239)
       object Label1: TLabel
         Left = 16
@@ -386,17 +395,19 @@ object CountSqlSet: TCountSqlSet
         FocusControl = DBMemo1
       end
       object Label3: TLabel
-        Left = 430
+        Left = 505
         Top = 24
         Width = 36
         Height = 14
+        Anchors = [akTop, akRight]
         Caption = #32534#21495#65306
       end
       object DBEdit1: TDBEdit
         Left = 40
         Top = 44
-        Width = 377
+        Width = 459
         Height = 22
+        Anchors = [akLeft, akTop, akRight]
         DataField = #35828#26126
         DataSource = DataSource1
         TabOrder = 0
@@ -404,7 +415,7 @@ object CountSqlSet: TCountSqlSet
       object DBMemo1: TDBMemo
         Left = 41
         Top = 89
-        Width = 513
+        Width = 592
         Height = 109
         Anchors = [akLeft, akTop, akRight, akBottom]
         Color = 13823456
@@ -420,9 +431,10 @@ object CountSqlSet: TCountSqlSet
         ScrollBars = ssVertical
         TabOrder = 1
         OnChange = DBMemo1Change
+        ExplicitWidth = 513
       end
       object btn_Test: TBitBtn
-        Left = 477
+        Left = 556
         Top = 205
         Width = 75
         Height = 25
@@ -431,12 +443,14 @@ object CountSqlSet: TCountSqlSet
         Enabled = False
         TabOrder = 2
         OnClick = btn_TestClick
+        ExplicitLeft = 477
       end
       object edt_BH: TDBEdit
-        Left = 456
+        Left = 531
         Top = 44
         Width = 97
         Height = 22
+        Anchors = [akTop, akRight]
         DataField = #32534#21495
         DataSource = DataSource1
         TabOrder = 3

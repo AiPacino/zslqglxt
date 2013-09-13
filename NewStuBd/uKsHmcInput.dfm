@@ -843,6 +843,7 @@ object KsHmcInput: TKsHmcInput
         FieldName = #27969#27700#21495
         Footers = <>
         Title.TitleButton = True
+        Visible = False
         Width = 62
       end
       item
@@ -881,6 +882,20 @@ object KsHmcInput: TKsHmcInput
         Footers = <>
         Title.TitleButton = True
         Width = 57
+      end
+      item
+        EditButtons = <>
+        FieldName = #25209#27425#21517#31216
+        Footers = <>
+        Title.TitleButton = True
+        Width = 108
+      end
+      item
+        EditButtons = <>
+        FieldName = #31185#31867#21517#31216
+        Footers = <>
+        Title.TitleButton = True
+        Width = 53
       end
       item
         EditButtons = <>
@@ -1027,21 +1042,7 @@ object KsHmcInput: TKsHmcInput
       end
       item
         EditButtons = <>
-        FieldName = #25209#27425#21517#31216
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
         FieldName = #31185#31867#20195#30721
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #31185#31867#21517#31216
         Footers = <>
         Title.TitleButton = True
         Visible = False
@@ -1224,7 +1225,7 @@ object KsHmcInput: TKsHmcInput
     Left = 16
     Top = 91
     Bitmap = {
-      494C010105000700680010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101050007006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -1514,6 +1515,10 @@ object KsHmcInput: TKsHmcInput
       Caption = #26174#31034#32771#29983#26723#26696
       OnClick = mniN2Click
     end
+    object N2: TMenuItem
+      Caption = #28165#38500#24403#21069#33457#21517#20876#20449#24687
+      OnClick = N2Click
+    end
     object N1: TMenuItem
       Caption = '-'
     end
@@ -1525,14 +1530,6 @@ object KsHmcInput: TKsHmcInput
     end
     object P1: TMenuItem
       Action = DM.EditPaste1
-    end
-    object N4: TMenuItem
-      Caption = '-'
-    end
-    object pmi_PrnLqmd: TMenuItem
-      Caption = #25171#21360#24405#21462#32771#29983#21517#20876
-      Hint = #25353#19987#19994#25171#21360#24405#21462#21517#21333
-      ImageIndex = 1
     end
     object MenuItem3: TMenuItem
       Caption = '-'
