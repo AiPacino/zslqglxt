@@ -283,7 +283,7 @@ procedure TKsHmcInput.SaveData;
 begin
   if DataSetNoSave(ClientDataSet1) then
   begin
-    if DM.UpdateData('考生号','select top 0 * from 录取信息表',ClientDataSet1.Delta) then
+    if DM.UpdateData('考生号','select top 0 * from 录取信息表',ClientDataSet1.Delta,False) then
       ClientDataSet1.MergeChangeLog;
   end;
 end;
@@ -459,11 +459,12 @@ begin
   with ClientDataSet1 do
   begin
     Edit;
-    FieldByName('花名册页码').Clear;
-    FieldByName('花名册行号').Clear;
+    FieldByName('花名册页码').Value := null;
+    FieldByName('花名册行号').Value := null;
     Post;
   end;
   SaveData;
+  dm.ExecSql('update 录取信息表 set 花名册页码=null,花名册行号=null where 考生号='+quotedstr(ClientDataSet1.FieldByName('考生号').AsString));
 end;
 
 end.
