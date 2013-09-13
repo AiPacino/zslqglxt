@@ -95,8 +95,8 @@ object KsHmcEdit: TKsHmcEdit
       Top = 201
       Width = 60
       Height = 14
-      Caption = #36523#20221#35777#21495#65306
-      FocusControl = edt_sfzh
+      Caption = #24405#21462#19987#19994#65306
+      FocusControl = edt_lqzy
     end
     object lbl_Cj: TLabel
       Left = 44
@@ -207,7 +207,7 @@ object KsHmcEdit: TKsHmcEdit
       TabOrder = 5
       Visible = True
     end
-    object edt_sfzh: TDBEditEh
+    object edt_lqzy: TDBEditEh
       Left = 124
       Top = 198
       Width = 177
