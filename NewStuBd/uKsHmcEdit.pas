@@ -22,7 +22,7 @@ type
     Label7: TLabel;
     edt_sf: TDBEditEh;
     Label8: TLabel;
-    edt_sfzh: TDBEditEh;
+    edt_lqzy: TDBEditEh;
     btn_Save: TBitBtn;
     lbl_Cj: TLabel;
     edt_RowNo: TDBNumberEditEh;
@@ -220,7 +220,7 @@ begin
       edt_ksh.Text := FieldByName('考生号').Value;
       edt_sf.Text := FieldByName('省份').Value;
       edt_zkzh.Text := FieldByName('准考证号').Value;
-      edt_sfzh.Text := FieldByName('身份证号').Value;
+      edt_lqzy.Text := FieldByName('录取专业规范名').Value;
       edt_xm.Text := FieldByName('考生姓名').Value;
       edt_xb.Text := FieldByName('性别').Value;
       if FieldByName('花名册页码').AsString<>'' then
@@ -233,7 +233,7 @@ begin
     edt_ksh.Text := '';
     edt_sf.Text := '';
     edt_zkzh.Text := '';
-    edt_sfzh.Text := '';
+    edt_lqzy.Text := '';
     edt_xm.Text := '';
     edt_xb.Text := '';
   end;
