@@ -17,14 +17,12 @@ type
     cbb_Value: TEdit;
     il1: TImageList;
     pm1: TPopupMenu;
-    pmi_PrnLqmd: TMenuItem;
     MenuItem3: TMenuItem;
     pmi_Excel: TMenuItem;
     ds_Access: TDataSource;
     dlgSave_1: TSaveDialog;
     btn_OK: TBitBtn;
     btn_Adv: TBitBtn;
-    N4: TMenuItem;
     pmi_Refresh: TMenuItem;
     cbb_Field: TDBFieldComboBox;
     C1: TMenuItem;
@@ -181,6 +179,8 @@ begin
     StuInfo := TStuInfo.Create(Self);
     StuInfo.DataSource1.DataSet := ClientDataSet1;
     sWhereList := TStringList.Create;
+    if cbb_Sf.Items.Count>1 then
+      cbb_Sf.ItemIndex := 1;
     Open_Access_Table;
   finally
     sList.Free;
@@ -208,7 +208,7 @@ begin
   Screen.Cursor := crHourGlass;
   ClientDataSet1.DisableControls;
   try
-    sqlStr := 'select * from 录取信息表 '+sWhereList.Text+' order by 流水号';
+    sqlStr := 'select * from 录取信息表 '+sWhereList.Text+' order by 省份,批次名称,科类名称,投档成绩 desc';
     ClientDataSet1.XMLData := dm.OpenData(sqlStr);
   finally
     ClientDataSet1.EnableControls;
