@@ -1,37 +1,7 @@
-object DM: TDM
+object Vobj: TVobj
   OldCreateOrder = False
-  OnCreate = DataModuleCreate
-  Height = 367
-  Width = 508
-  object HTTPRIO1: THTTPRIO
-    OnBeforeExecute = HTTPRIO1BeforeExecute
-    WSDLLocation = 'http://localhost:1024/NetPayWadSrv.NetPay/wsdl/IAdmin'
-    Service = 'IAdminservice'
-    Port = 'IAdminPort'
-    HTTPWebNode.UseUTF8InHeader = True
-    HTTPWebNode.InvokeOptions = [soIgnoreInvalidCerts, soAutoCheckAccessPointViaUDDI]
-    Converter.Options = [soSendMultiRefObj, soTryAllSchema, soRootRefNodesToBody, soCacheMimeResponse, soUTF8EncodeXML]
-    Left = 40
-    Top = 24
-  end
-  object SoapConnection1: TSoapConnection
-    Agent = 'Borland SOAP 1.2'
-    URL = 'http://localhost:8081/NewStuLqBdWadSrv.NewStuLqBd/Soap'
-    SOAPServerIID = 'IAppServerSOAP - {C99F4735-D6D2-495C-8CA2-E53E5A439E61}'
-    UseSOAPAdapter = True
-    Left = 40
-    Top = 75
-  end
-  object SaveDialog1: TSaveDialog
-    DefaultExt = '*.xls'
-    Filter = 
-      #25991#26412#25991#20214'(*.txt)|*.txt|CSV'#25991#20214'(*.csv)|*.csv|RTF'#25991#20214'(*.rtf)|*.rtf|HTML'#25991#20214'(*' +
-      '.htm)|*.htm|Excel'#25991#20214'(*.xls)|*.xls'
-    FilterIndex = 5
-    OnTypeChange = SaveDialog1TypeChange
-    Left = 37
-    Top = 125
-  end
+  Height = 375
+  Width = 608
   object frxDesigner1: TfrxDesigner
     DefaultScriptLanguage = 'PascalScript'
     DefaultFont.Charset = DEFAULT_CHARSET
@@ -51,17 +21,17 @@ object DM: TDM
     Restrictions = []
     RTLLanguage = False
     MemoParentFont = False
-    Left = 296
-    Top = 23
+    Left = 456
+    Top = 47
   end
   object frxChartObject1: TfrxChartObject
-    Left = 376
-    Top = 23
+    Left = 536
+    Top = 47
   end
   object actlst1: TActionList
     Images = ImageList_pm
-    Left = 128
-    Top = 24
+    Left = 288
+    Top = 48
     object EditCut1: TEditCut
       Category = 'Edit'
       Caption = #21098#20999'(&T)'
@@ -87,25 +57,22 @@ object DM: TDM
       Category = 'Edit'
       Caption = #20869#23481#26597#25214'(&L)'
       ImageIndex = 6
-      OnExecute = act_LocateExecute
     end
     object act_DataExport: TAction
       Category = 'Edit'
       Caption = #25968#25454#23548#20986'(&E)'
       ImageIndex = 10
-      OnExecute = act_DataExportExecute
     end
     object act_DataExportByButton: TAction
       Category = 'Edit'
       Caption = #25968#25454#23548#20986'[&E]'
       Enabled = False
-      OnExecute = act_DataExportByButtonExecute
     end
   end
   object PopupMenu1: TPopupMenu
     Images = ImageList_pm
-    Left = 128
-    Top = 75
+    Left = 288
+    Top = 99
     object L1: TMenuItem
       Action = act_Locate
       Hint = #24555#25463#38190'------Ctrl_F'
@@ -130,10 +97,10 @@ object DM: TDM
     end
   end
   object ImageList_pm: TImageList
-    Left = 126
-    Top = 125
+    Left = 286
+    Top = 149
     Bitmap = {
-      494C010110001200D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001200DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -805,16 +772,16 @@ object DM: TDM
     CloseDataSource = False
     DataSet = cds_Delta
     BCDToCurrency = False
-    Left = 233
-    Top = 128
+    Left = 393
+    Top = 152
   end
   object fds_Master: TfrxDBDataset
     UserName = 'fds_Master'
     CloseDataSource = False
     DataSet = cds_Master
     BCDToCurrency = False
-    Left = 232
-    Top = 74
+    Left = 392
+    Top = 98
   end
   object frxReport1: TfrxReport
     Version = '4.7.91'
@@ -837,65 +804,92 @@ object DM: TDM
       ''
       'end.')
     StoreInDFM = False
-    OnGetValue = frxReport1GetValue
-    OnPrintPage = frxReport1PrintPage
-    Left = 232
-    Top = 24
+    Left = 392
+    Top = 48
   end
   object cds_Master: TClientDataSet
     Aggregates = <>
     Params = <>
     ReadOnly = True
-    AfterScroll = cds_MasterAfterScroll
-    Left = 296
-    Top = 73
+    Left = 456
+    Top = 97
   end
   object cds_Delta: TClientDataSet
     Aggregates = <>
     Params = <>
     ReadOnly = True
-    Left = 296
-    Top = 127
+    Left = 456
+    Top = 151
   end
   object dlgOpen1: TOpenDialog
     DefaultExt = '.fr3'
     Filter = #25253#34920#25991#20214'(*.fr3)|*.fr3|'#25152#26377#25991#20214'(*.*)|*.*'
     FilterIndex = 0
     Title = #25253#34920#27169#26495#25991#20214#23548#20837
-    Left = 376
-    Top = 80
+    Left = 536
+    Top = 104
   end
   object dlgSave1: TSaveDialog
     DefaultExt = '*.fr3'
     Filter = #25253#34920#25991#20214'(*.fr3)|*.fr3|'#25152#26377#25991#20214'(*.*)|*.*'
     FilterIndex = 0
     Title = #20445#23384#25253#34920#27169#26495#25991#20214
-    Left = 376
-    Top = 136
-  end
-  object IdHTTP1: TIdHTTP
-    AllowCookies = True
-    ProxyParams.BasicAuthentication = False
-    ProxyParams.ProxyPort = 0
-    Request.ContentLength = -1
-    Request.Accept = 'text/html, */*'
-    Request.BasicAuthentication = False
-    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
-    HTTPOptions = [hoForceEncodeParams]
-    Left = 35
-    Top = 188
-  end
-  object VCLZip1: TVCLZip
-    MultiZipInfo.BlockSize = 1457600
-    Left = 32
-    Top = 248
-  end
-  object VCLUnZip1: TVCLUnZip
-    Left = 32
-    Top = 304
+    Left = 536
+    Top = 160
   end
   object frxBarCodeObject1: TfrxBarCodeObject
-    Left = 232
-    Top = 184
+    Left = 392
+    Top = 208
+  end
+  object con_Local: TLocalConnection
+    Left = 112
+    Top = 48
+  end
+  object con_DB: TADOConnection
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\xxx\zslqglxt\Exe' +
+      '\Data\XkpfData.mdb;Persist Security Info=False'
+    LoginPrompt = False
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 48
+    Top = 48
+  end
+  object DSP_Open: TDataSetProvider
+    DataSet = qry_Open
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 48
+    Top = 152
+  end
+  object qry_Open: TADOQuery
+    Connection = con_DB
+    Parameters = <>
+    Left = 48
+    Top = 104
+  end
+  object cds_Open: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DSP_Open'
+    Left = 48
+    Top = 200
+  end
+  object qry_Update: TADOQuery
+    Connection = con_DB
+    Parameters = <>
+    Left = 112
+    Top = 104
+  end
+  object DSP_Update: TDataSetProvider
+    DataSet = qry_Update
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 112
+    Top = 152
+  end
+  object cds_Update: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DSP_Open'
+    Left = 112
+    Top = 200
   end
 end
