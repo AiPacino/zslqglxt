@@ -1,0 +1,65 @@
+object LockScreen: TLockScreen
+  Left = 0
+  Top = 0
+  ActiveControl = edt_Pwd
+  BorderStyle = bsDialog
+  Caption = #23631#24149#38145#23450#20013#8230#8230
+  ClientHeight = 192
+  ClientWidth = 357
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 14
+  object lbl_Msg: TLabel
+    Left = 20
+    Top = 35
+    Width = 315
+    Height = 24
+    Caption = #31995#32479#38145#23450#20013#65292#35831#36755#20837#25805#20316#23494#30721#8230#8230
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clNavy
+    Font.Height = -21
+    Font.Name = #26041#27491#23002#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object edt_Pwd: TEdit
+    Left = 86
+    Top = 89
+    Width = 185
+    Height = 22
+    PasswordChar = '*'
+    TabOrder = 0
+    OnChange = edt_PwdChange
+  end
+  object btn_Check: TBitBtn
+    Left = 124
+    Top = 142
+    Width = 75
+    Height = 25
+    Caption = #35299#38500#38145#23450'[&S]'
+    Default = True
+    Enabled = False
+    TabOrder = 1
+    OnClick = btn_CheckClick
+  end
+  object btn_Exit: TBitBtn
+    Left = 228
+    Top = 142
+    Width = 75
+    Height = 25
+    Caption = #36864#20986#31995#32479'[&X]'
+    TabOrder = 2
+    OnClick = btn_ExitClick
+  end
+end

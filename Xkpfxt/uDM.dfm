@@ -1,27 +1,9 @@
 object DM: TDM
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 367
-  Width = 508
-  object HTTPRIO1: THTTPRIO
-    OnBeforeExecute = HTTPRIO1BeforeExecute
-    WSDLLocation = 'http://localhost:1024/NetPayWadSrv.NetPay/wsdl/IAdmin'
-    Service = 'IAdminservice'
-    Port = 'IAdminPort'
-    HTTPWebNode.UseUTF8InHeader = True
-    HTTPWebNode.InvokeOptions = [soIgnoreInvalidCerts, soAutoCheckAccessPointViaUDDI]
-    Converter.Options = [soSendMultiRefObj, soTryAllSchema, soRootRefNodesToBody, soCacheMimeResponse, soUTF8EncodeXML]
-    Left = 40
-    Top = 24
-  end
-  object SoapConnection1: TSoapConnection
-    Agent = 'Borland SOAP 1.2'
-    URL = 'http://localhost:8081/NewStuLqBdWadSrv.NewStuLqBd/Soap'
-    SOAPServerIID = 'IAppServerSOAP - {C99F4735-D6D2-495C-8CA2-E53E5A439E61}'
-    UseSOAPAdapter = True
-    Left = 40
-    Top = 75
-  end
+  OnDestroy = DataModuleDestroy
+  Height = 550
+  Width = 788
   object SaveDialog1: TSaveDialog
     DefaultExt = '*.xls'
     Filter = 
@@ -133,7 +115,7 @@ object DM: TDM
     Left = 126
     Top = 125
     Bitmap = {
-      494C010110001200D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001200E80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -897,5 +879,59 @@ object DM: TDM
   object frxBarCodeObject1: TfrxBarCodeObject
     Left = 232
     Top = 184
+  end
+  object con_Local: TLocalConnection
+    Left = 696
+    Top = 16
+  end
+  object con_DB: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\xxx\zslqglxt\Exe' +
+      '\Data\XkpfData.mdb;Persist Security Info=False'
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 632
+    Top = 16
+  end
+  object DSP_Open: TDataSetProvider
+    DataSet = qry_Open
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 632
+    Top = 120
+  end
+  object qry_Open: TADOQuery
+    Connection = con_DB
+    CursorType = ctStatic
+    Parameters = <>
+    Left = 632
+    Top = 72
+  end
+  object cds_Open: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DSP_Open'
+    Left = 632
+    Top = 168
+  end
+  object qry_Update: TADOQuery
+    Connection = con_DB
+    Parameters = <>
+    Left = 696
+    Top = 72
+  end
+  object DSP_Update: TDataSetProvider
+    DataSet = qry_Update
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 696
+    Top = 120
+  end
+  object cds_Update: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DSP_Open'
+    Left = 696
+    Top = 168
   end
 end
