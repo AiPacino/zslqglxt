@@ -113,8 +113,9 @@ end;
 
 procedure TXkPwSet.FormCreate(Sender: TObject);
 begin
-  cbb_yx.Text := gb_Czy_Dept;
   cbb_yx.Enabled := gb_Czy_Level='-1';
+  if gb_Czy_Level<>'-1' then
+    cbb_yx.Text := gb_Czy_Dept;
   Open_Table;
 end;
 

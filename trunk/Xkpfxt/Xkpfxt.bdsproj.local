@@ -92,5 +92,9 @@
     <Transaction>2013/11/27 15:49:05.883.pas,E:\xxx\zslqglxt\NewStuBd\uIniFile.pas=E:\xxx\zslqglxt\Xkpfxt\uIniFile.pas</Transaction>
     <Transaction>2013/11/27 15:59:31.046.pas,E:\xxx\zslqglxt\Xkpfxt\uXkKmCjBrowse.pas=</Transaction>
     <Transaction>2013/11/27 15:59:31.046.dfm,E:\xxx\zslqglxt\Xkpfxt\uXkKmCjBrowse.dfm=</Transaction>
+    <Transaction>2013/11/28 12:49:57.966.pas,E:\xxx\zslqglxt\Xkpfxt\Unit1.pas=E:\xxx\zslqglxt\Xkpfxt\uSelectZyKmPw.pas</Transaction>
+    <Transaction>2013/11/28 12:49:57.966.dfm,E:\xxx\zslqglxt\Xkpfxt\Unit1.dfm=E:\xxx\zslqglxt\Xkpfxt\uSelectZyKmPw.dfm</Transaction>
+    <Transaction>2013-11-28 14:03:35.267.pas,E:\xxx\zslqglxt\Xkpfxt\uXkPwWrokSet.pas=E:\xxx\zslqglxt\Xkpfxt\uXkPwWorkSet.pas</Transaction>
+    <Transaction>2013-11-28 14:03:35.267.dfm,E:\xxx\zslqglxt\Xkpfxt\uXkPwWrokSet.dfm=E:\xxx\zslqglxt\Xkpfxt\uXkPwWorkSet.dfm</Transaction>
   </Transactions>
 </BorlandProject>

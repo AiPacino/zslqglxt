@@ -39,7 +39,9 @@ uses
   uSysRegister in 'uSysRegister.pas' {SysRegister},
   uXkpf in 'uXkpf.pas' {Xkpf},
   uPwqd in 'uPwqd.pas' {Pwqd},
-  uXkPwSet in 'uXkPwSet.pas' {XkPwSet};
+  uXkPwSet in 'uXkPwSet.pas' {XkPwSet},
+  uXkPwWorkSet in 'uXkPwWorkSet.pas' {XkPwWorkSet},
+  uSelectZyKmPw in 'uSelectZyKmPw.pas' {SelectZyKmPw};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

@@ -82,6 +82,7 @@ function PosRight(const sSubStr,sSourStr:string):Integer;
 
 function GetSpecialFolderDir(const folderid:integer):string;
 function GetWindowsVersion:string; //得到windows版本
+procedure SetSysDateFormat; //设置日期格式为：yyyy-mm-dd
 
 implementation
 uses ShlObj,ActiveX,Registry;
@@ -160,6 +161,20 @@ begin
     end else
       i := i-1;
   end;
+end;
+
+procedure SetSysDateFormat;
+begin
+  // 设置WINDOWS系统的短日期的格式
+  SetLocaleInfo(LOCALE_SYSTEM_DEFAULT, LOCALE_SSHORTDATE, 'yyyy-MM-dd');
+  Application.UpdateFormatSettings := False;
+  // 设定程序本身所使用的日期时间格式
+  LongDateFormat := 'yyyy-MM-dd';
+  ShortDateFormat := 'yyyy-MM-dd';
+  LongTimeFormat := 'hh:nn:ss';
+  ShortTimeFormat := 'hh:nn:ss';
+  DateSeparator := '-';
+  TimeSeparator := ':';
 end;
 
 function Get_Version: String;
@@ -1013,6 +1028,9 @@ function StrToStrings(const Str:string;var vList:TStrings):Integer;
 begin
   Result := ExtractStrings(['#'],[' '],PChar(str),vList);
 end;
+
+initialization
+  SetSysDateFormat;
 
 end.
 
