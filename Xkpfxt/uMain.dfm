@@ -241,7 +241,7 @@ object Main: TMain
     object RzStatusPane3: TRzStatusPane
       Left = 673
       Top = 0
-      Width = 64
+      Width = 70
       Height = 19
       Align = alLeft
       AutoSize = True
@@ -271,7 +271,7 @@ object Main: TMain
       ParentFont = False
     end
     object Status_SunVoteBaseInfo: TRzStatusPane
-      Left = 737
+      Left = 743
       Top = 0
       Width = 296
       Height = 19
@@ -313,7 +313,7 @@ object Main: TMain
     Left = 520
     Top = 39
     Bitmap = {
-      494C010105000700580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000700600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -602,7 +602,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '11/27/2013'
+    VersionDate = '2013-11-28 00:00:00'
     VersionDateAutoSet = True
     Left = 680
     Top = 40
@@ -928,7 +928,7 @@ object Main: TMain
     end
     object act_XkSet_PwRsSet: TAction
       Category = '05.'#35780#20998#31649#29702
-      Caption = #35780#22996#20154#25968#35774#32622
+      Caption = #35780#22996#24037#20316#23433#25490
       ImageIndex = 27
       OnExecute = act_XkSet_PwRsSetExecute
     end
@@ -1432,7 +1432,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C010124002600800010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600880010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

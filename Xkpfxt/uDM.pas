@@ -285,7 +285,7 @@ begin
   sIP := GetLocalIpStr;
   try
     sqlstr := 'Insert Into 操作日志表 (用户,ActionTime,内容,IP) values'+
-              '('+quotedstr(UserID)+',now(),'+quotedstr(sWhat)+','+quotedstr(sIP)+')';
+              '('+quotedstr(UserID)+',getdate(),'+quotedstr(sWhat)+','+quotedstr(sIP)+')';
     dm.ExecSql(sqlstr);
   finally
     dm.Free;
@@ -307,7 +307,7 @@ begin
     sSrvHost := Copy(sSrvHost,1,30);
   try
     sqlstr := 'Insert Into 操作员登录表 (操作员编号,登录时间,登录IP,SrvHost,是否在线,客户端版本) values'+
-              '('+quotedstr(UserID)+',now(),'+quotedstr(sIP)+','+quotedstr(GetLocalHostName())+',0,'+quotedstr(sVer)+')';
+              '('+quotedstr(UserID)+',getdate(),'+quotedstr(sIP)+','+quotedstr(GetLocalHostName())+',0,'+quotedstr(sVer)+')';
     dm.ExecSql(sqlstr);
   finally
     dm.Free;
@@ -1245,26 +1245,63 @@ begin
 end;
 
 function TDM.GetConnInfo:string;
-var
-  fn:string;
+//var
+//  fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+'data\xkpfdata.mdb';
-  Result := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source='+fn+';Persist Security Info=False';
+  //fn := ExtractFilePath(ParamStr(0))+'data\xkpfdata.mdb';
+  //Result := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source='+fn+';Persist Security Info=False';
+  Result := 'Provider=SQLOLEDB.1;Password=xlinuxx;Persist Security Info=True;User ID=sa;Initial Catalog=招生管理2013;Data Source=(local)';
 end;
 
 function TDM.GetCzyDept(const Czy_ID: string): string;
+var
+  DataSet_Temp:TADODataSet;
 begin
-
+  DataSet_Temp := TADODataSet.Create(nil);
+  DataSet_Temp.Connection := con_DB;
+  try
+    DataSet_Temp.Close;
+    DataSet_Temp.CommandText := 'select 院系 from 操作员表 where 操作员编号='+quotedstr(Czy_ID);
+    DataSet_Temp.Active := True;
+    Result := DataSet_Temp.Fields[0].AsString;
+  finally
+    DataSet_Temp.Active := False;
+    DataSet_Temp.Free;
+  end;
 end;
 
 function TDM.GetCzyLevel(const Czy_ID: string): string;
+var
+  DataSet_Temp:TADODataSet;
 begin
-
+  DataSet_Temp := TADODataSet.Create(nil);
+  DataSet_Temp.Connection := con_DB;
+  try
+    DataSet_Temp.Close;
+    DataSet_Temp.CommandText := 'select 操作员等级 from 操作员表 where 操作员编号='+quotedstr(Czy_ID);
+    DataSet_Temp.Active := True;
+    Result := DataSet_Temp.Fields[0].AsString;
+  finally
+    DataSet_Temp.Active := False;
+    DataSet_Temp.Free;
+  end;
 end;
 
 function TDM.GetCzyName(const Czy_ID: string): string;
+var
+  DataSet_Temp:TADODataSet;
 begin
-
+  DataSet_Temp := TADODataSet.Create(nil);
+  DataSet_Temp.Connection := con_DB;
+  try
+    DataSet_Temp.Close;
+    DataSet_Temp.CommandText := 'select 操作员姓名 from 操作员表 where 操作员编号='+quotedstr(Czy_ID);
+    DataSet_Temp.Active := True;
+    Result := DataSet_Temp.Fields[0].AsString;
+  finally
+    DataSet_Temp.Active := False;
+    DataSet_Temp.Free;
+  end;
 end;
 
 procedure TDM.GetCzySfList(const sXlCc: string; out sList: TStrings;
@@ -1934,7 +1971,7 @@ begin
   else
   begin
     sqlstr := 'select count(*) from 操作员省份表 where 操作员='+quotedstr(gb_Czy_ID)+' and 省份='+quotedstr('江西');
-    Result :=  (con_DB.Execute(sqlstr).Fields[0].Value>0);
+    Result :=  GetRecordCountBySql(sqlstr)>0;
   end;
 end;
 
@@ -2533,40 +2570,17 @@ end;
 
 function TDM.UpdateData(const sKey, sSqlStr: string;const vDelta: OleVariant;
           const ShowMsgBox:Boolean=True;const ShowHint:Boolean=False): Boolean;
-var
-  sError:string;
-  cds_Temp:TClientDataSet;
-  sTempData,sData:string;
 begin
-  cds_Temp := TClientDataSet.Create(nil);
   try
-    cds_Temp.Data := vDelta;
-    sData := cds_Temp.XMLData;
     if ShowHint then
     begin
       ShowProgress('正在更新数据...');
     end;
 
-    if gb_Use_Zip then
-    begin
-      sTempData := VCLZip1.ZLibCompressString(sData);
-      //Base64Encode(sTempData,sData);
-      sData := EncodeString(sTempData);
-    end;
+    Result := Update_Data(sKey,GetOneSqlStr(sSqlStr),vDelta,ShowMsgBox,ShowHint) ;
 
-    Result := Update_Data(sKey,GetOneSqlStr(sSqlStr),sData) ;
-
-    //if not ShowMsgBox then Exit;
-
-    if (not Result) and (sError<>'') then
-    begin
-      sError := '数据更新/导入失败！请检查后重试！可能的原因为：　　'+#13+sError;
-      MessageBox(0, PChar(string(sError)), '系统提示', MB_OK + MB_ICONSTOP + MB_TOPMOST);
-    end else if Result and ShowMsgBox then
-      MessageBox(0, pchar('数据提交（保存）成功！　　'), '系统提示', MB_OK + MB_ICONINFORMATION+ MB_TOPMOST);
   finally
     //vobj := nil;
-    cds_Temp.Free;
     if ShowHint then
       HideProgress;
   end;

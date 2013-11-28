@@ -186,11 +186,11 @@ var
 implementation
 uses uDM,Net,DBGridEhImpExp,uCzyEdit,uABOUT,uChangeCzyPwd,
      uCountSqlSet,uUserLoginLog,uSysLog,uCzyRightSet,uLockScreen,uXkKdTimeSet,
-     uOnlineUpdateSet,uXkInfoInput, uXkPwSet,
+     uOnlineUpdateSet,uXkInfoInput, uXkPwSet,uXkPwWorkSet,
      uXkZySet,uXkKmSet,uXkZyKmSet,uXkKdSet,uXkKdBrowse,
-     uXkKdSetConfirm,uXkInfoImport,uXkKmPwRsSet,
-     uXkDataInit,uXkInfoBrowse,uXkZsjhSet,uSysRegister,
-     uXkInfoCount,uXkBmEdit,uXkpf;
+     uXkKdSetConfirm,uXkInfoImport,
+     uXkDataInit,uXkInfoBrowse,uSysRegister,
+     uXkInfoCount,uXkpf;
 
 {$R *.dfm}
 
@@ -452,7 +452,8 @@ end;
 
 procedure TMain.act_XkSet_PwRsSetExecute(Sender: TObject);
 begin
-  ShowMdiChildForm(TXkKmPwRsSet);
+  //ShowMdiChildForm(TXkKmPwRsSet);
+  ShowMdiChildForm(TXkPwWorkSet);
 end;
 
 procedure TMain.act_XkZyKmSetExecute(Sender: TObject);
@@ -533,7 +534,7 @@ begin
     Status_Czy.Caption := gb_Czy_Name+'('+gb_czy_Id+')';
     Status_Dept.Caption := gb_Czy_Dept;
     InitMenuItem;
-    act_Cj_PwpfExecute(Self);
+    //act_Cj_PwpfExecute(Self);
   finally
     Screen.Cursor := crDefault;
   end;

@@ -115,7 +115,7 @@ object DM: TDM
     Left = 126
     Top = 125
     Bitmap = {
-      494C010110001200E80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001200EC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -885,13 +885,12 @@ object DM: TDM
     Top = 16
   end
   object con_DB: TADOConnection
-    Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\xxx\zslqglxt\Exe' +
-      '\Data\XkpfData.mdb;Persist Security Info=False'
+      'Provider=SQLOLEDB.1;Password=xlinuxx;Persist Security Info=True;' +
+      'User ID=sa;Initial Catalog='#25307#29983#31649#29702'2013;Data Source=(local)'
     LoginPrompt = False
     Mode = cmShareDenyNone
-    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Provider = 'SQLOLEDB.1'
     Left = 632
     Top = 16
   end
