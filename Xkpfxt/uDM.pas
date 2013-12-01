@@ -1250,7 +1250,7 @@ function TDM.GetConnInfo:string;
 begin
   //fn := ExtractFilePath(ParamStr(0))+'data\xkpfdata.mdb';
   //Result := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source='+fn+';Persist Security Info=False';
-  Result := 'Provider=SQLOLEDB.1;Password=xlinuxx;Persist Security Info=True;User ID=sa;Initial Catalog=招生管理2013;Data Source=(local)';
+  Result := 'Provider=SQLOLEDB.1;Password=xlinuxx;Persist Security Info=True;User ID=sa;Initial Catalog=现场评分库;Data Source=(local)';
 end;
 
 function TDM.GetCzyDept(const Czy_ID: string): string;
@@ -2325,8 +2325,8 @@ function TDM.SrvIsOpen: Boolean;
 var
   sqlstr:string;
 begin
-  sqlstr := 'select count(*) from 服务器状态配置表 where 是否启用<>0';
-  Result := GetRecordCountBySql(sqlstr)>0;
+  //sqlstr := 'select count(*) from 服务器状态配置表 where 是否启用<>0';
+  //Result := GetRecordCountBySql(sqlstr)>0;
   Result := True;
 end;
 

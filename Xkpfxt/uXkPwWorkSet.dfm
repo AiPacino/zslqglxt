@@ -965,19 +965,19 @@ object XkPwWorkSet: TXkPwWorkSet
           EditButtons = <>
           FieldName = #19987#19994
           Footers = <>
-          Width = 152
+          Width = 144
         end
         item
           EditButtons = <>
           FieldName = #31185#30446
           Footers = <>
-          Width = 152
+          Width = 145
         end
         item
           EditButtons = <>
           FieldName = #35780#22996
           Footers = <>
-          Width = 104
+          Width = 78
         end
         item
           EditButtons = <>
@@ -990,8 +990,6 @@ object XkPwWorkSet: TXkPwWorkSet
           EditButtons = <>
           FieldName = #35780#20998#22120
           Footers = <>
-          Visible = False
-          Width = 51
         end
         item
           EditButtons = <>
@@ -1100,6 +1098,8 @@ object XkPwWorkSet: TXkPwWorkSet
     Aggregates = <>
     CommandText = 'select * from '#26657#32771#19987#19994#31185#30446#34920
     Params = <>
+    ProviderName = 'DSP_Open'
+    RemoteServer = DM.con_Local
     Left = 552
     Top = 128
   end
