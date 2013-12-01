@@ -6,7 +6,7 @@ object XkPwSet: TXkPwSet
   BorderStyle = bsSingle
   Caption = #35780#22996#35774#32622
   ClientHeight = 543
-  ClientWidth = 807
+  ClientWidth = 712
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,13 +24,14 @@ object XkPwSet: TXkPwSet
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 807
+    Width = 712
     Height = 50
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 807
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -542,13 +543,14 @@ object XkPwSet: TXkPwSet
       Transparent = True
     end
     object grp1: TGroupBox
-      Left = 663
+      Left = 568
       Top = 0
       Width = 144
       Height = 50
       Align = alRight
       Caption = #25215#32771#23398#38498#65306
       TabOrder = 0
+      ExplicitLeft = 663
       object cbb_yx: TComboBox
         Left = 11
         Top = 17
@@ -568,16 +570,17 @@ object XkPwSet: TXkPwSet
   object Panel2: TPanel
     Left = 0
     Top = 502
-    Width = 807
+    Width = 712
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 807
     DesignSize = (
-      807
+      712
       41)
     object btn_Exit: TBitBtn
-      Left = 717
+      Left = 622
       Top = 9
       Width = 75
       Height = 25
@@ -585,9 +588,10 @@ object XkPwSet: TXkPwSet
       Caption = #20851#38381'[&C]'
       TabOrder = 0
       OnClick = btn_ExitClick
+      ExplicitLeft = 717
     end
     object btn_Save: TBitBtn
-      Left = 409
+      Left = 314
       Top = 9
       Width = 78
       Height = 25
@@ -647,6 +651,7 @@ object XkPwSet: TXkPwSet
         090909090909090909EEEE8181818181818181818181818181EEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 409
     end
     object btn_Refresh: TBitBtn
       Left = 16
@@ -658,7 +663,7 @@ object XkPwSet: TXkPwSet
       OnClick = btn_RefreshClick
     end
     object btn_Add: TBitBtn
-      Left = 251
+      Left = 156
       Top = 9
       Width = 78
       Height = 25
@@ -718,9 +723,10 @@ object XkPwSet: TXkPwSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 251
     end
     object btn_Del: TBitBtn
-      Left = 330
+      Left = 235
       Top = 9
       Width = 78
       Height = 25
@@ -780,23 +786,26 @@ object XkPwSet: TXkPwSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 330
     end
     object btn1: TBitBtn
-      Left = 506
+      Left = 411
       Top = 9
       Width = 119
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #29983#25104#38543#26426#31614#21040#30721
       TabOrder = 5
+      Visible = False
       OnClick = btn1Click
       NumGlyphs = 2
+      ExplicitLeft = 506
     end
   end
   object DBGridEh1: TDBGridEh
     Left = 0
     Top = 50
-    Width = 807
+    Width = 712
     Height = 452
     Align = alClient
     ColumnDefValues.Layout = tlCenter
@@ -839,12 +848,6 @@ object XkPwSet: TXkPwSet
       item
         EditButtons = <>
         FieldName = #35780#22996
-        Footers = <>
-        Width = 105
-      end
-      item
-        EditButtons = <>
-        FieldName = #31614#21040#30721
         Footers = <>
         Width = 261
       end>
