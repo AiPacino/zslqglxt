@@ -85,8 +85,10 @@ type
     { Private declarations }
     aKsh:string;
     aRch:string;
+    aYx,aSf,aKd,aZy:string;
   public
     { Public declarations }
+    procedure SetParam(const yx,sf,kd,zy:string);
   end;
 
 var
@@ -98,11 +100,15 @@ uses uDM, uPwqd;
 
 procedure TXkpf.btn_1Click(Sender: TObject);
 begin
-  if TPwqd.Create(nil).ShowModal=mrOk then
+  with TPwqd.Create(nil) do
   begin
-    btn_1.Enabled := False;
-    btn_2.Enabled := True;
-    cds_Cj.Close;
+    SetParam(ayx,asf,akd,azy);
+    if ShowModal=mrOk then
+    begin
+      btn_1.Enabled := False;
+      btn_2.Enabled := True;
+      cds_Cj.Close;
+    end;
   end;
 end;
 
@@ -190,6 +196,14 @@ end;
 procedure TXkpf.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
+end;
+
+procedure TXkpf.SetParam(const yx, sf, kd, zy: string);
+begin
+  aYx := yx;
+  aSf := sf;
+  aKd := kd;
+  aZy := zy;
 end;
 
 procedure TXkpf.tmr1Timer(Sender: TObject);

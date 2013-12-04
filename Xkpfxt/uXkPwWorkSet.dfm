@@ -6,7 +6,7 @@ object XkPwWorkSet: TXkPwWorkSet
   BorderStyle = bsSingle
   Caption = #32771#28857#35780#22996#35774#32622
   ClientHeight = 593
-  ClientWidth = 831
+  ClientWidth = 920
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,19 +18,21 @@ object XkPwWorkSet: TXkPwWorkSet
   Position = poMainFormCenter
   Visible = True
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 831
+    Width = 920
     Height = 50
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 831
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -542,13 +544,14 @@ object XkPwWorkSet: TXkPwWorkSet
       Transparent = True
     end
     object grp_Yx: TGroupBox
-      Left = 654
+      Left = 743
       Top = 0
       Width = 177
       Height = 50
       Align = alRight
       Caption = #25215#32771#38498#31995#65306
       TabOrder = 0
+      ExplicitLeft = 654
       object cbb_Yx: TDBComboBoxEh
         Left = 8
         Top = 20
@@ -565,16 +568,17 @@ object XkPwWorkSet: TXkPwWorkSet
   object Panel2: TPanel
     Left = 0
     Top = 552
-    Width = 831
+    Width = 920
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
+    ExplicitWidth = 831
     DesignSize = (
-      831
+      920
       41)
     object btn_Exit: TBitBtn
-      Left = 751
+      Left = 840
       Top = 9
       Width = 75
       Height = 25
@@ -582,15 +586,18 @@ object XkPwWorkSet: TXkPwWorkSet
       Caption = #20851#38381'[&C]'
       TabOrder = 5
       OnClick = btn_ExitClick
+      ExplicitLeft = 751
     end
     object btn_Save: TBitBtn
-      Left = 649
+      Left = 738
       Top = 9
       Width = 78
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #20445#23384
+      Enabled = False
       TabOrder = 4
+      OnClick = btn_SaveClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
         08000000000000020000750E0000750E00000001000000000000000000003300
@@ -643,6 +650,7 @@ object XkPwWorkSet: TXkPwWorkSet
         090909090909090909EEEE8181818181818181818181818181EEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 649
     end
     object btn_Refresh: TBitBtn
       Left = 16
@@ -654,12 +662,13 @@ object XkPwWorkSet: TXkPwWorkSet
       OnClick = btn_RefreshClick
     end
     object btn_Add: TBitBtn
-      Left = 415
+      Left = 504
       Top = 9
       Width = 78
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #26032#22686
+      Enabled = False
       TabOrder = 1
       OnClick = btn_AddClick
       Glyph.Data = {
@@ -714,15 +723,18 @@ object XkPwWorkSet: TXkPwWorkSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 415
     end
     object btn_Del: TBitBtn
-      Left = 493
+      Left = 582
       Top = 9
       Width = 78
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #21024#38500
+      Enabled = False
       TabOrder = 2
+      OnClick = btn_DelClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
         08000000000000020000850B0000850B00000001000000000000000000003300
@@ -775,15 +787,18 @@ object XkPwWorkSet: TXkPwWorkSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 493
     end
     object btn_Cancel: TBitBtn
-      Left = 571
+      Left = 660
       Top = 9
       Width = 78
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #21462#28040
+      Enabled = False
       TabOrder = 3
+      OnClick = btn_CancelClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
         08000000000000020000320B0000320B00000001000000000000000000003300
@@ -836,12 +851,13 @@ object XkPwWorkSet: TXkPwWorkSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
+      ExplicitLeft = 571
     end
   end
   object DBGridEh2: TDBGridEh
     Left = 0
     Top = 50
-    Width = 278
+    Width = 379
     Height = 502
     Align = alLeft
     ColumnDefValues.Layout = tlCenter
@@ -857,11 +873,14 @@ object XkPwWorkSet: TXkPwWorkSet
     FooterFont.Style = []
     ImeMode = imDisable
     OddRowColor = 13823456
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    OptionsEh = [dghHighlightFocus, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
     ReadOnly = True
+    RowDetailPanel.Active = True
+    RowDetailPanel.Height = 150
     RowDetailPanel.Color = clBtnFace
     RowHeight = 25
+    RowPanel.Active = True
     SortLocal = True
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
@@ -872,46 +891,94 @@ object XkPwWorkSet: TXkPwWorkSet
     TitleHeight = 25
     VertScrollBar.VisibleMode = sbAlwaysShowEh
     OnCellClick = DBGridEh2CellClick
+    OnRowDetailPanelHide = DBGridEh2RowDetailPanelHide
+    OnRowDetailPanelShow = DBGridEh2RowDetailPanelShow
     Columns = <
       item
         Alignment = taCenter
+        AutoFitColWidth = False
         EditButtons = <>
         FieldName = #30465#20221
         Footers = <>
-        Width = 41
+        Width = 71
       end
       item
         EditButtons = <>
         FieldName = #32771#28857#21517#31216
         Footers = <>
-        Width = 187
+        Width = 234
       end>
     object RowDetailData: TRowDetailPanelControlEh
+      object DBGridEh3: TDBGridEh
+        Left = 0
+        Top = 0
+        Width = 286
+        Height = 169
+        Align = alTop
+        ColumnDefValues.Layout = tlCenter
+        DataGrouping.GroupLevels = <>
+        DataSource = ds_Zy
+        EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
+        Flat = False
+        FooterColor = clWindow
+        FooterFont.Charset = DEFAULT_CHARSET
+        FooterFont.Color = clWindowText
+        FooterFont.Height = -12
+        FooterFont.Name = 'Tahoma'
+        FooterFont.Style = []
+        OddRowColor = clWindow
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        OptionsEh = [dghHighlightFocus, dghAutoSortMarking, dghEnterAsTab, dghDialogFind, dghColumnResize, dghColumnMove]
+        PopupMenu = DM.PopupMenu1
+        RowDetailPanel.Color = clBtnFace
+        RowHeight = 25
+        RowPanel.Active = True
+        SortLocal = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        TitleHeight = 20
+        VertScrollBar.VisibleMode = sbNeverShowEh
+        OnCellClick = DBGridEh3CellClick
+        Columns = <
+          item
+            EditButtons = <>
+            FieldName = #19987#19994
+            Footers = <>
+            HideDuplicates = True
+            HighlightRequired = True
+            Width = 220
+          end
+          item
+            EditButtons = <>
+            FieldName = #32771#35797#31185#30446
+            Footers = <>
+            Visible = False
+            Width = 128
+          end>
+        object RowDetailData: TRowDetailPanelControlEh
+        end
+      end
     end
   end
   object Panel1: TPanel
-    Left = 278
+    Left = 379
     Top = 50
-    Width = 553
+    Width = 541
     Height = 502
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 3
-    object Splitter1: TSplitter
-      Left = 0
-      Top = 169
-      Width = 553
-      Height = 3
-      Cursor = crVSplit
-      Align = alTop
-      ExplicitTop = 113
-      ExplicitWidth = 31
-    end
+    ExplicitLeft = 278
+    ExplicitWidth = 553
     object DBGridEh1: TDBGridEh
       Left = 0
-      Top = 172
-      Width = 553
-      Height = 330
+      Top = 0
+      Width = 541
+      Height = 502
       Align = alClient
       ColumnDefValues.Layout = tlCenter
       DataGrouping.GroupLevels = <>
@@ -944,6 +1011,7 @@ object XkPwWorkSet: TXkPwWorkSet
           EditButtons = <>
           FieldName = #25215#32771#38498#31995
           Footers = <>
+          ReadOnly = True
           Visible = False
           Width = 101
         end
@@ -951,6 +1019,7 @@ object XkPwWorkSet: TXkPwWorkSet
           EditButtons = <>
           FieldName = #30465#20221
           Footers = <>
+          ReadOnly = True
           Visible = False
           Width = 41
         end
@@ -958,6 +1027,7 @@ object XkPwWorkSet: TXkPwWorkSet
           EditButtons = <>
           FieldName = #32771#28857#21517#31216
           Footers = <>
+          ReadOnly = True
           Visible = False
           Width = 164
         end
@@ -965,19 +1035,22 @@ object XkPwWorkSet: TXkPwWorkSet
           EditButtons = <>
           FieldName = #19987#19994
           Footers = <>
-          Width = 144
+          ReadOnly = True
+          Width = 179
         end
         item
           EditButtons = <>
           FieldName = #31185#30446
           Footers = <>
-          Width = 145
+          ReadOnly = True
+          Visible = False
+          Width = 108
         end
         item
           EditButtons = <>
           FieldName = #35780#22996
           Footers = <>
-          Width = 78
+          Width = 112
         end
         item
           EditButtons = <>
@@ -990,75 +1063,19 @@ object XkPwWorkSet: TXkPwWorkSet
           EditButtons = <>
           FieldName = #35780#20998#22120
           Footers = <>
+          Width = 73
         end
         item
           EditButtons = <>
           FieldName = #31614#21040#30721
           Footers = <>
-          Width = 75
+          Width = 99
         end
         item
           EditButtons = <>
           FieldName = #26159#21542#31614#21040
           Footers = <>
           Visible = False
-        end>
-      object RowDetailData: TRowDetailPanelControlEh
-      end
-    end
-    object DBGridEh3: TDBGridEh
-      Left = 0
-      Top = 0
-      Width = 553
-      Height = 169
-      Align = alTop
-      ColumnDefValues.Layout = tlCenter
-      DataGrouping.GroupLevels = <>
-      DataSource = ds_Zy
-      EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
-      Flat = False
-      FooterColor = clWindow
-      FooterFont.Charset = DEFAULT_CHARSET
-      FooterFont.Color = clWindowText
-      FooterFont.Height = -12
-      FooterFont.Name = 'Tahoma'
-      FooterFont.Style = []
-      ImeMode = imDisable
-      OddRowColor = clWindow
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-      OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
-      PopupMenu = DM.PopupMenu1
-      RowDetailPanel.Color = clBtnFace
-      RowHeight = 25
-      SortLocal = True
-      TabOrder = 1
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -12
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      TitleHeight = 25
-      VertScrollBar.VisibleMode = sbAlwaysShowEh
-      OnCellClick = DBGridEh3CellClick
-      Columns = <
-        item
-          EditButtons = <>
-          FieldName = #25215#32771#38498#31995
-          Footers = <>
-          Visible = False
-          Width = 101
-        end
-        item
-          EditButtons = <>
-          FieldName = #19987#19994
-          Footers = <>
-          Width = 232
-        end
-        item
-          EditButtons = <>
-          FieldName = #32771#35797#31185#30446
-          Footers = <>
-          Width = 276
         end>
       object RowDetailData: TRowDetailPanelControlEh
       end
@@ -1073,6 +1090,7 @@ object XkPwWorkSet: TXkPwWorkSet
     Aggregates = <>
     CommandText = 'select * from '#26657#32771#35780#22996#23433#25490#34920
     Params = <>
+    BeforeClose = cds_DeltaBeforeClose
     Left = 568
     Top = 328
   end

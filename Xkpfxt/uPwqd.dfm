@@ -3,8 +3,8 @@ object Pwqd: TPwqd
   Top = 0
   BorderStyle = bsDialog
   Caption = #35780#22996#31614#21040
-  ClientHeight = 277
-  ClientWidth = 385
+  ClientHeight = 333
+  ClientWidth = 469
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,14 +14,13 @@ object Pwqd: TPwqd
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
   object DBGridEh1: TDBGridEh
-    Left = 24
+    Left = 11
     Top = 15
-    Width = 337
-    Height = 210
+    Width = 446
+    Height = 266
     ColumnDefValues.Layout = tlCenter
     Ctl3D = False
     DataGrouping.GroupLevels = <>
@@ -34,8 +33,8 @@ object Pwqd: TPwqd
     FooterFont.Name = 'Tahoma'
     FooterFont.Style = []
     HorzScrollBar.Visible = False
-    Options = [dgTitles, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
-    OptionsEh = [dghClearSelection, dghDialogFind, dghHotTrack]
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
+    OptionsEh = [dghClearSelection, dghDialogFind, dghShowRecNo, dghHotTrack]
     ParentCtl3D = False
     RowDetailPanel.Color = clBtnFace
     RowHeight = 35
@@ -49,78 +48,88 @@ object Pwqd: TPwqd
     VertScrollBar.VisibleMode = sbNeverShowEh
     Columns = <
       item
-        Alignment = taCenter
         EditButtons = <>
-        FieldName = #25215#32771#38498#31995
+        FieldName = #30465#20221
         Footers = <>
-        Title.Alignment = taCenter
-        Width = 106
+        Visible = False
+        Width = 36
       end
       item
-        Alignment = taCenter
+        EditButtons = <>
+        FieldName = #32771#28857#21517#31216
+        Footers = <>
+        Visible = False
+        Width = 108
+      end
+      item
+        EditButtons = <>
+        FieldName = #19987#19994
+        Footers = <>
+        Visible = False
+        Width = 85
+      end
+      item
         EditButtons = <>
         FieldName = #35780#22996
         Footers = <>
-        Title.Alignment = taCenter
-        Width = 94
+        Width = 119
       end
       item
-        Alignment = taCenter
         EditButtons = <>
-        FieldName = #35780#20998#22120#32534#21495
+        FieldName = #22522#31449
         Footers = <>
-        Title.Alignment = taCenter
+        Visible = False
+        Width = 50
       end
       item
-        Alignment = taCenter
+        EditButtons = <>
+        FieldName = #35780#20998#22120
+        Footers = <>
+        Width = 91
+      end
+      item
+        EditButtons = <>
+        FieldName = #31614#21040#30721
+        Footers = <>
+        Width = 106
+      end
+      item
         EditButtons = <>
         FieldName = #26159#21542#31614#21040
         Footers = <>
-        Title.Alignment = taCenter
-        Width = 58
+        Width = 91
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
   end
-  object btn1: TButton
-    Left = 152
-    Top = 240
-    Width = 89
+  object btn_OK: TButton
+    Left = 192
+    Top = 294
+    Width = 95
     Height = 25
-    Caption = #27169#25311#31614#21040#25104#21151
+    Caption = #35780#22996#31614#21040#25104#21151
     ModalResult = 1
     TabOrder = 1
   end
+  object btn_Close: TButton
+    Left = 312
+    Top = 294
+    Width = 95
+    Height = 25
+    Caption = #35780#22996#31614#21040#26410#23436#25104
+    ModalResult = 2
+    TabOrder = 2
+  end
   object cds_pw: TClientDataSet
     Aggregates = <>
-    CommandText = 'select * from '#26657#32771#35780#22996#21517#21333#34920' where '#35780#20998#22120#32534#21495'<'#39'0005'#39
+    CommandText = 'select * from '#26657#32771#32771#28857#35780#22996#34920
     Params = <>
-    Left = 200
-    Top = 152
-    object cds_pwid: TIntegerField
-      FieldName = 'id'
-    end
-    object cds_pwStringField: TStringField
-      FieldName = #25215#32771#38498#31995
-      Size = 30
-    end
-    object cds_pwStringField2: TStringField
-      FieldName = #35780#22996
-      Size = 10
-    end
-    object cds_pwStringField3: TStringField
-      FieldName = #35780#20998#22120#32534#21495
-      Size = 10
-    end
-    object cds_pwField: TBooleanField
-      FieldKind = fkCalculated
-      FieldName = #26159#21542#31614#21040
-      Calculated = True
-    end
+    Left = 104
+    Top = 192
   end
   object ds_pw: TDataSource
     DataSet = cds_pw
-    Left = 229
-    Top = 152
+    Left = 133
+    Top = 192
   end
 end

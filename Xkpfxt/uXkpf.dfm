@@ -35,9 +35,6 @@ object Xkpf: TXkpf
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 704
-    ExplicitTop = 168
-    ExplicitHeight = 711
     object pnl1: TPanel
       Left = 0
       Top = 0
@@ -77,10 +74,6 @@ object Xkpf: TXkpf
       Align = alClient
       Caption = #32771#29983#20449#24687#65306
       TabOrder = 1
-      ExplicitLeft = 16
-      ExplicitTop = 232
-      ExplicitWidth = 185
-      ExplicitHeight = 105
       object lbl2: TLabel
         Left = 16
         Top = 64
@@ -316,10 +309,6 @@ object Xkpf: TXkpf
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 216
-    ExplicitTop = 80
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object pnl3: TPanel
       Left = 0
       Top = 0

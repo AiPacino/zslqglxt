@@ -249,6 +249,8 @@ var
   function  DataSetNoSave(const ClientDataSet:TClientDataSet):Boolean;
   function  GetNextSjBH(const CurBH:string;const SjBHWidth:Integer):string;
 
+  function  GetMdiChildForm(const aClassName:TFormClass):TForm;
+
   function  PosRight(const subStr,S:string):Integer;
   procedure RealseSortedIcon(const aDBGrid:TDBGridEh);
   procedure SetDBGridEHColumnWidth(const aDBGrid:TDBGridEh);
@@ -327,6 +329,26 @@ begin
     dm.Free;
   end;
 end;
+
+function  GetMdiChildForm(const aClassName:TFormClass):TForm;
+var
+  i:Integer;
+  aForm :TForm;
+  str:string;
+begin
+  Result:=nil;
+  aForm := Application.MainForm;
+  str := UpperCase(aClassName.ClassName);
+  for i:=0 to aForm.MDIChildCount-1 do
+  begin
+    if UpperCase(aForm.MDIChildren[i].ClassName)=str then
+    begin
+      Result:=aForm.MDIChildren[i];
+      Break;
+    end;
+  end;
+end;
+
 
 function  DataSetNoSave(const ClientDataSet:TClientDataSet):Boolean;
 begin
