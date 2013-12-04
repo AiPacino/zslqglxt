@@ -41,7 +41,8 @@ uses
   uPwqd in 'uPwqd.pas' {Pwqd},
   uXkPwSet in 'uXkPwSet.pas' {XkPwSet},
   uXkPwWorkSet in 'uXkPwWorkSet.pas' {XkPwWorkSet},
-  uSelectZyKmPw in 'uSelectZyKmPw.pas' {SelectZyKmPw};
+  uSelectZyKmPw in 'uSelectZyKmPw.pas' {SelectZyKmPw},
+  uSelectYxKdZy in 'uSelectYxKdZy.pas' {SelectYxKdZy};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

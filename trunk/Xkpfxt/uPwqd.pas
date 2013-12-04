@@ -10,19 +10,17 @@ type
   TPwqd = class(TForm)
     DBGridEh1: TDBGridEh;
     cds_pw: TClientDataSet;
-    cds_pwid: TIntegerField;
-    cds_pwStringField: TStringField;
-    cds_pwStringField2: TStringField;
-    cds_pwStringField3: TStringField;
-    cds_pwField: TBooleanField;
     ds_pw: TDataSource;
-    btn1: TButton;
+    btn_OK: TButton;
+    btn_Close: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
+    aYx,aSf,aKd,aZy:string;
+    procedure Open_Table;
   public
     { Public declarations }
+    procedure SetParam(const yx,sf,kd,zy:string);
   end;
 
 var
@@ -37,11 +35,25 @@ begin
   Action := caFree;
 end;
 
-procedure TPwqd.FormCreate(Sender: TObject);
+procedure TPwqd.Open_Table;
 var
   sqlstr:string;
 begin
-  cds_pw.XMLData := dm.OpenData('select top 3 * from 校考评委名单表');
+  sqlstr := 'select * from 校考考点评委表 where 承考院系='+quotedstr(aYx)+
+                                          ' and 省份='+quotedstr(aSf)+
+                                          ' and 考点名称='+quotedstr(aKd)+
+                                          ' and 专业='+quotedstr(aZy);
+  cds_pw.XMLData := dm.OpenData(sqlstr);
+end;
+
+procedure TPwqd.SetParam(const yx, sf, kd, zy: string);
+begin
+  aYx := yx;
+  aSf := sf;
+  aKd := kd;
+  aZy := zy;
+  Open_Table;
+
 end;
 
 end.

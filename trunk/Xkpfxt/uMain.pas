@@ -174,6 +174,7 @@ type
     function  GetXznxString:String;
     procedure GetWhereList;
     procedure InitMenuItem;
+    procedure ShowXkpfForm(const yx,sf,kd,zy:string);
   public
     { Public declarations }
     procedure ShowUpdateZyHistory;
@@ -188,7 +189,7 @@ uses uDM,Net,DBGridEhImpExp,uCzyEdit,uABOUT,uChangeCzyPwd,
      uCountSqlSet,uUserLoginLog,uSysLog,uCzyRightSet,uLockScreen,uXkKdTimeSet,
      uOnlineUpdateSet,uXkInfoInput, uXkPwSet,uXkPwWorkSet,
      uXkZySet,uXkKmSet,uXkZyKmSet,uXkKdSet,uXkKdBrowse,
-     uXkKdSetConfirm,uXkInfoImport,
+     uXkKdSetConfirm,uXkInfoImport,uSelectYxKdZy,
      uXkDataInit,uXkInfoBrowse,uSysRegister,
      uXkInfoCount,uXkpf;
 
@@ -241,6 +242,25 @@ procedure TMain.ShowUpdateZyHistory;
 begin
 end;
 
+procedure TMain.ShowXkpfForm(const yx, sf, kd, zy: string);
+var
+  aForm:TForm;
+begin
+  aForm := GetMdiChildForm(Txkpf);
+  if aForm=nil then
+  begin
+    aForm := Txkpf.Create(Self);
+  end else
+  begin
+    if aForm.WindowState=wsMinimized then
+      aForm.WindowState := wsNormal;
+    aForm.BringToFront;
+    aForm.SetFocus;
+  end;
+  Txkpf(aForm).SetParam(yx,sf,kd,zy);
+  aForm.Show;
+end;
+
 procedure TMain.RzGroup4Items1Click(Sender: TObject);
 begin
   Close;
@@ -257,8 +277,23 @@ begin
 end;
 
 procedure TMain.act_Cj_PwpfExecute(Sender: TObject);
+var
+  yx,sf,kd,zy:string;
+  ii:Integer;
+  aForm:TForm;
 begin
-  ShowMdiChildForm(TXkpf);
+  with TSelectYxKdZy.Create(nil) do
+  begin
+    if ShowModal=mrOk then
+    begin
+      yx := cbb_yx.Text;
+      ii := Pos('|',cbb_Kd.Text);
+      sf := Copy(cbb_Kd.Text,1,ii-1);
+      kd := Copy(cbb_Kd.Text,ii+1,100);
+      zy := cbb_Zy.Text;
+      ShowXkpfForm(yx,sf,kd,zy);
+    end;
+  end;
 end;
 
 procedure TMain.act_Cj_pwsetExecute(Sender: TObject);
