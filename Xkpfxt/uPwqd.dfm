@@ -14,6 +14,7 @@ object Pwqd: TPwqd
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
   object DBGridEh1: TDBGridEh
@@ -33,6 +34,7 @@ object Pwqd: TPwqd
     FooterFont.Name = 'Tahoma'
     FooterFont.Style = []
     HorzScrollBar.Visible = False
+    ImeMode = imDisable
     Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
     OptionsEh = [dghClearSelection, dghDialogFind, dghShowRecNo, dghHotTrack]
     ParentCtl3D = False
@@ -82,12 +84,14 @@ object Pwqd: TPwqd
         Width = 50
       end
       item
+        Alignment = taCenter
         EditButtons = <>
         FieldName = #35780#20998#22120
         Footers = <>
         Width = 91
       end
       item
+        Alignment = taCenter
         EditButtons = <>
         FieldName = #31614#21040#30721
         Footers = <>
@@ -102,23 +106,25 @@ object Pwqd: TPwqd
     object RowDetailData: TRowDetailPanelControlEh
     end
   end
-  object btn_OK: TButton
-    Left = 192
-    Top = 294
+  object btn_End: TButton
+    Left = 352
+    Top = 296
     Width = 95
     Height = 25
-    Caption = #35780#22996#31614#21040#25104#21151
+    Caption = #32467#26463#31614#21040
+    Enabled = False
     ModalResult = 1
     TabOrder = 1
+    OnClick = btn_EndClick
   end
-  object btn_Close: TButton
-    Left = 312
-    Top = 294
+  object btn_Start: TButton
+    Left = 240
+    Top = 296
     Width = 95
     Height = 25
-    Caption = #35780#22996#31614#21040#26410#23436#25104
-    ModalResult = 2
+    Caption = #21551#21160#31614#21040
     TabOrder = 2
+    OnClick = btn_StartClick
   end
   object cds_pw: TClientDataSet
     Aggregates = <>
@@ -130,6 +136,13 @@ object Pwqd: TPwqd
   object ds_pw: TDataSource
     DataSet = cds_pw
     Left = 133
+    Top = 192
+  end
+  object SignIn1: TSignIn
+    AutoConnect = False
+    ConnectKind = ckRunningOrNew
+    OnKeyStatus = SignIn1KeyStatus
+    Left = 168
     Top = 192
   end
 end

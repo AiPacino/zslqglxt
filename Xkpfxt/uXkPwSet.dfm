@@ -14,6 +14,7 @@ object XkPwSet: TXkPwSet
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIChild
+  Menu = MainMenu1
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -31,7 +32,6 @@ object XkPwSet: TXkPwSet
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 807
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -550,7 +550,6 @@ object XkPwSet: TXkPwSet
       Align = alRight
       Caption = #25215#32771#23398#38498#65306
       TabOrder = 0
-      ExplicitLeft = 663
       object cbb_yx: TComboBox
         Left = 11
         Top = 17
@@ -574,8 +573,7 @@ object XkPwSet: TXkPwSet
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 1
-    ExplicitWidth = 807
+    TabOrder = 2
     DesignSize = (
       712
       41)
@@ -586,18 +584,17 @@ object XkPwSet: TXkPwSet
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #20851#38381'[&C]'
-      TabOrder = 0
+      TabOrder = 5
       OnClick = btn_ExitClick
-      ExplicitLeft = 717
     end
     object btn_Save: TBitBtn
-      Left = 314
+      Left = 270
       Top = 9
       Width = 78
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #20445#23384
-      TabOrder = 1
+      TabOrder = 3
       OnClick = btn_SaveClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
@@ -651,25 +648,24 @@ object XkPwSet: TXkPwSet
         090909090909090909EEEE8181818181818181818181818181EEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 409
     end
     object btn_Refresh: TBitBtn
-      Left = 16
+      Left = 4
       Top = 8
       Width = 75
       Height = 25
       Caption = #21047#26032'[&R]'
-      TabOrder = 2
+      TabOrder = 0
       OnClick = btn_RefreshClick
     end
     object btn_Add: TBitBtn
-      Left = 156
+      Left = 112
       Top = 9
       Width = 78
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #26032#22686
-      TabOrder = 3
+      TabOrder = 1
       OnClick = btn_AddClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
@@ -723,16 +719,15 @@ object XkPwSet: TXkPwSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 251
     end
     object btn_Del: TBitBtn
-      Left = 235
+      Left = 191
       Top = 9
       Width = 78
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #21024#38500
-      TabOrder = 4
+      TabOrder = 2
       OnClick = btn_DelClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
@@ -786,20 +781,26 @@ object XkPwSet: TXkPwSet
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 330
     end
     object btn1: TBitBtn
-      Left = 411
+      Left = 355
       Top = 9
-      Width = 119
+      Width = 102
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #29983#25104#38543#26426#31614#21040#30721
-      TabOrder = 5
-      Visible = False
+      TabOrder = 4
       OnClick = btn1Click
       NumGlyphs = 2
-      ExplicitLeft = 506
+    end
+    object btn_Print: TBitBtn
+      Left = 468
+      Top = 9
+      Width = 133
+      Height = 25
+      Caption = #25171#21360#35780#22996#31614#21040#30721#20415#31614
+      TabOrder = 6
+      OnClick = btn_PrintClick
     end
   end
   object DBGridEh1: TDBGridEh
@@ -820,7 +821,6 @@ object XkPwSet: TXkPwSet
     FooterFont.Height = -12
     FooterFont.Name = 'Tahoma'
     FooterFont.Style = []
-    FrozenCols = 1
     OddRowColor = 13823456
     OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
     ParentCtl3D = False
@@ -828,7 +828,7 @@ object XkPwSet: TXkPwSet
     RowDetailPanel.Color = clBtnFace
     RowHeight = 25
     SortLocal = True
-    TabOrder = 2
+    TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -12
@@ -850,6 +850,18 @@ object XkPwSet: TXkPwSet
         FieldName = #35780#22996
         Footers = <>
         Width = 261
+      end
+      item
+        EditButtons = <>
+        FieldName = #31614#21040#30721
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -14
+        Font.Name = 'Verdana'
+        Font.Style = []
+        Footers = <>
+        ReadOnly = True
+        Width = 161
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -868,5 +880,9 @@ object XkPwSet: TXkPwSet
     OnNewRecord = ClientDataSet1NewRecord
     Left = 288
     Top = 200
+  end
+  object MainMenu1: TMainMenu
+    Left = 544
+    Top = 24
   end
 end

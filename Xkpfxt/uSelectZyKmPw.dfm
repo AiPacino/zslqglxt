@@ -27,8 +27,6 @@ object SelectZyKmPw: TSelectZyKmPw
     Anchors = [akLeft, akTop, akRight, akBottom]
     Caption = #35780#22996#36873#25321#65306
     TabOrder = 0
-    ExplicitWidth = 623
-    ExplicitHeight = 345
     object RzCheckList1: TRzCheckList
       Left = 2
       Top = 16
@@ -48,8 +46,6 @@ object SelectZyKmPw: TSelectZyKmPw
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 357
-    ExplicitWidth = 639
     DesignSize = (
       490
       49)
@@ -70,7 +66,7 @@ object SelectZyKmPw: TSelectZyKmPw
       Anchors = [akRight, akBottom]
       Caption = #30830#23450#36873#25321
       TabOrder = 0
-      ExplicitLeft = 451
+      OnClick = btn_OKClick
     end
     object btn_Exit: TBitBtn
       Left = 405
@@ -81,25 +77,6 @@ object SelectZyKmPw: TSelectZyKmPw
       Caption = #36864#20986
       TabOrder = 1
       OnClick = btn_ExitClick
-      ExplicitLeft = 547
     end
-  end
-  object cds_Temp: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 488
-    Top = 160
-  end
-  object cds_Delta: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 144
-    Top = 168
-  end
-  object cds_Master: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 112
-    Top = 168
   end
 end

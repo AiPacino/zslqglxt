@@ -2,8 +2,8 @@ object Xkpf: TXkpf
   Left = 0
   Top = 0
   Caption = #35780#20998#31383#21475
-  ClientHeight = 673
-  ClientWidth = 965
+  ClientHeight = 616
+  ClientWidth = 966
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,23 +15,25 @@ object Xkpf: TXkpf
   Position = poMainFormCenter
   Visible = True
   OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 14
   object bvl2: TBevel
-    Left = 662
+    Left = 663
     Top = 0
     Width = 2
-    Height = 632
+    Height = 597
     Align = alRight
     Shape = bsRightLine
     ExplicitLeft = 661
     ExplicitHeight = 605
   end
   object pnl_right: TPanel
-    Left = 664
+    Left = 665
     Top = 0
     Width = 301
-    Height = 632
+    Height = 597
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
@@ -39,14 +41,14 @@ object Xkpf: TXkpf
       Left = 0
       Top = 0
       Width = 301
-      Height = 209
+      Height = 157
       Align = alTop
       BevelKind = bkTile
       BevelOuter = bvNone
       TabOrder = 0
       object led_Time: TRzLEDDisplay
         Left = 9
-        Top = 85
+        Top = 52
         Width = 273
         Height = 65
         Alignment = taCenter
@@ -55,8 +57,8 @@ object Xkpf: TXkpf
       object lbl1: TLabel
         Left = 72
         Top = 16
-        Width = 152
-        Height = 23
+        Width = 153
+        Height = 19
         Caption = #32771#35797#35745#26102'('#20998#38047')'#65306
         Font.Charset = GB2312_CHARSET
         Font.Color = clBlue
@@ -68,9 +70,9 @@ object Xkpf: TXkpf
     end
     object grp1: TGroupBox
       Left = 0
-      Top = 209
+      Top = 157
       Width = 301
-      Height = 423
+      Height = 440
       Align = alClient
       Caption = #32771#29983#20449#24687#65306
       TabOrder = 1
@@ -304,15 +306,15 @@ object Xkpf: TXkpf
   object pnl2: TPanel
     Left = 0
     Top = 0
-    Width = 662
-    Height = 632
+    Width = 663
+    Height = 597
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
     object pnl3: TPanel
       Left = 0
       Top = 0
-      Width = 662
+      Width = 663
       Height = 65
       Align = alTop
       BevelKind = bkTile
@@ -325,7 +327,7 @@ object Xkpf: TXkpf
       ParentFont = False
       TabOrder = 0
       object btn_1: TBitBtn
-        Left = 40
+        Left = 7
         Top = 1
         Width = 123
         Height = 56
@@ -334,7 +336,7 @@ object Xkpf: TXkpf
         OnClick = btn_1Click
       end
       object btn_2: TBitBtn
-        Left = 169
+        Left = 136
         Top = 1
         Width = 123
         Height = 56
@@ -344,17 +346,17 @@ object Xkpf: TXkpf
         OnClick = btn_2Click
       end
       object btn_3: TBitBtn
-        Left = 298
+        Left = 265
         Top = 1
         Width = 123
         Height = 56
-        Caption = #9314#24320#22987#35745#26102
+        Caption = #9314#24320#22987#32771#35797
         Enabled = False
         TabOrder = 2
         OnClick = btn_3Click
       end
       object btn_4: TBitBtn
-        Left = 427
+        Left = 394
         Top = 1
         Width = 123
         Height = 56
@@ -363,157 +365,268 @@ object Xkpf: TXkpf
         TabOrder = 3
         OnClick = btn_4Click
       end
+      object btn_5: TBitBtn
+        Left = 519
+        Top = 1
+        Width = 123
+        Height = 56
+        Caption = #9316#30830#35748#25104#32489
+        Enabled = False
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = #26041#27491#23002#20307#31616#20307
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        OnClick = btn_5Click
+      end
     end
     object pnl_cj: TPanel
-      Left = 17
-      Top = 96
-      Width = 632
-      Height = 530
+      Left = 0
+      Top = 65
+      Width = 663
+      Height = 532
+      Align = alClient
       BevelKind = bkTile
       BevelOuter = bvNone
       TabOrder = 1
       object lbl_Rch: TLabel
         Left = 2
-        Top = 14
+        Top = 10
         Width = 200
-        Height = 24
+        Height = 20
         Caption = #27491#22312#23545#32771#29983#36827#34892#35780#20998#65306
         Font.Charset = GB2312_CHARSET
         Font.Color = clBlue
         Font.Height = -20
-        Font.Name = #26041#27491#23002#20307#31616#20307
+        Font.Name = #26032#23435#20307
         Font.Style = []
         ParentFont = False
       end
-      object DBGridEh2: TDBGridEh
-        Left = 0
-        Top = 57
-        Width = 628
-        Height = 407
-        Align = alBottom
-        ColumnDefValues.Layout = tlCenter
-        Ctl3D = False
-        DataGrouping.GroupLevels = <>
-        DataSource = ds_Cj
-        Flat = False
-        FooterColor = clWindow
-        FooterFont.Charset = DEFAULT_CHARSET
-        FooterFont.Color = clWindowText
-        FooterFont.Height = -12
-        FooterFont.Name = 'Tahoma'
-        FooterFont.Style = []
-        HorzScrollBar.Visible = False
-        Options = [dgTitles, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
-        OptionsEh = [dghClearSelection, dghDialogFind, dghHotTrack]
-        ParentCtl3D = False
-        RowDetailPanel.Color = clBtnFace
-        RowHeight = 25
-        TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -12
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
-        TitleHeight = 25
-        VertScrollBar.VisibleMode = sbNeverShowEh
-        Columns = <
-          item
-            Alignment = taCenter
-            EditButtons = <>
-            FieldName = #24405#20837#20998#32452
-            Footers = <>
-            HideDuplicates = True
-            Title.Alignment = taCenter
-            Title.Caption = #35780#20221#22120#32534#21495
-            Width = 79
-          end
-          item
-            Alignment = taCenter
-            EditButtons = <>
-            FieldName = #35780#22996
-            Footers = <>
-            HideDuplicates = True
-            Title.Alignment = taCenter
-            Title.Caption = #35780#22996#22995#21517
-            Width = 85
-          end
-          item
-            Alignment = taCenter
-            EditButtons = <>
-            FieldName = #32771#29983#21495
-            Footers = <>
-            Title.Alignment = taCenter
-            Visible = False
-            Width = 99
-          end
-          item
-            Alignment = taCenter
-            EditButtons = <>
-            FieldName = #25215#32771#38498#31995
-            Footers = <>
-            Title.Alignment = taCenter
-            Visible = False
-            Width = 72
-          end
-          item
-            Alignment = taCenter
-            EditButtons = <>
-            FieldName = #32771#35797#31185#30446
-            Footers = <>
-            Title.Alignment = taCenter
-            Width = 126
-          end
-          item
-            Alignment = taCenter
-            EditButtons = <>
-            FieldName = #25104#32489
-            Footers = <>
-            Title.Alignment = taCenter
-            Width = 108
-          end>
-        object RowDetailData: TRowDetailPanelControlEh
-        end
+      object lbl14: TLabel
+        Left = 474
+        Top = 12
+        Width = 100
+        Height = 20
+        Caption = #26368#32456#24471#20998#65306
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlue
+        Font.Height = -20
+        Font.Name = #26032#23435#20307
+        Font.Style = []
+        ParentFont = False
       end
-      object pnl5: TPanel
+      object pnl_Bottom: TPanel
         Left = 0
-        Top = 464
-        Width = 628
-        Height = 62
+        Top = 460
+        Width = 659
+        Height = 68
+        Align = alBottom
+        BevelOuter = bvNone
+        TabOrder = 0
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 40
+        Width = 659
+        Height = 420
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 1
-        object btn_5: TBitBtn
-          Left = 479
-          Top = 3
-          Width = 123
-          Height = 56
-          Caption = #9316#30830#35748#25104#32489
-          Enabled = False
-          Font.Charset = GB2312_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -19
-          Font.Name = #26041#27491#23002#20307#31616#20307
-          Font.Style = []
-          ParentFont = False
+        object DBGridEh2: TDBGridEh
+          Left = 0
+          Top = 0
+          Width = 448
+          Height = 420
+          Align = alClient
+          ColumnDefValues.Layout = tlCenter
+          Ctl3D = False
+          DataGrouping.GroupLevels = <>
+          DataSource = ds_Cj
+          Flat = False
+          FooterColor = clWindow
+          FooterFont.Charset = DEFAULT_CHARSET
+          FooterFont.Color = clWindowText
+          FooterFont.Height = -12
+          FooterFont.Name = 'Tahoma'
+          FooterFont.Style = []
+          HorzScrollBar.Visible = False
+          ImeMode = imDisable
+          Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
+          OptionsEh = [dghClearSelection, dghDialogFind, dghShowRecNo, dghHotTrack]
+          ParentCtl3D = False
+          RowDetailPanel.Color = clBtnFace
+          RowHeight = 25
           TabOrder = 0
-          OnClick = btn_5Click
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -12
+          TitleFont.Name = 'Tahoma'
+          TitleFont.Style = []
+          TitleHeight = 25
+          VertScrollBar.VisibleMode = sbNeverShowEh
+          Columns = <
+            item
+              EditButtons = <>
+              FieldName = #25215#32771#38498#31995
+              Footers = <>
+              Visible = False
+            end
+            item
+              EditButtons = <>
+              FieldName = #32771#29983#21495
+              Footers = <>
+              Visible = False
+              Width = 103
+            end
+            item
+              EditButtons = <>
+              FieldName = #36827#22330#21495
+              Footers = <>
+              Visible = False
+            end
+            item
+              EditButtons = <>
+              FieldName = #22522#31449
+              Footers = <>
+              Visible = False
+              Width = 44
+            end
+            item
+              Alignment = taCenter
+              EditButtons = <>
+              FieldName = #35780#20998#22120
+              Footers = <>
+              HideDuplicates = True
+              Width = 84
+            end
+            item
+              EditButtons = <>
+              FieldName = #35780#22996
+              Footers = <>
+              HideDuplicates = True
+              Width = 96
+            end
+            item
+              EditButtons = <>
+              FieldName = #32771#35797#31185#30446
+              Footers = <>
+              Width = 136
+            end
+            item
+              Alignment = taCenter
+              DisplayFormat = '0.00'
+              EditButtons = <>
+              FieldName = #25104#32489
+              Footers = <>
+              Width = 76
+            end
+            item
+              Alignment = taCenter
+              DisplayFormat = 'yyyy-mm-dd hh:nn:ss'
+              EditButtons = <>
+              FieldName = #25552#20132#26102#38388
+              Footers = <>
+              Visible = False
+              Width = 188
+            end>
+          object RowDetailData: TRowDetailPanelControlEh
+          end
+        end
+        object Panel2: TPanel
+          Left = 448
+          Top = 0
+          Width = 211
+          Height = 420
+          Align = alRight
+          BevelKind = bkSoft
+          BevelOuter = bvNone
+          TabOrder = 1
+          object lbl_Cj: TLabel
+            Left = 0
+            Top = 58
+            Width = 207
+            Height = 358
+            Align = alBottom
+            Alignment = taCenter
+            AutoSize = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clNavy
+            Font.Height = -19
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
         end
       end
     end
   end
-  object pnl4: TPanel
+  object RzStatusBar1: TRzStatusBar
     Left = 0
-    Top = 632
-    Width = 965
-    Height = 41
-    Align = alBottom
-    BevelKind = bkTile
-    BevelOuter = bvSpace
+    Top = 597
+    Width = 966
+    Height = 19
+    BorderInner = fsNone
+    BorderOuter = fsNone
+    BorderSides = [sdLeft, sdTop, sdRight, sdBottom]
+    BorderWidth = 0
     TabOrder = 2
+    object RzStatusPane1: TRzStatusPane
+      Left = 0
+      Top = 0
+      Width = 65
+      Height = 19
+      Transparent = False
+      Align = alLeft
+      Color = clRed
+      ParentColor = False
+      Caption = #29366#24577#25552#31034':'
+    end
+    object RzStatusPane2: TRzStatusPane
+      Left = 130
+      Top = 0
+      Width = 65
+      Height = 19
+      Align = alLeft
+      Alignment = taRightJustify
+      Caption = #24050#31614#21040
+      ExplicitLeft = 65
+    end
+    object RzStatusPane3: TRzStatusPane
+      Left = 65
+      Top = 0
+      Width = 65
+      Height = 19
+      Align = alLeft
+      Alignment = taRightJustify
+      Caption = #26410#31614#21040
+    end
+    object pnl4: TPanel
+      Left = 70
+      Top = 4
+      Width = 12
+      Height = 12
+      BevelOuter = bvNone
+      Color = clMaroon
+      ParentBackground = False
+      TabOrder = 0
+    end
+    object pnl6: TPanel
+      Left = 135
+      Top = 4
+      Width = 12
+      Height = 12
+      BevelOuter = bvNone
+      Color = clBlue
+      ParentBackground = False
+      TabOrder = 1
+    end
   end
   object cds_Cj: TClientDataSet
     Aggregates = <>
-    CommandText = 'select top 100 * from '#26657#32771#21367#38754#25104#32489#24405#20837#34920' where 1=0'
+    CommandText = 'select top 100 * from '#26657#32771#31185#30446#29616#22330#35780#20998#34920' where 1=0'
+    FetchOnDemand = False
     Params = <>
     Left = 296
     Top = 424
@@ -608,5 +721,19 @@ object Xkpf: TXkpf
     OnTimer = tmr1Timer
     Left = 792
     Top = 48
+  end
+  object MultipleAssess: TMultipleAssess
+    AutoConnect = False
+    ConnectKind = ckRunningOrNew
+    OnKeyStatus = MultipleAssessKeyStatus
+    OnDataDownload = MultipleAssessDataDownload
+    Left = 296
+    Top = 336
+  end
+  object Message1: TMessage
+    AutoConnect = False
+    ConnectKind = ckRunningOrNew
+    Left = 336
+    Top = 336
   end
 end

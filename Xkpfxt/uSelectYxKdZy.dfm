@@ -3,7 +3,7 @@ object SelectYxKdZy: TSelectYxKdZy
   Top = 0
   ActiveControl = btn_Exit
   BorderStyle = bsDialog
-  Caption = #35780#20998#32771#28857#21450#19987#19994#36873#25321#65306
+  Caption = #32771#28857#21450#19987#19994#36873#25321#65306
   ClientHeight = 249
   ClientWidth = 383
   Color = clBtnFace
@@ -79,8 +79,6 @@ object SelectYxKdZy: TSelectYxKdZy
     BevelKind = bkTile
     BevelOuter = bvNone
     TabOrder = 3
-    ExplicitTop = 218
-    ExplicitWidth = 442
     object btn_OK: TBitBtn
       Left = 123
       Top = 5

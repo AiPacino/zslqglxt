@@ -966,6 +966,13 @@ object XkKdSet: TXkKdSet
         Width = 92
       end
       item
+        EditButtons = <>
+        FieldName = #22320#22336
+        Footers = <>
+        Title.TitleButton = True
+        Width = 230
+      end
+      item
         DisplayFormat = 'yyyy-mm-dd'
         EditButtons = <>
         FieldName = #25253#32771#25130#27490#26102#38388
@@ -1028,7 +1035,6 @@ object XkKdSet: TXkKdSet
     CommandText = 'select * from '#26657#32771#32771#28857#35774#32622#34920
     Params = <>
     ProviderName = 'DSP_Query'
-    RemoteServer = DM.SoapConnection1
     BeforePost = ClientDataSet1BeforePost
     OnNewRecord = ClientDataSet1NewRecord
     Left = 288

@@ -5,12 +5,12 @@ interface
 uses
   SysUtils, Classes, DB, DBClient, SOAPConn, Rio, SOAPHTTPClient,GridsEh,
   Messages, IniFiles, Windows,Forms, DBGridEh,DBCtrlsEh, Dialogs,DBGridEhImpExp,
-  jpeg, ExtCtrls,EncdDecdEx,EhLibCDS, IdGlobal,EhLibBDE,EhLibADO,
+  jpeg, ExtCtrls,EncdDecdEx,EhLibCDS, IdGlobal,EhLibBDE,EhLibADO, 
   PrnDbgEH,Graphics, frxChart, frxDesgn, StdActns, ActnList,StrUtils,DateUtils,
   Menus, ImgList, Controls, frxClass, frxDBSet,CnProgressFrm, uVobj,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP,
   VCLUnZip, VCLZip, InvokeRegistry, ADODB,IdMultipartFormData, frxBarcode,
-  Provider, TConnect ;
+  Provider, TConnect, SunVote_TLB, OleServer ;
 
 type
  // TMessageHandler = class     //使得回车消息转换成Tab消息
@@ -55,6 +55,11 @@ type
     qry_Update: TADOQuery;
     DSP_Update: TDataSetProvider;
     cds_Update: TClientDataSet;
+    BaseConnection1: TBaseConnection;
+    BaseManage1: TBaseManage;
+    KeypadManage1: TKeypadManage;
+    SignIn1: TSignIn;
+    Message1: TMessage;
     procedure DataModuleCreate(Sender: TObject);
     procedure SaveDialog1TypeChange(Sender: TObject);
     procedure act_DataExportExecute(Sender: TObject);
@@ -68,6 +73,8 @@ type
     procedure HTTPRIO1BeforeExecute(const MethodName: string;
       var SOAPRequest: WideString);
     procedure DataModuleDestroy(Sender: TObject);
+    procedure BaseConnection1BaseOnLine(ASender: TObject; BaseID,
+      BaseState: Integer);
   private
     { Private declarations }
     SendTotal,GetTotal:Integer;
@@ -93,6 +100,7 @@ type
 
   public
     { Public declarations }
+    procedure InitSunVote;
     function GetRecordCountBySql(const sqlstr:string):Integer; stdcall;
     function RecordIsExists(const sSqlStr:string):Boolean;
     function ExecSqlCmd(const sSqlStr:string):Boolean;overload;
@@ -208,7 +216,6 @@ type
     function ReleaseLog(const Czy_ID:string):Boolean ;stdcall; //清空操作日志
 
     function PostCj(const CjIndex:Integer;const Yx,Sf,Km:string;const bPost:Boolean=True):Boolean; stdcall;     //提交成绩
-
  end;
 
 
@@ -263,7 +270,7 @@ var
   function  GetSfDmBySfMc(const sfDm:string):String;
 
 implementation
-uses PwdFunUnit, Net,ActiveX,shellapi,shlObj;
+uses uMain,PwdFunUnit, Net,ActiveX,shellapi,shlObj,uPwqd;
 {$R *.dfm}
 { TDM }
 
@@ -506,6 +513,23 @@ begin
   end;
 end;
 
+procedure TDM.BaseConnection1BaseOnLine(ASender: TObject; BaseID,
+  BaseState: Integer);
+begin
+  with Main.Status_SunVoteBaseInfo do
+  begin
+    if BaseState=1 then
+    begin
+      Font.Color := clBlue;
+      Caption := Format('基站已连接',[BaseID])
+    end else
+    begin
+      Font.Color := clRed;
+      Caption := Format('基站已断开',[BaseID]);
+    end;
+  end;
+end;
+
 procedure TDM.cds_MasterAfterScroll(DataSet: TDataSet);
 var
   RepFileName,sSqlStr:string;
@@ -647,7 +671,11 @@ begin
 end;
 
 procedure TDM.DataModuleCreate(Sender: TObject);
+var
+  fn:string;
 begin
+  fn := ExtractFilePath(ParamStr(0))+'MiniSQL2000\Sql2k.exe';
+  ShellExecute(0,'open',PAnsiChar(fn),nil,nil,SW_HIDE);
   if not DirectoryExists(ExtractFilePath(ParamStr(0))+'Kszp') then
     CreateDir(ExtractFileDir(ExtractFilePath(ParamStr(0))+'Kszp'));
   //gb_System_Mode := '录取';
@@ -655,10 +683,12 @@ begin
   con_DB.ConnectionString := GetConnInfo;
   frxDesigner1.OpenDir := ExtractFilePath(ParamStr(0))+'Rep';
   frxDesigner1.SaveDir := frxDesigner1.OpenDir;
+  InitSunVote;
 end;
 
 procedure TDM.DataModuleDestroy(Sender: TObject);
 begin
+  BaseConnection1.Close;
   con_DB.Close;
 end;
 
@@ -1272,7 +1302,7 @@ function TDM.GetConnInfo:string;
 begin
   //fn := ExtractFilePath(ParamStr(0))+'data\xkpfdata.mdb';
   //Result := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source='+fn+';Persist Security Info=False';
-  Result := 'Provider=SQLOLEDB.1;Password=xlinuxx;Persist Security Info=True;User ID=sa;Initial Catalog=现场评分库;Data Source=(local)';
+  Result := 'Provider=SQLOLEDB.1;Password=xlinuxx;Persist Security Info=True;User ID=sa;Initial Catalog=现场评分库;Data Source=127.0.0.1,8829';
 end;
 
 function TDM.GetCzyDept(const Czy_ID: string): string;
@@ -1984,6 +2014,14 @@ begin
   UpdateProgressTitle('正在下载数据... '+FormatFloat('[已下载：0.00KB]',GetTotal/1024/32));
 end;
 
+procedure TDM.InitSunVote;
+begin
+  BaseConnection1.Open(1,'1'); //1:USB MODE,1-5:基站号
+  //baseConnection.ProtocolType := 2; // EVS 2
+  BaseManage1.BaseConnection := BaseConnection1.DefaultInterface;
+  KeypadManage1.BaseConnection := BaseConnection1.DefaultInterface;
+end;
+
 function TDM.IsDisplayJiangXi: Boolean;
 var
   sqlstr:string;
@@ -2430,6 +2468,7 @@ var
   cds_Temp:TClientDataSet;
 begin
   cds_Temp := TClientDataSet.Create(nil);
+
   Result := False;
   try
     cds_Temp.Data := vDelta;
@@ -2470,7 +2509,7 @@ begin
     end;
   finally
     cds_Temp.Free;
-    cds_Update.Active := False;
+    cds_Update.Close;
     if (not Result) and (sError<>'') then
     begin
       sError := '数据更新/导入失败！请检查后重试！可能的原因为：　　'+#13+sError;
