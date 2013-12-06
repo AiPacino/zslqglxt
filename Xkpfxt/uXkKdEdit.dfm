@@ -112,7 +112,7 @@ object XkKdEdit: TXkKdEdit
       Top = 107
       Width = 60
       Height = 14
-      Caption = #32771#28857#21517#31216#65306
+      Caption = #32771#28857#22320#22336#65306
     end
     object edt_BmStart: TDBDateTimeEditEh
       Left = 112

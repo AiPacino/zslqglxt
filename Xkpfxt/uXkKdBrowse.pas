@@ -36,7 +36,6 @@ type
     procedure Open_Table;
     procedure GetSfList;
     procedure GetXkZyList;
-    procedure GetYxList;
   public
     { Public declarations }
   end;
@@ -88,7 +87,7 @@ end;
 
 procedure TXkKdBrowse.FormCreate(Sender: TObject);
 begin
-  GetYxList;
+  dm.GetYxList(cbb_Yx);
   Open_Table;
 end;
 
@@ -129,31 +128,11 @@ begin
   end;
 end;
 
-procedure TXkKdBrowse.GetYxList;
-var
-  sList:TStrings;
-begin
-  sList := TStringList.Create;
-  try
-    cbb_Yx.Items.Clear;
-    //if gb_Czy_Level<>'2' then
-    begin
-      sList.Add('艺术设计学院');
-      sList.Add('音乐学院');
-    end;// else
-    //  sList.Add(gb_Czy_Dept);
-    cbb_Yx.Items.AddStrings(sList);
-    cbb_Yx.ItemIndex := 0;
-  finally
-    sList.Free;
-  end;
-end;
-
 procedure TXkKdBrowse.Open_Table;
 var
   sqlstr:string;
 begin
-  sqlstr := 'select * from 校考考点设置表 '+GetWhere+' order by Id';
+  sqlstr := 'select * from 校考考点设置表 '+GetWhere+' order by 省份,考点名称';
   ClientDataSet1.XMLData := DM.OpenData(sqlstr);
 end;
 

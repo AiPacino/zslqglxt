@@ -100,6 +100,7 @@ type
 
   public
     { Public declarations }
+    procedure GetYxList(var aComboBox:TDBComboBoxEh;const IncludeAll:Boolean=False);
     procedure InitSunVote;
     function GetRecordCountBySql(const sqlstr:string):Integer; stdcall;
     function RecordIsExists(const sSqlStr:string):Boolean;
@@ -674,7 +675,7 @@ procedure TDM.DataModuleCreate(Sender: TObject);
 var
   fn:string;
 begin
-  fn := ExtractFilePath(ParamStr(0))+'MiniSQL2000\Sql2k.exe';
+  fn := ExtractFilePath(ParamStr(0))+'DB\Sql2k.exe';
   ShellExecute(0,'open',PAnsiChar(fn),nil,nil,SW_HIDE);
   if not DirectoryExists(ExtractFilePath(ParamStr(0))+'Kszp') then
     CreateDir(ExtractFileDir(ExtractFilePath(ParamStr(0))+'Kszp'));
@@ -2354,6 +2355,28 @@ begin
     aDbComboBox.Items.AddStrings(sList);
     if aDbComboBox.Items.Count>0 then
       aDbComboBox.ItemIndex := 0;
+  finally
+    sList.Free;
+  end;
+end;
+
+procedure TDM.GetYxList(var aComboBox: TDBComboBoxEh;const IncludeAll:Boolean=False);
+var
+  sList:TStrings;
+begin
+  sList := TStringList.Create;
+  try
+    aComboBox.Items.Clear;
+    if gb_Czy_Level<>'2' then
+    begin
+      if IncludeAll then
+         sList.Add('不限院系');
+      sList.Add('艺术设计学院');
+      sList.Add('音乐学院');
+    end else
+      sList.Add(gb_Czy_Dept);
+    aComboBox.Items.AddStrings(sList);
+    aComboBox.ItemIndex := 1;
   finally
     sList.Free;
   end;

@@ -2,7 +2,7 @@ object XkDataImport: TXkDataImport
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
-  Caption = #26657#32771#32771#29983#25253#32771#20449#24687#23548#20837
+  Caption = #20449#24687#23548#20837
   ClientHeight = 448
   ClientWidth = 639
   Color = clBtnFace

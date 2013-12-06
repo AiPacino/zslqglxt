@@ -115,7 +115,7 @@ object DM: TDM
     Left = 126
     Top = 125
     Bitmap = {
-      494C010110001200FC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001200000110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -887,10 +887,10 @@ object DM: TDM
   object con_DB: TADOConnection
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=xlinuxx;Persist Security Info=True;' +
-      'User ID=sa;Initial Catalog='#29616#22330#35780#20998#24211';Data Source=(local);Use Procedu' +
-      're for Prepare=1;Auto Translate=True;Packet Size=4096;Workstatio' +
-      'n ID=XXX-LMM;Use Encryption for Data=False;Tag with column colla' +
-      'tion when possible=False'
+      'User ID=sa;Initial Catalog='#29616#22330#35780#20998#24211';Data Source=127.0.0.1,8829;Use ' +
+      'Procedure for Prepare=1;Auto Translate=True;Packet Size=4096;Wor' +
+      'kstation ID=XXX-LMM;Use Encryption for Data=False;Tag with colum' +
+      'n collation when possible=False'
     LoginPrompt = False
     Mode = cmShareDenyNone
     Provider = 'SQLOLEDB.1'

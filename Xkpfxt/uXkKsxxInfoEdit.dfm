@@ -1,9 +1,9 @@
-object XkInfoEdit: TXkInfoEdit
+object XkKsxxInfoEdit: TXkKsxxInfoEdit
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = #32771#29983#25253#32771#20449#24687#24405#20837
+  Caption = #32771#29983#22522#26412#20449#24687#24405#20837
   ClientHeight = 380
   ClientWidth = 540
   Color = clBtnFace
@@ -60,7 +60,7 @@ object XkInfoEdit: TXkInfoEdit
     TabOrder = 0
     object Label1: TLabel
       Left = 37
-      Top = 63
+      Top = 33
       Width = 48
       Height = 14
       Caption = #32771#29983#21495#65306
@@ -91,7 +91,7 @@ object XkInfoEdit: TXkInfoEdit
     end
     object Label4: TLabel
       Left = 25
-      Top = 36
+      Top = 63
       Width = 60
       Height = 14
       Caption = #20934#32771#35777#21495#65306
@@ -106,31 +106,22 @@ object XkInfoEdit: TXkInfoEdit
     end
     object lbl3: TLabel
       Left = 25
-      Top = 204
+      Top = 178
       Width = 60
       Height = 14
       Caption = #32852#31995#30005#35805#65306
-      FocusControl = edt_zy
     end
     object lbl4: TLabel
       Left = 25
-      Top = 233
+      Top = 207
       Width = 60
       Height = 14
       Caption = #37038#25919#32534#30721#65306
       FocusControl = DBEditEh3
     end
-    object lbl5: TLabel
-      Left = 25
-      Top = 176
-      Width = 60
-      Height = 14
-      Caption = #25253#32771#19987#19994#65306
-      FocusControl = DBEditEh4
-    end
     object lbl6: TLabel
       Left = 25
-      Top = 261
+      Top = 235
       Width = 60
       Height = 14
       Caption = #36890#20449#22320#22336#65306
@@ -139,13 +130,6 @@ object XkInfoEdit: TXkInfoEdit
     object lbl7: TLabel
       Left = 279
       Top = 119
-      Width = 53
-      Height = 14
-      Caption = '(*'#24517#22635#39033')'
-    end
-    object lbl8: TLabel
-      Left = 446
-      Top = 176
       Width = 53
       Height = 14
       Caption = '(*'#24517#22635#39033')'
@@ -165,14 +149,14 @@ object XkInfoEdit: TXkInfoEdit
     end
     object edt_Ksh: TDBEditEh
       Left = 93
-      Top = 61
+      Top = 31
       Width = 177
       Height = 22
       Alignment = taLeftJustify
       DataField = #32771#29983#21495
-      DataSource = XkInfoInput.DataSource2
+      DataSource = XkInfoInput.ds_ksxx
       EditButtons = <>
-      TabOrder = 1
+      TabOrder = 0
       Visible = True
       OnChange = edt_ZkzhChange
     end
@@ -183,7 +167,7 @@ object XkInfoEdit: TXkInfoEdit
       Height = 22
       Alignment = taLeftJustify
       DataField = #22995#21517
-      DataSource = XkInfoInput.DataSource2
+      DataSource = XkInfoInput.ds_ksxx
       EditButtons = <>
       TabOrder = 3
       Visible = True
@@ -196,7 +180,7 @@ object XkInfoEdit: TXkInfoEdit
       Height = 22
       Alignment = taLeftJustify
       DataField = #36523#20221#35777#21495
-      DataSource = XkInfoInput.DataSource2
+      DataSource = XkInfoInput.ds_ksxx
       EditButtons = <>
       TabOrder = 2
       Visible = True
@@ -204,70 +188,56 @@ object XkInfoEdit: TXkInfoEdit
     end
     object edt_Zkzh: TDBEditEh
       Left = 93
-      Top = 33
+      Top = 60
       Width = 177
       Height = 22
       Alignment = taLeftJustify
       DataField = #20934#32771#35777#21495
-      DataSource = XkInfoInput.DataSource2
+      DataSource = XkInfoInput.ds_ksxx
       EditButtons = <>
-      TabOrder = 0
-      Visible = True
-      OnChange = edt_ZkzhChange
-    end
-    object edt_zy: TDBComboBoxEh
-      Left = 93
-      Top = 174
-      Width = 340
-      Height = 22
-      Alignment = taLeftJustify
-      AlwaysShowBorder = True
-      DataField = #19987#19994
-      DataSource = XkInfoInput.DataSource2
-      EditButtons = <>
-      TabOrder = 5
+      TabOrder = 1
       Visible = True
       OnChange = edt_ZkzhChange
     end
     object DBEditEh3: TDBEditEh
       Left = 93
-      Top = 202
+      Top = 176
       Width = 177
       Height = 22
       Alignment = taLeftJustify
       AlwaysShowBorder = True
       DataField = #32852#31995#30005#35805
-      DataSource = XkInfoInput.DataSource2
+      DataSource = XkInfoInput.ds_ksxx
       EditButtons = <>
-      TabOrder = 6
+      TabOrder = 5
       Visible = True
       OnChange = edt_ZkzhChange
     end
     object DBEditEh4: TDBEditEh
       Left = 93
-      Top = 231
+      Top = 205
       Width = 67
       Height = 22
       Alignment = taLeftJustify
       AlwaysShowBorder = True
       DataField = #37038#25919#32534#30721
-      DataSource = XkInfoInput.DataSource2
+      DataSource = XkInfoInput.ds_ksxx
       EditButtons = <>
-      TabOrder = 7
+      TabOrder = 6
       Visible = True
       OnChange = edt_ZkzhChange
     end
     object DBEditEh5: TDBEditEh
       Left = 93
-      Top = 259
+      Top = 233
       Width = 340
       Height = 22
       Alignment = taLeftJustify
       AlwaysShowBorder = True
       DataField = #36890#20449#22320#22336
-      DataSource = XkInfoInput.DataSource2
+      DataSource = XkInfoInput.ds_ksxx
       EditButtons = <>
-      TabOrder = 8
+      TabOrder = 7
       Visible = True
       OnChange = edt_ZkzhChange
     end
@@ -278,7 +248,7 @@ object XkInfoEdit: TXkInfoEdit
       Height = 22
       Alignment = taLeftJustify
       DataField = #24615#21035
-      DataSource = XkInfoInput.DataSource2
+      DataSource = XkInfoInput.ds_ksxx
       EditButtons = <>
       Items.Strings = (
         #30007
@@ -294,7 +264,7 @@ object XkInfoEdit: TXkInfoEdit
       Height = 22
       Alignment = taCenter
       EditButtons = <>
-      TabOrder = 9
+      TabOrder = 8
       Value = 0.000000000000000000
       Visible = True
     end

@@ -916,6 +916,7 @@ object XkKdSet: TXkKdSet
     Width = 872
     Height = 506
     Align = alClient
+    ColumnDefValues.Layout = tlCenter
     DataGrouping.GroupLevels = <>
     DataSource = DataSource1
     EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
@@ -928,11 +929,12 @@ object XkKdSet: TXkKdSet
     FooterFont.Style = []
     ImeMode = imDisable
     OddRowColor = 13823456
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]
     PopupMenu = DM.PopupMenu1
     ReadOnly = True
     RowDetailPanel.Color = clBtnFace
+    RowHeight = 25
     SortLocal = True
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
@@ -940,6 +942,7 @@ object XkKdSet: TXkKdSet
     TitleFont.Height = -12
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    TitleHeight = 25
     VertScrollBar.VisibleMode = sbAlwaysShowEh
     OnDblClick = DBGridEh1DblClick
     Columns = <
@@ -956,6 +959,13 @@ object XkKdSet: TXkKdSet
         Footers = <>
         Title.TitleButton = True
         Width = 130
+      end
+      item
+        EditButtons = <>
+        FieldName = #29366#24577
+        Footers = <>
+        Title.TitleButton = True
+        Width = 61
       end
       item
         DisplayFormat = 'yyyy-mm-dd'
@@ -1013,13 +1023,6 @@ object XkKdSet: TXkKdSet
         Title.TitleButton = True
         Visible = False
         Width = 99
-      end
-      item
-        EditButtons = <>
-        FieldName = #29366#24577
-        Footers = <>
-        Title.TitleButton = True
-        Width = 61
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end

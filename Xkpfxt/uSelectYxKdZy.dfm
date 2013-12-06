@@ -15,6 +15,7 @@ object SelectYxKdZy: TSelectYxKdZy
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
   object lbl1: TLabel
@@ -38,19 +39,19 @@ object SelectYxKdZy: TSelectYxKdZy
     Height = 14
     Caption = #19987#19994#65306
   end
-  object cbb_yx: TComboBox
+  object cbb_yx: TDBComboBoxEh
     Left = 102
     Top = 31
     Width = 174
     Height = 22
-    ItemHeight = 14
-    ItemIndex = 0
-    TabOrder = 0
-    Text = #33402#26415#35774#35745#23398#38498
-    OnChange = cbb_yxChange
+    EditButtons = <>
     Items.Strings = (
       #33402#26415#35774#35745#23398#38498
       #38899#20048#23398#38498)
+    TabOrder = 0
+    Text = #33402#26415#35774#35745#23398#38498
+    Visible = True
+    OnChange = cbb_yxChange
   end
   object cbb_Kd: TComboBox
     Left = 102

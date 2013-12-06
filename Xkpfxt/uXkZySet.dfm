@@ -918,7 +918,6 @@ object XkZySet: TXkZySet
     CommandText = 'select * from '#26657#32771#19987#19994#34920
     Params = <>
     ProviderName = 'DSP_Query'
-    RemoteServer = DM.SoapConnection1
     OnNewRecord = ClientDataSet1NewRecord
     Left = 288
     Top = 200

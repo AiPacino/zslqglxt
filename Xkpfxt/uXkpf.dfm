@@ -57,8 +57,8 @@ object Xkpf: TXkpf
       object lbl1: TLabel
         Left = 72
         Top = 16
-        Width = 153
-        Height = 19
+        Width = 152
+        Height = 23
         Caption = #32771#35797#35745#26102'('#20998#38047')'#65306
         Font.Charset = GB2312_CHARSET
         Font.Color = clBlue
@@ -445,6 +445,11 @@ object Xkpf: TXkpf
           DataGrouping.GroupLevels = <>
           DataSource = ds_Cj
           Flat = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
           FooterColor = clWindow
           FooterFont.Charset = DEFAULT_CHARSET
           FooterFont.Color = clWindowText
@@ -453,9 +458,10 @@ object Xkpf: TXkpf
           FooterFont.Style = []
           HorzScrollBar.Visible = False
           ImeMode = imDisable
-          Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
-          OptionsEh = [dghClearSelection, dghDialogFind, dghShowRecNo, dghHotTrack]
+          Options = [dgTitles, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
+          OptionsEh = [dghClearSelection, dghDialogFind, dghHotTrack]
           ParentCtl3D = False
+          ParentFont = False
           RowDetailPanel.Color = clBtnFace
           RowHeight = 25
           TabOrder = 0
@@ -466,6 +472,7 @@ object Xkpf: TXkpf
           TitleFont.Style = []
           TitleHeight = 25
           VertScrollBar.VisibleMode = sbNeverShowEh
+          OnGetCellParams = DBGridEh2GetCellParams
           Columns = <
             item
               EditButtons = <>
@@ -512,7 +519,7 @@ object Xkpf: TXkpf
               EditButtons = <>
               FieldName = #32771#35797#31185#30446
               Footers = <>
-              Width = 136
+              Width = 180
             end
             item
               Alignment = taCenter
@@ -520,7 +527,7 @@ object Xkpf: TXkpf
               EditButtons = <>
               FieldName = #25104#32489
               Footers = <>
-              Width = 76
+              Width = 84
             end
             item
               Alignment = taCenter

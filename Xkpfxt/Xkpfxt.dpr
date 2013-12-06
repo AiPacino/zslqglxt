@@ -35,15 +35,15 @@ uses
   uXkKmPwRsSet in 'uXkKmPwRsSet.pas' {XkKmPwRsSet},
   uLogin in 'uLogin.pas' {Login},
   uIniFile in 'uIniFile.pas',
-  uXkInfoEdit in 'uXkInfoEdit.pas' {XkInfoEdit},
+  uXkKsxxInfoEdit in 'uXkKsxxInfoEdit.pas' {XkKsxxInfoEdit},
   uSysRegister in 'uSysRegister.pas' {SysRegister},
   uXkpf in 'uXkpf.pas' {Xkpf},
   uPwqd in 'uPwqd.pas' {Pwqd},
   uXkPwSet in 'uXkPwSet.pas' {XkPwSet},
   uXkPwWorkSet in 'uXkPwWorkSet.pas' {XkPwWorkSet},
   uSelectZyKmPw in 'uSelectZyKmPw.pas' {SelectZyKmPw},
-  uSelectYxKdZy in 'uSelectYxKdZy.pas' {SelectYxKdZy},
-  uSunVote in 'uSunVote.pas' {Form2};
+  uSunVote in 'uSunVote.pas' {Form2},
+  uXkBkxxInfoEdit in 'uXkBkxxInfoEdit.pas' {XkBkxxInfoEdit};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

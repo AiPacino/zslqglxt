@@ -185,7 +185,7 @@ begin
 
     if (fEditType=1) and (Old_Kdmc<>edt_Kdmc.Text) then
     begin
-      dm.ExecSql('update 校考考生报考专业表 set 考点名称='+quotedstr(edt_Kdmc.Text)+' where 考点名称='+quotedstr(Old_Kdmc));
+      dm.ExecSql('update 校考考生信息表 set 考点名称='+quotedstr(edt_Kdmc.Text)+' where 考点名称='+quotedstr(Old_Kdmc));
     end;
   end;
 end;

@@ -50,7 +50,6 @@ type
     procedure Open_DeltaTable(const ShowHint:Boolean=False);
     procedure GetSfList;
     procedure GetXkZyList;
-    procedure GetYxList;
   public
     { Public declarations }
   end;
@@ -163,8 +162,7 @@ end;
 
 procedure TXkInfoBrowse.FormCreate(Sender: TObject);
 begin
-  GetYxList;
-  //Open_Table;
+  dm.GetYxList(cbb_Yx);
 end;
 
 procedure TXkInfoBrowse.GetSfList;
@@ -204,25 +202,6 @@ begin
   end;
 end;
 
-procedure TXkInfoBrowse.GetYxList;
-var
-  sList:TStrings;
-begin
-  sList := TStringList.Create;
-  try
-    cbb_Yx.Items.Clear;
-    if gb_Czy_Level<>'2' then
-    begin
-      sList.Add('艺术设计学院');
-      sList.Add('音乐学院');
-    end else
-      sList.Add(gb_Czy_Dept);
-    cbb_Yx.Items.AddStrings(sList);
-    cbb_Yx.ItemIndex := 1;
-  finally
-    sList.Free;
-  end;
-end;
 
 procedure TXkInfoBrowse.Open_DeltaTable(const ShowHint:Boolean=False);
 var
