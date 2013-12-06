@@ -1,10 +1,10 @@
 object XkInfoImport: TXkInfoImport
   Left = 0
   Top = 0
-  ActiveControl = DBGridEh2
+  ActiveControl = DBGridEh1
   Caption = #26657#32771#32771#29983#25253#32771#20449#24687#23548#20837
   ClientHeight = 595
-  ClientWidth = 870
+  ClientWidth = 902
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -29,13 +29,14 @@ object XkInfoImport: TXkInfoImport
   object pnl_Title: TPanel
     Left = 0
     Top = 0
-    Width = 870
+    Width = 902
     Height = 50
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 870
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -549,13 +550,14 @@ object XkInfoImport: TXkInfoImport
       Transparent = True
     end
     object grp_Yx: TGroupBox
-      Left = 693
+      Left = 725
       Top = 0
       Width = 177
       Height = 50
       Align = alRight
       Caption = #25215#32771#38498#31995#65306
       TabOrder = 0
+      ExplicitLeft = 693
       object cbb_Yx: TDBComboBoxEh
         Left = 12
         Top = 18
@@ -572,16 +574,17 @@ object XkInfoImport: TXkInfoImport
   object Panel2: TPanel
     Left = 0
     Top = 554
-    Width = 870
+    Width = 902
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 870
     DesignSize = (
-      870
+      902
       41)
     object btn_Exit: TBitBtn
-      Left = 777
+      Left = 809
       Top = 9
       Width = 75
       Height = 25
@@ -589,9 +592,10 @@ object XkInfoImport: TXkInfoImport
       Caption = #20851#38381'[&C]'
       TabOrder = 0
       OnClick = btn_ExitClick
+      ExplicitLeft = 777
     end
     object btn_Refresh: TBitBtn
-      Left = 16
+      Left = 6
       Top = 9
       Width = 75
       Height = 25
@@ -599,14 +603,15 @@ object XkInfoImport: TXkInfoImport
       TabOrder = 1
       OnClick = btn_RefreshClick
     end
-    object btn_Import: TBitBtn
-      Left = 624
+    object btn_Import_ksxx: TBitBtn
+      Left = 553
       Top = 9
-      Width = 126
+      Width = 110
       Height = 25
-      Caption = #32771#29983#25968#25454#23548#20837
+      Anchors = [akRight, akBottom]
+      Caption = #32771#29983#20449#24687#23548#20837
       TabOrder = 2
-      OnClick = btn_ImportClick
+      OnClick = btn_Import_ksxxClick
       Glyph.Data = {
         36060000424D3606000000000000360400002800000020000000100000000100
         08000000000000020000520B0000520B00000001000000000000000000003300
@@ -661,11 +666,12 @@ object XkInfoImport: TXkInfoImport
       NumGlyphs = 2
     end
     object btn_Empty: TBitBtn
-      Left = 279
+      Left = 404
       Top = 9
       Width = 126
       Height = 25
       Hint = #28165#31354#24403#21069#32771#28857#19979#30340#25152#26377#32771#29983#20449#24687
+      Anchors = [akRight, akBottom]
       Caption = #28165#31354#32771#29983#20449#24687
       ParentShowHint = False
       ShowHint = True
@@ -724,158 +730,67 @@ object XkInfoImport: TXkInfoImport
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
     end
-  end
-  object DBGridEh2: TDBGridEh
-    Left = 278
-    Top = 50
-    Width = 592
-    Height = 504
-    Align = alClient
-    DataGrouping.GroupLevels = <>
-    DataSource = DataSource2
-    EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
-    Flat = False
-    FooterColor = clWindow
-    FooterFont.Charset = DEFAULT_CHARSET
-    FooterFont.Color = clWindowText
-    FooterFont.Height = -12
-    FooterFont.Name = 'Tahoma'
-    FooterFont.Style = []
-    ImeMode = imDisable
-    OddRowColor = 13823456
-    Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
-    PopupMenu = pm1
-    ReadOnly = True
-    RowDetailPanel.Color = clBtnFace
-    SortLocal = True
-    TabOrder = 2
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -12
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    VertScrollBar.VisibleMode = sbAlwaysShowEh
-    Columns = <
-      item
-        EditButtons = <>
-        FieldName = 'Id'
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #30465#20221
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #32771#29983#21495
-        Footers = <>
-        Title.TitleButton = True
-        Width = 119
-      end
-      item
-        EditButtons = <>
-        FieldName = #20934#32771#35777#21495
-        Footers = <>
-        Title.TitleButton = True
-        Width = 90
-      end
-      item
-        EditButtons = <>
-        FieldName = #36523#20221#35777#21495
-        Footers = <>
-        Title.TitleButton = True
-        Width = 130
-      end
-      item
-        EditButtons = <>
-        FieldName = #22995#21517
-        Footers = <>
-        Title.TitleButton = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #24615#21035
-        Footers = <>
-        Title.TitleButton = True
-        Width = 42
-      end
-      item
-        EditButtons = <>
-        FieldName = #25215#32771#38498#31995
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #19987#19994
-        Footers = <>
-        Title.TitleButton = True
-        Width = 82
-      end
-      item
-        EditButtons = <>
-        FieldName = #23618#27425
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #25253#32771#26102#38388
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #32771#35797#26102#38388
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #32771#28857#21517#31216
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-        Width = 139
-      end
-      item
-        EditButtons = <>
-        FieldName = #25104#32489
-        Footers = <>
-        Title.TitleButton = True
-        Visible = False
-      end
-      item
-        EditButtons = <>
-        FieldName = #32852#31995#30005#35805
-        Footers = <>
-        Title.TitleButton = True
-      end
-      item
-        EditButtons = <>
-        FieldName = #37038#25919#32534#30721
-        Footers = <>
-        Title.TitleButton = True
-        Width = 61
-      end
-      item
-        EditButtons = <>
-        FieldName = #36890#20449#22320#22336
-        Footers = <>
-        Title.TitleButton = True
-        Width = 154
-      end>
-    object RowDetailData: TRowDetailPanelControlEh
+    object btn_Import_bkxx: TBitBtn
+      Left = 673
+      Top = 9
+      Width = 110
+      Height = 25
+      Anchors = [akRight, akBottom]
+      Caption = #25253#32771#20449#24687#23548#20837
+      TabOrder = 4
+      OnClick = btn_Import_bkxxClick
+      Glyph.Data = {
+        36060000424D3606000000000000360400002800000020000000100000000100
+        08000000000000020000520B0000520B00000001000000000000000000003300
+        00006600000099000000CC000000FF0000000033000033330000663300009933
+        0000CC330000FF33000000660000336600006666000099660000CC660000FF66
+        000000990000339900006699000099990000CC990000FF99000000CC000033CC
+        000066CC000099CC0000CCCC0000FFCC000000FF000033FF000066FF000099FF
+        0000CCFF0000FFFF000000003300330033006600330099003300CC003300FF00
+        330000333300333333006633330099333300CC333300FF333300006633003366
+        33006666330099663300CC663300FF6633000099330033993300669933009999
+        3300CC993300FF99330000CC330033CC330066CC330099CC3300CCCC3300FFCC
+        330000FF330033FF330066FF330099FF3300CCFF3300FFFF3300000066003300
+        66006600660099006600CC006600FF0066000033660033336600663366009933
+        6600CC336600FF33660000666600336666006666660099666600CC666600FF66
+        660000996600339966006699660099996600CC996600FF99660000CC660033CC
+        660066CC660099CC6600CCCC6600FFCC660000FF660033FF660066FF660099FF
+        6600CCFF6600FFFF660000009900330099006600990099009900CC009900FF00
+        990000339900333399006633990099339900CC339900FF339900006699003366
+        99006666990099669900CC669900FF6699000099990033999900669999009999
+        9900CC999900FF99990000CC990033CC990066CC990099CC9900CCCC9900FFCC
+        990000FF990033FF990066FF990099FF9900CCFF9900FFFF99000000CC003300
+        CC006600CC009900CC00CC00CC00FF00CC000033CC003333CC006633CC009933
+        CC00CC33CC00FF33CC000066CC003366CC006666CC009966CC00CC66CC00FF66
+        CC000099CC003399CC006699CC009999CC00CC99CC00FF99CC0000CCCC0033CC
+        CC0066CCCC0099CCCC00CCCCCC00FFCCCC0000FFCC0033FFCC0066FFCC0099FF
+        CC00CCFFCC00FFFFCC000000FF003300FF006600FF009900FF00CC00FF00FF00
+        FF000033FF003333FF006633FF009933FF00CC33FF00FF33FF000066FF003366
+        FF006666FF009966FF00CC66FF00FF66FF000099FF003399FF006699FF009999
+        FF00CC99FF00FF99FF0000CCFF0033CCFF0066CCFF0099CCFF00CCCCFF00FFCC
+        FF0000FFFF0033FFFF0066FFFF0099FFFF00CCFFFF00FFFFFF00000080000080
+        000000808000800000008000800080800000C0C0C00080808000191919004C4C
+        4C00B2B2B200E5E5E5005A1E1E00783C3C0096646400C8969600FFC8C800465F
+        82005591B9006EB9D7008CD2E600B4E6F000D8E9EC0099A8AC00646F7100E2EF
+        F100C56A31000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000EEEEEEEEEEEE
+        EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE09
+        09090909EEEEEEEEEEEEEEEEEEEEEE8181818181EEEEEEEEEEEEEEEEEEEEEE09
+        10101009EEEEEEEEEEEEEEEEEEEEEE81ACACAC81EEEEEEEEEEEEEEEEEEEEEE09
+        10101009EEEEEEEEEEEEEEEEEEEEEE81ACACAC81EEEEEEEEEEEEEEEEEEEEEE09
+        10101009EEEEEEEEEEEEEEEEEEEEEE81ACACAC81EEEEEEEEEEEEEEEEEEEEEE09
+        10101009EEEEEEEEEEEEEEEEEEEEEE81ACACAC81EEEEEEEEEEEEEEEEEEEEEE09
+        10101009EEEEEEEEEEEEEEEEEEEEEE81ACACAC81EEEEEEEEEEEEEEEE09090909
+        10101009090909EEEEEEEEEE81818181ACACAC81818181EEEEEEEEEE09101010
+        10101010101009EEEEEEEEEE81ACACACACACACACACAC81EEEEEEEEEE09101010
+        10101010101009EEEEEEEEEE81ACACACACACACACACAC81EEEEEEEEEEEE091010
+        101010101009EEEEEEEEEEEEEE81ACACACACACACAC81EEEEEEEEEEEEEEEE0910
+        1010101009EEEEEEEEEEEEEEEEEE81ACACACACAC81EEEEEEEEEEEEEEEEEEEE09
+        10101009EEEEEEEEEEEEEEEEEEEEEE81ACACAC81EEEEEEEEEEEEEEEEEEEEEEEE
+        091009EEEEEEEEEEEEEEEEEEEEEEEEEE81AC81EEEEEEEEEEEEEEEEEEEEEEEEEE
+        EE09EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE81EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
+      NumGlyphs = 2
     end
   end
   object DBGridEh1: TDBGridEh
@@ -884,6 +799,7 @@ object XkInfoImport: TXkInfoImport
     Width = 275
     Height = 504
     Align = alLeft
+    ColumnDefValues.Layout = tlCenter
     DataGrouping.GroupLevels = <>
     DataSource = DataSource1
     EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
@@ -896,18 +812,20 @@ object XkInfoImport: TXkInfoImport
     FooterFont.Style = []
     ImeMode = imDisable
     OddRowColor = 13823456
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]
     PopupMenu = DM.PopupMenu1
     ReadOnly = True
     RowDetailPanel.Color = clBtnFace
+    RowHeight = 25
     SortLocal = True
-    TabOrder = 3
+    TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -12
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    TitleHeight = 25
     VertScrollBar.VisibleMode = sbAlwaysShowEh
     Columns = <
       item
@@ -1007,6 +925,224 @@ object XkInfoImport: TXkInfoImport
     object RowDetailData: TRowDetailPanelControlEh
     end
   end
+  object pnl1: TPanel
+    Left = 278
+    Top = 50
+    Width = 624
+    Height = 504
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 3
+    ExplicitLeft = 688
+    ExplicitTop = 480
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object grp1: TGroupBox
+      Left = 0
+      Top = 0
+      Width = 624
+      Height = 344
+      Align = alClient
+      Caption = #32771#29983#22522#26412#20449#24687#65306
+      TabOrder = 0
+      ExplicitWidth = 592
+      ExplicitHeight = 321
+      object DBGridEh2: TDBGridEh
+        Left = 2
+        Top = 16
+        Width = 620
+        Height = 326
+        Align = alClient
+        ColumnDefValues.Layout = tlCenter
+        DataGrouping.GroupLevels = <>
+        DataSource = ds_ksxx
+        EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
+        Flat = False
+        FooterColor = clWindow
+        FooterFont.Charset = DEFAULT_CHARSET
+        FooterFont.Color = clWindowText
+        FooterFont.Height = -12
+        FooterFont.Name = 'Tahoma'
+        FooterFont.Style = []
+        FrozenCols = 1
+        OddRowColor = 13823456
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+        OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]
+        PopupMenu = pm1
+        ReadOnly = True
+        RowDetailPanel.Color = clBtnFace
+        RowHeight = 25
+        SortLocal = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        TitleHeight = 25
+        VertScrollBar.VisibleMode = sbAlwaysShowEh
+        Columns = <
+          item
+            EditButtons = <>
+            FieldName = #22995#21517
+            Footers = <>
+            Title.TitleButton = True
+          end
+          item
+            EditButtons = <>
+            FieldName = #24615#21035
+            Footers = <>
+            Title.TitleButton = True
+            Width = 29
+          end
+          item
+            EditButtons = <>
+            FieldName = #32771#29983#21495
+            Footers = <>
+            Title.TitleButton = True
+            Width = 111
+          end
+          item
+            EditButtons = <>
+            FieldName = #20934#32771#35777#21495
+            Footers = <>
+            Title.TitleButton = True
+            Width = 95
+          end
+          item
+            EditButtons = <>
+            FieldName = #36523#20221#35777#21495
+            Footers = <>
+            Title.TitleButton = True
+            Width = 141
+          end
+          item
+            EditButtons = <>
+            FieldName = #32852#31995#30005#35805
+            Footers = <>
+            Title.TitleButton = True
+          end
+          item
+            EditButtons = <>
+            FieldName = #27605#19994#20013#23398
+            Footers = <>
+            Title.TitleButton = True
+            Width = 154
+          end
+          item
+            EditButtons = <>
+            FieldName = #37038#25919#32534#30721
+            Footers = <>
+            Title.TitleButton = True
+            Width = 62
+          end
+          item
+            EditButtons = <>
+            FieldName = #36890#20449#22320#22336
+            Footers = <>
+            Title.TitleButton = True
+            Width = 205
+          end
+          item
+            EditButtons = <>
+            FieldName = #22791#27880
+            Footers = <>
+            Title.TitleButton = True
+            Width = 177
+          end>
+        object RowDetailData: TRowDetailPanelControlEh
+        end
+      end
+    end
+    object grp2: TGroupBox
+      Left = 0
+      Top = 344
+      Width = 624
+      Height = 160
+      Align = alBottom
+      Caption = #32771#29983#25253#32771#20449#24687#65306
+      TabOrder = 1
+      ExplicitWidth = 592
+      object DBGridEh3: TDBGridEh
+        Left = 2
+        Top = 16
+        Width = 620
+        Height = 142
+        Align = alClient
+        ColumnDefValues.Layout = tlCenter
+        DataGrouping.GroupLevels = <>
+        DataSource = ds_bkxx
+        EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
+        Flat = False
+        FooterColor = clWindow
+        FooterFont.Charset = DEFAULT_CHARSET
+        FooterFont.Color = clWindowText
+        FooterFont.Height = -12
+        FooterFont.Name = 'Tahoma'
+        FooterFont.Style = []
+        OddRowColor = 13823456
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+        OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]
+        PopupMenu = pm1
+        ReadOnly = True
+        RowDetailPanel.Color = clBtnFace
+        RowHeight = 25
+        SortLocal = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        TitleHeight = 25
+        VertScrollBar.VisibleMode = sbAlwaysShowEh
+        Columns = <
+          item
+            EditButtons = <>
+            FieldName = 'Id'
+            Footers = <>
+            Title.TitleButton = True
+            Visible = False
+          end
+          item
+            EditButtons = <>
+            FieldName = #32771#29983#21495
+            Footers = <>
+            Title.TitleButton = True
+            Width = 107
+          end
+          item
+            EditButtons = <>
+            FieldName = #19987#19994
+            Footers = <>
+            Title.TitleButton = True
+            Width = 219
+          end
+          item
+            EditButtons = <>
+            FieldName = #23618#27425
+            Footers = <>
+            Title.TitleButton = True
+          end
+          item
+            DisplayFormat = 'yyyy-mm-dd hh:nn:ss'
+            EditButtons = <>
+            FieldName = #25253#32771#26102#38388
+            Footers = <>
+            Title.TitleButton = True
+          end
+          item
+            DisplayFormat = 'yyyy-mm-dd hh:nn:ss'
+            EditButtons = <>
+            FieldName = #32771#35797#26102#38388
+            Footers = <>
+            Title.TitleButton = True
+          end>
+        object RowDetailData: TRowDetailPanelControlEh
+        end
+      end
+    end
+  end
   object DataSource1: TDataSource
     DataSet = ClientDataSet1
     OnDataChange = DataSource1DataChange
@@ -1020,18 +1156,19 @@ object XkInfoImport: TXkInfoImport
     Left = 160
     Top = 296
   end
-  object DataSource2: TDataSource
-    DataSet = ClientDataSet2
-    Left = 752
-    Top = 328
+  object ds_ksxx: TDataSource
+    DataSet = cds_ksxx
+    OnDataChange = ds_ksxxDataChange
+    Left = 424
+    Top = 136
   end
-  object ClientDataSet2: TClientDataSet
+  object cds_ksxx: TClientDataSet
     Aggregates = <>
-    CommandText = 'select * from '#26657#32771#32771#29983#25253#32771#19987#19994#34920
+    CommandText = 'select * from '#26657#32771#32771#29983#20449#24687#34920
     Params = <>
-    OnNewRecord = ClientDataSet2NewRecord
-    Left = 784
-    Top = 328
+    OnNewRecord = cds_ksxxNewRecord
+    Left = 456
+    Top = 136
   end
   object pm1: TPopupMenu
     OnPopup = pm1Popup
@@ -1063,5 +1200,18 @@ object XkInfoImport: TXkInfoImport
     object E1: TMenuItem
       Action = DM.act_DataExport
     end
+  end
+  object ds_bkxx: TDataSource
+    DataSet = cds_bkxx
+    Left = 496
+    Top = 480
+  end
+  object cds_bkxx: TClientDataSet
+    Aggregates = <>
+    CommandText = 'select * from '#26657#32771#32771#29983#25253#32771#19987#19994#34920
+    Params = <>
+    OnNewRecord = cds_ksxxNewRecord
+    Left = 528
+    Top = 480
   end
 end

@@ -111,6 +111,9 @@ type
     dxbrbtn1: TdxBarButton;
     act_Cj_pwset: TAction;
     dxbrbtn2: TdxBarButton;
+    dxbrbtn3: TdxBarButton;
+    act_XkkdConfirm: TAction;
+    dxbrbtn4: TdxBarButton;
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
     procedure mmi_PrnLQTZSClick(Sender: TObject);
@@ -159,6 +162,7 @@ type
     procedure act_Cj_PwpfExecute(Sender: TObject);
     procedure act_Cj_pwsetExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure act_XkkdConfirmExecute(Sender: TObject);
   private
     { Private declarations }
     IsShowHint:Boolean;
@@ -448,6 +452,11 @@ begin
   ShowMdiChildForm(TXkKdBrowse);
 end;
 
+procedure TMain.act_XkkdConfirmExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TXkKdSetConfirm);
+end;
+
 procedure TMain.act_XkKdSetExecute(Sender: TObject);
 var
   sMsg:string;
@@ -460,7 +469,7 @@ begin
         MessageBox(Handle, '当前不在考点申报时间之内，不能进行考点申报业务处理！　',
                 '系统提示', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2 + MB_TOPMOST);
       end;
-      //if (gb_Czy_Level<>'-1') then
+      if (gb_Czy_Level<>'-1') then
         Exit;
     end;
 
@@ -477,7 +486,7 @@ begin
     end;
 }
   finally
-    IsShowHint := True;
+    //IsShowHint := True;
   end;
 end;
 

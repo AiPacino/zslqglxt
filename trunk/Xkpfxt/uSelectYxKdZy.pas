@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls,DBClient, DB;
+  Dialogs, StdCtrls, Buttons, ExtCtrls,DBClient, DB, Mask, DBCtrlsEh;
 
 type
   TSelectYxKdZy = class(TForm)
-    cbb_yx: TComboBox;
+    cbb_yx: TDBComboBoxEh;
     cbb_Kd: TComboBox;
     cbb_Zy: TComboBox;
     lbl1: TLabel;
@@ -21,6 +21,7 @@ type
     procedure cbb_yxChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbb_KdChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure InitKdZyList(const yx:string);
@@ -53,6 +54,11 @@ end;
 procedure TSelectYxKdZy.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
+end;
+
+procedure TSelectYxKdZy.FormCreate(Sender: TObject);
+begin
+  dm.GetYxList(cbb_yx);
 end;
 
 procedure TSelectYxKdZy.InitKdZyList(const yx: string);

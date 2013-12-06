@@ -1,4 +1,4 @@
-unit uXkInfoEdit;
+unit uXkKsxxInfoEdit;
 
 interface
 
@@ -9,7 +9,7 @@ uses
   Spin;
 
 type
-  TXkInfoEdit = class(TForm)
+  TXkKsxxInfoEdit = class(TForm)
     Panel2: TPanel;
     btn_Exit: TBitBtn;
     GroupBox1: TGroupBox;
@@ -25,15 +25,12 @@ type
     edt_Zkzh: TDBEditEh;
     lbl2: TLabel;
     lbl3: TLabel;
-    edt_zy: TDBComboBoxEh;
     lbl4: TLabel;
     DBEditEh3: TDBEditEh;
-    lbl5: TLabel;
     DBEditEh4: TDBEditEh;
     lbl6: TLabel;
     DBEditEh5: TDBEditEh;
     lbl7: TLabel;
-    lbl8: TLabel;
     cbb_1: TDBComboBoxEh;
     lbl_Len: TLabel;
     edt_Length: TDBNumberEditEh;
@@ -48,7 +45,7 @@ type
     procedure SaveInfoToIni;
   public
     { Public declarations }
-    procedure SetParam(const Zkzh:string;const IsAdd:Boolean);
+    procedure SetParam(const Ksh:string;const IsAdd:Boolean);
   end;
 
 implementation
@@ -56,51 +53,51 @@ uses uDM,uXkInfoInput,IniFiles;
 {$R *.dfm}
 
 
-procedure TXkInfoEdit.btn_ExitClick(Sender: TObject);
+procedure TXkKsxxInfoEdit.btn_ExitClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TXkInfoEdit.btn_SaveClick(Sender: TObject);
+procedure TXkKsxxInfoEdit.btn_SaveClick(Sender: TObject);
 var
   cds_Temp:TClientDataSet;
 begin
-  if (edt_Zkzh.Text='') or (edt_xm.Text='') or (edt_zy.Text='') then
+  if (edt_Ksh.Text='') or (edt_xm.Text='') then
   begin
-    Application.MessageBox('准考证号、姓名和报考专业不能为空！　', '系统提示', MB_OK + MB_ICONSTOP);
+    Application.MessageBox('考生号和姓名不能为空！　', '系统提示', MB_OK + MB_ICONSTOP);
     Exit;
   end;
   cds_Temp := TClientDataSet(edt_Zkzh.DataSource.DataSet);
   if IsModified(cds_Temp) then
-    if dm.UpdateData('id','select top 0 * from 校考考生报考专业表 ',cds_Temp.Delta) then
+    if dm.UpdateData('id','select top 0 * from 校考考生信息表 ',cds_Temp.Delta) then
     begin
       cds_Temp.MergeChangeLog;
       Self.Close;
     end;
 end;
 
-procedure TXkInfoEdit.edt_ZkzhChange(Sender: TObject);
+procedure TXkKsxxInfoEdit.edt_ZkzhChange(Sender: TObject);
 begin
-  btn_Save.Enabled := (edt_Zkzh.Text<>'') and (edt_Xm.Text<>'') and (edt_zy.Text<>'');
+  btn_Save.Enabled := (edt_Ksh.Text<>'') and (edt_Xm.Text<>'');
 end;
 
-procedure TXkInfoEdit.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TXkKsxxInfoEdit.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   edt_Zkzh.DataSource.DataSet.Cancel;
   SaveInfoToIni;
 end;
 
-procedure TXkInfoEdit.FormShow(Sender: TObject);
+procedure TXkKsxxInfoEdit.FormShow(Sender: TObject);
 begin
   if (edt_Zkzh.Text='') then
     LoadInfoFromIni;
-  if edt_Zkzh.Enabled then
-    edt_Zkzh.SetFocus
+  if edt_Ksh.Enabled then
+    edt_Ksh.SetFocus
   else
-    edt_Ksh.SetFocus;
+    edt_Zkzh.SetFocus;
 end;
 
-procedure TXkInfoEdit.LoadInfoFromIni;
+procedure TXkKsxxInfoEdit.LoadInfoFromIni;
 var
   fn,str:string;
   iLen:Integer;
@@ -112,14 +109,14 @@ begin
     str := ReadString(Self.Name,'保留查询值','');
     edt_Length.Value := ReadInteger(Self.Name,'保留位数',0);
     iLen := edt_Length.Value;
-    edt_Zkzh.Text := Copy(str,1,iLen);
-    edt_Zkzh.SelStart := edt_Length.Value;
-    edt_Zkzh.SelLength := 0;
+    edt_Ksh.Text := Copy(str,1,iLen);
+    edt_Ksh.SelStart := edt_Length.Value;
+    edt_Ksh.SelLength := 0;
     Free;
   end;
 end;
 
-procedure TXkInfoEdit.SaveInfoToIni;
+procedure TXkKsxxInfoEdit.SaveInfoToIni;
 var
   fn:string;
 begin
@@ -127,27 +124,27 @@ begin
   if not FileExists(fn) then Exit;
   with TIniFile.Create(fn) do
   begin
-    WriteString(Self.Name,'保留查询值',edt_Zkzh.Text);
+    WriteString(Self.Name,'保留查询值',edt_Ksh.Text);
     WriteInteger(Self.Name,'保留位数',edt_Length.Value);
     Free;
   end;
 end;
 
-procedure TXkInfoEdit.SetParam(const Zkzh:string;const IsAdd:Boolean);
+procedure TXkKsxxInfoEdit.SetParam(const Ksh:string;const IsAdd:Boolean);
 var
-  vzkzh:string;
+  vKsh:string;
 begin
   if IsAdd then
   begin
-    edt_Zkzh.DataSource.DataSet.Append;
-    vzkzh := ''
+    edt_Ksh.DataSource.DataSet.Append;
+    vKsh := ''
   end else
   begin
-    edt_Zkzh.DataSource.DataSet.Edit;
-    vzkzh := Zkzh;
+    edt_Ksh.DataSource.DataSet.Edit;
+    vKsh := Ksh;
   end;
-  edt_Zkzh.Text := vzkzh;
-  edt_Zkzh.Enabled := IsAdd;
+  edt_Ksh.Text := vKsh;
+  edt_Ksh.Enabled := IsAdd;
 end;
 
 end.

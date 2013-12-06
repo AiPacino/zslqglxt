@@ -403,7 +403,7 @@ begin
   fSf := sf;
   fKdmc := kdmc;
   fYx := Yx;
-  Self.Caption := '【'+fSf+'|'+fKdmc+'】校考考生报考信息导入';
+  Self.Caption := '【'+fSf+'|'+fKdmc+'】信息导入';
   cds_Temp.XMLData := sData;
   Init_Desc;
 end;

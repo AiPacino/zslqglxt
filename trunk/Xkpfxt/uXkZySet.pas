@@ -39,7 +39,6 @@ type
     { Private declarations }
     function  GetWhere:string;
     procedure Open_Table;
-    procedure GetYxList;
   public
     { Public declarations }
   end;
@@ -119,7 +118,7 @@ end;
 
 procedure TXkZySet.FormCreate(Sender: TObject);
 begin
-  GetYxList;
+  dm.GetYxList(cbb_Yx);
   Open_Table;
 end;
 
@@ -132,28 +131,6 @@ begin
   else
     sWhere := ' where 1>0';
   Result := sWhere;
-end;
-
-procedure TXkZySet.GetYxList;
-var
-  sList:TStrings;
-begin
-  sList := TStringList.Create;
-  try
-    cbb_Yx.Items.Clear;
-    if gb_Czy_Level<>'2' then
-    begin
-      //dm.GetAllYxList(sList);
-      //cbb_Yx.Items.Add('不限院系');
-      sList.Add('艺术设计学院');
-      sList.Add('音乐学院');
-    end else
-      sList.Add(gb_Czy_Dept);
-    cbb_Yx.Items.AddStrings(sList);
-    cbb_Yx.ItemIndex := 0;
-  finally
-    sList.Free;
-  end;
 end;
 
 procedure TXkZySet.Open_Table;

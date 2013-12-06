@@ -99,6 +99,8 @@ type
       const BaseTag: WideString; KeyID, CommitOK: Integer;
       const KeyValue: WideString);
     procedure FormDestroy(Sender: TObject);
+    procedure DBGridEh2GetCellParams(Sender: TObject; Column: TColumnEh;
+      AFont: TFont; var Background: TColor; State: TGridDrawState);
   private
     { Private declarations }
     aKsh:string;
@@ -289,6 +291,19 @@ begin
   InitLabelList;
 end;
 
+procedure TXkpf.DBGridEh2GetCellParams(Sender: TObject; Column: TColumnEh;
+  AFont: TFont; var Background: TColor; State: TGridDrawState);
+begin
+  if Column.FieldName = '成绩' then
+  begin
+    if cds_Cj.FieldByName('提交时间').IsNull then
+      AFont.Color := clBlue
+    else
+      AFont.Color := clGray;
+  end;
+
+end;
+
 procedure TXkpf.DestroyLabelList;
 var
   i: Integer;
@@ -465,13 +480,14 @@ begin
   cds_tmp := TClientDataSet.Create(nil);
   try
     sqlstr := 'SELECT 考试科目,avg(成绩) as 成绩 FROM 校考科目现场评分表'+
-              ' where 进场号='+quotedstr(aRch)+' group by [考试科目]';
+              ' where 进场号='+quotedstr(aRch)+' and 省份='+quotedstr(aSf)+
+              ' and 考点名称='+quotedstr(aKd)+' group by 考试科目';
     cds_tmp.XMLData := dm.OpenData(sqlstr);
     lbl_Cj.Caption := '';
     while not cds_tmp.eof do
     begin
       km := cds_tmp.Fields[0].AsString;
-      cj := Format('%.3f',[cds_tmp.Fields[1].AsFloat]);
+      cj := Format('%.2f',[cds_tmp.Fields[1].AsFloat]);
       lbl_Cj.Caption := lbl_Cj.Caption+km+#13+cj+#13+#13;
       cds_tmp.Next;
     end;

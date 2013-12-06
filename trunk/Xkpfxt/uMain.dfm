@@ -314,7 +314,7 @@ object Main: TMain
     Left = 520
     Top = 39
     Bitmap = {
-      494C010105000700680010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101050007006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000848484008484
       8400848484008484840084848400848484008484840084848400848484008484
@@ -603,7 +603,7 @@ object Main: TMain
       'http://vir.jxstnu.edu.cn/jcgl/')
     InfoFileURL = 'http://vir.jxstnu.edu.cn/Jcgl/download/AutoUpdte.inf'
     VersionControl = byNumber
-    VersionDate = '2013-12-05 00:00:00'
+    VersionDate = '12/06/2013'
     VersionDateAutoSet = True
     Left = 680
     Top = 40
@@ -853,7 +853,7 @@ object Main: TMain
     object act_Data_XkKdTimeSet: TAction
       Category = '03.'#32771#28857#35774#32622
       Caption = #30003#35831#26102#38388#35774#32622
-      ImageIndex = 6
+      ImageIndex = 8
       OnExecute = act_Data_XkKdTimeSetExecute
     end
     object act_XkZySet: TAction
@@ -877,8 +877,14 @@ object Main: TMain
     object act_XkKdSet: TAction
       Category = '03.'#32771#28857#35774#32622
       Caption = #32771#28857#20449#24687#35774#32622
-      ImageIndex = 4
+      ImageIndex = 14
       OnExecute = act_XkKdSetExecute
+    end
+    object act_XkkdConfirm: TAction
+      Category = '03.'#32771#28857#35774#32622
+      Caption = #32771#28857#20449#24687#23457#26680
+      ImageIndex = 16
+      OnExecute = act_XkkdConfirmExecute
     end
     object act_XkKdBrowse: TAction
       Category = '03.'#32771#28857#35774#32622
@@ -888,20 +894,20 @@ object Main: TMain
     end
     object act_XkData_Init: TAction
       Category = '04.'#32771#29983#31649#29702
-      Caption = #28165#31354#25253#32771#25968#25454
-      ImageIndex = 24
+      Caption = #26684#24335#21270#25253#32771#25968#25454
+      ImageIndex = 5
       OnExecute = act_XkData_InitExecute
     end
     object act_XkData_Import: TAction
       Category = '04.'#32771#29983#31649#29702
       Caption = #25253#32771#20449#24687#23548#20837
-      ImageIndex = 20
+      ImageIndex = 32
       OnExecute = act_XkData_ImportExecute
     end
     object act_XkData_Edit: TAction
       Category = '04.'#32771#29983#31649#29702
       Caption = #25253#32771#20449#24687#24405#20837
-      ImageIndex = 5
+      ImageIndex = 27
       OnExecute = act_XkData_EditExecute
     end
     object act_XkData_ExceptEdit: TAction
@@ -918,7 +924,7 @@ object Main: TMain
     object act_XkData_Tjfx: TAction
       Category = '04.'#32771#29983#31649#29702
       Caption = #25253#32771#19987#19994#32479#35745
-      ImageIndex = 4
+      ImageIndex = 18
       OnExecute = act_XkData_TjfxExecute
     end
     object act_Cj_pwset: TAction
@@ -1146,6 +1152,18 @@ object Main: TMain
         end
         item
           Visible = True
+          ItemName = 'dxbrbtn3'
+        end
+        item
+          Visible = True
+          ItemName = 'dxbrbtn4'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarSeparator1'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton39'
         end>
     end
@@ -1319,6 +1337,14 @@ object Main: TMain
       Action = act_Data_XkKdTimeSet
       Category = 3
     end
+    object dxbrbtn3: TdxBarButton
+      Action = act_XkKdSet
+      Category = 3
+    end
+    object dxbrbtn4: TdxBarButton
+      Action = act_XkkdConfirm
+      Category = 3
+    end
     object dxBarButton39: TdxBarButton
       Action = act_XkKdBrowse
       Category = 3
@@ -1433,7 +1459,7 @@ object Main: TMain
     Left = 550
     Top = 40
     Bitmap = {
-      494C010124002600900010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010124002600940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0000000010020000000000000A0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

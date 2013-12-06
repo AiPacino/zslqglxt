@@ -793,6 +793,7 @@ object XkKdSetConfirm: TXkKdSetConfirm
     Width = 870
     Height = 504
     Align = alClient
+    ColumnDefValues.Layout = tlCenter
     DataGrouping.GroupLevels = <>
     DataSource = DataSource1
     EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
@@ -805,10 +806,11 @@ object XkKdSetConfirm: TXkKdSetConfirm
     FooterFont.Style = []
     ImeMode = imDisable
     OddRowColor = 13823456
-    Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]
     PopupMenu = pm1
     RowDetailPanel.Color = clBtnFace
+    RowHeight = 25
     SortLocal = True
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
@@ -816,6 +818,7 @@ object XkKdSetConfirm: TXkKdSetConfirm
     TitleFont.Height = -12
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    TitleHeight = 25
     VertScrollBar.VisibleMode = sbAlwaysShowEh
     Columns = <
       item
@@ -842,7 +845,14 @@ object XkKdSetConfirm: TXkKdSetConfirm
         Footers = <>
         ReadOnly = True
         Title.TitleButton = True
-        Width = 120
+        Width = 213
+      end
+      item
+        EditButtons = <>
+        FieldName = #22320#22336
+        Footers = <>
+        Title.TitleButton = True
+        Width = 247
       end
       item
         DisplayFormat = 'yyyy-mm-dd'
@@ -926,8 +936,8 @@ object XkKdSetConfirm: TXkKdSetConfirm
     Aggregates = <>
     CommandText = 'select * from '#26657#32771#32771#28857#35774#32622#34920
     Params = <>
-    ProviderName = 'DSP_Query'
-    RemoteServer = DM.SoapConnection1
+    ProviderName = 'DSP_Open'
+    RemoteServer = DM.con_Local
     BeforePost = ClientDataSet1BeforePost
     OnNewRecord = ClientDataSet1NewRecord
     Left = 288
@@ -943,6 +953,10 @@ object XkKdSetConfirm: TXkKdSetConfirm
     object ClientDataSet1StringField3: TStringField
       FieldName = #32771#28857#21517#31216
       Size = 50
+    end
+    object ClientDataSet1StringField2: TStringField
+      FieldName = #22320#22336
+      Size = 100
     end
     object ClientDataSet1DateTimeField: TDateTimeField
       FieldName = #25253#32771#24320#22987#26102#38388

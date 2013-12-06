@@ -684,6 +684,7 @@ object XkKdBrowse: TXkKdBrowse
     Width = 872
     Height = 506
     Align = alClient
+    ColumnDefValues.Layout = tlCenter
     DataGrouping.GroupLevels = <>
     DataSource = DataSource1
     EditActions = [geaCutEh, geaCopyEh, geaPasteEh, geaDeleteEh]
@@ -696,10 +697,11 @@ object XkKdBrowse: TXkKdBrowse
     FooterFont.Style = []
     ImeMode = imDisable
     OddRowColor = 13823456
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+    OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghEnterAsTab, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
     PopupMenu = DM.PopupMenu1
     ReadOnly = True
     RowDetailPanel.Color = clBtnFace
+    RowHeight = 25
     SortLocal = True
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
@@ -707,6 +709,7 @@ object XkKdBrowse: TXkKdBrowse
     TitleFont.Height = -12
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    TitleHeight = 25
     VertScrollBar.VisibleMode = sbAlwaysShowEh
     Columns = <
       item
@@ -723,6 +726,13 @@ object XkKdBrowse: TXkKdBrowse
         Footers = <>
         Title.TitleButton = True
         Width = 129
+      end
+      item
+        EditButtons = <>
+        FieldName = #22320#22336
+        Footers = <>
+        Title.TitleButton = True
+        Width = 216
       end
       item
         AlwaysShowEditButton = True
@@ -802,7 +812,6 @@ object XkKdBrowse: TXkKdBrowse
     CommandText = 'select * from '#26657#32771#32771#28857#35774#32622#34920
     Params = <>
     ProviderName = 'DSP_Query'
-    RemoteServer = DM.SoapConnection1
     Left = 288
     Top = 200
   end

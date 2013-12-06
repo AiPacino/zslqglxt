@@ -48,7 +48,6 @@ type
     procedure Open_Table;
     procedure GetSfList;
     procedure GetXkZyList;
-    procedure GetYxList;
   public
     { Public declarations }
   end;
@@ -110,9 +109,12 @@ begin
     ClientDataSet1.First;
     while not ClientDataSet1.Eof do
     begin
-      ClientDataSet1.Edit;
-      ClientDataSet1.FieldByName('状态').asstring := '审核中';
-      ClientDataSet1.Post;
+      if ClientDataSet1.FieldByName('状态').asstring = '编辑中' then
+      begin
+        ClientDataSet1.Edit;
+        ClientDataSet1.FieldByName('状态').asstring := '审核中';
+        ClientDataSet1.Post;
+      end;
       ClientDataSet1.Next;
     end;
     btn_Save.Click;
@@ -214,7 +216,7 @@ procedure TXkKdSet.FormCreate(Sender: TObject);
 begin
   XkKdEdit := TXkKdEdit.Create(nil);
   XkKdEdit.DataSource1.DataSet := ClientDataSet1;
-  GetYxList;
+  dm.GetYxList(cbb_Yx);
   Open_Table;
   GetSfList;
 end;
@@ -232,10 +234,7 @@ function TXkKdSet.GetWhere: string;
 var
   sWhere:string;
 begin
-  if cbb_Yx.ItemIndex<>-1 then
-    sWhere := ' where 状态<>'+quotedstr('已审核')+' and 承考院系='+quotedstr(cbb_Yx.Text)
-  else
-    sWhere := ' where 状态<>'+quotedstr('已审核');
+  sWhere := ' where 承考院系='+quotedstr(cbb_Yx.Text);//+' and 状态<>'+quotedstr('已审核')
   Result := sWhere;
 end;
 
@@ -261,31 +260,11 @@ begin
   end;
 end;
 
-procedure TXkKdSet.GetYxList;
-var
-  sList:TStrings;
-begin
-  sList := TStringList.Create;
-  try
-    cbb_Yx.Items.Clear;
-    if gb_Czy_Level<>'2' then
-    begin
-      sList.Add('艺术设计学院');
-      sList.Add('音乐学院');
-    end else
-      sList.Add(gb_Czy_Dept);
-    cbb_Yx.Items.AddStrings(sList);
-    cbb_Yx.ItemIndex := 1;
-  finally
-    sList.Free;
-  end;
-end;
-
 procedure TXkKdSet.Open_Table;
 var
   sqlstr:string;
 begin
-  sqlstr := 'select * from 校考考点设置表 '+GetWhere+' order by Id';
+  sqlstr := 'select * from 校考考点设置表 '+GetWhere+' order by 省份,考点名称';
   ClientDataSet1.XMLData := DM.OpenData(sqlstr);
 end;
 

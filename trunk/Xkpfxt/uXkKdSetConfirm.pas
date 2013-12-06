@@ -53,6 +53,7 @@ type
     N3: TMenuItem;
     N4: TMenuItem;
     N5: TMenuItem;
+    ClientDataSet1StringField2: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
@@ -77,7 +78,6 @@ type
     procedure Open_Table;
     procedure GetSfList;
     procedure GetXkZyList;
-    procedure GetYxList;
     procedure SetcheckRecord(const iState:Integer);
     procedure SaveData;
   public
@@ -171,7 +171,7 @@ end;
 
 procedure TXkKdSetConfirm.FormCreate(Sender: TObject);
 begin
-  GetYxList;
+  dm.GetYxList(cbb_Yx);
   Open_Table;
   GetSfList;
 end;
@@ -232,26 +232,6 @@ begin
   finally
     sList.Free;
     cds_Temp.Free;
-  end;
-end;
-
-procedure TXkKdSetConfirm.GetYxList;
-var
-  sList:TStrings;
-begin
-  sList := TStringList.Create;
-  try
-    cbb_Yx.Items.Clear;
-    if gb_Czy_Level<>'2' then
-    begin
-      sList.Add('艺术设计学院');
-      sList.Add('音乐学院');
-    end else
-      sList.Add(gb_Czy_Dept);
-    cbb_Yx.Items.AddStrings(sList);
-    cbb_Yx.ItemIndex := 0;
-  finally
-    sList.Free;
   end;
 end;
 
@@ -325,13 +305,18 @@ procedure TXkKdSetConfirm.Open_Table;
 var
   sqlstr:string;
 begin
-  sqlstr := 'select * from 校考考点设置表 '+GetWhere+' order by Id';
+  sqlstr := 'select * from 校考考点设置表 '+GetWhere+' order by 省份,考点名称';
   ClientDataSet1.XMLData := DM.OpenData(sqlstr);
-  while not ClientDataSet1.Eof do
-  begin
-    ClientDataSet1.Edit;
-    ClientDataSet1.FieldByName('选择否').AsBoolean := False;
-    ClientDataSet1.Next;
+  ClientDataSet1.DisableControls;
+  try
+    while not ClientDataSet1.Eof do
+    begin
+      ClientDataSet1.Edit;
+      ClientDataSet1.FieldByName('选择否').AsBoolean := False;
+      ClientDataSet1.Next;
+    end;
+  finally
+    ClientDataSet1.EnableControls;
   end;
 end;
 
