@@ -218,7 +218,7 @@ begin
     end else
       sList.Add(gb_Czy_Dept);
     cbb_Yx.Items.AddStrings(sList);
-    cbb_Yx.ItemIndex := 0;
+    cbb_Yx.ItemIndex := 1;
   finally
     sList.Free;
   end;
@@ -232,8 +232,8 @@ begin
   yx := ClientDataSet1.FieldByName('承考院系').Asstring;
   kd := ClientDataSet1.FieldByName('考点名称').Asstring;
 
-  sqlstr := 'select * from 校考考生报考专业表 where 承考院系='+quotedstr(yx)+
-            ' and 省份='+quotedstr(sf)+' and 考点名称='+quotedstr(kd);
+  sqlstr := 'select * from view_校考考生报考专业表 where 承考院系='+quotedstr(yx)+
+            ' and 省份='+quotedstr(sf)+' and 考点名称='+quotedstr(kd)+' order by 省份,考点名称,专业,考生号';
   ClientDataSet2.XMLData := dm.OpenData(sqlstr,ShowHint);//,True);
 end;
 

@@ -29,6 +29,8 @@ type
     lbl1: TLabel;
     cbb_Sf: TDBComboBoxEh;
     lbl9: TLabel;
+    lbl10: TLabel;
+    edt_addr: TEdit;
     procedure btn_CancelClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -146,6 +148,7 @@ begin
     else
     begin
       edt_Kdmc.Text := FieldbyName('考点名称').AsString;
+      edt_addr.Text := FieldByName('地址').AsString;
       Old_Kdmc := edt_Kdmc.Text;
       cbb_Sf.Text := FieldByName('省份').AsString;
       edt_BmStart.Value := FieldByName('报考开始时间').AsDateTime;
@@ -170,6 +173,7 @@ begin
     else
       Edit;
     FieldbyName('考点名称').AsString := edt_Kdmc.Text;
+    FieldByName('地址').AsString := edt_addr.Text;
     FieldByName('省份').AsString := cbb_Sf.Text;
     FieldByName('报考开始时间').AsDateTime := edt_BmStart.Value;
     FieldByName('报考截止时间').AsDateTime := edt_BmEnd.Value;

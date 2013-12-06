@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,
-  ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBGridEhGrouping;
+  ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBGridEhGrouping, ComCtrls,
+  RzTreeVw, RzTabs;
 
 type
   TXkPwWorkSet = class(TForm)
@@ -15,23 +16,20 @@ type
     lbl_Title: TLabel;
     Panel2: TPanel;
     btn_Exit: TBitBtn;
-    btn_Save: TBitBtn;
     btn_Refresh: TBitBtn;
     ds_Delta: TDataSource;
     cds_Delta: TClientDataSet;
     btn_Add: TBitBtn;
-    btn_Del: TBitBtn;
-    btn_Cancel: TBitBtn;
     grp_Yx: TGroupBox;
     cbb_Yx: TDBComboBoxEh;
-    DBGridEh2: TDBGridEh;
-    cds_Master: TClientDataSet;
-    ds_Master: TDataSource;
     Panel1: TPanel;
+    RzPageControl1: TRzPageControl;
+    TabSheet1: TRzTabSheet;
+    LeftTree: TRzTreeView;
+    RzPageControl2: TRzPageControl;
+    TabSheet2: TRzTabSheet;
     DBGridEh1: TDBGridEh;
-    ds_Zy: TDataSource;
-    cds_Zy: TClientDataSet;
-    DBGridEh3: TDBGridEh;
+    lbl1: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_ExitClick(Sender: TObject);
     procedure btn_RefreshClick(Sender: TObject);
@@ -49,13 +47,15 @@ type
       var CanHide: Boolean);
     procedure DBGridEh2RowDetailPanelShow(Sender: TCustomDBGridEh;
       var CanShow: Boolean);
+    procedure LeftTreeClick(Sender: TObject);
   private
     { Private declarations }
+    aSf,aKd,aZy,aKm:string;
     function  GetWhere:string;
-    procedure Open_Table;
     procedure Open_DeltaTable;
     procedure GetXkZyList;
     procedure GetYxList;
+    procedure InitLeftTreeList;
   public
     { Public declarations }
   end;
@@ -68,31 +68,11 @@ uses uDM,uSelectZyKmPw;
 {$R *.dfm}
 
 procedure TXkPwWorkSet.btn_AddClick(Sender: TObject);
-var
-  yx,sf,kd,zy,km:string;
 begin
-  yx := cds_Master.FieldByName('承考院系').AsString;
-  sf := cds_Master.FieldByName('省份').AsString;
-  kd := cds_Master.FieldByName('考点名称').AsString;
-  zy := cds_zy.FieldByName('专业').AsString;
-  //km := cds_zy.FieldByName('考试科目').AsString;
-{
   with TSelectZyKmPw.Create(nil) do
   begin
-    SetParam(yx,sf,kd,zy,km);
+    SetParam(cbb_Yx.Text,asf,akd,azy,akm,cds_Delta);
     ShowModal;
-  end;
-}
-  with cds_Delta do
-  begin
-    Append;
-    FieldByName('承考院系').Value := yx;
-    FieldByName('省份').Value := sf;
-    FieldByName('考点名称').Value := kd;
-    FieldByName('专业').Value := zy;
-    FieldByName('是否签到').AsBoolean := False;
-    //FieldByName('科目').Value := km;
-    DBGridEh1.SetFocus;
   end;
 end;
 
@@ -117,14 +97,14 @@ end;
 
 procedure TXkPwWorkSet.btn_RefreshClick(Sender: TObject);
 begin
-  Open_Table;
+  Open_DeltaTable;
 end;
 
 procedure TXkPwWorkSet.btn_SaveClick(Sender: TObject);
 begin
   if IsModified(cds_Delta) then
   begin
-    if dm.UpdateData('Id','select top 0 * from 校考考点评委表',cds_Delta.Delta,True) then
+    if dm.UpdateData('Id','select top 0 * from 校考考点评委配置表',cds_Delta.Delta,True) then
       cds_Delta.MergeChangeLog;
   end;
 end;
@@ -135,19 +115,9 @@ var
 begin
   if Self.Showing then
   begin
-    Open_Table;
-    cds_temp := TClientDataSet.Create(nil);
-    try
-      cds_temp.XMLData := dm.OpenData('select 评委 from 校考评委名单表 where 承考院系='+quotedstr(cbb_Yx.Text));
-      DBGridEh1.Columns[5].PickList.Clear;
-      while not cds_temp.Eof do
-      begin
-        DBGridEh1.Columns[5].PickList.Add(cds_temp.Fields[0].AsString);
-        cds_temp.Next;
-      end;
-    finally
-      cds_temp.Free;
-    end;
+    InitLeftTreeList;
+    LeftTree.SetFocus;
+    Open_DeltaTable;
   end;
 end;
 
@@ -165,18 +135,12 @@ procedure TXkPwWorkSet.DBGridEh2RowDetailPanelHide(Sender: TCustomDBGridEh;
   var CanHide: Boolean);
 begin
   btn_Add.Enabled := False;
-  btn_Del.Enabled := False;
-  btn_Cancel.Enabled := False;
-  btn_Save.Enabled := False;
 end;
 
 procedure TXkPwWorkSet.DBGridEh2RowDetailPanelShow(Sender: TCustomDBGridEh;
   var CanShow: Boolean);
 begin
   btn_Add.Enabled := True;
-  btn_Del.Enabled := True;
-  btn_Cancel.Enabled := True;
-  btn_Save.Enabled := True;
 end;
 
 procedure TXkPwWorkSet.DBGridEh3CellClick(Column: TColumnEh);
@@ -205,8 +169,7 @@ end;
 procedure TXkPwWorkSet.FormCreate(Sender: TObject);
 begin
   GetYxList;
-  Open_Table;
-  //GetXkZyList;
+  InitLeftTreeList;
   Open_DeltaTable;
 end;
 
@@ -260,41 +223,118 @@ begin
     end else
       sList.Add(gb_Czy_Dept);
     cbb_Yx.Items.AddStrings(sList);
-    cbb_Yx.ItemIndex := 0;
+    cbb_Yx.ItemIndex := 1;
   finally
     sList.Free;
   end;
 end;
 
+procedure TXkPwWorkSet.InitLeftTreeList;
+var
+  sqlStr,sXmmc,sId,sId_Temp:string;
+  Rmn,tn,tn2:TTreeNode;
+  cds1,cds_Temp,cds_Temp2:TClientDataSet;
+begin
+  cds1 := TClientDataSet.Create(nil);
+  cds_Temp := TClientDataSet.Create(nil);
+  cds_Temp2 := TClientDataSet.Create(nil);
+  try
+    LeftTree.Items.BeginUpdate;
+    LeftTree.Items.Clear;
+
+    sqlStr := 'select 专业 from 校考专业表 where 承考院系='+quotedstr(cbb_Yx.Text)+' order by 专业';
+    cds_Temp2.XMLData := dm.OpenData(sqlStr);
+
+    sqlStr := 'select distinct 省份 from 校考考点设置表 where 承考院系='+quotedstr(cbb_Yx.Text)+' order by 省份';
+    cds1.XMLData := dm.OpenData(sqlStr);
+
+    while not cds1.Eof do
+    begin
+      sXmmc := Trim(cds1.Fields[0].AsString);
+      Rmn := LeftTree.Items.Add(nil,sXmmc);
+      Rmn.ImageIndex := 0;
+
+      sqlStr := 'select 考点名称 from 校考考点设置表 where 承考院系='+quotedstr(cbb_Yx.Text)+
+                ' and 省份='+quotedstr(sXmmc)+' order by 考点名称';
+      cds_Temp.XMLData := dm.OpenData(sqlStr);
+
+      while not cds_Temp.Eof do
+      begin
+        sXmmc := Trim(cds_Temp.Fields[0].AsString);
+        tn := LeftTree.Items.AddChild(Rmn,sXmmc);
+        tn.ImageIndex := 1;
+        
+        cds_Temp2.First;
+        while not cds_Temp2.Eof do
+        begin
+          sXmmc := Trim(cds_Temp2.Fields[0].AsString);
+          tn2 := LeftTree.Items.AddChild(tn,sXmmc);
+          tn2.ImageIndex := 1;
+          cds_Temp2.Next;
+        end;
+        cds_Temp.Next;
+      end;
+      cds1.Next;
+    end;
+    //LeftTree.FullExpand;
+    if LeftTree.Items.Count>=2 then
+    begin
+      LeftTree.Items[1].Expand(True);
+      LeftTree.Items[2].Selected := True;
+    end;
+  finally
+    LeftTree.Items.EndUpdate;
+    cds1.Free;
+    cds_Temp.Free;
+    cds_Temp2.Free;
+  end;
+end;
+
+procedure TXkPwWorkSet.LeftTreeClick(Sender: TObject);
+var
+  tn:TTreeNode;
+begin
+  Open_DeltaTable;
+end;
+
 procedure TXkPwWorkSet.Open_DeltaTable;
 var
   sWhere:string;
-  sqlstr:string;
-  yx,sf,kd,zy,km:string;
+  yx,sqlstr:string;
+  tn:TTreeNode;
 begin
-  yx := cds_Master.FieldByName('承考院系').AsString;
-  sf := cds_Master.FieldByName('省份').AsString;
-  kd := cds_Master.FieldByName('考点名称').AsString;
-  zy := cds_zy.FieldByName('专业').AsString;
-  //km := cds_zy.FieldByName('考试科目').AsString;
+  yx := cbb_yx.Text;
+  asf := '';
+  akd := '';
+  azy := '';
+  if (LeftTree.Selected<>nil) then
+  begin
+    tn := LeftTree.Selected;
+    case tn.Level of
+      0:
+      begin
+        asf := tn.Text;
+      end;
+      1:
+      begin
+        akd := tn.Text;
+        asf := tn.Parent.Text;
+      end;
+      2:
+      begin
+        azy := tn.Text;
+        akd := tn.Parent.Text;
+        asf := tn.Parent.Parent.Text;
+      end;
+    end;
+  end;
 
-  sWhere := ' where 承考院系='+quotedstr(yx)+' and 省份='+quotedstr(sf)+' and 考点名称='+quotedstr(kd)+
-            ' and 专业='+quotedstr(zy);//+' and 科目='+quotedstr(km);
-  sqlstr := 'select * from 校考考点评委表 '+sWhere+' order by Id';
+  sWhere := ' where 承考院系='+quotedstr(yx)+' and 省份='+quotedstr(asf)+' and 考点名称 like '+quotedstr(akd+'%')+
+            ' and 专业 like '+quotedstr(azy+'%');//+' and 科目='+quotedstr(km);
+  sqlstr := 'select * from 校考考点评委配置表 '+sWhere+' order by Id';
   cds_Delta.XMLData := DM.OpenData(sqlstr);
+  btn_Add.Enabled := azy<>'';
 end;
 
-procedure TXkPwWorkSet.Open_Table;
-var
-  sqlstr:string;
-begin
-  sqlstr := 'select 省份,考点名称,承考院系 from 校考考点设置表 '+GetWhere+' order by 省份,考点名称';
-  cds_Master.XMLData := DM.OpenData(sqlstr);
-
-  //sqlstr := 'select 承考院系,专业,考试科目 from 校考专业科目表 '+GetWhere+' order by 专业,考试科目';
-  sqlstr := 'select 承考院系,专业 from 校考专业表 '+GetWhere+' order by 专业';
-  cds_Zy.XMLData := DM.OpenData(sqlstr);
-  //GetXkZyList;
-end;
 
 end.

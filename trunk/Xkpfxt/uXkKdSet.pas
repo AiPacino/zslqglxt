@@ -275,7 +275,7 @@ begin
     end else
       sList.Add(gb_Czy_Dept);
     cbb_Yx.Items.AddStrings(sList);
-    cbb_Yx.ItemIndex := 0;
+    cbb_Yx.ItemIndex := 1;
   finally
     sList.Free;
   end;

@@ -90,7 +90,7 @@ end;
 
 procedure TForm2.btn5Click(Sender: TObject);
 begin
-  KeypadManage1.ShowKeyInfo(0,1);
+  KeypadManage1.ShowKeyInfo(0,1);  //0:所有键盘，1：显示大字体
 end;
 
 procedure TForm2.btn6Click(Sender: TObject);

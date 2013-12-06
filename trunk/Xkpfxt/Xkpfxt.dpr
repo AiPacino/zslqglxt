@@ -42,7 +42,8 @@ uses
   uXkPwSet in 'uXkPwSet.pas' {XkPwSet},
   uXkPwWorkSet in 'uXkPwWorkSet.pas' {XkPwWorkSet},
   uSelectZyKmPw in 'uSelectZyKmPw.pas' {SelectZyKmPw},
-  uSelectYxKdZy in 'uSelectYxKdZy.pas' {SelectYxKdZy};
+  uSelectYxKdZy in 'uSelectYxKdZy.pas' {SelectYxKdZy},
+  uSunVote in 'uSunVote.pas' {Form2};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

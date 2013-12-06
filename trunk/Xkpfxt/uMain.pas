@@ -158,6 +158,7 @@ type
     procedure act_hlp_RegExecute(Sender: TObject);
     procedure act_Cj_PwpfExecute(Sender: TObject);
     procedure act_Cj_pwsetExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     IsShowHint:Boolean;
@@ -551,6 +552,11 @@ begin
       gbCanClose := True;
     end;
   CanClose := gbCanClose;
+end;
+
+procedure TMain.FormCreate(Sender: TObject);
+begin
+  DM.InitSunVote;
 end;
 
 procedure TMain.FormDestroy(Sender: TObject);

@@ -115,7 +115,7 @@ object DM: TDM
     Left = 126
     Top = 125
     Bitmap = {
-      494C010110001200F40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001200FC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -885,7 +885,6 @@ object DM: TDM
     Top = 16
   end
   object con_DB: TADOConnection
-    Connected = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=xlinuxx;Persist Security Info=True;' +
       'User ID=sa;Initial Catalog='#29616#22330#35780#20998#24211';Data Source=(local);Use Procedu' +
@@ -933,8 +932,39 @@ object DM: TDM
   object cds_Update: TClientDataSet
     Aggregates = <>
     Params = <>
-    ProviderName = 'DSP_Open'
+    ProviderName = 'DSP_Update'
     Left = 696
     Top = 168
+  end
+  object BaseConnection1: TBaseConnection
+    AutoConnect = False
+    ConnectKind = ckRunningOrNew
+    OnBaseOnLine = BaseConnection1BaseOnLine
+    Left = 216
+    Top = 264
+  end
+  object BaseManage1: TBaseManage
+    AutoConnect = False
+    ConnectKind = ckRunningOrNew
+    Left = 304
+    Top = 264
+  end
+  object KeypadManage1: TKeypadManage
+    AutoConnect = False
+    ConnectKind = ckRunningOrNew
+    Left = 216
+    Top = 320
+  end
+  object SignIn1: TSignIn
+    AutoConnect = False
+    ConnectKind = ckRunningOrNew
+    Left = 304
+    Top = 320
+  end
+  object Message1: TMessage
+    AutoConnect = False
+    ConnectKind = ckRunningOrNew
+    Left = 216
+    Top = 384
   end
 end
