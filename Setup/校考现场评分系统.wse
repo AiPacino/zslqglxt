@@ -167,7 +167,7 @@ item: Set Variable
 end
 item: Set Variable
   Variable=MAINDIR
-  Value=C:\%MAINDIR%
+  Value=D:\%MAINDIR%
   Flags=00001100
 end
 item: Else Statement
@@ -767,713 +767,668 @@ item: Include Script
   Pathname=%_WISE_%\INCLUDE\uninstal.wse
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\效果图.jpg
-  Destination=%MAINDIR%\MiniSQL2000\效果图.jpg
+  Source=..\Exe\DB\Binn\atxcore.dll
+  Destination=%MAINDIR%\DB\Binn\atxcore.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\cmdwrap.exe
+  Destination=%MAINDIR%\DB\Binn\cmdwrap.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\comnevnt.dll
+  Destination=%MAINDIR%\DB\Binn\comnevnt.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\console.exe
+  Destination=%MAINDIR%\DB\Binn\console.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\dbghelp.dll
+  Destination=%MAINDIR%\DB\Binn\dbghelp.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\ftsetup.exe
+  Destination=%MAINDIR%\DB\Binn\ftsetup.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Msdbi.dll
+  Destination=%MAINDIR%\DB\Binn\Msdbi.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\mssdi98.dll
+  Destination=%MAINDIR%\DB\Binn\mssdi98.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\mssql.mib
+  Destination=%MAINDIR%\DB\Binn\mssql.mib
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\控制demo\说明.txt
-  Destination=%MAINDIR%\MiniSQL2000\控制demo\说明.txt
+  Source=..\Exe\DB\Binn\msvcp71.dll
+  Destination=%MAINDIR%\DB\Binn\msvcp71.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\msvcr71.dll
+  Destination=%MAINDIR%\DB\Binn\msvcr71.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\odsole70.dll
+  Destination=%MAINDIR%\DB\Binn\odsole70.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\opends60.dll
+  Destination=%MAINDIR%\DB\Binn\opends60.dll
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\控制demo\Unit1.pas
-  Destination=%MAINDIR%\MiniSQL2000\控制demo\Unit1.pas
+  Source=..\Exe\DB\Binn\opends80.dll
+  Destination=%MAINDIR%\DB\Binn\opends80.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\replupd.exe
+  Destination=%MAINDIR%\DB\Binn\replupd.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\atxcore.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\atxcore.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\odsole70.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\odsole70.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\semmap.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\semmap.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\Semnt.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\Semnt.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\sqlagent.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\sqlagent.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\sqlatxss.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\sqlatxss.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\sqlcmdss.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\sqlcmdss.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\sqlevn70.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\sqlevn70.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\sqlmaint.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\sqlmaint.RLL
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\控制demo\Unit1.dfm
-  Destination=%MAINDIR%\MiniSQL2000\控制demo\Unit1.dfm
+  Source=..\Exe\DB\Binn\Resources\1028\sqlrepss.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\sqlrepss.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\sqlstbss.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\sqlstbss.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\sqlsvc.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\sqlsvc.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\xplog70.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\xplog70.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1028\xpstar.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\1028\xpstar.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\atxcore.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\atxcore.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\odsole70.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\odsole70.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\semmap.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\semmap.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\Semnt.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\Semnt.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\sqlagent.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\sqlagent.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\sqlatxss.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\sqlatxss.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\sqlcmdss.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\sqlcmdss.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\sqlevn70.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\sqlevn70.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\sqlmaint.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\sqlmaint.rll
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\控制demo\Project1.dpr
-  Destination=%MAINDIR%\MiniSQL2000\控制demo\Project1.dpr
+  Source=..\Exe\DB\Binn\Resources\1033\sqlrepss.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\sqlrepss.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\sqlstbss.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\sqlstbss.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\sqlsvc.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\sqlsvc.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\xplog70.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\xplog70.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\1033\xpstar.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\1033\xpstar.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\atxcore.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\atxcore.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\odsole70.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\odsole70.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\semmap.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\semmap.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\Semnt.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\Semnt.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\sqlagent.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\sqlagent.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\sqlatxss.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\sqlatxss.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\sqlcmdss.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\sqlcmdss.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\sqlevn70.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\sqlevn70.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\sqlmaint.RLL
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\sqlmaint.RLL
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\控制demo\ClearDCU.bat
-  Destination=%MAINDIR%\MiniSQL2000\控制demo\ClearDCU.bat
+  Source=..\Exe\DB\Binn\Resources\2052\sqlrepss.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\sqlrepss.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\sqlstbss.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\sqlstbss.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\sqlsvc.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\sqlsvc.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\xplog70.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\xplog70.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Resources\2052\xpstar.rll
+  Destination=%MAINDIR%\DB\Binn\Resources\2052\xpstar.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Schema.txt
+  Destination=%MAINDIR%\DB\Binn\Schema.txt
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\atxcore.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\atxcore.dll
+  Source=..\Exe\DB\Binn\semmap.dll
+  Destination=%MAINDIR%\DB\Binn\semmap.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\semnt.dll
+  Destination=%MAINDIR%\DB\Binn\semnt.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\sqlagent.dll
+  Destination=%MAINDIR%\DB\Binn\sqlagent.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\cmdwrap.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\cmdwrap.exe
+  Source=..\Exe\DB\Binn\sqlagent.exe
+  Destination=%MAINDIR%\DB\Binn\sqlagent.exe
   Flags=0000000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\comnevnt.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\comnevnt.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\console.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\console.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\dbghelp.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\dbghelp.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\ftsetup.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\ftsetup.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Msdbi.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Msdbi.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\mssdi98.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\mssdi98.dll
+  Source=..\Exe\DB\Binn\sqlatxss.dll
+  Destination=%MAINDIR%\DB\Binn\sqlatxss.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\mssql.mib
-  Destination=%MAINDIR%\MiniSQL2000\Binn\mssql.mib
+  Source=..\Exe\DB\Binn\sqlboot.dll
+  Destination=%MAINDIR%\DB\Binn\sqlboot.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\sqlcmdss.dll
+  Destination=%MAINDIR%\DB\Binn\sqlcmdss.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\Sqlctr.h
+  Destination=%MAINDIR%\DB\Binn\Sqlctr.h
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\msvcp71.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\msvcp71.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\msvcr71.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\msvcr71.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\odsole70.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\odsole70.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\opends60.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\opends60.dll
+  Source=..\Exe\DB\Binn\Sqlctr.ini
+  Destination=%MAINDIR%\DB\Binn\Sqlctr.ini
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\opends80.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\opends80.dll
+  Source=..\Exe\DB\Binn\sqlctr80.dll
+  Destination=%MAINDIR%\DB\Binn\sqlctr80.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\replupd.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\replupd.exe
+  Source=..\Exe\DB\Binn\sqldata.dll
+  Destination=%MAINDIR%\DB\Binn\sqldata.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\sqldiag.exe
+  Destination=%MAINDIR%\DB\Binn\sqldiag.exe
   Flags=0000000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\atxcore.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\atxcore.rll
+  Source=..\Exe\DB\Binn\sqlftqry.dll
+  Destination=%MAINDIR%\DB\Binn\sqlftqry.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\sqlimage.dll
+  Destination=%MAINDIR%\DB\Binn\sqlimage.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\sqlmaint.exe
+  Destination=%MAINDIR%\DB\Binn\sqlmaint.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\sqlmap70.dll
+  Destination=%MAINDIR%\DB\Binn\sqlmap70.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\sqlrepss.dll
+  Destination=%MAINDIR%\DB\Binn\sqlrepss.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\odsole70.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\odsole70.RLL
+  Source=..\Exe\DB\Binn\sqlresld.dll
+  Destination=%MAINDIR%\DB\Binn\sqlresld.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\semmap.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\semmap.rll
+  Source=..\Exe\DB\Binn\sqlservr.exe
+  Destination=%MAINDIR%\DB\Binn\sqlservr.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\sqlsnmp.dll
+  Destination=%MAINDIR%\DB\Binn\sqlsnmp.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\Semnt.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\Semnt.rll
+  Source=..\Exe\DB\Binn\sqlsort.dll
+  Destination=%MAINDIR%\DB\Binn\sqlsort.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\sqlagent.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\sqlagent.RLL
+  Source=..\Exe\DB\Binn\sqlstbss.exe
+  Destination=%MAINDIR%\DB\Binn\sqlstbss.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\sqlsvc.dll
+  Destination=%MAINDIR%\DB\Binn\sqlsvc.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\ssmsad70.dll
+  Destination=%MAINDIR%\DB\Binn\ssmsad70.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\sqlatxss.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\sqlatxss.RLL
+  Source=..\Exe\DB\Binn\ssmsgnet.dll
+  Destination=%MAINDIR%\DB\Binn\ssmsgnet.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\sqlcmdss.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\sqlcmdss.RLL
+  Source=..\Exe\DB\Binn\SSmsLPCn.dll
+  Destination=%MAINDIR%\DB\Binn\SSmsLPCn.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\sqlevn70.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\sqlevn70.RLL
+  Source=..\Exe\DB\Binn\ssmsqlgc.dll
+  Destination=%MAINDIR%\DB\Binn\ssmsqlgc.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\sqlmaint.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\sqlmaint.RLL
+  Source=..\Exe\DB\Binn\SSmsRP70.dll
+  Destination=%MAINDIR%\DB\Binn\SSmsRP70.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\SSmsSH70.dll
+  Destination=%MAINDIR%\DB\Binn\SSmsSH70.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\ssmssnet.dll
+  Destination=%MAINDIR%\DB\Binn\ssmssnet.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\SSmsVI70.dll
+  Destination=%MAINDIR%\DB\Binn\SSmsVI70.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\SSnetlib.dll
+  Destination=%MAINDIR%\DB\Binn\SSnetlib.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\ssnmpn70.dll
+  Destination=%MAINDIR%\DB\Binn\ssnmpn70.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\textcopy.exe
+  Destination=%MAINDIR%\DB\Binn\textcopy.exe
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\sqlrepss.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\sqlrepss.RLL
+  Source=..\Exe\DB\Binn\ums.dll
+  Destination=%MAINDIR%\DB\Binn\ums.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\sqlstbss.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\sqlstbss.rll
+  Source=..\Exe\DB\Binn\vswitch.exe
+  Destination=%MAINDIR%\DB\Binn\vswitch.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\w95scm.dll
+  Destination=%MAINDIR%\DB\Binn\w95scm.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\sqlsvc.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\sqlsvc.rll
+  Source=..\Exe\DB\Binn\xpadsi.exe
+  Destination=%MAINDIR%\DB\Binn\xpadsi.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\xplog70.dll
+  Destination=%MAINDIR%\DB\Binn\xplog70.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\xplog70.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\xplog70.RLL
+  Source=..\Exe\DB\Binn\xpqueue.dll
+  Destination=%MAINDIR%\DB\Binn\xpqueue.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\xprepl.dll
+  Destination=%MAINDIR%\DB\Binn\xprepl.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Binn\xpsqlbot.dll
+  Destination=%MAINDIR%\DB\Binn\xpsqlbot.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1028\xpstar.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1028\xpstar.RLL
-  Flags=0001000010000011
+  Source=..\Exe\DB\Binn\xpstar.dll
+  Destination=%MAINDIR%\DB\Binn\xpstar.dll
+  Flags=0000000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\atxcore.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\atxcore.rll
-  Flags=0001000010000011
+  Source=..\Exe\DB\Binn\xpweb70.dll
+  Destination=%MAINDIR%\DB\Binn\xpweb70.dll
+  Flags=0000000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\odsole70.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\odsole70.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\semmap.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\semmap.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\Semnt.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\Semnt.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\sqlagent.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\sqlagent.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\sqlatxss.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\sqlatxss.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\sqlcmdss.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\sqlcmdss.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\sqlevn70.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\sqlevn70.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\sqlmaint.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\sqlmaint.rll
+  Source=..\Exe\DB\Config.ini
+  Destination=%MAINDIR%\DB\Config.ini
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\sqlrepss.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\sqlrepss.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\sqlstbss.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\sqlstbss.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\sqlsvc.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\sqlsvc.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\xplog70.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\xplog70.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\1033\xpstar.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\1033\xpstar.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\atxcore.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\atxcore.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\odsole70.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\odsole70.RLL
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\semmap.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\semmap.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\Semnt.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\Semnt.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\sqlagent.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\sqlagent.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\sqlatxss.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\sqlatxss.RLL
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\sqlcmdss.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\sqlcmdss.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\sqlevn70.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\sqlevn70.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\sqlmaint.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\sqlmaint.RLL
+  Source=..\Exe\DB\Data\master.mdf
+  Destination=%MAINDIR%\DB\Data\master.mdf
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\sqlrepss.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\sqlrepss.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\sqlstbss.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\sqlstbss.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\sqlsvc.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\sqlsvc.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\xplog70.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\xplog70.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Resources\2052\xpstar.rll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Resources\2052\xpstar.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Schema.txt
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Schema.txt
+  Source=..\Exe\DB\Data\mastlog.ldf
+  Destination=%MAINDIR%\DB\Data\mastlog.ldf
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\semmap.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\semmap.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\semnt.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\semnt.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlagent.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlagent.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlagent.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlagent.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlatxss.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlatxss.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlboot.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlboot.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlcmdss.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlcmdss.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Sqlctr.h
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Sqlctr.h
+  Source=..\Exe\DB\Data\model.mdf
+  Destination=%MAINDIR%\DB\Data\model.mdf
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\Sqlctr.ini
-  Destination=%MAINDIR%\MiniSQL2000\Binn\Sqlctr.ini
+  Source=..\Exe\DB\Data\modellog.ldf
+  Destination=%MAINDIR%\DB\Data\modellog.ldf
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlctr80.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlctr80.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqldata.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqldata.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqldiag.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqldiag.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlftqry.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlftqry.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlimage.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlimage.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlmaint.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlmaint.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlmap70.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlmap70.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlrepss.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlrepss.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlresld.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlresld.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlservr.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlservr.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlsnmp.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlsnmp.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlsort.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlsort.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlstbss.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlstbss.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\sqlsvc.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\sqlsvc.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\ssmsad70.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\ssmsad70.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\ssmsgnet.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\ssmsgnet.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\SSmsLPCn.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\SSmsLPCn.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\ssmsqlgc.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\ssmsqlgc.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\SSmsRP70.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\SSmsRP70.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\SSmsSH70.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\SSmsSH70.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\ssmssnet.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\ssmssnet.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\SSmsVI70.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\SSmsVI70.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\SSnetlib.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\SSnetlib.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\ssnmpn70.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\ssnmpn70.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\textcopy.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\textcopy.exe
+  Source=..\Exe\DB\Data\msdbdata.mdf
+  Destination=%MAINDIR%\DB\Data\msdbdata.mdf
   Flags=0000000010000010
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\ums.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\ums.dll
+  Source=..\Exe\DB\Data\msdblog.ldf
+  Destination=%MAINDIR%\DB\Data\msdblog.ldf
+  Flags=0000000010000010
+end
+item: Install File
+  Source=..\Exe\DB\Data\tempdb.mdf
+  Destination=%MAINDIR%\DB\Data\tempdb.mdf
+  Flags=0000000010000010
+end
+item: Install File
+  Source=..\Exe\DB\Data\templog.ldf
+  Destination=%MAINDIR%\DB\Data\templog.ldf
+  Flags=0000000010000010
+end
+item: Install File
+  Source=..\Exe\DB\Data\现场评分库.mdf
+  Destination=%MAINDIR%\DB\Data\现场评分库.mdf
+  Flags=0000000010000010
+end
+item: Install File
+  Source=..\Exe\DB\Data\现场评分库_log.LDF
+  Destination=%MAINDIR%\DB\Data\现场评分库_log.LDF
+  Flags=0000000010000010
+end
+item: Install File
+  Source=..\Exe\DB\KillList.txt
+  Destination=%MAINDIR%\DB\KillList.txt
+  Flags=0000000010000010
+end
+item: Install File
+  Source=..\Exe\DB\Sql2k.exe
+  Destination=%MAINDIR%\DB\Sql2k.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Tools\MakeSQL.exe
+  Destination=%MAINDIR%\DB\Tools\MakeSQL.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Tools\MiniISqlW.exe
+  Destination=%MAINDIR%\DB\Tools\MiniISqlW.exe
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Tools\msvcr71.dll
+  Destination=%MAINDIR%\DB\Tools\msvcr71.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Tools\pfclnt80.dll
+  Destination=%MAINDIR%\DB\Tools\pfclnt80.dll
+  Flags=0000000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Tools\pfutil80.dll
+  Destination=%MAINDIR%\DB\Tools\pfutil80.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\vswitch.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\vswitch.exe
+  Source=..\Exe\DB\Tools\profiler.exe
+  Destination=%MAINDIR%\DB\Tools\profiler.exe
   Flags=0000000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\w95scm.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\w95scm.dll
+  Source=..\Exe\DB\Tools\Resources\2052\pfclnt80.rll
+  Destination=%MAINDIR%\DB\Tools\Resources\2052\pfclnt80.rll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\xpadsi.exe
-  Destination=%MAINDIR%\MiniSQL2000\Binn\xpadsi.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\xplog70.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\xplog70.dll
+  Source=..\Exe\DB\Tools\Resources\2052\pfutil80.rll
+  Destination=%MAINDIR%\DB\Tools\Resources\2052\pfutil80.rll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\xpqueue.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\xpqueue.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\xprepl.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\xprepl.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\xpsqlbot.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\xpsqlbot.dll
+  Source=..\Exe\DB\Tools\Resources\2052\profiler.rll
+  Destination=%MAINDIR%\DB\Tools\Resources\2052\profiler.rll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\xpstar.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\xpstar.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Binn\xpweb70.dll
-  Destination=%MAINDIR%\MiniSQL2000\Binn\xpweb70.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Config.ini
-  Destination=%MAINDIR%\MiniSQL2000\Config.ini
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\master.mdf
-  Destination=%MAINDIR%\MiniSQL2000\Data\master.mdf
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\mastlog.ldf
-  Destination=%MAINDIR%\MiniSQL2000\Data\mastlog.ldf
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\model.mdf
-  Destination=%MAINDIR%\MiniSQL2000\Data\model.mdf
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\modellog.ldf
-  Destination=%MAINDIR%\MiniSQL2000\Data\modellog.ldf
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\msdbdata.mdf
-  Destination=%MAINDIR%\MiniSQL2000\Data\msdbdata.mdf
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\msdblog.ldf
-  Destination=%MAINDIR%\MiniSQL2000\Data\msdblog.ldf
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\tempdb.mdf
-  Destination=%MAINDIR%\MiniSQL2000\Data\tempdb.mdf
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\templog.ldf
-  Destination=%MAINDIR%\MiniSQL2000\Data\templog.ldf
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\现场评分库.mdf
-  Destination=%MAINDIR%\MiniSQL2000\Data\现场评分库.mdf
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Data\现场评分库_log.LDF
-  Destination=%MAINDIR%\MiniSQL2000\Data\现场评分库_log.LDF
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\KillList.txt
-  Destination=%MAINDIR%\MiniSQL2000\KillList.txt
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Sql2k.exe
-  Destination=%MAINDIR%\MiniSQL2000\Sql2k.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\MakeSQL.exe
-  Destination=%MAINDIR%\MiniSQL2000\Tools\MakeSQL.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\MiniISqlW.exe
-  Destination=%MAINDIR%\MiniSQL2000\Tools\MiniISqlW.exe
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\msvcr71.dll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\msvcr71.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\pfclnt80.dll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\pfclnt80.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\pfutil80.dll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\pfutil80.dll
+  Source=..\Exe\DB\Tools\Resources\2052\semsfc.rll
+  Destination=%MAINDIR%\DB\Tools\Resources\2052\semsfc.rll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\profiler.exe
-  Destination=%MAINDIR%\MiniSQL2000\Tools\profiler.exe
+  Source=..\Exe\DB\Tools\Resources\2052\sqlgui.rll
+  Destination=%MAINDIR%\DB\Tools\Resources\2052\sqlgui.rll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Tools\Resources\2052\sqlsvc.RLL
+  Destination=%MAINDIR%\DB\Tools\Resources\2052\sqlsvc.RLL
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Tools\semsfc.dll
+  Destination=%MAINDIR%\DB\Tools\semsfc.dll
+  Flags=0001000010000011
+end
+item: Install File
+  Source=..\Exe\DB\Tools\sqlgui.dll
+  Destination=%MAINDIR%\DB\Tools\sqlgui.dll
   Flags=0000000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\Resources\2052\pfclnt80.rll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\Resources\2052\pfclnt80.rll
+  Source=..\Exe\DB\Tools\sqlresld.dll
+  Destination=%MAINDIR%\DB\Tools\sqlresld.dll
   Flags=0001000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\Resources\2052\pfutil80.rll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\Resources\2052\pfutil80.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\Resources\2052\profiler.rll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\Resources\2052\profiler.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\Resources\2052\semsfc.rll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\Resources\2052\semsfc.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\Resources\2052\sqlgui.rll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\Resources\2052\sqlgui.rll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\Resources\2052\sqlsvc.RLL
-  Destination=%MAINDIR%\MiniSQL2000\Tools\Resources\2052\sqlsvc.RLL
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\semsfc.dll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\semsfc.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\sqlgui.dll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\sqlgui.dll
+  Source=..\Exe\DB\Tools\sqlsvc.dll
+  Destination=%MAINDIR%\DB\Tools\sqlsvc.dll
   Flags=0000000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\sqlresld.dll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\sqlresld.dll
-  Flags=0001000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\sqlsvc.dll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\sqlsvc.dll
+  Source=..\Exe\DB\Tools\w95scm.dll
+  Destination=%MAINDIR%\DB\Tools\w95scm.dll
   Flags=0000000010000011
 end
 item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\w95scm.dll
-  Destination=%MAINDIR%\MiniSQL2000\Tools\w95scm.dll
-  Flags=0000000010000011
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\Tools\工具说明.txt
-  Destination=%MAINDIR%\MiniSQL2000\Tools\工具说明.txt
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\使用说明.txt
-  Destination=%MAINDIR%\MiniSQL2000\使用说明.txt
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\升级日志.txt
-  Destination=%MAINDIR%\MiniSQL2000\升级日志.txt
-  Flags=0000000010000010
-end
-item: Install File
-  Source=e:\xxx\zslqglxt\Exe\MiniSQL2000\控制demo\Clear.bat
-  Destination=%MAINDIR%\MiniSQL2000\控制demo\Clear.bat
+  Source=..\Exe\DB\Tools\工具说明.txt
+  Destination=%MAINDIR%\DB\Tools\工具说明.txt
   Flags=0000000010000010
 end
 item: Create Directory
