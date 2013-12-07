@@ -343,11 +343,13 @@ object CountSqlSet: TCountSqlSet
       IndicatorTitle.ShowDropDownSign = True
       IndicatorTitle.TitleButton = True
       OddRowColor = 13823456
-      OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+      OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]
       ParentFont = False
       PopupMenu = DM.PopupMenu1
       ReadOnly = True
       RowDetailPanel.Color = clBtnFace
+      RowHeight = 25
       SortLocal = True
       SumList.Active = True
       TabOrder = 0
@@ -356,6 +358,7 @@ object CountSqlSet: TCountSqlSet
       TitleFont.Height = -12
       TitleFont.Name = 'Verdana'
       TitleFont.Style = []
+      TitleHeight = 25
       object RowDetailData: TRowDetailPanelControlEh
       end
     end
@@ -488,11 +491,13 @@ object CountSqlSet: TCountSqlSet
         IndicatorTitle.ShowDropDownSign = True
         IndicatorTitle.TitleButton = True
         OddRowColor = 13823456
-        OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove]
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+        OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghRowHighlight, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]
         ParentFont = False
         PopupMenu = DM.PopupMenu1
         ReadOnly = True
         RowDetailPanel.Color = clBtnFace
+        RowHeight = 25
         SortLocal = True
         TabOrder = 0
         TitleFont.Charset = ANSI_CHARSET
@@ -500,6 +505,7 @@ object CountSqlSet: TCountSqlSet
         TitleFont.Height = -12
         TitleFont.Name = 'Verdana'
         TitleFont.Style = []
+        TitleHeight = 25
         VertScrollBar.VisibleMode = sbAlwaysShowEh
         Columns = <
           item

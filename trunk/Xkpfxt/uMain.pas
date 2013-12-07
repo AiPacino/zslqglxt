@@ -9,7 +9,7 @@ uses
   MyDBNavigator, StatusBarEx, DBGridEh,
   DBFieldComboBox, StdActns, RzBckgnd, dxBar,
   cxClasses, XPStyleActnCtrls, ActnMan, DBClient, auHTTP, auAutoUpgrader,
-  RzStatus, RzPanel, GIFImg;
+  RzStatus, RzPanel, GIFImg, StdCtrls, CnAAFont, CnAACtrls, dxGDIPlusClasses;
 
 type
   TMain = class(TForm)
@@ -114,6 +114,10 @@ type
     dxbrbtn3: TdxBarButton;
     act_XkkdConfirm: TAction;
     dxbrbtn4: TdxBarButton;
+    img_Show: TImage;
+    albl_Title: TCnAALabel;
+    lbl_Ver: TLabel;
+    lbl_Year: TLabel;
     procedure RzGroup4Items1Click(Sender: TObject);
     procedure RzGroup3Items0Click(Sender: TObject);
     procedure mmi_PrnLQTZSClick(Sender: TObject);
@@ -163,6 +167,7 @@ type
     procedure act_Cj_pwsetExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure act_XkkdConfirmExecute(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
     IsShowHint:Boolean;
@@ -573,12 +578,31 @@ begin
   FreeAndNil(sWhereList);
 end;
 
+procedure TMain.FormResize(Sender: TObject);
+begin
+  if Self.WindowState<>wsMaximized then
+  begin
+    Self.Top := 0;
+    Self.Left := 0;
+  end;
+  img_Show.Left := Trunc((Self.Width-img_Show.Width)/2);
+  img_Show.Top := Trunc((Self.Height-img_Show.Height)/2)-5;
+  albl_Title.Left := img_Show.Left+Trunc((img_Show.Width-albl_Title.Width)/2);
+  albl_Title.Top := img_Show.Top+Trunc((img_Show.Height-albl_Title.Height)/2)-45;
+  lbl_Ver.Left := img_Show.Left+502;
+  lbl_Ver.Top := img_Show.Top+277;
+  lbl_Year.Left := img_Show.Left+25;
+  lbl_Year.Top := img_Show.Top+450;
+end;
+
 procedure TMain.FormShow(Sender: TObject);
 var
   sMsg:string;
 begin
   Screen.Cursor := crHourGlass;
   try
+    lbl_Year.Caption := FormatDateTime('yyyy¡¤ÄÏ²ý',date);
+    lbl_Ver.Caption := 'Ver '+ Get_Version;
     Self.Caption := Application.Title +'  Ver '+ Get_Version;
     IsShowHint := False;
     Status_Czy.Caption := gb_Czy_Name+'('+gb_czy_Id+')';
