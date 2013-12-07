@@ -15,34 +15,36 @@ type
     Panel2: TPanel;
     btn_Exit: TBitBtn;
     btn_Excel: TBitBtn;
-    RzRadioGroup1: TRzRadioGroup;
     btn_Refresh: TBitBtn;
     GroupBox1: TGroupBox;
     dxgrd_1: TDBGridEh;
     PopupMenu1: TPopupMenu;
-    L1: TMenuItem;
+    mniLocate: TMenuItem;
     N1: TMenuItem;
     C1: TMenuItem;
     T1: TMenuItem;
     P1: TMenuItem;
     N2: TMenuItem;
-    mi_Export: TMenuItem;
+    mniDataExport: TMenuItem;
     btn_RefreshBdl: TBitBtn;
     mi_RefreshBdl: TMenuItem;
     btn_Print: TBitBtn;
     BitBtn1: TBitBtn;
+    grp1: TGroupBox;
+    DBGridEh1: TDBGridEh;
+    cds_Master: TClientDataSet;
+    ds_Master: TDataSource;
     procedure btn_ExitClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_RefreshClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure RzRadioGroup1Click(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure btn_ExcelClick(Sender: TObject);
     procedure mi_RefreshBdlClick(Sender: TObject);
     procedure btn_RefreshBdlClick(Sender: TObject);
     procedure btn_PrintClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure ds_MasterDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
     sqlList:TStrings;
@@ -85,7 +87,7 @@ end;
 
 procedure TXkInfoCount.btn_PrintClick(Sender: TObject);
 begin
-  PrintDBGridEH(dxgrd_1,Self,RzRadioGroup1.Items[RzRadioGroup1.ItemIndex]);
+  PrintDBGridEH(dxgrd_1,Self,cds_Master.FieldByName('说明').AsString);
 end;
 
 procedure TXkInfoCount.btn_RefreshBdlClick(Sender: TObject);
@@ -98,70 +100,17 @@ begin
   Open_Table;
 end;
 
-procedure TXkInfoCount.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := caFree;
-end;
-
-procedure TXkInfoCount.FormCreate(Sender: TObject);
-begin
-  if gb_Czy_Level='2' then
-    Caption := '【'+gb_Czy_Dept+'】'+'校考专业报考情况统计';
-  sqlList := TStringList.Create;
-  RzRadioGroup1.Items.Clear;
-  Open_Table;
-end;
-
-procedure TXkInfoCount.FormDestroy(Sender: TObject);
-begin
-  FreeAndNil(sqlList);
-end;
-
-procedure TXkInfoCount.FormShow(Sender: TObject);
-begin
-  if RzRadioGroup1.Items.Count>0 then
-    RzRadioGroup1.ItemIndex := 0;
-end;
-
-procedure TXkInfoCount.mi_RefreshBdlClick(Sender: TObject);
-begin
-  RzRadioGroup1.OnClick(Self);
-end;
-
-procedure TXkInfoCount.Open_Table;
-var
-  cds_Temp:TClientDataSet;
-begin
-  cds_Temp := TClientDataSet.Create(nil);
-  try
-    cds_Temp.XMLData := dm.OpenData('select * from SqlCmd配置总表 where 模块='+quotedstr(gb_System_Mode)+' and 类别='+quotedstr('统计'));
-    RzRadioGroup1.Items.Clear;
-    sqlList.Clear;
-    while not cds_Temp.Eof do
-    begin
-      RzRadioGroup1.Items.Add(cds_Temp.FieldbyName('说明').AsString);
-      //RzRadioGroup1.Items[i].Hint := cds_Temp.Fields[2].AsString;
-      sqlList.Add(cds_Temp.FieldbyName('sqlText').AsString);
-      cds_Temp.Next;
-    end;
-  finally
-    cds_Temp.Free;
-  end;
-end;
-
-procedure TXkInfoCount.RzRadioGroup1Click(Sender: TObject);
+procedure TXkInfoCount.ds_MasterDataChange(Sender: TObject; Field: TField);
 var
   i,ii,iTotal,iBaoDao: Integer;
   sqlstr:string;
 begin
-  i := RzRadioGroup1.ItemIndex;
-  if i = -1 then Exit;
   if gb_Czy_Level='2' then
-    Caption := '【'+gb_Czy_Dept+'】'+RzRadioGroup1.Items[i]
+    Caption := '【'+gb_Czy_Dept+'】'+cds_Master.FieldByName('说明').AsString
   else
-    Caption := RzRadioGroup1.Items[i];
+    Caption := cds_Master.FieldByName('说明').AsString;
   try
-    sqlstr := LowerCase(sqlList.Strings[i]);
+    sqlstr := cds_Master.FieldByName('sqlText').AsString;// LowerCase(sqlList.Strings[i]);
     if gb_Czy_Level='2' then
     begin
       ii := Pos(' group ',sqlstr);
@@ -210,6 +159,34 @@ begin
       MessageBox(Handle, PChar('SQL统计命令执行失败！请检查后重试！失败原因如下：　' +
         #13#10 + e.Message), '系统提示', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2 + MB_TOPMOST);
   end;
+end;
+
+procedure TXkInfoCount.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TXkInfoCount.FormCreate(Sender: TObject);
+begin
+  if gb_Czy_Level='2' then
+    Caption := '【'+gb_Czy_Dept+'】'+'校考专业报考情况统计';
+  sqlList := TStringList.Create;
+  Open_Table;
+end;
+
+procedure TXkInfoCount.FormDestroy(Sender: TObject);
+begin
+  FreeAndNil(sqlList);
+end;
+
+procedure TXkInfoCount.mi_RefreshBdlClick(Sender: TObject);
+begin
+  Open_Table;
+end;
+
+procedure TXkInfoCount.Open_Table;
+begin
+  cds_Master.XMLData := dm.OpenData('select * from 统计项目表 where 模块='+quotedstr(gb_System_Mode)+' and 类别='+quotedstr('统计'));
 end;
 
 end.
