@@ -5,12 +5,12 @@ interface
 uses
   SysUtils, Classes, DB, DBClient, SOAPConn, Rio, SOAPHTTPClient,GridsEh,
   Messages, IniFiles, Windows,Forms, DBGridEh,DBCtrlsEh, Dialogs,DBGridEhImpExp,
-  jpeg, ExtCtrls,EncdDecdEx,EhLibCDS, IdGlobal,EhLibBDE,EhLibADO, 
+  jpeg, ExtCtrls,EncdDecdEx,EhLibCDS, IdGlobal,EhLibBDE,EhLibADO,PublicVariable,
   PrnDbgEH,Graphics, frxChart, frxDesgn, StdActns, ActnList,StrUtils,DateUtils,
-  Menus, ImgList, Controls, frxClass, frxDBSet,CnProgressFrm, uVobj,
+  Menus, ImgList, Controls, frxClass, frxDBSet,CnProgressFrm, uVobj,uActiveSetLanguage,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP,
   VCLUnZip, VCLZip, InvokeRegistry, ADODB,IdMultipartFormData, frxBarcode,
-  Provider, TConnect, SunVote_TLB, OleServer, SpeechLib_TLB ;
+  Provider, TConnect, SunVote_TLB, OleServer, SpeechLib_TLB,uDownloadDataOperate ;
 
 type
  // TMessageHandler = class     //使得回车消息转换成Tab消息
@@ -55,12 +55,14 @@ type
     qry_Update: TADOQuery;
     DSP_Update: TDataSetProvider;
     cds_Update: TClientDataSet;
+    SpVoice1: TSpVoice;
     BaseConnection1: TBaseConnection;
     BaseManage1: TBaseManage;
     KeypadManage1: TKeypadManage;
     SignIn1: TSignIn;
     Message1: TMessage;
-    SpVoice1: TSpVoice;
+    MultipleAssess: TMultipleAssess;
+    ScoreRuleExplain: TScoreRuleExplain;
     procedure DataModuleCreate(Sender: TObject);
     procedure SaveDialog1TypeChange(Sender: TObject);
     procedure act_DataExportExecute(Sender: TObject);
@@ -76,6 +78,12 @@ type
     procedure DataModuleDestroy(Sender: TObject);
     procedure BaseConnection1BaseOnLine(ASender: TObject; BaseID,
       BaseState: Integer);
+    procedure SignIn1KeyStatus(ASender: TObject; const BaseTag: WideString;
+      KeyID, ValueType: Integer; const KeyValue: WideString);
+    procedure MultipleAssessDataDownload(ASender: TObject; KeyID,
+      DownloadStatus: Integer; const DownloadInfo: WideString);
+    procedure ScoreRuleExplainDataDownload(ASender: TObject; KeyID,
+      DownloadStatus: Integer; const DownloadInfo: WideString);
   private
     { Private declarations }
     SendTotal,GetTotal:Integer;
@@ -99,10 +107,12 @@ type
     function Update_Data(const sKey,sSqlStr:string;const vDelta:OleVariant;const ShowMsgBox:Boolean=True;const ShowHint:Boolean=False):Boolean;//只须直接把Delta传过来，我帮你转XML格式
     //--------------------------------------------------------------
 
+    procedure InitSunVote;
+    procedure SetLanguage;
+
   public
     { Public declarations }
     procedure GetYxList(var aComboBox:TDBComboBoxEh;const IncludeAll:Boolean=False);
-    procedure InitSunVote;
     function GetRecordCountBySql(const sqlstr:string):Integer; stdcall;
     function RecordIsExists(const sSqlStr:string):Boolean;
     function ExecSqlCmd(const sSqlStr:string):Boolean;overload;
@@ -214,14 +224,20 @@ type
     procedure SetXlCcComboBox(aDbComboBox:TDBComboBoxEh;const IncludeAll:Boolean=False); //学历层次
     function  SelectZy(const XlCc,ZyLb:string;var sList:TStrings): Boolean;
     function  GetWebSrvUrl:string;
-    function ReleaseLoginLog(const Czy_ID:string):Boolean ;stdcall; //清空登录日志
-    function ReleaseLog(const Czy_ID:string):Boolean ;stdcall; //清空操作日志
+    function  ReleaseLoginLog(const Czy_ID:string):Boolean ;stdcall; //清空登录日志
+    function  ReleaseLog(const Czy_ID:string):Boolean ;stdcall; //清空操作日志
 
-    function PostCj(const CjIndex:Integer;const Yx,Sf,Km:string;const bPost:Boolean=True):Boolean; stdcall;     //提交成绩
+    function  PostCj(const CjIndex:Integer;const Yx,Sf,Km:string;const bPost:Boolean=True):Boolean; stdcall;     //提交成绩
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    function DownLoadKeyData(const KeyIDs,fileType:string;out ErrorKeyIDs:string):Boolean;
+
  end;
 
 
 const
+  PWZS:Integer = 5;//评委总数
+
   gb_Use_Zip = False;//True;
 
 //{$DEFINE WAD_DEBUG}
@@ -243,6 +259,24 @@ var
   gb_Last_PrintBH:string; //上次用过的打印编号
   DM: TDM;
   //vobj: TVobj;//再次封装GetINetPay接口函数
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  gb_KeyCjList,gb_KeyPwList,gb_PwCodeList,gb_KskmList: TStrings;
+  MsgBaseKeyScopeError, MsgSignCodeError, MsgSignModeError, MsgBaseSoftDogError,
+  MsgKeyIDError, MsgBaseDemoOpen, MsgBaseDemoClose, MsgItemInfo,
+  MsgRandomItem, MsgMultipleAssess, MsgEvaluationRule, MsgScoreRule,
+  MsgSelfExercise,MsgFileDownload,MsgAvoidItemsDownload: String;
+
+  procedure CreateKeysList;
+  procedure DestoryKeysList;
+  procedure ClearKeysListValue; //清除键盘成绩
+  function  GetPwByKeyCode(const KeyCode: string): string; //通过签到码得到评委名称
+  function  GetKeyIdByPw(const pw: string): string; //通过评委得到键盘号
+  function  GetCj1ByKeyId(const KeyId:Integer):string;
+  function  GetCj2ByKeyId(const KeyId:Integer):string;
+  function  GetCj1ByPw(const Pw:string):string;
+  function  GetCj2ByPw(const Pw:string):string;
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
   function AppSrvIsOK: Boolean;
   function GetOneSqlStr(const sSql:string):string;
@@ -273,7 +307,7 @@ var
   procedure Speak(const sText:string);
 
 implementation
-uses uMain,PwdFunUnit, Net,ActiveX,shellapi,shlObj,uPwqd;
+uses uMain,PwdFunUnit, Net,ActiveX,shellapi,shlObj,uXkPwqd,uXkPwpf;
 {$R *.dfm}
 { TDM }
 
@@ -281,6 +315,144 @@ procedure Speak(const sText:string);
 begin
   dm.SpVoice1.Voice:= dm.SpVoice1.GetVoices('','').Item(0); //设置中文播报
   dm.SpVoice1.Speak(sText, SVSFlagsAsync);
+end;
+
+procedure CreateKeysList;
+var
+  i: Integer;
+begin
+  gb_KeyCjList := TStringList.Create;
+  gb_KeyPwList := TStringList.Create;
+  gb_PwCodeList := TStringList.Create;
+  gb_KskmList := TStringList.Create;
+  for i := 0 to PWZS - 1 do
+  begin
+    gb_KeyCjList.Add(IntToStr(i+1)+'=');
+    gb_KeyPwList.Add(IntToStr(i+1)+'=');
+  end;
+end;
+
+procedure DestoryKeysList;
+begin
+  FreeAndNil(gb_KeyCjList);
+  FreeAndNil(gb_KeyPwList);
+  FreeAndNil(gb_PwCodeList);
+  FreeAndNil(gb_KskmList);
+end;
+
+procedure ClearKeysListValue; //清除键盘成绩
+var
+  i:Integer;
+begin
+  gb_KeyCjList.Clear;
+  gb_KeyPwList.Clear;
+  for i := 0 to PWZS - 1 do
+  begin
+    gb_KeyCjList.Add(IntToStr(i+1)+'=');
+    gb_KeyPwList.Add(IntToStr(i+1)+'=');
+  end;
+end;
+
+function  GetKeyIdByPw(const pw: string): string;
+var
+  i: Integer;
+begin
+  Result := '';
+  gb_KeyPwList.BeginUpdate;
+  try
+    for i := 0 to gb_KeyPwList.Count - 1 do
+      if pw=gb_KeyPwList.ValueFromIndex[i] then
+      begin
+        Result := gb_KeyPwList.Names[i];
+        Exit;
+      end;
+  finally
+    gb_KeyPwList.EndUpdate;
+  end;
+end;
+
+function  GetPwByKeyCode(const KeyCode: string): string;
+var
+  i,ii :Integer;
+begin
+  //张三丰=3721
+  gb_PwCodeList.BeginUpdate;
+  try
+    for i := 0 to gb_PwCodeList.Count - 1 do
+      if gb_PwCodeList.ValueFromIndex[i]=KeyCode then
+      begin
+        Result := gb_PwCodeList.Names[i];
+        Exit;
+      end;
+  finally
+    gb_PwCodeList.EndUpdate;
+  end;
+end;
+
+function  GetCj1ByKeyId(const KeyId:Integer):string;
+var
+  s:string;
+  ii:Integer;
+begin
+  Result := '';
+  //KeyValue //1_1=89,2_1=56.5
+  s := gb_KeyCjList.Values[IntToStr(KeyId)]; //89.5,77.5
+  if s='' then Exit;
+
+  ii := Pos(',',s);
+  if ii=0 then ii:=10;
+    Result := Copy(s,1,ii-1);
+end;
+
+function  GetCj2ByKeyId(const KeyId:Integer):string;
+var
+  s:string;
+  ii:Integer;
+begin
+  Result := '';
+  //KeyValue //1_1=89,2_1=56.5
+  s := gb_KeyCjList.Values[IntToStr(KeyId)]; //89.5,77.5
+  if s='' then Exit;
+
+  ii := Pos(',',s);
+  if ii>0 then
+    Result := Copy(s,ii+1,10);
+end;
+
+function  GetCj1ByPw(const Pw:string):string;
+var
+  s:string;
+  KeyId,ii:Integer;
+  i: Integer;
+begin
+  Result := '';
+  for i := 0 to gb_KeyPwList.Count - 1 do
+    if Pw=gb_KeyPwList.ValueFromIndex[i] then
+    begin
+      ii := i;
+      Exit;
+    end;
+  if i=gb_KeyPwList.Count then Exit;
+  KeyId := StrToInt(gb_KeyPwList.Names[ii]);
+  Result := GetCj1ByKeyId(KeyId);
+end;
+
+function  GetCj2ByPw(const Pw:string):string;
+var
+  s:string;
+  KeyId,ii:Integer;
+  i: Integer;
+begin
+  Result := '';
+  for i := 0 to gb_KeyPwList.Count - 1 do
+    if Pw=gb_KeyPwList.ValueFromIndex[i] then
+    begin
+      ii := i;
+      Exit;
+    end;
+  if i=gb_KeyPwList.Count then Exit;
+  KeyId := StrToInt(gb_KeyPwList.Names[ii]);
+  Result := GetCj2ByKeyId(KeyId);
 end;
 
 function  PosRight(const subStr,S:string):Integer;
@@ -683,6 +855,7 @@ procedure TDM.DataModuleCreate(Sender: TObject);
 var
   fn:string;
 begin
+
   fn := ExtractFilePath(ParamStr(0))+'DB\Sql2k.exe';
   ShellExecute(0,'open',PAnsiChar(fn),nil,nil,SW_HIDE);
   if not DirectoryExists(ExtractFilePath(ParamStr(0))+'Kszp') then
@@ -692,13 +865,18 @@ begin
   con_DB.ConnectionString := GetConnInfo;
   frxDesigner1.OpenDir := ExtractFilePath(ParamStr(0))+'Rep';
   frxDesigner1.SaveDir := frxDesigner1.OpenDir;
+
+  
+  CreateKeysList;//创建键盘和评委数组列表
   InitSunVote;
+  SetLanguage;
 end;
 
 procedure TDM.DataModuleDestroy(Sender: TObject);
 begin
-  BaseConnection1.Close;
   con_DB.Close;
+  DestoryKeysList;
+  BaseConnection1.Close;
 end;
 
 procedure TDM.DBGridEh1DrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -754,6 +932,130 @@ begin
   end;
   }
   TDBGridEh(Sender).DefaultDrawColumnCell(Rect,   DataCol,   Column,   State);
+end;
+
+function TDM.DownLoadKeyData(const KeyIDs, fileType: string;
+  out ErrorKeyIDs: string): Boolean;
+var
+  lDemoType: TSDKAppType;
+  data: OleVariant;
+  download: TDownloadOperate;
+  s, State, FileName: String;
+  sList:TStrings;
+begin
+  download := TDownloadOperate.Create;
+  try
+    // 综合测评: satMultipleAssess // 评分规则说明:  satScoreRuleExplain;
+    lDemoType := satMultipleAssess; //综合测评
+
+    //fileType := cbbSelectFile.Items[cbbSelectFile.ItemIndex];
+
+    If (fileType = MsgItemInfo) Then
+    Begin
+      case lDemoType of
+        satElection:
+          FileName := 'ElectionItem.ini';
+        satBatchVote:
+          FileName := 'BatchVoteItem.ini';
+        satBatchEvaluation:
+          FileName := 'BatchEvaluationItem.ini';
+        satBatchScore:
+          FileName := 'BatchScoreItem.ini';
+        satMultipleAssess:
+          FileName := 'MultipleAssessItem.ini';
+      end;
+    End
+    else
+    begin
+      If (fileType = MsgRandomItem) Then
+        FileName := 'RandomItem.ini';
+
+      If (fileType = MsgEvaluationRule) Then
+        FileName := 'EvaluationRule.ini';
+
+      If (fileType = MsgScoreRule) Then
+        FileName := 'ScoreRule.ini';
+
+      If (fileType = MsgMultipleAssess) Then
+        FileName := 'MultipleAssessRule.ini';
+
+      If (fileType = MsgSelfExercise) Then
+        FileName := 'SelfExercise.ini';
+
+      If (fileType = MsgFileDownload) Then
+      begin
+      //  btnDownloadFile.Text := FFileDownloadPath;
+        exit;
+      end;
+
+      If (fileType = MsgAvoidItemsDownload) Then
+        FileName := 'AvoidItem.ini';
+    end;
+    FileName := ExtractFilePath(ParamStr(0))+'DownloadData\'+FileName;
+
+    if lDemoType<>satFileDownload then
+      begin
+        data := download.ConvertIniToArray2(FileName);//先统一转为二维，方便编码
+      end;
+
+    Case lDemoType Of
+      satMultipleAssess: // 综合测评
+        Begin
+          If (fileType = MsgItemInfo) Then
+          Begin
+            data := download.ConvertIniToArray(FileName);
+            State := MultipleAssess.StartDownloadItemsName(keyIDs, data);
+            s := 'MultipleAssess：Download Items state=' + State;
+          End;
+          If (fileType = MsgMultipleAssess) Then
+          Begin
+            State := MultipleAssess.StartDownloadAssessRules(keyIDs, data);
+            s := 'MultipleAssess：Download AssessRules state=' + State;
+          End;
+          If (fileType = MsgScoreRule) Then
+          Begin
+            State := MultipleAssess.StartDownloadScoreRules(keyIDs, data);
+            s := 'MultipleAssess：Download ScoreRules state=' + State;
+          End;
+          If (fileType = MsgEvaluationRule) Then
+          Begin
+            State := MultipleAssess.StartDownloadEvaluationRules(keyIDs, data);
+            s := 'MultipleAssess：Download EvaluationRules state=' + State;
+          End;
+        End;
+      satScoreRuleExplain: // 评分规则说明
+        begin
+          sList := TStringList.Create;
+          try
+          sList.Add('工作成绩 0-25');
+          sList.Add('业务能力 0-25');
+          sList.Add('技术水平 0-25');
+          sList.Add('工作态度 0-25');
+          data := download.ConvertStrToArray(sList.Text);
+          State := ScoreRuleExplain.StartDownload(keyIDs, data);
+          s := 'ScoreRuleExplain：Download RandomItems state=' + State;
+          finally
+            sList.Free;
+          end;
+        end;
+
+    Else
+      Exit;
+    End;
+
+    If (State = '0') Then
+      s := s + '  Start download success';
+    If (State = '-1') Then
+      s := s + '  Not set the baseConnection property';
+    If (State = '-2') Then
+      s := s + '  The keyIDs is invalid';
+    If (State = '-3') Then
+      s := s + '  The download data is invalid or out of range';
+    //ShowMsg(s);
+    Result := (State = '0');
+  finally
+    download.Free;
+  end;
 end;
 
 function  TDM.DownLoadKsPhoto(const sUrl:string; img:TImage;const OverPhoto:Boolean=True):Boolean;
@@ -1674,6 +1976,7 @@ begin
   end;
 end;
 
+
 function TDM.GetRecordCountBySql(const sqlstr: string): Integer;
 begin
   Result := _GetRecordCount(sqlstr);
@@ -2023,12 +2326,40 @@ begin
   UpdateProgressTitle('正在下载数据... '+FormatFloat('[已下载：0.00KB]',GetTotal/1024/32));
 end;
 
+
 procedure TDM.InitSunVote;
+var
+  State:string;
 begin
   BaseConnection1.Open(1,'1'); //1:USB MODE,1-5:基站号
   //baseConnection.ProtocolType := 2; // EVS 2
   BaseManage1.BaseConnection := BaseConnection1.DefaultInterface;
   KeypadManage1.BaseConnection := BaseConnection1.DefaultInterface;
+  Message1.BaseConnection := BaseConnection1.DefaultInterface;
+  SignIn1.BaseConnection := BaseConnection1.DefaultInterface;
+  ScoreRuleExplain.baseConnection := baseConnection1.DefaultInterface;
+  MultipleAssess.BaseConnection := BaseConnection1.DefaultInterface;
+  
+  begin
+
+    MultipleAssess.Mode := 0;
+    MultipleAssess.DisplayFormat := 1;
+
+    MultipleAssess.NumberBegin := 1;
+    MultipleAssess.NumberEnd := 1;
+    MultipleAssess.RuleBegin := 1;
+    MultipleAssess.RuleEnd := 1;
+
+    MultipleAssess.LessMode := 1; //迫选模式
+    MultipleAssess.EnterMove := 1;
+    MultipleAssess.ColWidthFirst := 18;
+    MultipleAssess.ColWidthOther := 8;
+    MultipleAssess.StartMode := 1; //清空重新开始模式
+
+    MultipleAssess.SecrecyMode:=0;
+    MultipleAssess.ModifyMode:=0;
+    MultipleAssess.AvoidMode:=0;
+  end;
 end;
 
 function TDM.IsDisplayJiangXi: Boolean;
@@ -2047,6 +2378,20 @@ end;
 function TDM.IsLogined(const Czy_ID: string): Boolean;
 begin
 
+end;
+
+procedure TDM.MultipleAssessDataDownload(ASender: TObject; KeyID,
+  DownloadStatus: Integer; const DownloadInfo: WideString);
+var
+  lDownloadSuccessKeyIDs, lDownloadErrorKeyIDs: string;
+Begin
+  If (KeyID = 0) And (DownloadStatus = 0) Then
+  Begin
+    lDownloadSuccessKeyIDs := MultipleAssess.DownloadSuccessKeyIDs;
+    lDownloadErrorKeyIDs := MultipleAssess.DownloadErrorKeyIDs;
+  End;
+  //ShowDownInfo('MultipleAssess', KeyID, DownloadStatus, DownloadInfo,
+  //  lDownloadSuccessKeyIDs, lDownloadErrorKeyIDs);
 end;
 
 function TDM.OpenData(const sSqlStr: string; const ShowHint: Boolean): string;
@@ -2175,6 +2520,20 @@ begin
   SaveDialog1.DefaultExt := Ext;
 end;
 
+procedure TDM.ScoreRuleExplainDataDownload(ASender: TObject; KeyID,
+  DownloadStatus: Integer; const DownloadInfo: WideString);
+var
+  lDownloadSuccessKeyIDs, lDownloadErrorKeyIDs: string;
+Begin
+  If (KeyID = 0) And (DownloadStatus = 0) Then
+  Begin
+    lDownloadSuccessKeyIDs := ScoreRuleExplain.DownloadSuccessKeyIDs;
+    lDownloadErrorKeyIDs := ScoreRuleExplain.DownloadErrorKeyIDs;
+  End;
+  //ShowDownInfo('ScoreRuleExplain', KeyID, DownloadStatus, DownloadInfo,
+  //  lDownloadSuccessKeyIDs, lDownloadErrorKeyIDs);
+end;
+
 function TDM.SelectZy(const XlCc,ZyLb:string;var sList:TStrings): Boolean;
 begin
 end;
@@ -2265,6 +2624,37 @@ begin
   finally
     sList.Free;
   end;
+end;
+
+procedure TDM.SetLanguage;
+Var
+  language: TLanguage;
+Begin
+  language := TLanguage.Create;
+  //language.SetActiveLanguage(frmMain);
+  //frmMain.Caption := language.getMsgByName('CaptionMain');
+
+  MsgBaseKeyScopeError := language.getMsgByName('MsgBaseKeyScopeError');
+  MsgSignCodeError := language.getMsgByName('MsgSignCodeError');
+  MsgSignModeError := language.getMsgByName('MsgSignModeError');
+  MsgBaseSoftDogError := language.getMsgByName('MsgBaseSoftDogError');
+  MsgKeyIDError := language.getMsgByName('MsgKeyIDError');
+  MsgBaseDemoOpen := language.getMsgByName('MsgBaseDemoOpen');
+  MsgBaseDemoClose := language.getMsgByName('MsgBaseDemoClose');
+
+  MsgItemInfo := language.getMsgByName('MsgItemInfo');
+  MsgRandomItem := language.getMsgByName('MsgRandomItem');
+  MsgMultipleAssess := language.getMsgByName('MsgMultipleAssess');
+  MsgScoreRule := language.getMsgByName('MsgScoreRule');
+  MsgEvaluationRule := language.getMsgByName('MsgEvaluationRule');
+  MsgSelfExercise := language.getMsgByName('MsgSelfExercise');
+
+  MsgFileDownload := language.getMsgByName('MsgFileDownload');
+  MsgAvoidItemsDownload:= language.getMsgByName('MsgAvoidItemsDownload');
+
+  //RefreshcbbSelectFile( GetSDKAppType(pgcAppDemo.ActivePageIndex));
+
+  language.Free;
 end;
 
 procedure TDM.SetLbComboBox(aDbComboBox: TDBComboBoxEh;const IncludeAll:Boolean=False);
@@ -2409,6 +2799,42 @@ end;
 procedure TDM.SetZyComboBoxByZy(const XlCc, Zy: string;
   aDbComboBox: TDBComboBoxEh);
 begin
+
+end;
+
+procedure TDM.SignIn1KeyStatus(ASender: TObject; const BaseTag: WideString;
+  KeyID, ValueType: Integer; const KeyValue: WideString);
+var
+  pw:string;
+  sqlstr:string;
+begin
+  if ValueType=1 then //签到码签到
+  begin
+    pw := GetPwByKeyCode(KeyValue);
+    if pw='' then
+    begin
+      SignIn1.SetAuthorize(KeyID,2); //拒绝授权
+      gb_KeyPwList.Values[IntToStr(KeyID)] := '';
+    end
+    else
+    begin
+      SignIn1.SetAuthorize(KeyID,1); //同意授权
+      gb_KeyPwList.Values[IntToStr(KeyID)] := pw;
+    end;
+  end else
+  begin
+    SignIn1.SetAuthorize(KeyID,1);
+    gb_KeyPwList.Values[IntToStr(KeyID)] := pw;
+  end;
+  //XkPwqd.UpdatePwQdTable(pw,KeyID);
+  if pw='' then
+    sqlstr := 'update 校考考点评委表 set 评分器=null,是否签到=0 where 评分器='+IntToStr(KeyId)
+  else
+    sqlstr := 'update 校考考点评委表 set 评分器='+IntToStr(KeyId)+',是否签到=1 where 评委='+quotedstr(pw);
+  showmessage(sqlstr);
+  ExecSql(sqlstr);
+
+  XkPwqd.Open_Table;
 
 end;
 

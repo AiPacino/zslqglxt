@@ -37,14 +37,19 @@ uses
   uIniFile in 'uIniFile.pas',
   uXkKsxxInfoEdit in 'uXkKsxxInfoEdit.pas' {XkKsxxInfoEdit},
   uSysRegister in 'uSysRegister.pas' {SysRegister},
-  uXkpf in 'uXkpf.pas' {Xkpf},
+  uXkPwpf in 'uXkPwpf.pas' {XkPwpf},
   uXkPwQd in 'uXkPwQd.pas' {XkPwqd},
   uXkPwSet in 'uXkPwSet.pas' {XkPwSet},
   uXkPwWorkSet in 'uXkPwWorkSet.pas' {XkPwWorkSet},
   uSelectZyKmPw in 'uSelectZyKmPw.pas' {SelectZyKmPw},
   uSunVote in 'uSunVote.pas' {Form2},
   uXkBkxxInfoEdit in 'uXkBkxxInfoEdit.pas' {XkBkxxInfoEdit},
-  uStuInfo in 'uStuInfo.pas' {StuInfo};
+  uStuInfo in 'uStuInfo.pas' {StuInfo},
+  uActiveSetLanguage in 'SunVote\uActiveSetLanguage.pas',
+  uDownloadDataOperate in 'SunVote\uDownloadDataOperate.pas',
+  uLogFile in 'SunVote\uLogFile.pas',
+  uStringOperate in 'SunVote\uStringOperate.pas',
+  PublicVariable in 'SunVote\PublicVariable.pas';
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};
