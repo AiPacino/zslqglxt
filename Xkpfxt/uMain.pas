@@ -165,7 +165,6 @@ type
     procedure act_hlp_RegExecute(Sender: TObject);
     procedure act_Cj_PwpfExecute(Sender: TObject);
     procedure act_Cj_pwsetExecute(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure act_XkkdConfirmExecute(Sender: TObject);
     procedure FormResize(Sender: TObject);
   private
@@ -201,7 +200,7 @@ uses uDM,Net,DBGridEhImpExp,uCzyEdit,uABOUT,uChangeCzyPwd,
      uXkZySet,uXkKmSet,uXkZyKmSet,uXkKdSet,uXkKdBrowse,
      uXkKdSetConfirm,uXkInfoImport,uSelectYxKdZy,
      uXkDataInit,uXkInfoBrowse,uSysRegister,
-     uXkInfoCount,uXkpf;
+     uXkInfoCount,uXkPwpf;
 
 {$R *.dfm}
 
@@ -256,10 +255,10 @@ procedure TMain.ShowXkpfForm(const yx, sf, kd, zy: string);
 var
   aForm:TForm;
 begin
-  aForm := GetMdiChildForm(Txkpf);
+  aForm := GetMdiChildForm(TxkPwpf);
   if aForm=nil then
   begin
-    aForm := Txkpf.Create(Self);
+    aForm := TxkPwpf.Create(Self);
   end else
   begin
     if aForm.WindowState=wsMinimized then
@@ -267,7 +266,7 @@ begin
     aForm.BringToFront;
     aForm.SetFocus;
   end;
-  Txkpf(aForm).SetParam(yx,sf,kd,zy);
+  TxkPwpf(aForm).SetParam(yx,sf,kd,zy);
   aForm.Show;
 end;
 
@@ -566,11 +565,6 @@ begin
       gbCanClose := True;
     end;
   CanClose := gbCanClose;
-end;
-
-procedure TMain.FormCreate(Sender: TObject);
-begin
-  DM.InitSunVote;
 end;
 
 procedure TMain.FormDestroy(Sender: TObject);
