@@ -64,7 +64,6 @@ type
     dbedt11: TDBEdit;
     dbmmo1: TDBMemo;
     btn_3: TBitBtn;
-    btn_4: TBitBtn;
     tmr1: TTimer;
     lbl13: TLabel;
     dbedt_Rch: TDBEdit;
@@ -85,9 +84,9 @@ type
     Panel2: TPanel;
     lbl14: TLabel;
     lbl_Cj: TLabel;
+    btn1: TBitBtn;
     procedure tmr1Timer(Sender: TObject);
     procedure btn_3Click(Sender: TObject);
-    procedure btn_4Click(Sender: TObject);
     procedure btn_2Click(Sender: TObject);
     procedure btn_1Click(Sender: TObject);
     procedure btn_5Click(Sender: TObject);
@@ -163,7 +162,7 @@ begin
           MB_OK + MB_ICONSTOP + MB_TOPMOST);
         Exit;
       end;
-      aRch := Format('%.4d',[StrToIntDef(aRch,0)+1]);
+      aRch := Format('%.3d',[StrToIntDef(aRch,0)+1]);
       dbedt_Rch.Text := aRch;
       lbl_Rch.Caption := '正在对入场号为【'+aRch+'】的考生进行评分：';
       swhere := ' where 承考院系='+quotedstr(ayx)+' and 省份='+quotedstr(aSf)+
@@ -221,11 +220,6 @@ begin
 //  Message1.Start('0',Format('请为【%s】考生打分',[dbedt_Rch.Text]));
 //  Sleep(3000);
 
-  tmr1.Tag := 0;
-  tmr1.Enabled := True;
-  btn_2.Enabled := False;
-  btn_4.Enabled := True;
-  btn_5.Enabled := True;
 
   MultipleAssess.baseConnection := dm.baseConnection1.DefaultInterface;
   MultipleAssess.Mode := 0;
@@ -250,17 +244,15 @@ begin
   begin
     Application.MessageBox('评分器硬件启动失败！', '系统提示', MB_OK +
       MB_ICONSTOP + MB_TOPMOST);
+  end else
+  begin
+    tmr1.Tag := 0;
+    tmr1.Enabled := True;
+    btn_2.Enabled := False;
+    btn_5.Enabled := True;
+    Speak('【'+aRch+'】号考生，请入场！');
   end;
 
-end;
-
-procedure TXkpf.btn_4Click(Sender: TObject);
-begin
-  tmr1.Enabled := False;
-  btn_2.Enabled := False;
-  btn_3.Enabled := False;
-  btn_4.Enabled := False;
-  btn_5.Enabled := True;
 end;
 
 procedure TXkpf.btn_5Click(Sender: TObject);
@@ -271,8 +263,8 @@ begin
   tmr1.Enabled := False;
   btn_2.Enabled := True;
   btn_3.Enabled := False;
-  btn_4.Enabled := False;
   btn_5.Enabled := False;
+  Speak('【'+aRch+'】号考生，请退场！');
 end;
 
 procedure TXkpf.CreateLabelList;
