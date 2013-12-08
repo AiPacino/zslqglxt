@@ -38,12 +38,13 @@ uses
   uXkKsxxInfoEdit in 'uXkKsxxInfoEdit.pas' {XkKsxxInfoEdit},
   uSysRegister in 'uSysRegister.pas' {SysRegister},
   uXkpf in 'uXkpf.pas' {Xkpf},
-  uPwqd in 'uPwqd.pas' {Pwqd},
+  uXkPwQd in 'uXkPwQd.pas' {XkPwqd},
   uXkPwSet in 'uXkPwSet.pas' {XkPwSet},
   uXkPwWorkSet in 'uXkPwWorkSet.pas' {XkPwWorkSet},
   uSelectZyKmPw in 'uSelectZyKmPw.pas' {SelectZyKmPw},
   uSunVote in 'uSunVote.pas' {Form2},
-  uXkBkxxInfoEdit in 'uXkBkxxInfoEdit.pas' {XkBkxxInfoEdit};
+  uXkBkxxInfoEdit in 'uXkBkxxInfoEdit.pas' {XkBkxxInfoEdit},
+  uStuInfo in 'uStuInfo.pas' {StuInfo};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

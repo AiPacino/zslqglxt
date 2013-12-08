@@ -15,6 +15,7 @@ type
     btn_End: TButton;
     btn_Start: TButton;
     SignIn1: TSignIn;
+    chk1: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SignIn1KeyStatus(ASender: TObject; const BaseTag: WideString;
       KeyID, ValueType: Integer; const KeyValue: WideString);
@@ -29,6 +30,9 @@ type
     function  GetPwByKeyCode(const KeyCode:string):string;
     procedure SetPwByKeyCode(const pw:string;const KeyId:integer);
     procedure CheckKeyAuthorize;
+    procedure StartSign_xxx;
+    procedure EndSign_xxx;
+    function  AllSigned_xxx:Boolean;
   public
     { Public declarations }
     procedure SetParam(const yx,sf,kd,zy:string);
@@ -41,24 +45,43 @@ implementation
 uses uDM;
 {$R *.dfm}
 
+function TPwqd.AllSigned_xxx: Boolean;
+begin
+  cds_pw.First;
+  while not cds_pw.Eof do
+  begin
+    if not cds_pw.FieldByName('是否签到').AsBoolean then
+    begin
+      Result := False;
+      Exit;
+    end;
+    cds_pw.Next;
+  end;
+  Result := True;
+end;
+
 procedure TPwqd.btn_EndClick(Sender: TObject);
 begin
-  btn_start.Enabled := True;
-  btn_End.Enabled := False;
-  SignIn1.StopBackgroundSignIn;
-  SignIn1.Stop;
+  if (not chk1.Checked) and (not AllSigned_xxx) then
+  begin
+    Application.MessageBox('在不允许评委缺额的情况下，还有评委没有签到，' + 
+      #13#10 + '不能结束签到！', '系统提示', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    Exit;
+  end else
+  begin
+    btn_start.Enabled := True;
+    btn_End.Enabled := False;
+    EndSign_xxx;
+    Close;
+    Self.ModalResult := mrOk;
+  end;
 end;
 
 procedure TPwqd.btn_StartClick(Sender: TObject);
 begin
   btn_start.Enabled := False;
   btn_End.Enabled := True;
-  SignIn1.BaseConnection := dm.BaseConnection1.DefaultInterface;
-  //SignIn1.Stop();
-  SignIn1.Mode := 1; //
-  SignIn1.BackgroundSignIn := True; //后台签到模式
-  SignIn1.StartMode := 1;
-  SignIn1.Start();
+  StartSign_xxx;
 end;
 
 procedure TPwqd.CheckKeyAuthorize;
@@ -76,6 +99,13 @@ begin
       next;
     end;
   end;
+end;
+
+procedure TPwqd.EndSign_xxx;
+begin
+  SignIn1.StopBackgroundSignIn;
+  SignIn1.Stop;
+  Speak('签到结束！');
 end;
 
 procedure TPwqd.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -126,6 +156,7 @@ begin
                                           ' and 专业='+quotedstr(aZy);
   dm.ExecSql('update 校考考点评委表 set 评分器=null,是否签到=0 '+aWhere);
   Open_Table;
+  btn_StartClick(Self);
 end;
 
 procedure TPwqd.SetPwByKeyCode(const pw: string; const KeyId: integer);
@@ -181,6 +212,17 @@ begin
       cds_pw.Post;
     end;
   end;
+end;
+
+procedure TPwqd.StartSign_xxx;
+begin
+  SignIn1.BaseConnection := dm.BaseConnection1.DefaultInterface;
+  //SignIn1.Stop();
+  SignIn1.Mode := 1; //
+  SignIn1.BackgroundSignIn := True; //后台签到模式
+  SignIn1.StartMode := 1;
+  SignIn1.Start();
+  Speak('请各位评委签到！');
 end;
 
 end.

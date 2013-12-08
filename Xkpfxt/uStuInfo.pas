@@ -5,32 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, pngimage, ExtCtrls, StdCtrls, DBCtrls, Menus, ExtDlgs, DB,
-  frxpngimage;
+  frxpngimage, CnAAFont, CnAACtrls, dxGDIPlusClasses, Mask, DBClient;
 
 type
   TStuInfo = class(TForm)
     Image1: TImage;
     img_Photo: TImage;
-    DBEdit1: TDBText;
-    DBEdit2: TDBText;
-    DBEdit3: TDBText;
-    DBEdit4: TDBText;
-    DBEdit5: TDBText;
-    DBEdit6: TDBText;
-    DBEdit7: TDBText;
-    DBEdit8: TDBText;
-    DBEdit9: TDBText;
-    DBEdit10: TDBText;
-    DBEdit11: TDBText;
-    DBEdit12: TDBText;
-    DBEdit13: TDBText;
-    DBEdit14: TDBText;
-    DBEdit15: TDBText;
-    DBEdit16: TDBText;
-    DBEdit17: TDBText;
-    lbl1: TLabel;
-    Label1: TLabel;
-    lbl_Csrq: TLabel;
     pm1: TPopupMenu;
     N1: TMenuItem;
     N2: TMenuItem;
@@ -40,8 +20,55 @@ type
     SavePictureDialog1: TSavePictureDialog;
     DataSource1: TDataSource;
     chk_OverWrite: TCheckBox;
-    dbtxt_XH: TDBText;
-    dbtxt_Bj: TDBText;
+    albl1: TCnAALabel;
+    cds_1: TClientDataSet;
+    cds_1Id: TAutoIncField;
+    cds_1StringField: TStringField;
+    cds_1StringField2: TStringField;
+    cds_1StringField3: TStringField;
+    cds_1StringField4: TStringField;
+    cds_1StringField5: TStringField;
+    cds_1StringField6: TStringField;
+    cds_1StringField7: TStringField;
+    cds_1StringField8: TStringField;
+    cds_1StringField9: TStringField;
+    cds_1StringField10: TStringField;
+    cds_1DateTimeField: TDateTimeField;
+    cds_1DateTimeField2: TDateTimeField;
+    cds_1StringField11: TStringField;
+    cds_1StringField12: TStringField;
+    cds_1StringField13: TStringField;
+    cds_1StringField14: TStringField;
+    cds_1StringField15: TStringField;
+    cds_1FloatField: TFloatField;
+    lbl1: TLabel;
+    dbedt1: TDBText;
+    lbl2: TLabel;
+    dbtxt_Ksh: TDBText;
+    lbl3: TLabel;
+    dbedt3: TDBText;
+    lbl4: TLabel;
+    dbedt4: TDBText;
+    lbl5: TLabel;
+    dbedt5: TDBText;
+    lbl6: TLabel;
+    dbedt6: TDBText;
+    lbl7: TLabel;
+    dbedt7: TDBText;
+    lbl8: TLabel;
+    dbedt8: TDBText;
+    lbl9: TLabel;
+    dbedt9: TDBText;
+    lbl10: TLabel;
+    dbedt10: TDBText;
+    lbl11: TLabel;
+    dbedt11: TDBText;
+    lbl12: TLabel;
+    dbedt12: TDBText;
+    lbl13: TLabel;
+    dbedt13: TDBText;
+    lbl14: TLabel;
+    lbl15: TLabel;
     procedure N1Click(Sender: TObject);
     procedure DataSource1DataChange(Sender: TObject; Field: TField);
     procedure FormCreate(Sender: TObject);
@@ -66,12 +93,6 @@ var
   Photo_fn:string;
 begin
   sfzh := DataSource1.DataSet.FieldByName('身份证号').AsString;
-  if Length(Sfzh)=18 then
-    lbl_Csrq.Caption := Copy(sfzh,7,4)+'年'+copy(sfzh,11,2)+'月'+Copy(sfzh,13,2)+'日'
-  else if Length(sfzh)=15 then
-    lbl_Csrq.Caption := '19'+Copy(sfzh,7,2)+'年'+copy(sfzh,9,2)+'月'+Copy(sfzh,11,2)+'日'
-  else
-    lbl_Csrq.Caption := '    /  /  /';
 
   Ksh := DataSource1.DataSet.FieldByName('考生号').AsString;
   fn := DataSource1.DataSet.FieldByName('照片文件').AsString;
@@ -128,7 +149,7 @@ end;
 
 procedure TStuInfo.N1Click(Sender: TObject);
 begin
-  SavePictureDialog1.FileName := TEdit(DBEdit2).Text+'.jpg';
+  SavePictureDialog1.FileName := dbtxt_Ksh.Caption+'.jpg';
   if SavePictureDialog1.Execute then
   begin
     img_Photo.Picture.SaveToFile(SavePictureDialog1.FileName);

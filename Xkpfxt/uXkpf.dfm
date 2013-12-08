@@ -331,23 +331,23 @@ object Xkpf: TXkpf
         Top = 1
         Width = 123
         Height = 56
-        Caption = #9312#35780#22996#31614#21040
+        Caption = #35780#22996#31614#21040
         TabOrder = 0
         OnClick = btn_1Click
       end
       object btn_2: TBitBtn
-        Left = 136
-        Top = 1
+        Left = 134
+        Top = 3
         Width = 123
         Height = 56
-        Caption = #9313#32771#29983#20837#22330
+        Caption = #9312#32771#29983#26597#39564
         Enabled = False
         TabOrder = 1
         OnClick = btn_2Click
       end
       object btn_3: TBitBtn
-        Left = 265
-        Top = 1
+        Left = 258
+        Top = 3
         Width = 123
         Height = 56
         Caption = #9314#24320#22987#32771#35797
@@ -355,19 +355,9 @@ object Xkpf: TXkpf
         TabOrder = 2
         OnClick = btn_3Click
       end
-      object btn_4: TBitBtn
-        Left = 394
-        Top = 1
-        Width = 123
-        Height = 56
-        Caption = #9315#32771#29983#36864#22330
-        Enabled = False
-        TabOrder = 3
-        OnClick = btn_4Click
-      end
       object btn_5: TBitBtn
-        Left = 519
-        Top = 1
+        Left = 518
+        Top = 3
         Width = 123
         Height = 56
         Caption = #9316#30830#35748#25104#32489
@@ -378,8 +368,17 @@ object Xkpf: TXkpf
         Font.Name = #26041#27491#23002#20307#31616#20307
         Font.Style = []
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 3
         OnClick = btn_5Click
+      end
+      object btn1: TBitBtn
+        Left = 387
+        Top = 3
+        Width = 123
+        Height = 56
+        Caption = #9315#32771#29983#31163#22330
+        Enabled = False
+        TabOrder = 4
       end
     end
     object pnl_cj: TPanel

@@ -113,7 +113,6 @@ object Pwqd: TPwqd
     Height = 25
     Caption = #32467#26463#31614#21040
     Enabled = False
-    ModalResult = 1
     TabOrder = 1
     OnClick = btn_EndClick
   end
@@ -125,6 +124,14 @@ object Pwqd: TPwqd
     Caption = #21551#21160#31614#21040
     TabOrder = 2
     OnClick = btn_StartClick
+  end
+  object chk1: TCheckBox
+    Left = 16
+    Top = 300
+    Width = 97
+    Height = 17
+    Caption = #20801#35768#35780#22996#32570#39069
+    TabOrder = 3
   end
   object cds_pw: TClientDataSet
     Aggregates = <>

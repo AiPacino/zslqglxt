@@ -10,7 +10,7 @@ uses
   Menus, ImgList, Controls, frxClass, frxDBSet,CnProgressFrm, uVobj,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP,
   VCLUnZip, VCLZip, InvokeRegistry, ADODB,IdMultipartFormData, frxBarcode,
-  Provider, TConnect, SunVote_TLB, OleServer ;
+  Provider, TConnect, SunVote_TLB, OleServer, SpeechLib_TLB ;
 
 type
  // TMessageHandler = class     //使得回车消息转换成Tab消息
@@ -60,6 +60,7 @@ type
     KeypadManage1: TKeypadManage;
     SignIn1: TSignIn;
     Message1: TMessage;
+    SpVoice1: TSpVoice;
     procedure DataModuleCreate(Sender: TObject);
     procedure SaveDialog1TypeChange(Sender: TObject);
     procedure act_DataExportExecute(Sender: TObject);
@@ -269,11 +270,18 @@ var
 
   function  GetSfMcBySfDm(const sfDm:string):String;
   function  GetSfDmBySfMc(const sfDm:string):String;
+  procedure Speak(const sText:string);
 
 implementation
 uses uMain,PwdFunUnit, Net,ActiveX,shellapi,shlObj,uPwqd;
 {$R *.dfm}
 { TDM }
+
+procedure Speak(const sText:string);
+begin
+  dm.SpVoice1.Voice:= dm.SpVoice1.GetVoices('','').Item(0); //设置中文播报
+  dm.SpVoice1.Speak(sText, SVSFlagsAsync);
+end;
 
 function  PosRight(const subStr,S:string):Integer;
 var
