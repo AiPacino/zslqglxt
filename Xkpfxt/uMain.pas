@@ -167,6 +167,7 @@ type
     procedure act_Cj_pwsetExecute(Sender: TObject);
     procedure act_XkkdConfirmExecute(Sender: TObject);
     procedure FormResize(Sender: TObject);
+    procedure act_XkCj_InputResultBrowseExecute(Sender: TObject);
   private
     { Private declarations }
     IsShowHint:Boolean;
@@ -194,7 +195,7 @@ var
   Main: TMain;
 
 implementation
-uses uDM,Net,DBGridEhImpExp,uCzyEdit,uABOUT,uChangeCzyPwd,
+uses uDM,Net,DBGridEhImpExp,uCzyEdit,uABOUT,uChangeCzyPwd,uXkPfRecordBrowse,
      uCountSqlSet,uUserLoginLog,uSysLog,uCzyRightSet,uLockScreen,uXkKdTimeSet,
      uOnlineUpdateSet,uXkInfoInput, uXkPwSet,uXkPwWorkSet,
      uXkZySet,uXkKmSet,uXkZyKmSet,uXkKdSet,uXkKdBrowse,
@@ -424,6 +425,11 @@ begin
     ShowModal;
   end;
 }
+end;
+
+procedure TMain.act_XkCj_InputResultBrowseExecute(Sender: TObject);
+begin
+  ShowMdiChildForm(TXkPfRecordBrowse);
 end;
 
 procedure TMain.act_XKData_BrowseExecute(Sender: TObject);

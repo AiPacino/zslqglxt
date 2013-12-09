@@ -115,7 +115,7 @@ object DM: TDM
     Left = 126
     Top = 125
     Bitmap = {
-      494C0101100012001C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010110001200200110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -961,31 +961,10 @@ object DM: TDM
     Left = 376
     Top = 272
   end
-  object SignIn1: TSignIn
-    AutoConnect = False
-    ConnectKind = ckRunningOrNew
-    OnKeyStatus = SignIn1KeyStatus
-    Left = 464
-    Top = 272
-  end
   object Message1: TMessage
     AutoConnect = False
     ConnectKind = ckRunningOrNew
     Left = 376
     Top = 336
-  end
-  object MultipleAssess: TMultipleAssess
-    AutoConnect = False
-    ConnectKind = ckRunningOrNew
-    OnDataDownload = MultipleAssessDataDownload
-    Left = 464
-    Top = 336
-  end
-  object ScoreRuleExplain: TScoreRuleExplain
-    AutoConnect = False
-    ConnectKind = ckRunningOrNew
-    OnDataDownload = ScoreRuleExplainDataDownload
-    Left = 376
-    Top = 392
   end
 end

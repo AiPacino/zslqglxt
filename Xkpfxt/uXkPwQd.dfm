@@ -77,13 +77,6 @@ object XkPwqd: TXkPwqd
         Width = 119
       end
       item
-        EditButtons = <>
-        FieldName = #22522#31449
-        Footers = <>
-        Visible = False
-        Width = 50
-      end
-      item
         Alignment = taCenter
         EditButtons = <>
         FieldName = #35780#20998#22120
@@ -96,12 +89,6 @@ object XkPwqd: TXkPwqd
         FieldName = #31614#21040#30721
         Footers = <>
         Width = 106
-      end
-      item
-        EditButtons = <>
-        FieldName = #26159#21542#31614#21040
-        Footers = <>
-        Width = 91
       end>
     object RowDetailData: TRowDetailPanelControlEh
     end
@@ -143,6 +130,13 @@ object XkPwqd: TXkPwqd
   object ds_pw: TDataSource
     DataSet = cds_pw
     Left = 133
+    Top = 192
+  end
+  object SignIn1: TSignIn
+    AutoConnect = False
+    ConnectKind = ckRunningOrNew
+    OnKeyStatus = SignIn1KeyStatus
+    Left = 175
     Top = 192
   end
 end
