@@ -15,10 +15,13 @@ type
     btn_End: TButton;
     btn_Start: TButton;
     chk1: TCheckBox;
+    SignIn1: TSignIn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_StartClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btn_EndClick(Sender: TObject);
+    procedure SignIn1KeyStatus(ASender: TObject; const BaseTag: WideString;
+      KeyID, ValueType: Integer; const KeyValue: WideString);
   private
     { Private declarations }
     //SignIn1:TSignIn;
@@ -30,6 +33,7 @@ type
     procedure EndSign_xxx;
     function  AllSigned_xxx:Boolean;
     procedure InitPWSignCodeList;
+    procedure InitPWSignTable;
   public
     { Public declarations }
     procedure SetParam(const yx,sf,kd,zy:string);
@@ -49,7 +53,7 @@ begin
   cds_pw.First;
   while not cds_pw.Eof do
   begin
-    if not cds_pw.FieldByName('是否签到').AsBoolean then
+    if cds_pw.FieldByName('评分器').IsNull then
     begin
       Result := False;
       Exit;
@@ -89,8 +93,8 @@ end;
 
 procedure TXkPwqd.EndSign_xxx;
 begin
-  dm.SignIn1.StopBackgroundSignIn;
-  dm.SignIn1.Stop;
+  SignIn1.StopBackgroundSignIn;
+  SignIn1.Stop;
   Speak('签到结束！');
 end;
 
@@ -111,9 +115,8 @@ var
 begin
   cds_Temp := TClientDataSet.Create(nil);
   try
-    sWhere := ' where 承考院系='+quotedstr(ayx)+' and 省份='+quotedstr(asf)+' and 考点名称='+quotedstr(akd)+
-              ' and 专业='+quotedstr(azy)+' and 签到码='+quotedstr(KeyCode);//+' and 科目='+quotedstr(km);
-    sqlstr := 'select 评委 from 校考考点评委表 '+swhere;
+    sWhere := sqlWhere+' and 签到码='+quotedstr(KeyCode);
+    sqlstr := 'select 评委 from 校考现场评分表 '+swhere;
 
     cds_Temp.XMLData := dm.OpenData(sqlstr);
     Result := cds_Temp.Fields[0].AsString;
@@ -124,20 +127,23 @@ end;
 
 procedure TXkPwqd.InitPWSignCodeList;
 var
-  sqlstr,swhere:string;
+  sqlstr:string;
   cds_Temp:TClientDataSet;
 begin
   gb_PwCodeList.Clear;
   cds_Temp := TClientDataSet.Create(nil);
   try
-    sWhere := ' where 承考院系='+quotedstr(ayx)+' and 省份='+quotedstr(asf)+' and 考点名称='+quotedstr(akd)+
-              ' and 专业='+quotedstr(azy);//+' and 签到码='+quotedstr(KeyCode);//+' and 科目='+quotedstr(km);
-    sqlstr := 'select 评委,签到码 from 校考考点评委表 '+swhere;
+    sqlstr := 'delete from 校考现场评分表';
+    dm.ExecSql(sqlstr);
+    sqlstr := 'insert into 校考现场评分表 (承考院系,省份,考点名称,专业,评委,签到码) ';
+    sqlstr := sqlstr+'select 承考院系,省份,考点名称,专业,评委,签到码 from 校考考点评委表 '+sqlWhere+' order by 评委';
+    dm.ExecSql(sqlstr);
 
+    sqlstr := 'select * from 校考现场评分表';
     cds_Temp.XMLData := dm.OpenData(sqlstr);
     while not cds_Temp.eof do
     begin
-      gb_PwCodeList.Add(cds_Temp.Fields[0].AsString+'='+cds_Temp.Fields[1].AsString);
+      gb_PwCodeList.Add(cds_Temp.FieldByName('评委').AsString+'='+cds_Temp.Fields[1].AsString);
       cds_Temp.Next;
     end;
   finally
@@ -145,11 +151,22 @@ begin
   end;
 end;
 
+procedure TXkPwqd.InitPWSignTable;
+var
+  sqlstr:string;
+begin
+  sqlstr := 'delete from 校考现场评分表';
+  dm.ExecSql(sqlstr);
+  sqlstr := 'insert into 校考现场评分表 (承考院系,省份,考点名称,专业,评委,签到码) ';
+  sqlstr := sqlstr+'select 承考院系,省份,考点名称,专业,评委,签到码 from 校考考点评委表 '+sqlWhere+' order by 评委';
+  dm.ExecSql(sqlstr);
+end;
+
 procedure TXkPwqd.Open_Table;
 var
   sqlstr:string;
 begin
-  sqlstr := 'select * from 校考考点评委表 '+sqlWhere;
+  sqlstr := 'select * from 校考现场评分表 '+sqlWhere;
   cds_pw.XMLData := dm.OpenData(sqlstr);
 end;
 
@@ -160,10 +177,10 @@ begin
   aKd := kd;
   aZy := zy;
   sqlWhere := ' where 承考院系='+quotedstr(aYx)+
-                                          ' and 省份='+quotedstr(aSf)+
-                                          ' and 考点名称='+quotedstr(aKd)+
-                                          ' and 专业='+quotedstr(aZy);
-  dm.ExecSql('update 校考考点评委表 set 评分器=null,是否签到=0 '+sqlWhere);
+              ' and 省份='+quotedstr(aSf)+
+              ' and 考点名称='+quotedstr(aKd)+
+              ' and 专业='+quotedstr(aZy);
+  InitPWSignTable;
   Open_Table;
   btn_StartClick(Self);
 end;
@@ -173,13 +190,50 @@ begin
 
 end;
 
+procedure TXkPwqd.SignIn1KeyStatus(ASender: TObject; const BaseTag: WideString;
+  KeyID, ValueType: Integer; const KeyValue: WideString);
+var
+  pw:string;
+  sqlstr:string;
+begin
+  if ValueType=1 then //签到码签到
+  begin
+    pw := GetPwByKeyCode(KeyValue);
+    if pw='' then
+    begin
+      SignIn1.SetAuthorize(KeyID,2); //拒绝授权
+      gb_KeyPwList.Values[IntToStr(KeyID)] := '';
+    end
+    else
+    begin
+      SignIn1.SetAuthorize(KeyID,1); //同意授权
+      gb_KeyPwList.Values[IntToStr(KeyID)] := pw;
+    end;
+  end else
+  begin
+    SignIn1.SetAuthorize(KeyID,1);
+    gb_KeyPwList.Values[IntToStr(KeyID)] := pw;
+  end;
+  //XkPwqd.UpdatePwQdTable(pw,KeyID);
+  if pw='' then
+    sqlstr := 'update 校考现场评分表 set 评分器=null where 评分器='+IntToStr(KeyId)
+  else
+    sqlstr := 'update 校考现场评分表 set 评分器='+IntToStr(KeyId)+' where 评委='+quotedstr(pw);
+  dm.ExecSql(sqlstr);
+
+  DBGridEh1.SaveBookmark;
+  Open_Table;
+  DBGridEh1.RestoreBookmark;
+end;
+
 procedure TXkPwqd.StartSign_xxx;
 begin
   ClearKeysListValue;
   InitPWSignCodeList;
 
-  with dm do
+  with Self do
   begin
+    SignIn1.BaseConnection := dm.BaseConnection1.DefaultInterface;
     //SignIn1.Stop();
     SignIn1.Mode := 1; //签到码签到
     SignIn1.BackgroundSignIn := True; //后台签到模式

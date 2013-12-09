@@ -59,10 +59,7 @@ type
     BaseConnection1: TBaseConnection;
     BaseManage1: TBaseManage;
     KeypadManage1: TKeypadManage;
-    SignIn1: TSignIn;
     Message1: TMessage;
-    MultipleAssess: TMultipleAssess;
-    ScoreRuleExplain: TScoreRuleExplain;
     procedure DataModuleCreate(Sender: TObject);
     procedure SaveDialog1TypeChange(Sender: TObject);
     procedure act_DataExportExecute(Sender: TObject);
@@ -78,12 +75,6 @@ type
     procedure DataModuleDestroy(Sender: TObject);
     procedure BaseConnection1BaseOnLine(ASender: TObject; BaseID,
       BaseState: Integer);
-    procedure SignIn1KeyStatus(ASender: TObject; const BaseTag: WideString;
-      KeyID, ValueType: Integer; const KeyValue: WideString);
-    procedure MultipleAssessDataDownload(ASender: TObject; KeyID,
-      DownloadStatus: Integer; const DownloadInfo: WideString);
-    procedure ScoreRuleExplainDataDownload(ASender: TObject; KeyID,
-      DownloadStatus: Integer; const DownloadInfo: WideString);
   private
     { Private declarations }
     SendTotal,GetTotal:Integer;
@@ -230,8 +221,7 @@ type
     function  PostCj(const CjIndex:Integer;const Yx,Sf,Km:string;const bPost:Boolean=True):Boolean; stdcall;     //提交成绩
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    function DownLoadKeyData(const KeyIDs,fileType:string;out ErrorKeyIDs:string):Boolean;
-
+    procedure FillKsKmList(const yx,zy:string);
  end;
 
 
@@ -934,130 +924,6 @@ begin
   TDBGridEh(Sender).DefaultDrawColumnCell(Rect,   DataCol,   Column,   State);
 end;
 
-function TDM.DownLoadKeyData(const KeyIDs, fileType: string;
-  out ErrorKeyIDs: string): Boolean;
-var
-  lDemoType: TSDKAppType;
-  data: OleVariant;
-  download: TDownloadOperate;
-  s, State, FileName: String;
-  sList:TStrings;
-begin
-  download := TDownloadOperate.Create;
-  try
-    // 综合测评: satMultipleAssess // 评分规则说明:  satScoreRuleExplain;
-    lDemoType := satMultipleAssess; //综合测评
-
-    //fileType := cbbSelectFile.Items[cbbSelectFile.ItemIndex];
-
-    If (fileType = MsgItemInfo) Then
-    Begin
-      case lDemoType of
-        satElection:
-          FileName := 'ElectionItem.ini';
-        satBatchVote:
-          FileName := 'BatchVoteItem.ini';
-        satBatchEvaluation:
-          FileName := 'BatchEvaluationItem.ini';
-        satBatchScore:
-          FileName := 'BatchScoreItem.ini';
-        satMultipleAssess:
-          FileName := 'MultipleAssessItem.ini';
-      end;
-    End
-    else
-    begin
-      If (fileType = MsgRandomItem) Then
-        FileName := 'RandomItem.ini';
-
-      If (fileType = MsgEvaluationRule) Then
-        FileName := 'EvaluationRule.ini';
-
-      If (fileType = MsgScoreRule) Then
-        FileName := 'ScoreRule.ini';
-
-      If (fileType = MsgMultipleAssess) Then
-        FileName := 'MultipleAssessRule.ini';
-
-      If (fileType = MsgSelfExercise) Then
-        FileName := 'SelfExercise.ini';
-
-      If (fileType = MsgFileDownload) Then
-      begin
-      //  btnDownloadFile.Text := FFileDownloadPath;
-        exit;
-      end;
-
-      If (fileType = MsgAvoidItemsDownload) Then
-        FileName := 'AvoidItem.ini';
-    end;
-    FileName := ExtractFilePath(ParamStr(0))+'DownloadData\'+FileName;
-
-    if lDemoType<>satFileDownload then
-      begin
-        data := download.ConvertIniToArray2(FileName);//先统一转为二维，方便编码
-      end;
-
-    Case lDemoType Of
-      satMultipleAssess: // 综合测评
-        Begin
-          If (fileType = MsgItemInfo) Then
-          Begin
-            data := download.ConvertIniToArray(FileName);
-            State := MultipleAssess.StartDownloadItemsName(keyIDs, data);
-            s := 'MultipleAssess：Download Items state=' + State;
-          End;
-          If (fileType = MsgMultipleAssess) Then
-          Begin
-            State := MultipleAssess.StartDownloadAssessRules(keyIDs, data);
-            s := 'MultipleAssess：Download AssessRules state=' + State;
-          End;
-          If (fileType = MsgScoreRule) Then
-          Begin
-            State := MultipleAssess.StartDownloadScoreRules(keyIDs, data);
-            s := 'MultipleAssess：Download ScoreRules state=' + State;
-          End;
-          If (fileType = MsgEvaluationRule) Then
-          Begin
-            State := MultipleAssess.StartDownloadEvaluationRules(keyIDs, data);
-            s := 'MultipleAssess：Download EvaluationRules state=' + State;
-          End;
-        End;
-      satScoreRuleExplain: // 评分规则说明
-        begin
-          sList := TStringList.Create;
-          try
-          sList.Add('工作成绩 0-25');
-          sList.Add('业务能力 0-25');
-          sList.Add('技术水平 0-25');
-          sList.Add('工作态度 0-25');
-          data := download.ConvertStrToArray(sList.Text);
-          State := ScoreRuleExplain.StartDownload(keyIDs, data);
-          s := 'ScoreRuleExplain：Download RandomItems state=' + State;
-          finally
-            sList.Free;
-          end;
-        end;
-
-    Else
-      Exit;
-    End;
-
-    If (State = '0') Then
-      s := s + '  Start download success';
-    If (State = '-1') Then
-      s := s + '  Not set the baseConnection property';
-    If (State = '-2') Then
-      s := s + '  The keyIDs is invalid';
-    If (State = '-3') Then
-      s := s + '  The download data is invalid or out of range';
-    //ShowMsg(s);
-    Result := (State = '0');
-  finally
-    download.Free;
-  end;
-end;
-
 function  TDM.DownLoadKsPhoto(const sUrl:string; img:TImage;const OverPhoto:Boolean=True):Boolean;
 begin
   if sUrl='' then Exit;
@@ -1480,6 +1346,29 @@ begin
     end;
   end;
 
+end;
+
+procedure TDM.FillKsKmList(const yx, zy: string);
+var
+  kskm,sqlstr:string;
+  cds_tmp:TClientDataSet;
+  i:integer;
+begin
+  cds_tmp := TClientDataSet.Create(nil);
+  try
+    sqlstr := 'select 考试科目 from 校考专业科目表 where 承考院系='+quotedstr(yx)+
+                                  ' and 专业='+quotedstr(zy)+' order by 考试科目';
+    cds_tmp.XMLData := dm.OpenData(sqlstr);
+    while not cds_tmp.eof do
+    begin
+      i := cds_tmp.RecNo;
+      kskm := cds_tmp.Fields[0].AsString;
+      gb_KskmList.Add(IntToStr(i)+'='+kskm);
+      cds_tmp.Next;
+    end;
+  finally
+    cds_tmp.Free;
+  end;
 end;
 
 procedure TDM.frxReport1GetValue(const VarName: string; var Value: Variant);
@@ -2336,30 +2225,7 @@ begin
   BaseManage1.BaseConnection := BaseConnection1.DefaultInterface;
   KeypadManage1.BaseConnection := BaseConnection1.DefaultInterface;
   Message1.BaseConnection := BaseConnection1.DefaultInterface;
-  SignIn1.BaseConnection := BaseConnection1.DefaultInterface;
-  ScoreRuleExplain.baseConnection := baseConnection1.DefaultInterface;
-  MultipleAssess.BaseConnection := BaseConnection1.DefaultInterface;
-  
-  begin
 
-    MultipleAssess.Mode := 0;
-    MultipleAssess.DisplayFormat := 1;
-
-    MultipleAssess.NumberBegin := 1;
-    MultipleAssess.NumberEnd := 1;
-    MultipleAssess.RuleBegin := 1;
-    MultipleAssess.RuleEnd := 1;
-
-    MultipleAssess.LessMode := 1; //迫选模式
-    MultipleAssess.EnterMove := 1;
-    MultipleAssess.ColWidthFirst := 18;
-    MultipleAssess.ColWidthOther := 8;
-    MultipleAssess.StartMode := 1; //清空重新开始模式
-
-    MultipleAssess.SecrecyMode:=0;
-    MultipleAssess.ModifyMode:=0;
-    MultipleAssess.AvoidMode:=0;
-  end;
 end;
 
 function TDM.IsDisplayJiangXi: Boolean;
@@ -2378,20 +2244,6 @@ end;
 function TDM.IsLogined(const Czy_ID: string): Boolean;
 begin
 
-end;
-
-procedure TDM.MultipleAssessDataDownload(ASender: TObject; KeyID,
-  DownloadStatus: Integer; const DownloadInfo: WideString);
-var
-  lDownloadSuccessKeyIDs, lDownloadErrorKeyIDs: string;
-Begin
-  If (KeyID = 0) And (DownloadStatus = 0) Then
-  Begin
-    lDownloadSuccessKeyIDs := MultipleAssess.DownloadSuccessKeyIDs;
-    lDownloadErrorKeyIDs := MultipleAssess.DownloadErrorKeyIDs;
-  End;
-  //ShowDownInfo('MultipleAssess', KeyID, DownloadStatus, DownloadInfo,
-  //  lDownloadSuccessKeyIDs, lDownloadErrorKeyIDs);
 end;
 
 function TDM.OpenData(const sSqlStr: string; const ShowHint: Boolean): string;
@@ -2518,20 +2370,6 @@ begin
   end;
   SaveDialog1.FileName := mfn+Ext;
   SaveDialog1.DefaultExt := Ext;
-end;
-
-procedure TDM.ScoreRuleExplainDataDownload(ASender: TObject; KeyID,
-  DownloadStatus: Integer; const DownloadInfo: WideString);
-var
-  lDownloadSuccessKeyIDs, lDownloadErrorKeyIDs: string;
-Begin
-  If (KeyID = 0) And (DownloadStatus = 0) Then
-  Begin
-    lDownloadSuccessKeyIDs := ScoreRuleExplain.DownloadSuccessKeyIDs;
-    lDownloadErrorKeyIDs := ScoreRuleExplain.DownloadErrorKeyIDs;
-  End;
-  //ShowDownInfo('ScoreRuleExplain', KeyID, DownloadStatus, DownloadInfo,
-  //  lDownloadSuccessKeyIDs, lDownloadErrorKeyIDs);
 end;
 
 function TDM.SelectZy(const XlCc,ZyLb:string;var sList:TStrings): Boolean;
@@ -2799,42 +2637,6 @@ end;
 procedure TDM.SetZyComboBoxByZy(const XlCc, Zy: string;
   aDbComboBox: TDBComboBoxEh);
 begin
-
-end;
-
-procedure TDM.SignIn1KeyStatus(ASender: TObject; const BaseTag: WideString;
-  KeyID, ValueType: Integer; const KeyValue: WideString);
-var
-  pw:string;
-  sqlstr:string;
-begin
-  if ValueType=1 then //签到码签到
-  begin
-    pw := GetPwByKeyCode(KeyValue);
-    if pw='' then
-    begin
-      SignIn1.SetAuthorize(KeyID,2); //拒绝授权
-      gb_KeyPwList.Values[IntToStr(KeyID)] := '';
-    end
-    else
-    begin
-      SignIn1.SetAuthorize(KeyID,1); //同意授权
-      gb_KeyPwList.Values[IntToStr(KeyID)] := pw;
-    end;
-  end else
-  begin
-    SignIn1.SetAuthorize(KeyID,1);
-    gb_KeyPwList.Values[IntToStr(KeyID)] := pw;
-  end;
-  //XkPwqd.UpdatePwQdTable(pw,KeyID);
-  if pw='' then
-    sqlstr := 'update 校考考点评委表 set 评分器=null,是否签到=0 where 评分器='+IntToStr(KeyId)
-  else
-    sqlstr := 'update 校考考点评委表 set 评分器='+IntToStr(KeyId)+',是否签到=1 where 评委='+quotedstr(pw);
-  showmessage(sqlstr);
-  ExecSql(sqlstr);
-
-  XkPwqd.Open_Table;
 
 end;
 

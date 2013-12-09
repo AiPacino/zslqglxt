@@ -49,7 +49,9 @@ uses
   uDownloadDataOperate in 'SunVote\uDownloadDataOperate.pas',
   uLogFile in 'SunVote\uLogFile.pas',
   uStringOperate in 'SunVote\uStringOperate.pas',
-  PublicVariable in 'SunVote\PublicVariable.pas';
+  PublicVariable in 'SunVote\PublicVariable.pas',
+  uInputKsBox in 'uInputKsBox.pas' {InputKsBox},
+  uXkPfRecordBrowse in 'uXkPfRecordBrowse.pas' {XkPfRecordBrowse};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};
