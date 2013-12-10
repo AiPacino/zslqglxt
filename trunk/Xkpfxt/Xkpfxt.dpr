@@ -51,7 +51,8 @@ uses
   uStringOperate in 'SunVote\uStringOperate.pas',
   PublicVariable in 'SunVote\PublicVariable.pas',
   uInputKsBox in 'uInputKsBox.pas' {InputKsBox},
-  uXkPfRecordBrowse in 'uXkPfRecordBrowse.pas' {XkPfRecordBrowse};
+  uXkPfRecordBrowse in 'uXkPfRecordBrowse.pas' {XkPfRecordBrowse},
+  uStuInfoConfirm in 'uStuInfoConfirm.pas' {StuInfoConfirm};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

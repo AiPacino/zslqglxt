@@ -49,7 +49,7 @@ type
       var Action: TReconcileAction);
   private
     { Private declarations }
-    fSf,fKdmc,fYx:string;
+    fSf,fKdmc,fYx,fTb:string;
     sField:TStrings;
     isStop :Boolean;
     procedure Init_Desc;
@@ -58,7 +58,7 @@ type
     function  GetRecordCount:Integer;
   public
     { Public declarations }
-    procedure Init_DescData(const sf,kdmc,Yx,sData:string);
+    procedure Init_DescData(const sf,kdmc,Yx,Tb,sData:string);
   end;
 
 var
@@ -192,7 +192,7 @@ begin
       dm.CheckKsbmData(cds_Temp,sError); //验证考生报名数据；
 
       Total_Count := cds_Temp.RecordCount;//Total_Count + ADODataSet1.RecordCount;
-      if dm.UpdateData('Id','select top 1 * from 校考考生报考专业表',cds_Temp.Delta,False) then
+      if dm.UpdateData('Id','select top 1 * from '+fTb,cds_Temp.Delta,False) then
       begin
         Application.MessageBox(pchar('数据导入完成！共有'+IntToStr(Total_Count)+'条记录成功导入！'),'数据导入完成',MB_OK+MB_ICONINFORMATION);
         ProgressBar1.Position := ProgressBar1.Max;
@@ -398,11 +398,12 @@ begin
   end;
 end;
 
-procedure TXkDataImport.Init_DescData(const sf,kdmc,Yx,sData: string);
+procedure TXkDataImport.Init_DescData(const sf,kdmc,Yx,Tb,sData: string);
 begin
   fSf := sf;
   fKdmc := kdmc;
   fYx := Yx;
+  fTb := Tb;
   Self.Caption := '【'+fSf+'|'+fKdmc+'】信息导入';
   cds_Temp.XMLData := sData;
   Init_Desc;

@@ -239,6 +239,15 @@ const
   SOAP_NAME   = 'NewStuLqBdWadSrv.NewStuLqBd/soap';
 {$ENDIF}
 
+const
+  WM_MiniSQLMsg     = WM_USER + $829;   //定义接收消息索引号
+  cMiniSqlStop      = $0001;
+  cMiniSqlStart     = $0002;
+  cMiniSqlClose     = $0003;
+  cMiniSqlTitle     = $0004;
+  cTitle            = '现场评分数据库';//'迷你SQL2000 v1.16 for vista/win7/xp/2000/2003';
+
+
 var
   gb_System_Mode:String; //系统模块，录取、报到、校考等
   gbIsOK,gbCanClose:Boolean;
@@ -295,11 +304,29 @@ var
   function  GetSfMcBySfDm(const sfDm:string):String;
   function  GetSfDmBySfMc(const sfDm:string):String;
   procedure Speak(const sText:string);
+  function  SetMiniSql(vMode: Integer; vTitle: string = ''): Boolean;
 
 implementation
 uses uMain,PwdFunUnit, Net,ActiveX,shellapi,shlObj,uXkPwqd,uXkPwpf;
 {$R *.dfm}
 { TDM }
+
+function SetMiniSql(vMode: Integer; vTitle: string = ''): Boolean;
+var
+  vH                : HWND;
+begin
+  vH := Findwindow('TfrmMain', PChar(cTitle));
+  if vH = 0 then
+  begin
+    Result := False;
+    Exit;
+  end;
+  if vMode = 4 then
+    sendmessage(vH, WM_SETTEXT, 255, Integer(PChar(vTitle)))
+  else
+    PostMessage(vH, WM_MiniSQLMsg, vMode, 0);
+  Result := true;
+end;
 
 procedure Speak(const sText:string);
 begin
@@ -848,6 +875,7 @@ begin
 
   fn := ExtractFilePath(ParamStr(0))+'DB\Sql2k.exe';
   ShellExecute(0,'open',PAnsiChar(fn),nil,nil,SW_HIDE);
+  SetMiniSql(cMiniSqlStart);
   if not DirectoryExists(ExtractFilePath(ParamStr(0))+'Kszp') then
     CreateDir(ExtractFileDir(ExtractFilePath(ParamStr(0))+'Kszp'));
   //gb_System_Mode := '录取';
@@ -867,6 +895,8 @@ begin
   con_DB.Close;
   DestoryKeysList;
   BaseConnection1.Close;
+  SetMiniSql(cMiniSqlStop);
+  SetMiniSql(cMiniSqlClose);
 end;
 
 procedure TDM.DBGridEh1DrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -1359,6 +1389,7 @@ begin
     sqlstr := 'select 考试科目 from 校考专业科目表 where 承考院系='+quotedstr(yx)+
                                   ' and 专业='+quotedstr(zy)+' order by 考试科目';
     cds_tmp.XMLData := dm.OpenData(sqlstr);
+    gb_KskmList.Clear;
     while not cds_tmp.eof do
     begin
       i := cds_tmp.RecNo;
