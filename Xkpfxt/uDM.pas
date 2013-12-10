@@ -3,7 +3,7 @@ unit uDM;
 interface
 
 uses
-  SysUtils, Classes, DB, DBClient, SOAPConn, Rio, SOAPHTTPClient,GridsEh,
+  SysUtils, Classes, DB, DBClient, SOAPConn, Rio, SOAPHTTPClient,GridsEh,uVerifyUSBKey,
   Messages, IniFiles, Windows,Forms, DBGridEh,DBCtrlsEh, Dialogs,DBGridEhImpExp,
   jpeg, ExtCtrls,EncdDecdEx,EhLibCDS, IdGlobal,EhLibBDE,EhLibADO,PublicVariable,
   PrnDbgEH,Graphics, frxChart, frxDesgn, StdActns, ActnList,StrUtils,DateUtils,
@@ -60,6 +60,7 @@ type
     BaseManage1: TBaseManage;
     KeypadManage1: TKeypadManage;
     Message1: TMessage;
+    tmr_VerifyUSBKey: TTimer;
     procedure DataModuleCreate(Sender: TObject);
     procedure SaveDialog1TypeChange(Sender: TObject);
     procedure act_DataExportExecute(Sender: TObject);
@@ -75,6 +76,7 @@ type
     procedure DataModuleDestroy(Sender: TObject);
     procedure BaseConnection1BaseOnLine(ASender: TObject; BaseID,
       BaseState: Integer);
+    procedure tmr_VerifyUSBKeyTimer(Sender: TObject);
   private
     { Private declarations }
     SendTotal,GetTotal:Integer;
@@ -872,7 +874,10 @@ procedure TDM.DataModuleCreate(Sender: TObject);
 var
   fn:string;
 begin
-
+  gbCanClose := False;
+  tmr_VerifyUSBKeyTimer(Self);
+  if gbCanClose then  Exit;
+  gbCanClose := False;
   fn := ExtractFilePath(ParamStr(0))+'DB\Sql2k.exe';
   ShellExecute(0,'open',PAnsiChar(fn),nil,nil,SW_HIDE);
   SetMiniSql(cMiniSqlStart);
@@ -2680,6 +2685,19 @@ begin
   Result := True;
 end;
 
+procedure TDM.tmr_VerifyUSBKeyTimer(Sender: TObject);
+begin
+  if (not CheckUSBKey($00ABCDEF,'xkpfxt')) then
+  begin
+    gbCanClose := True;
+    tmr_VerifyUSBKey.Enabled := False;
+    Application.MessageBox('安全认证失败！请插入USB密钥再运行本系统！  ',
+      pchar(Application.Title), MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    tmr_VerifyUSBKey.Enabled := True;
+    Application.Terminate;
+  end;
+end;
+
 function TDM.UpdateData2(const sKey, sSqlStr, sDelta: string): Boolean;
 begin
   Result := Update_Data(sKey,sSqlStr,sDelta);
@@ -2940,6 +2958,7 @@ end;
 function AppSrvIsOK:Boolean;
 begin
   try
+    dm.tmr_VerifyUSBKeyTimer(dm);
     Result := dm.RegIsOK;
   except
     Result := False;
