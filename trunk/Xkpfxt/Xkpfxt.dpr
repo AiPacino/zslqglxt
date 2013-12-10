@@ -52,7 +52,8 @@ uses
   PublicVariable in 'SunVote\PublicVariable.pas',
   uInputKsBox in 'uInputKsBox.pas' {InputKsBox},
   uXkPfRecordBrowse in 'uXkPfRecordBrowse.pas' {XkPfRecordBrowse},
-  uStuInfoConfirm in 'uStuInfoConfirm.pas' {StuInfoConfirm};
+  uStuInfoConfirm in 'uStuInfoConfirm.pas' {StuInfoConfirm},
+  uVerifyUSBKey in '..\public\uVerifyUSBKey.pas';
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};
@@ -65,8 +66,11 @@ begin
   dm := TDM.Create(Application);
   gb_System_Mode := 'Ð£¿¼';
   gbIsOK := False;
-  Login := TLogin.Create(Application);
-  Login.ShowModal;
+  if not gbCanClose then
+  begin
+    Login := TLogin.Create(Application);
+    Login.ShowModal;
+  end;
   if gbIsOK then
     Application.CreateForm(TMain, Main);
   Application.Run;

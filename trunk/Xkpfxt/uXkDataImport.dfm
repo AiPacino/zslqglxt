@@ -5236,7 +5236,7 @@ object XkDataImport: TXkDataImport
       Height = 21
       Style = csDropDownList
       Enabled = False
-      ItemHeight = 0
+      ItemHeight = 13
       TabOrder = 2
       OnClick = cbb_TbClick
     end

@@ -167,6 +167,16 @@ begin
         Application.ProcessMessages;
         ProgressBar1.Position := Total_Count+AdoDataSet1.RecNo;
         lbl_Hint.Caption := Inttostr(ProgressBar1.Position)+'/'+IntToStr(ProgressBar1.Max);
+        if fTb='校考考生信息表' then
+        begin
+          s_ksh := ADODataSet1.FieldByName(s_kshField).AsString;
+          if s_ksh='' then Break;
+          if cds_Temp.Locate('考生号',s_ksh,[]) then
+          begin
+            ADODataSet1.Next;
+            Continue;
+          end;
+        end;
 
         cds_Temp.Append;
         cds_Temp.FieldByName('省份').AsString     := fSf;
@@ -192,7 +202,7 @@ begin
       dm.CheckKsbmData(cds_Temp,sError); //验证考生报名数据；
 
       Total_Count := cds_Temp.RecordCount;//Total_Count + ADODataSet1.RecordCount;
-      if dm.UpdateData('Id','select top 1 * from '+fTb,cds_Temp.Delta,False) then
+      if dm.UpdateData('Id','select top 0 * from '+fTb,cds_Temp.Delta,False) then
       begin
         Application.MessageBox(pchar('数据导入完成！共有'+IntToStr(Total_Count)+'条记录成功导入！'),'数据导入完成',MB_OK+MB_ICONINFORMATION);
         ProgressBar1.Position := ProgressBar1.Max;
