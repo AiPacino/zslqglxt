@@ -767,6 +767,91 @@ item: Include Script
   Pathname=%_WISE_%\INCLUDE\uninstal.wse
 end
 item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\SelfExercise.ini
+  Destination=%MAINDIR%\DownLoadData\SelfExercise.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\ScoreRule.ini
+  Destination=%MAINDIR%\DownLoadData\ScoreRule.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\Recomend.ini
+  Destination=%MAINDIR%\DownLoadData\Recomend.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\RandomItem.ini
+  Destination=%MAINDIR%\DownLoadData\RandomItem.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\MultipleAssessRule.ini
+  Destination=%MAINDIR%\DownLoadData\MultipleAssessRule.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\MultipleAssessItem.ini
+  Destination=%MAINDIR%\DownLoadData\MultipleAssessItem.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\EvaluationRule.ini
+  Destination=%MAINDIR%\DownLoadData\EvaluationRule.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\ElectionItem.ini
+  Destination=%MAINDIR%\DownLoadData\ElectionItem.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\Election.ini
+  Destination=%MAINDIR%\DownLoadData\Election.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\DownloadFile.txt
+  Destination=%MAINDIR%\DownLoadData\DownloadFile.txt
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\BatchVoteItem.ini
+  Destination=%MAINDIR%\DownLoadData\BatchVoteItem.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\BatchScoreItem.ini
+  Destination=%MAINDIR%\DownLoadData\BatchScoreItem.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\BatchEvaluationItem.ini
+  Destination=%MAINDIR%\DownLoadData\BatchEvaluationItem.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\DownloadData\AvoidItem.ini
+  Destination=%MAINDIR%\DownLoadData\AvoidItem.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\Language\English.ini
+  Destination=%MAINDIR%\Language\English.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=e:\xxx\zslqglxt\Exe\Language\Chinese.ini
+  Destination=%MAINDIR%\Language\Chinese.ini
+  Flags=0000000010000010
+end
+item: Install File
+  Source=..\Exe\SunVote.dll
+  Destination=%MAINDIR%\SunVote.dll
+  Flags=0001000010001010
+end
+item: Install File
   Source=..\Exe\DB\Binn\atxcore.dll
   Destination=%MAINDIR%\DB\Binn\atxcore.dll
   Flags=0001000010000011
@@ -1324,12 +1409,12 @@ end
 item: Install File
   Source=..\Exe\DB\Data\现场评分库.mdf
   Destination=%MAINDIR%\DB\Data\现场评分库.mdf
-  Flags=0000000010000010
+  Flags=0000000010001010
 end
 item: Install File
   Source=..\Exe\DB\Data\现场评分库_log.LDF
   Destination=%MAINDIR%\DB\Data\现场评分库_log.LDF
-  Flags=0000000010000010
+  Flags=0000000010001010
 end
 item: Install File
   Source=..\Exe\DB\KillList.txt
@@ -1467,6 +1552,14 @@ end
 item: Execute Program
   Pathname=%SYS32%\Regsvr32.exe
   Command Line= MIDAS.DLL
+end
+item: Execute Program
+  Pathname=%SYS32%\Regsvr32.exe
+  Command Line= %MAINDIR%\SunVote.DLL
+end
+remarked item: Execute Program
+  Pathname=%SYS32%\Regsvr32.exe
+  Command Line= sapi.DLL
 end
 item: Remark
 end

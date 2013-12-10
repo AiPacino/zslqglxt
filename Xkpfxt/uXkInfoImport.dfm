@@ -36,7 +36,6 @@ object XkInfoImport: TXkInfoImport
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 870
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -557,7 +556,6 @@ object XkInfoImport: TXkInfoImport
       Align = alRight
       Caption = #25215#32771#38498#31995#65306
       TabOrder = 0
-      ExplicitLeft = 693
       object cbb_Yx: TDBComboBoxEh
         Left = 12
         Top = 18
@@ -579,7 +577,6 @@ object XkInfoImport: TXkInfoImport
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 870
     DesignSize = (
       902
       41)
@@ -592,7 +589,6 @@ object XkInfoImport: TXkInfoImport
       Caption = #20851#38381'[&C]'
       TabOrder = 0
       OnClick = btn_ExitClick
-      ExplicitLeft = 777
     end
     object btn_Refresh: TBitBtn
       Left = 6
@@ -933,10 +929,6 @@ object XkInfoImport: TXkInfoImport
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 3
-    ExplicitLeft = 688
-    ExplicitTop = 480
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object grp1: TGroupBox
       Left = 0
       Top = 0
@@ -945,8 +937,6 @@ object XkInfoImport: TXkInfoImport
       Align = alClient
       Caption = #32771#29983#22522#26412#20449#24687#65306
       TabOrder = 0
-      ExplicitWidth = 592
-      ExplicitHeight = 321
       object DBGridEh2: TDBGridEh
         Left = 2
         Top = 16
@@ -1062,7 +1052,6 @@ object XkInfoImport: TXkInfoImport
       Align = alBottom
       Caption = #32771#29983#25253#32771#20449#24687#65306
       TabOrder = 1
-      ExplicitWidth = 592
       object DBGridEh3: TDBGridEh
         Left = 2
         Top = 16
@@ -1080,6 +1069,7 @@ object XkInfoImport: TXkInfoImport
         FooterFont.Height = -12
         FooterFont.Name = 'Tahoma'
         FooterFont.Style = []
+        ImeMode = imDisable
         OddRowColor = 13823456
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
         OptionsEh = [dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghHotTrack]

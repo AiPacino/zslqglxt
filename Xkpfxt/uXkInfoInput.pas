@@ -160,7 +160,7 @@ begin
   end;
   with TXkDataImport.Create(nil) do
   begin
-    Init_DescData(sf,kd,cbb_Yx.Text,cds_ksxx.XMLData);
+    Init_DescData(sf,kd,cbb_Yx.Text,'校考考生信息表',cds_ksxx.XMLData);
     ShowModal;
     Open_DeltaTable;
   end;

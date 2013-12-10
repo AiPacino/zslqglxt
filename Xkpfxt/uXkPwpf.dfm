@@ -182,88 +182,121 @@ object XkPwpf: TXkPwpf
         Top = 63
         Width = 160
         Height = 22
+        Color = clWhite
         DataField = #32771#29983#21495
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt2: TDBText
         Left = 72
         Top = 96
         Width = 160
         Height = 22
+        Color = clWhite
         DataField = #20934#32771#35777#21495
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt3: TDBText
         Left = 72
         Top = 128
         Width = 160
         Height = 22
+        Color = clWhite
         DataField = #36523#20221#35777#21495
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt4: TDBText
         Left = 72
         Top = 161
         Width = 160
         Height = 22
+        Color = clWhite
         DataField = #22995#21517
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt5: TDBText
         Left = 72
         Top = 194
         Width = 32
         Height = 22
+        Color = clWhite
         DataField = #24615#21035
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt6: TDBText
         Left = 72
         Top = 226
         Width = 222
         Height = 22
+        Color = clWhite
         DataField = #25215#32771#38498#31995
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt7: TDBText
         Left = 72
         Top = 259
         Width = 222
         Height = 22
+        Color = clWhite
         DataField = #19987#19994
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt8: TDBText
         Left = 72
         Top = 292
         Width = 222
         Height = 22
+        Color = clWhite
         DataField = #32852#31995#30005#35805
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt9: TDBText
         Left = 72
         Top = 324
         Width = 222
         Height = 22
+        Color = clWhite
         DataField = #27605#19994#20013#23398
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt11: TDBText
         Left = 72
         Top = 357
         Width = 88
         Height = 22
+        Color = clWhite
         DataField = #37038#25919#32534#30721
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbmmo1: TDBText
         Left = 72
         Top = 384
         Width = 222
         Height = 44
+        Color = clWhite
         DataField = #36890#20449#22320#22336
         DataSource = ds_stu
+        ParentColor = False
+        Transparent = False
       end
       object dbedt_Rch: TLabel
         Left = 72
@@ -310,12 +343,12 @@ object XkPwpf: TXkPwpf
         Left = 2
         Top = 12
         Width = 100
-        Height = 24
+        Height = 28
         Caption = #32771#28857#20449#24687
         Font.Charset = GB2312_CHARSET
         Font.Color = clBlue
         Font.Height = -24
-        Font.Name = #23435#20307
+        Font.Name = #26041#27491#23002#20307#31616#20307
         Font.Style = [fsBold]
         ParentFont = False
       end
@@ -459,7 +492,6 @@ object XkPwpf: TXkPwpf
               Footer.Value = #26368#32456#24471#20998
               Footer.ValueType = fvtStaticText
               Footers = <>
-              HideDuplicates = True
               Title.Alignment = taCenter
               Width = 84
             end
@@ -577,7 +609,7 @@ object XkPwpf: TXkPwpf
             Top = 176
             Width = 123
             Height = 56
-            Caption = #9314#24320#22987#32771#35797
+            Caption = #9314#32771#35797#24320#22987
             Enabled = False
             TabOrder = 1
             OnClick = btn_3Click
@@ -587,7 +619,7 @@ object XkPwpf: TXkPwpf
             Top = 262
             Width = 123
             Height = 56
-            Caption = #9315#20572#27490#35745#26102
+            Caption = #9315#32771#35797#32467#26463
             Enabled = False
             TabOrder = 2
             OnClick = btn_4Click

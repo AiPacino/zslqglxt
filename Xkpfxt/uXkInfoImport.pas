@@ -94,7 +94,7 @@ begin
   end;
   with TXkDataImport.Create(nil) do
   begin
-    Init_DescData(sf,kd,cbb_Yx.Text,cds_bkxx.XMLData);
+    Init_DescData(sf,kd,cbb_Yx.Text,'校考考生报考专业表',cds_bkxx.XMLData);
     ShowModal;
     Open_DeltaTable;
   end;
@@ -123,7 +123,7 @@ end;
 
 procedure TXkInfoImport.btn_EmptyClick(Sender: TObject);
 var
-  sqlstr,sf,yx,kd:string;
+  sqlstr,sf,yx,kd,sWhere:string;
 begin
   sf := ClientDataSet1.FieldByName('省份').AsString;
   yx := ClientDataSet1.FieldByName('承考院系').Asstring;
@@ -138,15 +138,13 @@ begin
   end;
   if LowerCase(InputBox('删除确认','请输入[OK]两个字符：',''))<>'ok' then
     Exit;
-
-  sqlstr := 'delete from 校考考生报考专业表 where 承考院系='+quotedstr(yx)+
-            ' and 考点名称='+quotedstr(kd);
+  sWhere := ' where 承考院系='+quotedstr(yx)+' and 省份='+quotedstr(sf)+' and 考点名称='+quotedstr(kd);
+  sqlstr := 'delete from 校考考生报考专业表 where 考生号 in (select 考生号 from 校考考生信息表 '+sWhere+')';
   dm.ExecSql(sqlstr);
 
-  sqlstr := 'delete from 校考考生信息表 where 承考院系='+quotedstr(yx)+
-            ' and 省份='+quotedstr(sf);
+  sqlstr := 'delete from 校考考生信息表 '+sWhere;
   dm.ExecSql(sqlstr);
-
+  Open_DeltaTable;
 end;
 
 procedure TXkInfoImport.btn_ExitClick(Sender: TObject);
@@ -167,7 +165,7 @@ begin
   end;
   with TXkDataImport.Create(nil) do
   begin
-    Init_DescData(sf,kd,cbb_Yx.Text,cds_ksxx.XMLData);
+    Init_DescData(sf,kd,cbb_Yx.Text,'校考考生信息表',cds_ksxx.XMLData);
     ShowModal;
     Open_DeltaTable;
   end;

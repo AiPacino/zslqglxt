@@ -133,6 +133,7 @@ type
     procedure ShowKmcj;
     procedure InitMultipleAccess;
     function  DownLoadKeyData(const KeyIDs,fileType:string;out ErrorKeyIDs:string):Boolean;
+    function  GetRchStr:string;
   public
     { Public declarations }
     procedure SetParam(const yx,sf,kd,zy:string);
@@ -143,7 +144,7 @@ var
   XkPwpf: TXkPwpf;
 
 implementation
-uses uDM, uXkPwQd,PublicVariable,uInputKsBox;
+uses uDM, uXkPwQd,PublicVariable,uInputKsBox,uStuInfoConfirm;
 {$R *.dfm}
 
 function InputKsInfoBox(const DefaultValue:string=''):string;
@@ -160,14 +161,25 @@ begin
   end;
 end;
 
+function KsInfoConfirm(const sData:string):Boolean;
+begin
+  Result := False;
+  with TStuInfoConfirm.Create(nil) do
+  begin
+    cds_1.xmldata := sData;
+    if ShowModal=mrOk then
+      Result := True;
+    Free;
+  end;
+end;
+
 procedure TXkPwpf.btn_4Click(Sender: TObject);
 begin
-  led_Time.Enabled := False;
+  tmr1.Enabled := False;
   btn_4.Enabled := False;
   btn_5.Enabled := True;
   btn_goBack.Enabled := True;
-  Speak('计时结束！');
-  Speak('【'+aRch+'】号考生，请退场！');
+  Speak('考试结束！');
 end;
 
 function TXkPwpf.AllPwIsPosted: Boolean;
@@ -219,7 +231,9 @@ begin
   try
     ksh := OpenStuTable;
     if ksh='' then Exit; //考生不存在
+    if not KsInfoConfirm(cds_stu.XMLData) then Exit;
     aKsh := ksh;
+
 
     if KsPfRecordIsExists(ksh) then
     begin
@@ -239,16 +253,16 @@ begin
 
     aRch := GetRch;
     dbedt_Rch.Caption := aRch;
-    Speak('【'+aRch+'】号考生，请准备入场！');
 
     sqlstr := 'update 校考现场评分表 set 考生号='+quotedstr(aKsh)+',进场号='+quotedstr(aRch)+
               ',科目1=null,科目2=null,提交时间=null';
     dm.ExecSql(sqlstr);
 
-    lbl_Rch.Caption := '正在对入场号为【'+aRch+'】的考生进行评分：';
+    lbl_Rch.Caption := '正在对入场号为【'+GetRchStr+'】的考生进行评分：';
     OpenPfTable(aKsh);
 
-    Speak('【'+aRch+'】号考生，请入场！');
+    Speak('请【'+GetRchStr+'】号考生入场！');
+    btn_2.Enabled := False;
     btn_3.Enabled := True;
     //ShowKmcj;
   finally
@@ -274,7 +288,7 @@ begin
     btn_3.Enabled := False;
     btn_4.Enabled := True;
     btn_5.Enabled := False;
-    Speak('计时开始！');
+    Speak('考试开始！');
     //CreateKsCjTable;
   end;
 
@@ -324,7 +338,7 @@ begin
   //DeleteKscj(aksh);
   if DataSetNoSave(cds_pf) then
   begin
-    if DM.UpdateData('考生号','select top 0 * from 校考现场评分表',cds_pf.Delta,False) then
+    if DM.UpdateData('评委','select top 0 * from 校考现场评分表',cds_pf.Delta,False) then
       cds_pf.MergeChangeLog
     else
       Exit;
@@ -340,6 +354,7 @@ begin
     dm.ExecSql(sqlstr);
   end;
   Speak('本轮评分已确认！');
+  Speak('请【'+GetRchStr+'】号考生退场！');
   Speak('请下一位考生准备！');
 end;
 
@@ -583,6 +598,11 @@ begin
   end;
 end;
 
+function TXkPwpf.GetRchStr: string;
+begin
+  Result := Format('%.3d',[StrToIntDef(aRch,0)]);
+end;
+
 procedure TXkPwpf.InitDownLoadKeyTable;
 var
   sqlstr,fn,FileName:string;
@@ -776,7 +796,7 @@ var
   sqlstr,sWhere :string;
   i: Integer;
 begin
-  sqlstr := 'select * from 校考现场评分表 where 考生号='+quotedstr(ksh)+' order by 评委,评分器';
+  sqlstr := 'select * from 校考现场评分表 where 考生号='+quotedstr(ksh)+' order by 评分器,评委';
   cds_pf.XMLData := DM.OpenData(sqlstr);
   for i := 0 to gb_KskmList.Count - 1 do
     DBGridEh2.FieldColumns['科目'+gb_KsKmlist.Names[i]].Title.Caption := gb_KskmList.ValueFromIndex[i]+'得分';

@@ -39,7 +39,6 @@ type
     procedure cbb_YxChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DataSource1DataChange(Sender: TObject; Field: TField);
-    procedure btn_ImportClick(Sender: TObject);
     procedure ClientDataSet2NewRecord(DataSet: TDataSet);
     procedure btn_DelClick(Sender: TObject);
     procedure btn_ExportClick(Sender: TObject);
@@ -103,25 +102,6 @@ begin
   if dm.ExportDBEditEH(DBGridEh_Export) then
     MessageBox(Handle, pchar('导出完成，共有'+Inttostr(cds_export.RecordCount)+'条记录被导出！　'), '系统提示',
       MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
-end;
-
-procedure TXkPfRecordBrowse.btn_ImportClick(Sender: TObject);
-var
-  sf,kd:string;
-begin
-  sf := ClientDataSet1.FieldByName('省份').asstring;
-  kd := ClientDataSet1.FieldByName('考点名称').asstring;
-  if MessageBox(Handle, PChar('确实要导入【'+sf+' '+kd+'】的考生信息吗？　　'), '系统提示', MB_YESNO + 
-    MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDNO then
-  begin
-    Exit;
-  end;
-  with TXkDataImport.Create(nil) do
-  begin
-    Init_DescData(sf,kd,cbb_Yx.Text,ClientDataSet2.XMLData);
-    ShowModal;
-    Open_DeltaTable;
-  end;
 end;
 
 procedure TXkPfRecordBrowse.btn_RefreshClick(Sender: TObject);
