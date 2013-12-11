@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,
   ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBGridEhGrouping, ComCtrls,
-  RzTreeVw, RzTabs;
+  RzTreeVw, RzTabs, dxGDIPlusClasses;
 
 type
   TXkPwWorkSet = class(TForm)

@@ -27,22 +27,29 @@ object SelectYxKdZy: TSelectYxKdZy
   end
   object lbl3: TLabel
     Left = 34
-    Top = 67
-    Width = 36
+    Top = 102
+    Width = 44
     Height = 14
-    Caption = #32771#28857#65306
+    Caption = #32771'  '#28857#65306
   end
   object lbl4: TLabel
     Left = 34
-    Top = 102
-    Width = 36
+    Top = 137
+    Width = 44
     Height = 14
-    Caption = #19987#19994#65306
+    Caption = #19987'  '#19994#65306
+  end
+  object lbl2: TLabel
+    Left = 34
+    Top = 67
+    Width = 44
+    Height = 14
+    Caption = #30465'  '#20221#65306
   end
   object cbb_yx: TDBComboBoxEh
     Left = 102
     Top = 31
-    Width = 174
+    Width = 250
     Height = 22
     EditButtons = <>
     Items.Strings = (
@@ -51,24 +58,28 @@ object SelectYxKdZy: TSelectYxKdZy
     TabOrder = 0
     Text = #33402#26415#35774#35745#23398#38498
     Visible = True
-    OnChange = cbb_yxChange
-  end
-  object cbb_Kd: TComboBox
-    Left = 102
-    Top = 65
-    Width = 252
-    Height = 22
-    ItemHeight = 14
-    TabOrder = 1
     OnChange = cbb_KdChange
   end
-  object cbb_Zy: TComboBox
+  object cbb_Kd: TDBComboBoxEh
     Left = 102
-    Top = 99
-    Width = 252
+    Top = 100
+    Width = 250
     Height = 22
-    ItemHeight = 14
+    EditButtons = <>
+    TabOrder = 1
+    Visible = True
+    OnButtonDown = cbb_KdButtonDown
+    OnChange = cbb_KdChange
+  end
+  object cbb_Zy: TDBComboBoxEh
+    Left = 102
+    Top = 134
+    Width = 250
+    Height = 22
+    EditButtons = <>
     TabOrder = 2
+    Visible = True
+    OnButtonDown = cbb_ZyButtonDown
     OnChange = cbb_KdChange
   end
   object pnl1: TPanel
@@ -101,5 +112,16 @@ object SelectYxKdZy: TSelectYxKdZy
       OnClick = btn_ExitClick
       NumGlyphs = 2
     end
+  end
+  object cbb_Sf: TDBComboBoxEh
+    Left = 102
+    Top = 65
+    Width = 250
+    Height = 22
+    EditButtons = <>
+    TabOrder = 4
+    Visible = True
+    OnButtonDown = cbb_SfButtonDown
+    OnChange = cbb_KdChange
   end
 end

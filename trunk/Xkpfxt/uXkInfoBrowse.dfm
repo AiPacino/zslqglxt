@@ -37,7 +37,6 @@ object XkInfoBrowse: TXkInfoBrowse
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = -6
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -464,13 +463,13 @@ object XkInfoBrowse: TXkInfoBrowse
     object lbl_Title: TLabel
       Left = 80
       Top = 13
-      Width = 160
+      Width = 168
       Height = 23
       Caption = #32771#29983#25253#32771#20449#24687#27983#35272
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = GB2312_CHARSET
       Font.Color = clNavy
       Font.Height = -19
-      Font.Name = 'Tahoma'
+      Font.Name = #26041#27491#23002#20307#31616#20307
       Font.Style = [fsBold]
       ParentFont = False
       Transparent = True

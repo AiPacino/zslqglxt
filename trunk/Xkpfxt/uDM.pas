@@ -307,6 +307,7 @@ var
   function  GetSfDmBySfMc(const sfDm:string):String;
   procedure Speak(const sText:string);
   function  SetMiniSql(vMode: Integer; vTitle: string = ''): Boolean;
+  procedure WriteLog(const UserID,sWhat:string);
 
 implementation
 uses uMain,PwdFunUnit, Net,ActiveX,shellapi,shlObj,uXkPwqd,uXkPwpf;

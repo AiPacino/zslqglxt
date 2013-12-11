@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, GridsEh, DBGridEh, DB, DBClient, StdCtrls, Buttons,
-  ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBGridEhGrouping;
+  ExtCtrls, pngimage, frxpngimage, Mask, DBCtrlsEh, DBGridEhGrouping,
+  dxGDIPlusClasses;
 
 type
   TXkKmSet = class(TForm)

@@ -2,28 +2,28 @@ object XkPwpf: TXkPwpf
   Left = 0
   Top = 0
   Caption = #35780#20998#31383#21475
-  ClientHeight = 616
+  ClientHeight = 572
   ClientWidth = 966
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -12
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
-  Position = poMainFormCenter
+  ShowHint = False
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 13
   object bvl2: TBevel
     Left = 663
     Top = 0
     Width = 2
-    Height = 597
+    Height = 553
     Align = alRight
     Shape = bsRightLine
     ExplicitLeft = 661
@@ -33,7 +33,7 @@ object XkPwpf: TXkPwpf
     Left = 665
     Top = 0
     Width = 301
-    Height = 597
+    Height = 553
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
@@ -41,25 +41,25 @@ object XkPwpf: TXkPwpf
       Left = 0
       Top = 0
       Width = 301
-      Height = 157
+      Height = 65
       Align = alTop
       BevelKind = bkTile
       BevelOuter = bvNone
       TabOrder = 0
       object led_Time: TRzLEDDisplay
-        Left = 9
-        Top = 52
-        Width = 273
-        Height = 65
+        Left = 120
+        Top = 8
+        Width = 166
+        Height = 45
         Alignment = taCenter
         Caption = '00:00'
       end
       object lbl1: TLabel
-        Left = 72
-        Top = 16
-        Width = 152
+        Left = 6
+        Top = 19
+        Width = 112
         Height = 23
-        Caption = #32771#35797#35745#26102'('#20998#38047')'#65306
+        Caption = #35745#26102'('#20998#38047')'#65306
         Font.Charset = GB2312_CHARSET
         Font.Color = clBlue
         Font.Height = -19
@@ -70,116 +70,102 @@ object XkPwpf: TXkPwpf
     end
     object grp1: TGroupBox
       Left = 0
-      Top = 157
+      Top = 65
       Width = 301
-      Height = 440
+      Height = 488
       Align = alClient
       Caption = #32771#29983#20449#24687#65306
       TabOrder = 1
       object lbl2: TLabel
         Left = 16
-        Top = 64
+        Top = 30
         Width = 36
-        Height = 14
+        Height = 13
         Caption = #32771#29983#21495
         FocusControl = dbedt1
       end
       object lbl3: TLabel
         Left = 16
-        Top = 97
+        Top = 63
         Width = 48
-        Height = 14
+        Height = 13
         Caption = #20934#32771#35777#21495
         FocusControl = dbedt2
       end
       object lbl4: TLabel
         Left = 16
-        Top = 130
+        Top = 96
         Width = 48
-        Height = 14
+        Height = 13
         Caption = #36523#20221#35777#21495
         FocusControl = dbedt3
       end
       object lbl5: TLabel
         Left = 16
-        Top = 163
+        Top = 129
         Width = 48
-        Height = 14
+        Height = 13
         Caption = #32771#29983#22995#21517
         FocusControl = dbedt4
       end
       object lbl6: TLabel
         Left = 16
-        Top = 196
+        Top = 162
         Width = 24
-        Height = 14
+        Height = 13
         Caption = #24615#21035
         FocusControl = dbedt5
       end
       object lbl7: TLabel
         Left = 16
-        Top = 228
+        Top = 194
         Width = 48
-        Height = 14
+        Height = 13
         Caption = #25253#32771#38498#31995
         FocusControl = dbedt6
       end
       object lbl8: TLabel
         Left = 16
-        Top = 261
+        Top = 227
         Width = 48
-        Height = 14
+        Height = 13
         Caption = #25253#32771#19987#19994
         FocusControl = dbedt7
       end
       object lbl9: TLabel
         Left = 16
-        Top = 294
+        Top = 260
         Width = 48
-        Height = 14
+        Height = 13
         Caption = #32852#31995#30005#35805
         FocusControl = dbedt8
       end
       object lbl10: TLabel
         Left = 16
-        Top = 327
+        Top = 293
         Width = 48
-        Height = 14
+        Height = 13
         Caption = #27605#19994#20013#23398
         FocusControl = dbedt9
       end
       object lbl11: TLabel
         Left = 16
-        Top = 383
+        Top = 358
         Width = 48
-        Height = 14
+        Height = 13
         Caption = #36890#20449#22320#22336
       end
       object lbl12: TLabel
         Left = 16
-        Top = 360
+        Top = 326
         Width = 48
-        Height = 14
+        Height = 13
         Caption = #37038#25919#32534#30721
         FocusControl = dbedt11
       end
-      object lbl13: TLabel
-        Left = 16
-        Top = 29
-        Width = 52
-        Height = 14
-        Caption = #20837#22330#21495#65306
-        FocusControl = dbedt_Rch
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
       object dbedt1: TDBText
         Left = 72
-        Top = 63
+        Top = 29
         Width = 160
         Height = 22
         Color = clWhite
@@ -190,7 +176,7 @@ object XkPwpf: TXkPwpf
       end
       object dbedt2: TDBText
         Left = 72
-        Top = 96
+        Top = 62
         Width = 160
         Height = 22
         Color = clWhite
@@ -201,7 +187,7 @@ object XkPwpf: TXkPwpf
       end
       object dbedt3: TDBText
         Left = 72
-        Top = 128
+        Top = 94
         Width = 160
         Height = 22
         Color = clWhite
@@ -212,7 +198,7 @@ object XkPwpf: TXkPwpf
       end
       object dbedt4: TDBText
         Left = 72
-        Top = 161
+        Top = 127
         Width = 160
         Height = 22
         Color = clWhite
@@ -223,7 +209,7 @@ object XkPwpf: TXkPwpf
       end
       object dbedt5: TDBText
         Left = 72
-        Top = 194
+        Top = 160
         Width = 32
         Height = 22
         Color = clWhite
@@ -234,7 +220,7 @@ object XkPwpf: TXkPwpf
       end
       object dbedt6: TDBText
         Left = 72
-        Top = 226
+        Top = 192
         Width = 222
         Height = 22
         Color = clWhite
@@ -245,7 +231,7 @@ object XkPwpf: TXkPwpf
       end
       object dbedt7: TDBText
         Left = 72
-        Top = 259
+        Top = 225
         Width = 222
         Height = 22
         Color = clWhite
@@ -256,7 +242,7 @@ object XkPwpf: TXkPwpf
       end
       object dbedt8: TDBText
         Left = 72
-        Top = 292
+        Top = 258
         Width = 222
         Height = 22
         Color = clWhite
@@ -267,7 +253,7 @@ object XkPwpf: TXkPwpf
       end
       object dbedt9: TDBText
         Left = 72
-        Top = 324
+        Top = 290
         Width = 222
         Height = 22
         Color = clWhite
@@ -278,7 +264,7 @@ object XkPwpf: TXkPwpf
       end
       object dbedt11: TDBText
         Left = 72
-        Top = 357
+        Top = 323
         Width = 88
         Height = 22
         Color = clWhite
@@ -289,7 +275,7 @@ object XkPwpf: TXkPwpf
       end
       object dbmmo1: TDBText
         Left = 72
-        Top = 384
+        Top = 359
         Width = 222
         Height = 44
         Color = clWhite
@@ -298,29 +284,13 @@ object XkPwpf: TXkPwpf
         ParentColor = False
         Transparent = False
       end
-      object dbedt_Rch: TLabel
-        Left = 72
-        Top = 29
-        Width = 121
-        Height = 14
-        AutoSize = False
-        Color = clYellow
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlue
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-        Transparent = False
-      end
     end
   end
   object pnl2: TPanel
     Left = 0
     Top = 0
     Width = 663
-    Height = 597
+    Height = 553
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
@@ -339,12 +309,37 @@ object XkPwpf: TXkPwpf
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      object lbl_zy: TLabel
-        Left = 2
-        Top = 12
-        Width = 100
+      object lbl_Rch: TLabel
+        Left = 5
+        Top = 15
+        Width = 125
         Height = 28
-        Caption = #32771#28857#20449#24687
+        Caption = #27491#22312#23545#32771#29983
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlue
+        Font.Height = -24
+        Font.Name = #26041#27491#23002#20307#31616#20307
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object led_Rch: TRzLEDDisplay
+        Left = 134
+        Top = 5
+        Width = 151
+        Height = 45
+        Hint = #20837#22330#21495
+        ParentShowHint = False
+        ShowHint = True
+        Alignment = taCenter
+        Caption = '---'
+        SegOnColor = clWhite
+      end
+      object lbl14: TLabel
+        Left = 291
+        Top = 15
+        Width = 125
+        Height = 28
+        Caption = #36827#34892#35780#20998#65306
         Font.Charset = GB2312_CHARSET
         Font.Color = clBlue
         Font.Height = -24
@@ -357,32 +352,26 @@ object XkPwpf: TXkPwpf
       Left = 0
       Top = 65
       Width = 663
-      Height = 532
+      Height = 488
       Align = alClient
-      BevelKind = bkTile
       BevelOuter = bvNone
       TabOrder = 1
-      object lbl_Rch: TLabel
-        Left = 2
-        Top = 10
-        Width = 200
-        Height = 24
-        Caption = #27491#22312#23545#32771#29983#36827#34892#35780#20998#65306
-        Font.Charset = GB2312_CHARSET
-        Font.Color = clBlue
-        Font.Height = -20
-        Font.Name = #26041#27491#23002#20307#31616#20307
-        Font.Style = []
-        ParentFont = False
-      end
       object pnl_Bottom: TPanel
         Left = 0
-        Top = 460
-        Width = 659
+        Top = 420
+        Width = 663
         Height = 68
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 0
+        object Bevel1: TBevel
+          Left = 0
+          Top = 0
+          Width = 663
+          Height = 9
+          Align = alTop
+          Shape = bsTopLine
+        end
         object btn_goBack: TBitBtn
           Left = 476
           Top = 6
@@ -402,18 +391,19 @@ object XkPwpf: TXkPwpf
       end
       object Panel1: TPanel
         Left = 0
-        Top = 40
-        Width = 659
+        Top = 0
+        Width = 663
         Height = 420
-        Align = alBottom
+        Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
         object DBGridEh2: TDBGridEh
           Left = 0
           Top = 0
-          Width = 448
+          Width = 452
           Height = 420
           Align = alClient
+          BorderStyle = bsNone
           ColumnDefValues.Layout = tlCenter
           Ctl3D = False
           DataGrouping.GroupLevels = <>
@@ -505,7 +495,7 @@ object XkPwpf: TXkPwpf
               Footer.ValueType = fvtAvg
               Footers = <>
               Title.Alignment = taCenter
-              Width = 123
+              Width = 130
             end
             item
               Alignment = taCenter
@@ -517,7 +507,7 @@ object XkPwpf: TXkPwpf
               Footer.ValueType = fvtAvg
               Footers = <>
               Title.Alignment = taCenter
-              Width = 129
+              Width = 139
             end
             item
               Alignment = taCenter
@@ -532,12 +522,11 @@ object XkPwpf: TXkPwpf
           end
         end
         object Panel2: TPanel
-          Left = 448
+          Left = 452
           Top = 0
           Width = 211
           Height = 420
           Align = alRight
-          BevelKind = bkSoft
           BevelOuter = bvNone
           Font.Charset = GB2312_CHARSET
           Font.Color = clWindowText
@@ -593,6 +582,14 @@ object XkPwpf: TXkPwpf
             ThicknessRate = 10
             ArrowPosition = apLeft
             Color = clGray
+          end
+          object Bevel2: TBevel
+            Left = 0
+            Top = 0
+            Width = 9
+            Height = 420
+            Align = alLeft
+            Shape = bsLeftLine
           end
           object btn_2: TBitBtn
             Left = 36
@@ -655,7 +652,7 @@ object XkPwpf: TXkPwpf
   end
   object RzStatusBar1: TRzStatusBar
     Left = 0
-    Top = 597
+    Top = 553
     Width = 966
     Height = 19
     BorderInner = fsNone
@@ -731,8 +728,8 @@ object XkPwpf: TXkPwpf
     Aggregates = <>
     CommandText = 'select * from '#26657#32771#32771#29983#25253#32771#19987#19994#34920
     Params = <>
-    Left = 872
-    Top = 272
+    Left = 592
+    Top = 80
     object cds_stuId: TAutoIncField
       FieldName = 'Id'
       ReadOnly = True
@@ -804,14 +801,14 @@ object XkPwpf: TXkPwpf
   end
   object ds_stu: TDataSource
     DataSet = cds_stu
-    Left = 901
-    Top = 272
+    Left = 621
+    Top = 80
   end
   object tmr1: TTimer
     Enabled = False
     OnTimer = tmr1Timer
-    Left = 792
-    Top = 48
+    Left = 720
+    Top = 16
   end
   object MultipleAssess: TMultipleAssess
     AutoConnect = False
