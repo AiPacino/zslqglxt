@@ -260,6 +260,10 @@ begin
   if aForm=nil then
   begin
     aForm := TxkPwpf.Create(Self);
+    aForm.Left := Trunc((Self.Width-aForm.Width)/2);
+    aForm.Top := Trunc((Self.Height-aForm.Height)/2)-40;
+    if aForm.Top<0 then aForm.Top := 0;
+    
   end else
   begin
     if aForm.WindowState=wsMinimized then
@@ -297,9 +301,8 @@ begin
     if ShowModal=mrOk then
     begin
       yx := cbb_yx.Text;
-      ii := Pos('|',cbb_Kd.Text);
-      sf := Copy(cbb_Kd.Text,1,ii-1);
-      kd := Copy(cbb_Kd.Text,ii+1,100);
+      sf := cbb_sf.Text;
+      kd := cbb_Kd.Text;
       zy := cbb_Zy.Text;
       ShowXkpfForm(yx,sf,kd,zy);
     end;

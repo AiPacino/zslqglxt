@@ -53,7 +53,8 @@ uses
   uInputKsBox in 'uInputKsBox.pas' {InputKsBox},
   uXkPfRecordBrowse in 'uXkPfRecordBrowse.pas' {XkPfRecordBrowse},
   uStuInfoConfirm in 'uStuInfoConfirm.pas' {StuInfoConfirm},
-  uVerifyUSBKey in '..\public\uVerifyUSBKey.pas';
+  uVerifyUSBKey in '..\public\uVerifyUSBKey.pas',
+  uSelectYxKdZy in 'uSelectYxKdZy.pas' {SelectYxKdZy};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};

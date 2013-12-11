@@ -27,8 +27,6 @@ object UserLoginLog: TUserLoginLog
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 483
-    ExplicitWidth = 786
     DesignSize = (
       870
       41)
@@ -41,7 +39,6 @@ object UserLoginLog: TUserLoginLog
       Caption = #36864#20986'[&X]'
       TabOrder = 4
       OnClick = btn_ExitClick
-      ExplicitLeft = 707
     end
     object Edit1: TEdit
       Left = 94
@@ -193,7 +190,6 @@ object UserLoginLog: TUserLoginLog
         EE0909EEEEEEEEEEEEEEEEEEEE8181EEEE8181EEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 582
     end
     object btn_Delete: TBitBtn
       Left = 481
@@ -259,7 +255,6 @@ object UserLoginLog: TUserLoginLog
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 397
     end
     object btn_Print: TBitBtn
       Left = 571
@@ -322,7 +317,6 @@ object UserLoginLog: TUserLoginLog
         5E5E5E5E5E5E5E5EEEEEEEEEEEEEEEE2E2E2E2E2E2E2E2E2EEEEEEEEEEEEEEEE
         EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE}
       NumGlyphs = 2
-      ExplicitLeft = 487
     end
   end
   object DBGridEh1: TDBGridEh
@@ -427,7 +421,6 @@ object UserLoginLog: TUserLoginLog
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 786
     object img_Title: TImage
       Left = 0
       Top = 0
@@ -948,13 +941,13 @@ object UserLoginLog: TUserLoginLog
     object lbl_Title: TLabel
       Left = 80
       Top = 13
-      Width = 140
+      Width = 147
       Height = 23
       Caption = #25805#20316#21592#30331#24405#26597#35810
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = GB2312_CHARSET
       Font.Color = clNavy
       Font.Height = -19
-      Font.Name = 'Tahoma'
+      Font.Name = #26041#27491#23002#20307#31616#20307
       Font.Style = [fsBold]
       ParentFont = False
       Transparent = True
@@ -980,8 +973,6 @@ object UserLoginLog: TUserLoginLog
       item
         Width = 50
       end>
-    ExplicitTop = 524
-    ExplicitWidth = 786
   end
   object DataSource1: TDataSource
     AutoEdit = False

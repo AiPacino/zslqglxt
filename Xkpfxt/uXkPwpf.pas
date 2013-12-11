@@ -12,8 +12,6 @@ type
   TXkPwpf = class(TForm)
     pnl_right: TPanel;
     pnl1: TPanel;
-    led_Time: TRzLEDDisplay;
-    lbl1: TLabel;
     pnl2: TPanel;
     bvl2: TBevel;
     pnl3: TPanel;
@@ -63,10 +61,7 @@ type
     dbedt11: TDBText;
     dbmmo1: TDBText;
     tmr1: TTimer;
-    lbl13: TLabel;
-    dbedt_Rch: TLabel;
     pnl_cj: TPanel;
-    lbl_Rch: TLabel;
     pnl_Bottom: TPanel;
     RzStatusBar1: TRzStatusBar;
     RzStatusPane1: TRzStatusPane;
@@ -85,12 +80,18 @@ type
     btn_5: TBitBtn;
     btn_1: TBitBtn;
     btn_goBack: TBitBtn;
-    lbl_zy: TLabel;
     viArrow1: TviArrow;
     viArrowEx1: TviArrowEx;
     viArrowEx2: TviArrowEx;
     viArrowEx3: TviArrowEx;
     viArrowEx4: TviArrowEx;
+    lbl_Rch: TLabel;
+    led_Rch: TRzLEDDisplay;
+    lbl14: TLabel;
+    led_Time: TRzLEDDisplay;
+    lbl1: TLabel;
+    Bevel1: TBevel;
+    Bevel2: TBevel;
     procedure tmr1Timer(Sender: TObject);
     procedure btn_3Click(Sender: TObject);
     procedure btn_2Click(Sender: TObject);
@@ -252,7 +253,7 @@ begin
     end;
 
     aRch := GetRch;
-    dbedt_Rch.Caption := aRch;
+    led_Rch.Caption := aRch;
 
     sqlstr := 'update 校考现场评分表 set 考生号='+quotedstr(aKsh)+',进场号='+quotedstr(aRch)+
               ',科目1=null,科目2=null,提交时间=null';
@@ -317,10 +318,11 @@ begin
   begin
     MultipleAssess.Stop;
 
-    if Application.MessageBox('再次确认：真的要把成绩发回评委并允许修改评分吗？',
+    if Application.MessageBox(PChar('再次确认：真的要把成绩发回评委并允许修改评分吗？'+#13+'这一操作将会产生一条操作日志留存！还要继续吗？'),
       '系统提示', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDYES
       then
     begin
+      WriteLog(gb_Czy_ID,'入场号为【'+aRch+'】的考生【+'+aZy+'+】现场评分发回重评！');
       //InitMultipleAccess;
       MultipleAssess.StartMode := 0; //继续
     end else
@@ -858,7 +860,8 @@ begin
               ' and 考点名称='+quotedstr(aKd);
               //' and 专业='+quotedstr(aZy);
 
-  lbl_zy.Caption := '正在进行『'+zy+'』专业考试';
+  Self.Caption := '评分窗口--正在进行【'+zy+'】专业考试（考点：'+aKd+'）';
+  //lbl_zy.Caption := '考试专业：『'+zy+'』';
   InitKeySet;
   CreateLabelList;
 end;
