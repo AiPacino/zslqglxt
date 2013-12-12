@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, IniFiles,
   Dialogs, DB, DBClient, StdCtrls, Buttons, ExtCtrls, RzBorder, DBCtrls, Mask,uDownloadDataOperate,
-  DBGridEhGrouping, GridsEh, DBGridEh, OleServer, SunVote_TLB, RzPanel, RzStatus,
+  DBGridEhGrouping, GridsEh, DBGridEh, OleServer, SunVote_TLB, RzPanel, RzStatus,uDisplayMessage,
   viArrow;
 
 type
@@ -92,6 +92,7 @@ type
     lbl1: TLabel;
     Bevel1: TBevel;
     Bevel2: TBevel;
+    chk_DisplayMessage: TCheckBox;
     procedure tmr1Timer(Sender: TObject);
     procedure btn_3Click(Sender: TObject);
     procedure btn_2Click(Sender: TObject);
@@ -111,9 +112,11 @@ type
       DownloadStatus: Integer; const DownloadInfo: WideString);
     procedure btn_goBackClick(Sender: TObject);
     procedure btn_4Click(Sender: TObject);
+    procedure chk_DisplayMessageClick(Sender: TObject);
   private
     { Private declarations }
     aKsh,aRch:string;
+    aForm:TDisplayMessage;
     lDownloadSuccessKeyIDs, lDownloadErrorKeyIDs: string;
     aYx,aSf,aKd,aZy,sqlWhere:string;
     LabelList:Array of TLabel;
@@ -330,6 +333,14 @@ begin
     MultipleAssess.Start;
   end;
 
+end;
+
+procedure TXkPwpf.chk_DisplayMessageClick(Sender: TObject);
+begin
+  if chk_DisplayMessage.Checked then
+    aForm.Show
+  else
+    aForm.Hide;
 end;
 
 procedure TXkPwpf.CreateKsCjTable;
@@ -574,6 +585,7 @@ begin
   MultipleAssess.BaseConnection := dm.BaseConnection1.DefaultInterface;
   InitMultipleAccess;
   ScoreRuleExplain.BaseConnection := DM.BaseConnection1.DefaultInterface;
+  aForm := TDisplayMessage.Create(Self);
 end;
 
 procedure TXkPwpf.FormDestroy(Sender: TObject);

@@ -12,7 +12,6 @@ object XkPwpf: TXkPwpf
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
-  ShowHint = False
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
@@ -346,6 +345,17 @@ object XkPwpf: TXkPwpf
         Font.Name = #26041#27491#23002#20307#31616#20307
         Font.Style = [fsBold]
         ParentFont = False
+      end
+      object chk_DisplayMessage: TCheckBox
+        Left = 472
+        Top = 16
+        Width = 163
+        Height = 22
+        Caption = #26174#31034#25193#23637#23631#20449#24687
+        Checked = True
+        State = cbChecked
+        TabOrder = 0
+        OnClick = chk_DisplayMessageClick
       end
     end
     object pnl_cj: TPanel

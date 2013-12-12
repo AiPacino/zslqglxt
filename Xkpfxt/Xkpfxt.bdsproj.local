@@ -112,5 +112,7 @@
     <Transaction>2013-12-09 04:41:15.079.dfm,E:\xxx\zslqglxt\Xkpfxt\uXkpf.dfm=E:\xxx\zslqglxt\Xkpfxt\uXkPwpf.dfm</Transaction>
     <Transaction>2013-12-09 19:51:16.016.pas,E:\xxx\zslqglxt\Xkpfxt\Unit1.pas=E:\xxx\zslqglxt\Xkpfxt\uInputKsBox.pas</Transaction>
     <Transaction>2013-12-09 19:51:16.016.dfm,E:\xxx\zslqglxt\Xkpfxt\Unit1.dfm=E:\xxx\zslqglxt\Xkpfxt\uInputKsBox.dfm</Transaction>
+    <Transaction>2013-12-12 10:22:01.502.pas,E:\xxx\zslqglxt\Xkpfxt\Unit1.pas=E:\xxx\zslqglxt\Xkpfxt\uDisplayMessage.pas</Transaction>
+    <Transaction>2013-12-12 10:22:01.502.dfm,E:\xxx\zslqglxt\Xkpfxt\Unit1.dfm=E:\xxx\zslqglxt\Xkpfxt\uDisplayMessage.dfm</Transaction>
   </Transactions>
 </BorlandProject>

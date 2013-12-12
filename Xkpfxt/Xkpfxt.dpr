@@ -54,7 +54,8 @@ uses
   uXkPfRecordBrowse in 'uXkPfRecordBrowse.pas' {XkPfRecordBrowse},
   uStuInfoConfirm in 'uStuInfoConfirm.pas' {StuInfoConfirm},
   uVerifyUSBKey in '..\public\uVerifyUSBKey.pas',
-  uSelectYxKdZy in 'uSelectYxKdZy.pas' {SelectYxKdZy};
+  uSelectYxKdZy in 'uSelectYxKdZy.pas' {SelectYxKdZy},
+  uDisplayMessage in 'uDisplayMessage.pas' {DisplayMessage};
 
 //,
   //uPhotoExport in 'uPhotoExport.pas' {PhotoExport};
